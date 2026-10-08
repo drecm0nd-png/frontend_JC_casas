@@ -1,0 +1,60 @@
+.site-footer {
+  background-color: #fcf6ed; /* Tono crema claro acorde al diseño de la app */
+  color: #3b2214;            /* Color café principal del restaurante */
+  padding: 3rem 2rem 1.5rem 2rem;
+  width: 100%;
+  border-top: 1px solid #f2e6d9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-content {
+  max-width: 1350px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #ebd9cc;
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #3b2214;
+}
+
+.footer-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+  color: #5c3a21;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.social-icon {
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  max-width: 1350px;
+  margin: 1.5rem auto 0 auto;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #5c3a21;
+}
+
+.footer-bottom strong {
+  color: #3b2214;
+}

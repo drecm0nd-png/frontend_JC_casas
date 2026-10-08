@@ -1,0 +1,351 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+  background-color: #fcfbfa;
+  color: #333;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root, .app-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Contenido principal */
+.main-content {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.order-banner {
+  background-color: #f5ebd6;
+  border: 1px solid #e8dbc4;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-banner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+.order-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.order-icon {
+  background-color: #faedcd;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.order-title {
+  font-weight: 600;
+  color: #c28d4d;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.order-subtitle {
+  color: #555555;
+  font-size: 0.85rem;
+  margin-top: 2px;
+  text-align: left;
+}
+
+.order-arrow {
+  color: #333333;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.featured-menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-section-title {
+  font-size: 1.4rem;
+  color: #2b2b2b;
+  font-weight: bold;
+  text-align: left;
+}
+
+.mas-info-btn {
+  background-color: #faedcd;
+  border: none;
+  color: #7f5539;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.mas-info-btn:hover {
+  background-color: #f7d6a3;
+  transform: scale(1.05);
+}
+
+.featured-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 240px;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.featured-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.featured-card:hover .featured-image {
+  transform: scale(1.05);
+}
+
+.featured-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%);
+  z-index: 2;
+}
+
+.featured-content {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.featured-info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+.featured-title {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  text-align: left;
+}
+
+.featured-price {
+  color: #ce9147;
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  text-align: left;
+}
+
+.pedir-ahora-btn {
+  background-color: #c28d4d;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.pedir-ahora-btn:hover {
+  background-color: #ad7b3f;
+  transform: scale(1.05);
+}
+
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #eae5e0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.product-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.06);
+}
+
+.product-body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.product-name {
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #2b2b2b;
+  margin-bottom: 0.3rem;
+  text-align: left;
+}
+
+.product-description {
+  color: #666666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f5f2ef;
+  padding-top: 0.8rem;
+  margin-top: auto;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #c28b47;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.product-btn {
+  background-color: #faedcd;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7f5539;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.product-btn:hover {
+  background-color: #f7d6a3;
+  transform: rotate(90deg) scale(1.1);
+}
+
+
+@media (max-width: 900px) {
+  .main-content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 1rem 0.8rem;
+  }
+
+  .order-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .order-arrow {
+    align-self: flex-end;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
