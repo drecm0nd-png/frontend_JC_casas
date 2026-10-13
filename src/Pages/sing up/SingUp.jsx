@@ -5,6 +5,8 @@ function SingUp({ onNavigate }) {
   return (
     <div className="signup-container">
       <div className="signup-card">
+        
+        {/* Columna Izquierda: Formulario */}
         <div className="signup-form-section">
           <div className="form-wrapper">
             
@@ -23,7 +25,7 @@ function SingUp({ onNavigate }) {
               <button 
                 className="tab-button inactive" 
                 type="button"
-                onClick={() => onNavigate && onNavigate('login')} // <- Vuelve al login
+                onClick={() => onNavigate && onNavigate('login')}
               >
                 Iniciar sesión
               </button>
@@ -36,19 +38,19 @@ function SingUp({ onNavigate }) {
               </button>
             </div>
 
-            {/* Resto del formulario de registro... */}
+            {/* Formulario de registro */}
             <form className="form-wrapper" onSubmit={(e) => e.preventDefault()}>
               <div className="form-group">
                 <label className="form-label">Nombre</label>
                 <div className="input-box">
-                  <span className="input-text">Saul</span>
+                  <input type="text" className="input-field" placeholder="Saul" />
                 </div>
               </div>
 
               <div className="form-group">
                 <label className="form-label">Apellido</label>
                 <div className="input-box">
-                  <span className="input-text">Goodman</span>
+                  <input type="text" className="input-field" placeholder="Goodman" />
                 </div>
               </div>
 
@@ -56,14 +58,14 @@ function SingUp({ onNavigate }) {
                 <label className="form-label">Email - Correo Electrónico</label>
                 <div className="input-box">
                   <img src="/src/assets/Icons/Container (2).png" alt="Email" className="field-icon" />
-                  <span className="input-text">exampleEmail@gmail.com</span>
+                  <input type="email" className="input-field" placeholder="exampleEmail@gmail.com" />
                 </div>
               </div>
 
               <div className="form-group">
                 <label className="form-label">Número</label>
                 <div className="input-box">
-                  <span className="input-text">322 562 3244</span>
+                  <input type="tel" className="input-field" placeholder="322 562 3244" />
                 </div>
               </div>
 
@@ -71,13 +73,13 @@ function SingUp({ onNavigate }) {
                 <label className="form-label">Contraseña</label>
                 <div className="input-box">
                   <img src="/src/assets/Icons/Container.png" alt="Candado" className="field-icon" />
-                  <span className="input-text password-dots">••••••••••••</span>
+                  <input type="text" className="input-field" placeholder="••••••••••••" />
                 </div>
               </div>
 
               <div className="terms-container">
                 <label className="checkbox-label">
-                  <input type="checkbox" className="checkbox-input" defaultChecked />
+                  <input type="checkbox" className="checkbox-input" />
                   <span className="checkbox-text">Aceptar los términos y condiciones</span>
                 </label>
               </div>
@@ -88,27 +90,20 @@ function SingUp({ onNavigate }) {
             </form>
 
             {/* Enlace inferior de redirección */}
-            <div className="login-redirect-container" style={{ textAlign: 'center', marginTop: '0.5rem' }}>
-              <button 
-                type="button" 
-                className="forgot-password-link"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
-                onClick={() => onNavigate && onNavigate('login')}
-              >
-                ¿Ya tienes una cuenta?, Inicia sesión.
-              </button>
-            </div>
+            
 
           </div>
         </div>
 
+        {/* Columna Derecha: Imagen Lateral */}
         <div className="signup-image-section">
           <img 
             className="signup-bg-image" 
-            src="/src/assets/Images/image 1.png" 
+            src="/src/assets/Images/imagen_registro.png" 
             alt="Interior del Restaurante" 
           />
         </div>
+
       </div>
     </div>
   );

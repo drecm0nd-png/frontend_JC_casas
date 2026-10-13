@@ -1,7 +1,13 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './Login.css';
 
 function Login({ onNavigate }) {
+  {/* leestamos indicando que por defecto no me muestre lo que voy digitando en el campo de contraseña */}
+  const [mostrarContrasena, setMostrarContrasena] = useState(false);
+  const verContrasena=()=>{
+    setMostrarContrasena((prevState) => !prevState);
+  }
+
   return (
     <div className="login-container">
       <div className="login-card">
@@ -30,20 +36,24 @@ function Login({ onNavigate }) {
               <button 
                 className="tab-button inactive" 
                 type="button"
-                onClick={() => onNavigate && onNavigate('signup')} // <- Cambia a la vista de registro
+                onClick={() => onNavigate && onNavigate('signup')}
               >
                 Registrarse
               </button>
             </div>
 
-            {/* Resto del formulario... */}
+            {/* Formulario Interactivo */}
             <form className="form-wrapper" onSubmit={(e) => e.preventDefault()}>
               <div className="form-group">
                 <label className="form-label">Correo electrónico</label>
                 <div className="input-box">
                   <div className="input-content-left">
                     <img src="/src/assets/Icons/Container (2).png" alt="Email" className="field-icon" />
-                    <span className="input-text">carlos@ejemplo.com</span>
+                    <input 
+                      type="email" 
+                      className="input-field" 
+                      placeholder="carlos@ejemplo.com" 
+                    />
                   </div>
                 </div>
               </div>
@@ -53,10 +63,17 @@ function Login({ onNavigate }) {
                 <div className="input-box">
                   <div className="input-content-left">
                     <img src="/src/assets/Icons/Container.png" alt="Candado" className="field-icon" />
-                    <span className="input-text password-dots">••••••••</span>
+                    <input 
+                      type= {mostrarContrasena ? 'text' : 'password'} 
+                      className="input-field password-dots" 
+                      placeholder=  "••••••••"
+                    />
                   </div>
-                  <button type="button" className="icon-button" aria-label="Mostrar contraseña">
-                    <img src="/src/assets/Icons/Container (1).png" alt="Ocultar" className="field-icon" />
+                  
+                  {/* añadimos el evento onclick al boton del ojo */} 
+                  <button type="button" className="icon-button" aria-label={mostrarContrasena ? 'Ocultar contraseña':'mostrar contraseña'}
+                   onClick={verContrasena} >
+                    <img src="/src/assets/Icons/Container (1).png" alt={mostrarContrasena ? "ocultar":"mostrar"} className="field-icon" />
                   </button>
                 </div>
               </div>
@@ -89,7 +106,7 @@ function Login({ onNavigate }) {
         <div className="login-image-section">
           <img 
             className="login-bg-image" 
-            src="/src/assets/Images/image 1.png" 
+            src="/src/assets/Images/imagen_registro.png" 
             alt="Interior del Restaurante" 
           />
         </div>

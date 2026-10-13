@@ -17,9 +17,9 @@
 
 .login-card {
   display: flex;
-  width: 100%;
-  max-width: 2200px;
-  min-height: 700px;
+
+  width: 1400px;
+  height: 1200px;
   background-color: var(--Backgrounds);
   border-radius: 1rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
@@ -50,8 +50,26 @@
   flex: 1;
   display: none;
   position: relative;
-    height: 1200px;
-    width:4500px;
+   size: cover;
+}
+
+
+
+/* Solo aplica el estilo especial a los puntos cuando el tipo sea password */
+.input-field[type="password"].password-dots {
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+/* Cuando sea tipo text, usará la misma fuente que el input de correo */
+.input-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: black;
+  font-family: inherit;
 }
 
 @media (min-width: 768px) {
@@ -78,8 +96,8 @@
 }
 
 .brand-logo {
-  width: 96px;
-  height: 96px;
+  width: 200px;
+  height: 200px;
   border-radius: 9999px;
   object-fit: cover;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -171,6 +189,15 @@
 .input-text {
   font-size: 0.95rem;
   color: var(--Color-texto);
+}
+.input-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--Color-texto);
+  font-family: inherit;
 }
 
 .password-dots {
