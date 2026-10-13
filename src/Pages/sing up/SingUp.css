@@ -1,0 +1,227 @@
+@import "../../Styles/Variables.css";
+
+/* Layout Principal estilo Figma */
+.signup-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--Color_fondo, #f8fafc);
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3.5rem;
+  overflow: hidden;
+}
+
+.signup-form-section {
+  width: 100%;
+  max-width: 960px;
+  min-height: 100vh;
+  padding: 0 6rem;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  overflow: hidden;
+}
+
+.signup-card {
+  padding: 2.25rem;
+  background-color: var(--Color_tarjetas, #ffffff);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Header / Avatar */
+.brand-logo-container {
+  width: 9rem;
+  height: 9rem;
+  position: relative;
+}
+
+.brand-logo {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.signup-subtitle {
+  color: var(--Color_texto, #1e293b);
+  font-size: 1.125rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.divider-line {
+  width: 500px;
+  height: 0px;
+  outline: 0.5px solid var(--Color_trazo, #cbd5e1);
+  outline-offset: -0.25px;
+}
+
+/* Formulario */
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  align-self: stretch;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.form-label {
+  align-self: stretch;
+  color: var(--Color_texto, #334155);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.input-box {
+  align-self: stretch;
+  min-width: 7rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--Background-Default-Default, #f1f5f9);
+  border-radius: 0.5rem;
+  outline: 1px solid var(--Color_trazo, #cbd5e1);
+  outline-offset: -0.5px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--Color_texto, #0f172a);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+  line-height: 1rem;
+}
+
+/* Checkbox Términos */
+.terms-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.checkbox-label {
+  min-width: 7rem;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.checkbox-input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--Color_texto, #1e293b);
+  cursor: pointer;
+}
+
+.checkbox-text {
+  flex: 1;
+  color: var(--Text-Default-Default, #334155);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.terms-link {
+  flex: 1;
+  color: var(--Color_texto, #64748b);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+  line-height: 1.5rem;
+  text-decoration: none;
+  margin-left: 1.75rem;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+/* Botón Registrarse */
+.btn-submit {
+  align-self: stretch;
+  height: 3rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.btn-submit-inner {
+  flex: 1;
+  border-radius: 100px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--Color_encabezado, #f97316);
+  padding: 0.625rem 1rem;
+  color: var(--Color_fondo, #ffffff);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.25rem;
+  letter-spacing: -0.015em;
+  transition: opacity 0.2s ease;
+}
+
+.btn-submit:hover .btn-submit-inner {
+  opacity: 0.9;
+}
+
+/* Redirección Iniciar Sesión */
+.login-redirect-link {
+  align-self: stretch;
+  text-align: center;
+  color: var(--Color_texto, #1e293b);
+  font-size: 1.125rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  text-decoration: underline;
+}
+
+/* Sección Imagen Derecha */
+.signup-image-section {
+  width: 900px;
+  height: 100vh;
+}
+
+.signup-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(4px);
+}

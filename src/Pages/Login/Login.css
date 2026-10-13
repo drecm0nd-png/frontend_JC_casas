@@ -209,21 +209,21 @@
 .btn-submit {
   width: 100%;
   padding: 0.875rem;
-  background-color:var(--Color-boton); /* orange-400 */
-  color: #ffffff;
+  background-color: var(--Color-boton) !important; /* Fuerza la variable de tu proyecto */
+  color: #ffffff !important;                       /* Texto blanco puro */
+  opacity: 1 !important;                            /* Previene que se vea transparente o deslavado */
   font-size: 1rem;
   font-weight: 700;
   border: none;
   border-radius: 0.75rem;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);  /* Opcional: la misma sombra que el logo/pestaña */
+  transition: background-color 0.2s ease;
 }
 
 .btn-submit:hover {
-  background-color: #8d440f; /* orange-500 */
+  background-color: #A36B2B !important;             /* Un tono ligeramente más oscuro al pasar el cursor */
 }
-
 /* ==========================================
    Separador "O continúa con"
    ========================================== */

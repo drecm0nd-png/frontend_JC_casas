@@ -1,16 +1,13 @@
 import React from 'react';
 import './Login.css';
 
- function Login() {
+function Login({ onNavigate }) {
   return (
     <div className="login-container">
       <div className="login-card">
-        
-        {/* Sección Izquierda: Formulario de Login */}
         <div className="login-form-section">
           <div className="form-wrapper">
             
-            {/* Header / Logo */}
             <header className="login-header">
               <img 
                 className="brand-logo" 
@@ -23,18 +20,24 @@ import './Login.css';
 
             {/* Pestañas de Navegación */}
             <div className="tab-container">
-              <button className="tab-button active" type="button">
+              <button 
+                className="tab-button active" 
+                type="button"
+                onClick={() => onNavigate && onNavigate('login')}
+              >
                 Iniciar sesión
               </button>
-              <button className="tab-button inactive" type="button">
+              <button 
+                className="tab-button inactive" 
+                type="button"
+                onClick={() => onNavigate && onNavigate('signup')} // <- Cambia a la vista de registro
+              >
                 Registrarse
               </button>
             </div>
 
-            {/* Formulario */}
+            {/* Resto del formulario... */}
             <form className="form-wrapper" onSubmit={(e) => e.preventDefault()}>
-              
-              {/* Campo Correo */}
               <div className="form-group">
                 <label className="form-label">Correo electrónico</label>
                 <div className="input-box">
@@ -45,7 +48,6 @@ import './Login.css';
                 </div>
               </div>
 
-              {/* Campo Contraseña */}
               <div className="form-group">
                 <label className="form-label">Contraseña</label>
                 <div className="input-box">
@@ -59,36 +61,31 @@ import './Login.css';
                 </div>
               </div>
 
-              {/* Enlace Olvidaste Contraseña */}
               <div className="forgot-password-container">
                 <a href="#forgot" className="forgot-password-link">
                   ¿Olvidaste tu contraseña?
                 </a>
               </div>
 
-              {/* Botón Ingresar */}
               <button type="submit" className="btn-submit">
                 Ingresar
               </button>
             </form>
 
-            {/* Separador */}
             <div className="divider-container">
               <div className="divider-line" />
               <span className="divider-text">O continúa con</span>
               <div className="divider-line" />
             </div>
 
-            {/* Botón Google */}
             <button type="button" className="btn-google">
-              <img className="field-icon" src="/src/assets/icons/Icon.png" alt="Google" />
+              <img className="field-icon" src="/src/assets/Icons/Icon.png" alt="Google" />
               <span>Continuar con Google</span>
             </button>
 
           </div>
         </div>
 
-        {/* Sección Derecha: Imagen del Restaurante */}
         <div className="login-image-section">
           <img 
             className="login-bg-image" 
@@ -96,9 +93,9 @@ import './Login.css';
             alt="Interior del Restaurante" 
           />
         </div>
-
       </div>
     </div>
   );
-} 
+}
+
 export default Login;
