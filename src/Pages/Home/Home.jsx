@@ -1,5 +1,4 @@
-
-import Header from '../../Components/Header/Header';   // Ruta correcta subiendo desde Pages/Home a src
+// Ruta correcta subiendo desde Pages/Home a src
 import Footer from '../../Components/Footer/Footer';   // Ruta correcta subiendo desde Pages/Home a src
 import './Home.css';
 
@@ -18,7 +17,6 @@ export default function Home() {
 
   return (
     <div className="app-container">
-      <Header />
 
       <main className="main-content">
         <div className="order-banner">
