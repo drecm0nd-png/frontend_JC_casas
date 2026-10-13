@@ -1,0 +1,9 @@
+:root {
+  --color-fondo: #FFFDF7;
+  --color-encabezado: #6B3A1F;
+  --color-tarjetas: #F5EDDD;
+  --color-acento: #D96B43;
+  --color-boton-principal: #C4832A;
+  --color-texto: #3A1F00;
+  --color-trazo: #6B3A1F80; /* 50% de opacidad */
+}
