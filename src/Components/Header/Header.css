@@ -1,0 +1,127 @@
+/* src/components/Header/Header.css */
+
+.header {
+  background-color: var(--color-header);
+  color: #ffffff;
+}
+
+.header-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+/* ---------- Marca ---------- */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+}
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-title {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+/* ---------- Navegación ---------- */
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.05em;
+}
+
+.header-nav a {
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.header-nav a:hover,
+.header-nav a:focus-visible {
+  opacity: 0.75;
+}
+
+/* Enlace activo (lo marca NavLink automáticamente) */
+.header-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* ---------- Botón Regístrate ---------- */
+.header-register {
+  padding: 0.4rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+}
+
+.header-register:hover {
+  background-color: #ffffff;
+  color: var(--color-header);
+  opacity: 1;
+}
+
+/* ---------- Carrito y perfil ---------- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: inherit;
+}
+
+/* ---------- Breadcrumbs ---------- */
+.breadcrumbs {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 0.75rem;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.05em;
+}
+
+.breadcrumbs a {
+  color: inherit;
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.4rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-nav {
+    gap: 0.9rem;
+  }
+}
