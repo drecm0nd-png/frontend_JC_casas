@@ -1,0 +1,45 @@
+.hero-section {
+  background-color: #F3E8D2; /* Fondo crema principal */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #4A2E1B;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 0.95rem;
+  color: #5C4A3E;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.cta-button {
+  background-color: #C28E38; /* Tono dorado/marrón claro del botón */
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 30px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #A97A2E;
+}
+

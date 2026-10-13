@@ -1,0 +1,81 @@
+/* Asegura que la sección principal ocupe todo el ancho disponible */
+.about-section {
+  width: 100%;
+  max-width: 100%; /* Si quieres que abarque toda la pantalla, quita cualquier max-width restrictivo */
+  margin: 0 auto;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* Imagen superior adaptada al ancho */
+.about-image-container {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.about-img {
+  padding: 20px; /* Agrega espacio alrededor de la imagen */
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  border-radius: 30px;
+}
+
+.about-img img{
+  max-height: 200px;
+}
+/* Hace quecupe todo el ancho del contenedor */
+.about-content-bottom {
+  width: 100%;
+  box-sizing: border-box; /* Incluye el padding dentro del cálculo del ancho total */
+  background-color: #fdfbf7;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  border-radius: 8px;
+}
+
+/* Bloque de texto centrado */
+.about-text-content {
+  flex: 1;
+  text-align: center;
+}
+
+.about-text-content h2 {
+  color: #4a2810;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.about-text-content p {
+  color: #333333;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.about-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Contenedor del logo */
+.about-logo-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-logo-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 1px solid #9c8a77;
+  padding: 8px;
+  background-color: #ffffff;
+}
