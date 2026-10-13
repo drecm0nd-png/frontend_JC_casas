@@ -1,9 +1,8 @@
-/* Asegura que la sección principal ocupe todo el ancho disponible */
 .about-section {
   width: 100%;
-  max-width: 100%; /* Si quieres que abarque toda la pantalla, quita cualquier max-width restrictivo */
+  max-width: 100%;
   margin: 0 auto;
-  font-family: sans-serif;
+  font-family: var(--font-family-base);
   box-sizing: border-box;
 }
 
@@ -14,21 +13,22 @@
 }
 
 .about-img {
-  padding: 20px; /* Agrega espacio alrededor de la imagen */
+  padding: 20px;
   margin: 0 auto;
   display: block;
   max-width: 100%;
-  border-radius: 30px;
+  border-radius: 38px;
 }
 
-.about-img img{
+.about-img img {
   max-height: 200px;
 }
-/* Hace quecupe todo el ancho del contenedor */
+
+/* Hace que ocupe todo el ancho del contenedor */
 .about-content-bottom {
   width: 100%;
-  box-sizing: border-box; /* Incluye el padding dentro del cálculo del ancho total */
-  background-color: #fdfbf7;
+  box-sizing: border-box;
+  background-color: var(--color-background);
   padding: 40px 30px;
   display: flex;
   flex-direction: row;
@@ -45,16 +45,16 @@
 }
 
 .about-text-content h2 {
-  color: #4a2810;
-  font-size: 1.8rem;
-  font-weight: 700;
+  color: var(--color-header);
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 20px;
 }
 
 .about-text-content p {
-  color: #333333;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  color: var(--color-text);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
   margin-bottom: 16px;
 }
 
@@ -75,7 +75,7 @@
   height: 180px;
   border-radius: 50%;
   object-fit: contain;
-  border: 1px solid #9c8a77;
+  border: 1px solid var(--color-stroke);
   padding: 8px;
-  background-color: #ffffff;
+  background-color: var(--color-card);
 }

@@ -1,5 +1,5 @@
 .hero-section {
-  background-color: #F3E8D2; /* Fondo crema principal */
+  background-color: #F3E8D2 ; /* Reemplazado por variable de fondo */
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
@@ -13,33 +13,34 @@
 }
 
 .hero-content h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: #4A2E1B;
-  line-height: 1.2;
+  font-family: var(--font-family-base); /* O mantén 'Playfair Display', serif si lo prefieres */
+  font-size: var(--font-size-hero);
+  color: var(--color-header); /* Reemplazado por variable de encabezado */
+  line-height: var(--line-height-tight);
   margin-bottom: 15px;
+  font-weight: var(--font-weight-bold);
 }
 
 .hero-content p {
-  font-size: 0.95rem;
-  color: #5C4A3E;
+  font-size: var(--font-size-body);
+  color: var(--color-text); /* Reemplazado por variable de texto general */
   margin-bottom: 20px;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-regular);
 }
 
 .cta-button {
-  background-color: #C28E38; /* Tono dorado/marrón claro del botón */
+  background-color: var(--color-button-primary); /* Reemplazado por variable de botón principal */
   color: #FFFFFF;
   border: none;
   padding: 10px 30px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .cta-button:hover {
-  background-color: #A97A2E;
+  background-color: var(--color-accent); /* Reemplazado por variable de acento para el hover */
 }
-

@@ -1,7 +1,7 @@
 /* Sección principal */
 .menu-section {
   background-color: #F3E8D2;
-  padding: 40px 0; /* Quitamos el padding horizontal de la sección para que llegue de extremo a extremo si lo deseas */
+  padding: 40px 0;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -9,52 +9,51 @@
 
 /* Contenedor principal ajustado al 100% */
 .menu-card-container {
-  /* O el color de fondo que estés utilizando para la tarjeta */
-  border-radius: 0; /* Si quieres que ocupe todo el ancho, puedes quitar los bordes redondeados o ajustarlos */
+  border-radius: 0;
   padding: 30px 40px;
-  width: 100%; /* Ocupa el 100% del ancho del padre (.menu-section) */
-  max-width: none; /* Eliminamos cualquier límite de ancho */
-
+  width: 100%;
+  max-width: none;
 }
 
 /* Opciones del menú ocupando todo el ancho disponible */
 .menu-item-box {
-  background-color: #FFFFFF;
+  background-color: var(--color-card);
   border-radius: 8px;
   padding: 18px 25px;
-  color: #5C4A3E;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-  width: auto; /* Forzar a que la caja ocupe todo el contenedor */
+  width: auto;
   margin-bottom: 15px;
   transition: background-color 0.2s ease;
 }
 
 /* Contenedor del submenú */
 .submenu-options {
-  background-color: #FAF4EB;
+  background-color: var(--color-background);
   border-radius: 0 0 8px 8px;
   padding: 15px 25px 20px 40px;
   list-style-type: disc;
-  color: #615043;
-  font-size: 0.9rem;
-  width: 100%; 
-  box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
-  text-align: left; /* Fuerza a que todo el texto comience alineado a la izquierda */
+  color: var(--color-text);
+  font-size: var(--font-size-small);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
   animation: slideDown 0.3s ease;
   margin: 0;
   margin-bottom: 10px;
+  border: 1px solid var(--color-stroke);
 }
 
 /* Elementos de la lista (las opciones de comida) */
 .submenu-options li {
   padding: 6px 0;
-  text-align: left; /* Mantiene cada elemento alineado a la izquierda junto con su viñeta */
-  display: list-item; /* Asegura que actúe como un elemento de lista estándar */
+  text-align: left;
+  display: list-item;
 }
