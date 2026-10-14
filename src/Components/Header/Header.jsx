@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
 import Breadcrumbs from "./Breadcrumbs.jsx";
 import Logo from "../../assets/img/logo.png";
+import perfilIcon from "../../assets/img/perfil_logo.png";
+import carritoIcon from "../../assets/img/carrito_logo.png";
 import "./Header.css";
 
 function Header() {
@@ -25,10 +27,10 @@ function Header() {
           {isAuthenticated ? (
             <div className="header-actions">
               <Link to="/carrito" className="header-icon" aria-label="Carrito">
-                🛒
+                <img src={carritoIcon} alt="Carrito" />
               </Link>
               <Link to="/perfil" className="header-icon" aria-label="Perfil">
-                👤
+                <img src={perfilIcon} alt="Perfil" />
               </Link>
             </div>
           ) : (
