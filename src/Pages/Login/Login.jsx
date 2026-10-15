@@ -17,7 +17,7 @@ function Login({ onNavigate }) {
             <header className="login-header">
               <img 
                 className="brand-logo" 
-                src="/src/assets/Images/Logo_Restaurante.png" 
+                src="/src/assets/images/Logo_Restaurante.png" 
                 alt="Logo Restaurante JCasas" 
               />
               <h1 className="brand-title">JCasas</h1>
@@ -48,7 +48,7 @@ function Login({ onNavigate }) {
                 <label className="form-label">Correo electrónico</label>
                 <div className="input-box">
                   <div className="input-content-left">
-                    <img src="/src/assets/Icons/Container (2).png" alt="Email" className="field-icon" />
+                    <img src="/src/assets/icons/Container (2).png" alt="Email" className="field-icon" />
                     <input 
                       type="email" 
                       className="input-field" 
@@ -62,9 +62,9 @@ function Login({ onNavigate }) {
                 <label className="form-label">Contraseña</label>
                 <div className="input-box">
                   <div className="input-content-left">
-                    <img src="/src/assets/Icons/Container.png" alt="Candado" className="field-icon" />
+                    <img src="/src/assets/icons/Container.png" alt="Candado" className="field-icon" />
                     <input 
-                      type= {mostrarContrasena ? 'text' : '......'} 
+                      type= {mostrarContrasena ? 'text' : 'password'} 
                       className="input-field password-dots" 
                       placeholder= {mostrarContrasena? 'Tu contraseña' : "••••••••"} 
                     />
@@ -73,7 +73,7 @@ function Login({ onNavigate }) {
                   {/* añadimos el evento onclick al boton del ojo */} 
                   <button type="button" className="icon-button" aria-label={mostrarContrasena ? 'Ocultar contraseña':'mostrar contraseña'}
                    onClick={verContrasena} >
-                    <img src="/src/assets/Icons/Container (1).png"  className="field-icon" />
+                    <img src="/src/assets/icons/Container (1).png"  className="field-icon" />
                   </button>
                 </div>
               </div>
@@ -96,7 +96,7 @@ function Login({ onNavigate }) {
             </div>
 
             <button type="button" className="btn-google">
-              <img className="field-icon" src="/src/assets/Icons/Icon.png" alt="Google" />
+              <img className="field-icon" src="/src/assets/icons/Icon.png" alt="Google" />
               <span>Continuar con Google</span>
             </button>
 
@@ -106,7 +106,7 @@ function Login({ onNavigate }) {
         <div className="login-image-section">
           <img 
             className="login-bg-image" 
-            src="/src/assets/Images/imagen_registro.png" 
+            src="/src/assets/images/imagen_registro.png" 
             alt="Interior del Restaurante" 
           />
         </div>

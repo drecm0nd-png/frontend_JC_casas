@@ -38,7 +38,7 @@ export default function Header() {
             className={isActive('/login') ? 'active' : ''} 
             onClick={() => navigate('/login')}
           >
-            Login
+            Login/signup
           </span>
         </div>
       </nav>
