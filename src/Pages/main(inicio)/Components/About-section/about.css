@@ -17,7 +17,7 @@
   margin: 0 auto;
   display: block;
   max-width: 100%;
-  border-radius: 38px;
+  border-radius: 30px;
 }
 
 .about-img img {
@@ -74,8 +74,49 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
   border: 1px solid var(--color-stroke);
-  padding: 8px;
-  background-color: var(--color-card);
+}
+
+/* ========================================== */
+/* RESPONSIVE DESIGN (Pantallas pequeñas) */
+/* ========================================== */
+@media screen and (max-width: 768px) {
+  /* Pasa el contenedor inferior a columna (el logo quedará arriba o abajo según tu HTML) */
+  .about-content-bottom {
+    flex-direction: column;
+    padding: 24px 16px;
+    gap: 20px;
+  }
+
+  /* Reducir el padding de la imagen superior */
+  .about-img {
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .about-img img {
+    max-height: 160px;
+  }
+
+  .about-text-content h2 {
+    margin-bottom: 12px;
+  }
+
+  /* Reducir ligeramente el tamaño del logo en pantallas móviles */
+  .about-logo-img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-content-bottom {
+    padding: 20px 12px;
+  }
+
+  .about-logo-img {
+    width: 120px;
+    height: 120px;
+  }
 }

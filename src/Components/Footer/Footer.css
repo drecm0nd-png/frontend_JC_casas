@@ -1,0 +1,101 @@
+/* src/components/Footer/Footer.css */
+
+.footer {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  padding: 2.5rem 1.5rem 1.25rem;
+  font-size: var(--font-size-small);
+}
+
+/* ---------- Contenedor de columnas ---------- */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .left-footer,
+  .right-footer {
+    flex: 1;
+  }
+
+  .right-footer {
+    padding-left: 4rem;
+  }
+}
+
+/* ---------- Títulos ---------- */
+.title-footer,
+.contact-title {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-header);
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Descripción ---------- */
+.footer-description {
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-normal);
+  max-width: 32ch;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Redes sociales ---------- */
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.footer-social img {
+  width: auto;
+  height: 30px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-social a:hover img,
+.footer-social a:focus-visible img {
+  opacity: 0.7;
+}
+
+/* ---------- Datos de contacto ---------- */
+.right-footer p {
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-normal);
+  margin-bottom: 0.5rem;
+  overflow-wrap: anywhere;
+}
+
+.footer-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.right-footer a {
+  color: inherit;
+}
+
+.right-footer a:hover,
+.right-footer a:focus-visible {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* ---------- Copyright ---------- */
+.footer-copy {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-stroke);
+  font-size: var(--font-size-caption);
+  text-align: center;
+  font-weight: var(--font-weight-light);
+}

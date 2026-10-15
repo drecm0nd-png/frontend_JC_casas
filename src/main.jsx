@@ -1,13 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import './Styles/Variables.css'
-import './Styles/Global.css'
-import Main from './Pages/main(inicio)/Main.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
-createRoot(document.getElementById('root')).render(
+import App from "../src/App.jsx"
+import { AuthProvider } from "./Context/AuthContext.jsx";
+
+import "./Styles/Variables.css";
+import "./Styles/Global.css";
+
+import Main from "./Pages/main(inicio)/Main.jsx"
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Main />
-  </StrictMode>
-)
+    <BrowserRouter>
+      <AuthProvider>
+        <Main />
+      </AuthProvider>
+    </BrowserRouter>
+  </StrictMode>,
+);

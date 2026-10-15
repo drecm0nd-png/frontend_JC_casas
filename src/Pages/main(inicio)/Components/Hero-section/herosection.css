@@ -1,5 +1,5 @@
 .hero-section {
-  background-color: #F3E8D2 ; /* Reemplazado por variable de fondo */
+  background-color: #F3E8D2 ; 
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
@@ -13,9 +13,9 @@
 }
 
 .hero-content h1 {
-  font-family: var(--font-family-base); /* O mantén 'Playfair Display', serif si lo prefieres */
+  font-family: var(--font-family-base); 
   font-size: var(--font-size-hero);
-  color: var(--color-header); /* Reemplazado por variable de encabezado */
+  color: var(--color-header); 
   line-height: var(--line-height-tight);
   margin-bottom: 15px;
   font-weight: var(--font-weight-bold);
@@ -23,14 +23,14 @@
 
 .hero-content p {
   font-size: var(--font-size-body);
-  color: var(--color-text); /* Reemplazado por variable de texto general */
+  color: var(--color-text); 
   margin-bottom: 20px;
   line-height: var(--line-height-normal);
   font-weight: var(--font-weight-regular);
 }
 
 .cta-button {
-  background-color: var(--color-button-primary); /* Reemplazado por variable de botón principal */
+  background-color: var(--color-button-primary); 
   color: #FFFFFF;
   border: none;
   padding: 10px 30px;
@@ -42,5 +42,5 @@
 }
 
 .cta-button:hover {
-  background-color: var(--color-accent); /* Reemplazado por variable de acento para el hover */
+  background-color: var(--color-header); 
 }

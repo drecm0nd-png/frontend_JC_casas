@@ -1,11 +1,12 @@
 import React from 'react';
 import './about.css';
+import logo from "../../../../assets/img/logo.png"
 
 
 const About = () => {
   return (
 <section className="about-section">
-  {/* Imagen superior centrada */}
+ 
   <div className="about-image-container">
     <img
       src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"
@@ -14,7 +15,7 @@ const About = () => {
     />
   </div>
 
-  {/* Sección inferior con fondo claro, texto centrado a la izquierda y logo alineado a la derecha */}
+
   <div className="about-content-bottom">
     <div className="about-text-content">
       <h2>Tenemos 20 Años De Experiencia</h2>
@@ -26,7 +27,7 @@ const About = () => {
 
     <div className="about-logo-container">
       <img
-        src="TU_RUTA_DEL_LOGO.png"
+        src={logo}
         alt="Restaurante Casas Logo"
         className="about-logo-img"
       />
