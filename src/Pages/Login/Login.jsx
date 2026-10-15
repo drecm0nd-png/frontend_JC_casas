@@ -1,7 +1,9 @@
-import React,{useState} from 'react';
+import {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-function Login({ onNavigate }) {
+function Login() {
+  const navigate = useNavigate();
   {/* leestamos indicando que por defecto no me muestre lo que voy digitando en el campo de contraseña */}
   const [mostrarContrasena, setMostrarContrasena] = useState(false);
   const verContrasena=()=>{
@@ -29,14 +31,13 @@ function Login({ onNavigate }) {
               <button 
                 className="tab-button active" 
                 type="button"
-                onClick={() => onNavigate && onNavigate('login')}
               >
                 Iniciar sesión
               </button>
               <button 
                 className="tab-button inactive" 
                 type="button"
-                onClick={() => onNavigate && onNavigate('signup')}
+                onClick={() => navigate('/signup')}
               >
                 Registrarse
               </button>
@@ -48,7 +49,7 @@ function Login({ onNavigate }) {
                 <label className="form-label">Correo electrónico</label>
                 <div className="input-box">
                   <div className="input-content-left">
-                    <img src="/src/assets/icons/Container (2).png" alt="Email" className="field-icon" />
+                    <img src="/src/assets/icons/mail.png" alt="Email" className="field-icon" />
                     <input 
                       type="email" 
                       className="input-field" 
@@ -62,7 +63,7 @@ function Login({ onNavigate }) {
                 <label className="form-label">Contraseña</label>
                 <div className="input-box">
                   <div className="input-content-left">
-                    <img src="/src/assets/icons/Container.png" alt="Candado" className="field-icon" />
+                    <img src="/src/assets/icons/icons8-candado-24.png" alt="Candado" className="field-icon" />
                     <input 
                       type= {mostrarContrasena ? 'text' : 'password'} 
                       className="input-field password-dots" 
@@ -73,7 +74,9 @@ function Login({ onNavigate }) {
                   {/* añadimos el evento onclick al boton del ojo */} 
                   <button type="button" className="icon-button" aria-label={mostrarContrasena ? 'Ocultar contraseña':'mostrar contraseña'}
                    onClick={verContrasena} >
-                    <img src="/src/assets/icons/Container (1).png"  className="field-icon" />
+                    <img src={
+                           mostrarContrasena 
+                           ? "/src/assets/icons/visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.png": "/src/assets/icons/visibility_off_24dp_000000_FILL0_wght400_GRAD0_opsz24 (1).png" } className="field-icon" />
                   </button>
                 </div>
               </div>
