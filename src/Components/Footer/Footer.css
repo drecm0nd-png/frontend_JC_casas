@@ -3,7 +3,8 @@
 .footer {
   background-color: var(--color-background);
   color: var(--color-text);
-  padding: 2.5rem 1.5rem 1.25rem;
+  /* OPTIMIZADO: Usa padding global arriba/abajo y variable a los lados */
+  padding: 2.5rem var(--page-padding) 1.25rem;
   font-size: var(--font-size-small);
 }
 
@@ -11,7 +12,7 @@
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--component-gap); /* OPTIMIZADO: Usa la separación global */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -57,8 +58,8 @@
 }
 
 .footer-social img {
-  width: auto;
   height: 30px;
+  width: auto; /* Mantiene proporción correcta anulando el reset global */
   transition: opacity 0.2s ease;
 }
 

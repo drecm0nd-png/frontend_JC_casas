@@ -1,3 +1,5 @@
+/* src/styles/variables.css */
+
 :root {
   /* ==========================================================
     COLORES
@@ -25,7 +27,7 @@
   --font-weight-bold: 700; /* Títulos */
 
   /* ==========================================================
-    TAMAÑOS DE FUENTE
+    TAMAÑOS DE FUENTE (Escritorio / Por defecto)
     Base de 16px: 1rem = 16px. Las equivalencias en px vienen de Figma.
      ========================================================== */
   --font-size-hero: 2.5rem; /* 40px - Título del banner principal */
@@ -42,4 +44,31 @@
      ========================================================== */
   --line-height-tight: 1.2; /* Títulos */
   --line-height-normal: 1.5; /* Texto corrido */
+
+  /* ==========================================================
+    NUEVOS ESPACIADOS RESPONSIVE GLOBALES
+     ========================================================== */
+  --page-padding: 2rem;
+  --component-gap: 1.5rem;
+}
+
+/* ==========================================================
+  AJUSTE GLOBAL PARA MÓVILES Y TABLETS (Menos de 768px)
+  Reduce proporcionalmente las tipografías y espaciados de la app
+   ========================================================== */
+@media (max-width: 768px) {
+  :root {
+    --font-size-hero: 1.85rem; /* ~30px */
+    --font-size-section-title: 1.5rem; /* ~24px */
+    --font-size-subtitle: 1.25rem; /* ~20px */
+    --font-size-card-title: 1.125rem; /* ~18px */
+    --font-size-lead: 1rem; /* ~16px */
+    --font-size-body: 0.9375rem; /* ~15px */
+    --font-size-small: 0.8125rem; /* ~13px */
+    --font-size-caption: 0.6875rem; /* ~11px */
+
+    /* Reducción de márgenes internos para que no queden pantallas apretadas */
+    --page-padding: 1rem;
+    --component-gap: 1rem;
+  }
 }

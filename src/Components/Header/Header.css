@@ -10,10 +10,10 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--component-gap); /* OPTIMIZADO: Brecha adaptable */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem var(--page-padding); /* OPTIMIZADO: Padding lateral adaptable */
 }
 
 /* ---------- Marca ---------- */
@@ -22,6 +22,11 @@
   align-items: center;
   gap: 0.75rem;
   color: inherit;
+}
+
+.header-brand:hover,
+.header-brand:focus-visible {
+  text-decoration: none;
 }
 
 .header-logo {
@@ -36,6 +41,7 @@
   font-size: var(--font-size-subtitle);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
+  text-decoration: none;
 }
 
 /* ---------- Navegación ---------- */
@@ -97,7 +103,7 @@
 .breadcrumbs {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem 0.75rem;
+  padding: 0 var(--page-padding) 0.75rem; /* OPTIMIZADO: Alineación perfecta con los bordes de la web */
   font-size: var(--font-size-caption);
   font-weight: var(--font-weight-light);
   letter-spacing: 0.05em;
@@ -114,16 +120,4 @@
 
 .breadcrumb-separator {
   margin: 0 0.4rem;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
-  .header-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header-nav {
-    gap: 0.9rem;
-  }
 }

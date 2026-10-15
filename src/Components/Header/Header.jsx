@@ -4,7 +4,7 @@ import { useAuth } from "../../Hooks/UseAuth.js";
 import Breadcrumbs from "./Breadcrumbs.jsx";
 import Logo from "../../assets/img/logo.png";
 import perfilIcon from "../../assets/img/perfil_logo.png";
-import carritoIcon from "../../assets/img/carrito_logo.png";
+import carritoIcon from "../../assets/img/carro_logo.png";
 import "./Header.css";
 
 function Header() {

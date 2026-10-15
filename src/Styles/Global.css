@@ -21,6 +21,13 @@ html {
   -webkit-text-size-adjust: 100%; /* Evita que el texto cambie de tamaño en móviles */
 }
 
+/* Reducción extra opcional para celulares muy pequeños */
+@media (max-width: 480px) {
+  html {
+    font-size: 15px; /* Encoge un 6% extra toda la app si usas rems nativos */
+  }
+}
+
 /* ==========================================================
   CUERPO DE LA PÁGINA
    ========================================================== */
@@ -112,8 +119,40 @@ ol {
 }
 
 /* ==========================================================
+  ESTRUCUTURAS RESPONSIVE GLOBALES (Nuevas clases útiles)
+  Úsalas en tus contenedores de React para controlar pantallas enteras
+   ========================================================== */
+
+/* Contenedor principal de cualquier pantalla */
+.page-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--page-padding);
+}
+
+/* Grilla de tarjetas o secciones: se acomodan solas sin @media queries */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--component-gap);
+}
+
+/* Contenedor flexible: Fila en escritorio, Columna en celular automáticamente */
+.flex-stack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--component-gap);
+}
+
+@media (max-width: 768px) {
+  .flex-stack {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================
   ACCESIBILIDAD
-  Respeta la preferencia del usuario por menos animaciones
    ========================================================== */
 @media (prefers-reduced-motion: reduce) {
   html {
