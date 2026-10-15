@@ -3,6 +3,7 @@
 .header {
   background-color: var(--color-header);
   color: #ffffff;
+  position: relative; /* Asegura un contexto para elementos hijos si es necesario */
 }
 
 .header-top {
@@ -10,10 +11,10 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--component-gap); /* OPTIMIZADO: Brecha adaptable */
+  gap: var(--component-gap);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem var(--page-padding); /* OPTIMIZADO: Padding lateral adaptable */
+  padding: 0.75rem var(--page-padding);
 }
 
 /* ---------- Marca ---------- */
@@ -44,7 +45,7 @@
   text-decoration: none;
 }
 
-/* ---------- Navegación ---------- */
+/* ---------- Navegación (Escritorio por defecto) ---------- */
 .header-nav {
   display: flex;
   flex-wrap: wrap;
@@ -93,17 +94,19 @@
   gap: 1rem;
 }
 
-.header-icon {
-  font-size: 1.5rem;
-  line-height: 1;
-  color: inherit;
+/* Control visual para las imágenes de perfil/carrito dentro de los enlaces */
+.header-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: inline-block;
 }
 
 /* ---------- Breadcrumbs ---------- */
 .breadcrumbs {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--page-padding) 0.75rem; /* OPTIMIZADO: Alineación perfecta con los bordes de la web */
+  padding: 0 var(--page-padding) 0.75rem;
   font-size: var(--font-size-caption);
   font-weight: var(--font-weight-light);
   letter-spacing: 0.05em;
@@ -120,4 +123,154 @@
 
 .breadcrumb-separator {
   margin: 0 0.4rem;
+}
+
+/* ==========================================================
+   NUEVO: MENÚ HAMBURGUESA CON EFECTO SLIDER (Móvil)
+   ========================================================== */
+
+/* 1. Botón hamburguesa oculto en pantallas grandes */
+.header-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110; /* Por encima de la navegación slider */
+}
+
+.burger-line {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* 2. Reglas responsivas para móviles y tablets */
+@media (max-width: 768px) {
+  /* Mostrar el botón hamburguesa */
+  .header-burger {
+    display: flex;
+  }
+
+  /* Animación del botón a una "X" cuando abre */
+  .header-burger.is-open .burger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .header-burger.is-open .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .header-burger.is-open .burger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Transformar la navegación en un menú Slider Lateral (Derecho) */
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px; /* Ancho del panel lateral */
+    height: 100vh; /* Ocupa todo el alto de la pantalla */
+    background-color: var(--color-header);
+    z-index: 100;
+
+    /* Configuración interna del menú */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 5rem 0 2rem 0; /* Espacio superior para que no choque con el botón */
+
+    /* EFECTO SLIDER: Escondido hacia la derecha por defecto */
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transición fluida y premium */
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Mostrar el menú deslizando hacia adentro */
+  .header-nav.is-open {
+    transform: translateX(0);
+  }
+
+  /* Estilos individuales de los enlaces en móviles */
+  .header-nav a {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    font-size: var(--font-size-body);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Ajustes estéticos para el enlace activo en móvil */
+  .header-nav a.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    text-decoration: none; /* Quitamos el underline para que luzca mejor en formato bloque */
+    border-left: 4px solid var(--color-accent);
+    padding-left: 1.75rem; /* Compensa el borde izquierdo */
+  }
+
+  /* Botón regístrate adaptado al menú lateral */
+  .header-nav a.header-register {
+    border: none;
+    background-color: var(--color-accent);
+    text-align: center;
+    margin: 1.5rem 2rem 0;
+    width: calc(100% - 4rem);
+    border-radius: 4px;
+  }
+
+  .header-nav a.header-register:hover {
+    background-color: var(--color-button-primary);
+    color: #ffffff;
+  }
+
+  /* Acciones (Carrito y Perfil) adaptadas al menú lateral */
+  .header-actions {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: auto; /* Empuja las acciones hasta la parte inferior del menú */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ==========================================================
+   ESTILOS PARA EL OVERLAY (TELÓN OSCURO DE FONDO)
+   ========================================================== */
+
+/* Oculto en escritorio */
+.header-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header-overlay {
+    display: block; /* Se activa en móviles */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro al 50% de opacidad */
+
+    /* Z-index clave: mayor que el contenido global pero menor que el slider (90) */
+    z-index: 90;
+
+    /* Configuración de animación para desvanecido suave */
+    opacity: 0;
+    pointer-events: none; /* Ignora clics mientras está invisible */
+    transition: opacity 0.3s ease;
+  }
+
+  /* Cuando el menú está abierto, se vuelve visible */
+  .header-overlay.is-visible {
+    opacity: 1;
+    pointer-events: auto; /* Permite hacer clic para cerrar el menú */
+  }
 }
