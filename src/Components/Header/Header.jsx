@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useLayoutEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
 import Logo from "../../assets/img/logo.png";
 import Button from "../Button/Button.jsx";
@@ -8,8 +8,32 @@ import "./Header.css";
 
 function Header() {
   const { isAuthenticated, logout } = useAuth();
+  const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef(null);
+  const spacerRef = useRef(null);
   const closeMenu = () => setIsMenuOpen(false);
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    const spacer = spacerRef.current;
+    if (!header || !spacer) return undefined;
+
+    function syncSpacerHeight() {
+      spacer.style.height = `${header.getBoundingClientRect().height}px`;
+    }
+
+    syncSpacerHeight();
+
+    if ("ResizeObserver" in window) {
+      const observer = new window.ResizeObserver(syncSpacerHeight);
+      observer.observe(header);
+      return () => observer.disconnect();
+    }
+
+    window.addEventListener("resize", syncSpacerHeight);
+    return () => window.removeEventListener("resize", syncSpacerHeight);
+  }, [isAuthenticated, pathname]);
 
   function handleLogout() {
     logout();
@@ -17,7 +41,8 @@ function Header() {
   }
 
   return (
-    <header className="header">
+    <>
+    <header className="header" ref={headerRef}>
       <div className="header-top">
         <Link to="/" className="header-brand" onClick={closeMenu}>
           <img src={Logo} alt="" className="header-logo" />
@@ -65,6 +90,8 @@ function Header() {
       />
       <Breadcrumbs />
     </header>
+    <div className="header-spacer" ref={spacerRef} aria-hidden="true" />
+    </>
   );
 }
 

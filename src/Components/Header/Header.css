@@ -3,7 +3,17 @@
 .header {
   background-color: var(--color-header);
   color: #ffffff;
-  position: relative; /* Asegura un contexto para elementos hijos si es necesario */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.header-spacer {
+  width: 100%;
+  height: 0;
+  pointer-events: none;
 }
 
 .header-top {
@@ -251,7 +261,7 @@
 }
 
 /* ==========================================================
-   ESTILOS PARA EL OVERLAY (TELÓN OSCURO DE FONDO)
+  ESTILOS PARA EL OVERLAY (TELÓN OSCURO DE FONDO)
    ========================================================== */
 
 /* Oculto en escritorio */
