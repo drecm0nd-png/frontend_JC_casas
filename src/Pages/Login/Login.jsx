@@ -40,7 +40,7 @@ function Login() {
             <header className="login-header">
               <img 
                 className="brand-logo" 
-                src="/src/assets/images/Logo_Restaurante.png" 
+                src="/src/assets/img/Logo_Restaurante (2).png" 
                 alt="Logo Restaurante JCasas" 
               />
               <h1 className="brand-title">JCasas</h1>
@@ -137,7 +137,7 @@ function Login() {
               className="btn-google"
               onClick={handleSubmit}
             >
-              <img className="field-icon" src="/src/assets/icons/Icon.png" alt="Google" />
+              <img className="field-icon" src="/src/assets/icons/Icon (1).png" alt="Google" />
               <span>Continuar con Google</span>
             </button>
 
@@ -147,7 +147,7 @@ function Login() {
         <div className="login-image-section">
           <img 
             className="login-bg-image" 
-            src="/src/assets/images/imagen_registro.png" 
+            src="/src/assets/img/imagen_registro.png" 
             alt="Interior del Restaurante" 
           />
         </div>
