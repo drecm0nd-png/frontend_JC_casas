@@ -140,7 +140,12 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  position: relative;
   z-index: 110; /* Por encima de la navegación slider */
+}
+
+.header-logout {
+  color: inherit;
 }
 
 .burger-line {
@@ -204,6 +209,11 @@
     padding: 1.25rem 2rem;
     font-size: var(--font-size-body);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .header-nav .header-logout {
+    width: calc(100% - 4rem);
+    margin: 1.5rem 2rem 0;
   }
 
   /* Ajustes estéticos para el enlace activo en móvil */

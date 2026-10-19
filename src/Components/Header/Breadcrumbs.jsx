@@ -1,39 +1,31 @@
-// src/components/Header/Breadcrumbs.jsx
 import { Link, useLocation } from "react-router-dom";
 
-const NOMBRES = {
-  nosotros: "Nosotros",
-  menu: "Menú",
-  contacto: "Contacto",
-  login: "Iniciar sesión",
-  registro: "Regístrate",
-  perfil: "Perfil",
+const PAGE_NAMES = {
+  login: "Acceso de demostración",
+  dashboard: "Panel",
 };
 
 function Breadcrumbs() {
   const { pathname } = useLocation();
-  const segmentos = pathname.split("/").filter(Boolean);
+  const segments = pathname.split("/").filter(Boolean);
 
-  // En la página de inicio no se muestran breadcrumbs
-  if (segmentos.length === 0) return null;
+  if (segments.length === 0) return null;
 
   return (
     <nav aria-label="Ruta de navegación" className="breadcrumbs">
       <Link to="/">Inicio</Link>
-      {segmentos.map((segmento, index) => {
-        const ruta = "/" + segmentos.slice(0, index + 1).join("/");
-        const esUltimo = index === segmentos.length - 1;
-        const nombre = NOMBRES[segmento] ?? segmento;
+      {segments.map((segment, index) => {
+        const path = `/${segments.slice(0, index + 1).join("/")}`;
+        const isCurrent = index === segments.length - 1;
+        const name = PAGE_NAMES[segment] ?? segment;
 
         return (
-          <span key={ruta} className="breadcrumb-item">
-            <span className="breadcrumb-separator" aria-hidden="true">
-              &gt;
-            </span>
-            {esUltimo ? (
-              <span aria-current="page">{nombre}</span>
+          <span key={path} className="breadcrumb-item">
+            <span className="breadcrumb-separator" aria-hidden="true">&gt;</span>
+            {isCurrent ? (
+              <span aria-current="page">{name}</span>
             ) : (
-              <Link to={ruta}>{nombre}</Link>
+              <Link to={path}>{name}</Link>
             )}
           </span>
         );

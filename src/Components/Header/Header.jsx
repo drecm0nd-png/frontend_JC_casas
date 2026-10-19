@@ -1,78 +1,68 @@
-// src/components/Header/Header.jsx
-import { useState } from "react"; 
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
-import Breadcrumbs from "./Breadcrumbs.jsx";
 import Logo from "../../assets/img/logo.png";
-import perfilIcon from "../../assets/img/perfil_logo.png";
-import carritoIcon from "../../assets/img/carro_logo.png";
+import Button from "../Button/Button.jsx";
+import Breadcrumbs from "./Breadcrumbs.jsx";
 import "./Header.css";
 
 function Header() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  function handleLogout() {
+    logout();
+    closeMenu();
+  }
 
   return (
     <header className="header">
       <div className="header-top">
         <Link to="/" className="header-brand" onClick={closeMenu}>
-          <img src={Logo} alt="Logo JC Casas" className="header-logo" />
+          <img src={Logo} alt="" className="header-logo" />
           <span className="header-title">JC Casas Restaurante</span>
         </Link>
 
-        {/* BOTÓN HAMBURGUESA */}
-        <button 
-          className={`header-burger ${isMenuOpen ? 'is-open' : ''}`}
-          onClick={toggleMenu}
-          aria-label="Abrir menú de navegación"
+        <button
+          className={`header-burger ${isMenuOpen ? "is-open" : ""}`}
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
         >
-          <span className="burger-line"></span>
-          <span className="burger-line"></span>
-          <span className="burger-line"></span>
+          <span className="burger-line" />
+          <span className="burger-line" />
+          <span className="burger-line" />
         </button>
 
-        {/* NAVEGACIÓN SLIDER */}
-        <nav 
-          className={`header-nav ${isMenuOpen ? 'is-open' : ''}`} 
+        <nav
+          id="primary-navigation"
+          className={`header-nav ${isMenuOpen ? "is-open" : ""}`}
           aria-label="Navegación principal"
         >
           <NavLink to="/" onClick={closeMenu}>Inicio</NavLink>
-          <NavLink to="/nosotros" onClick={closeMenu}>Nosotros</NavLink>
-          <NavLink to="/menu" onClick={closeMenu}>Menú</NavLink>
-          <NavLink to="/contacto" onClick={closeMenu}>Contacto</NavLink>
-
           {isAuthenticated ? (
-            <div className="header-actions">
-              <Link to="/carrito" className="header-icon" aria-label="Carrito" onClick={closeMenu}>
-                <img src={carritoIcon} alt="Carrito" />
-              </Link>
-              <Link to="/perfil" className="header-icon" aria-label="Perfil" onClick={closeMenu}>
-                <img src={perfilIcon} alt="Perfil" />
-              </Link>
-            </div>
+            <>
+              <NavLink to="/dashboard" onClick={closeMenu}>Panel</NavLink>
+              <Button className="header-logout" variant="secondary" onClick={handleLogout}>
+                Cerrar sesión
+              </Button>
+            </>
           ) : (
-            <NavLink to="/registro" className="header-register" onClick={closeMenu}>
-              Regístrate
-            </NavLink>
+            <NavLink to="/login" onClick={closeMenu}>Acceso de demostración</NavLink>
           )}
         </nav>
       </div>
 
-      {/* NUEVO: Telón de fondo opaco. Si se cliquea, se cierra el menú */}
-      <div 
-        className={`header-overlay ${isMenuOpen ? 'is-visible' : ''}`} 
+      <button
+        className={`header-overlay ${isMenuOpen ? "is-visible" : ""}`}
+        type="button"
+        aria-label="Cerrar menú de navegación"
+        tabIndex={isMenuOpen ? 0 : -1}
         onClick={closeMenu}
-      ></div>
-
+      />
       <Breadcrumbs />
     </header>
   );
