@@ -5,6 +5,10 @@
     COLORES
      ========================================================== */
   --color-background: #fffdf7; /* Fondo general */
+  
+    --Backgrounds:#ffffff;
+    --Color-boton: #C78E4B;
+    --Color-texto: #3A1F00;
   --color-header: #6b3a1f; /* Encabezado y pie de página */
   --color-card: #f5eddd; /* Tarjetas y hero */
   --color-accent: #d96b43; /* Acentos y detalles */
