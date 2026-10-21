@@ -58,7 +58,7 @@ function Login() {
               <button 
                 className="tab-button inactive" 
                 type="button"
-                onClick={() => navigate('/signup')}
+                onClick={() => navigate('/registro')}
               >
                 Registrarse
               </button>

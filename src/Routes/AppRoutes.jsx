@@ -3,12 +3,14 @@ import Dashboard from "../Pages/Dashboard/Dashboard.jsx";
 import Home from "../Pages/Home/Home.jsx";
 import Login from "../Pages/Login/Login.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import SignUp from "../Pages/SignUp/SignUp.jsx";
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/registro" element={<SignUp />} />
       <Route
         path="/dashboard"
         element={
