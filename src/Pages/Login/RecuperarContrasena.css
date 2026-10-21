@@ -1,0 +1,103 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 6px;
+}
+
+.modal-subtitle {
+  font-size: 0.85rem;
+  color: #666666;
+  margin-bottom: 20px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+.modal-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #ffffff; /* Fondo beige claro coherente con el formulario de Login */
+  border-color:#171616;     /* Borde visible en tono terracota/beige */
+  border-radius: 8px;
+  color: #070707;               /* Texto oscuro para que se vea lo que escribes */
+  font-size: 0.95rem;
+
+    box-shadow: 0 0 0 3px rgba(22, 22, 21,0.30);
+  box-sizing: border-box;
+}
+
+/* Estado al hacer foco en el campo */
+
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 600;
+  color: #555555;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #f3f4f6;
+}
+
+.modal-header-icon{
+    padding-left: 162px;
+    padding-bottom: 15px;
+}

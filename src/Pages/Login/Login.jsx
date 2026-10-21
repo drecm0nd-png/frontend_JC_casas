@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Hooks/UseAuth.js';
 import Button from '../../Components/Button/Button.jsx';
+import RecuperarContrasena from './RecuperarContrasena.jsx';
 import './Login.css';
 
 function Login() {
@@ -10,11 +11,12 @@ function Login() {
   const { isAuthenticated, login } = useAuth();
   const destination = location.state?.from?.pathname ?? "/dashboard";
 
-  // Estados del formulario y visibilidad
   const [email, setEmail] = useState("");
   const [mostrarContrasena, setMostrarContrasena] = useState(false);
+  
+  // Estado para la modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Redirección si ya está autenticado
   if (isAuthenticated) {
     return <Navigate to={destination} replace />;
   }
@@ -25,7 +27,6 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Utiliza el email o un usuario por defecto para iniciar sesión en useAuth
     const userName = email.split('@')[0];
     login({ name: userName.trim() || "Usuario de demostración" });
     navigate(destination, { replace: true });
@@ -47,12 +48,8 @@ function Login() {
               <p className="brand-subtitle">Ingresa para pedir tus platos favoritos</p>
             </header>
 
-            {/* Pestañas de Navegación */}
             <div className="tab-container">
-              <button 
-                className="tab-button active" 
-                type="button"
-              >
+              <button className="tab-button active" type="button">
                 Iniciar sesión
               </button>
               <button 
@@ -64,7 +61,6 @@ function Login() {
               </button>
             </div>
 
-            {/* Formulario Interactivo con lógica de login */}
             <form className="form-wrapper" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label className="form-label" htmlFor="email-input">Correo electrónico</label>
@@ -115,10 +111,16 @@ function Login() {
                 </div>
               </div>
 
+              {/* Enlace que activa la modal */}
               <div className="forgot-password-container">
-                <a href="#forgot" className="forgot-password-link">
+                <button 
+                  type="button" 
+                  className="forgot-password-link"
+                  onClick={() => setIsModalOpen(true)}
+                  style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                >
                   ¿Olvidaste tu contraseña?
-                </a>
+                </button>
               </div>
 
               <Button type="submit" className="btn-submit">
@@ -152,6 +154,12 @@ function Login() {
           />
         </div>
       </div>
+
+      {/* Renderizado de la modal */}
+     <RecuperarContrasena 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 }

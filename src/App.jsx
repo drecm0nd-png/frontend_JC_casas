@@ -5,7 +5,7 @@ import AppRoutes from "./Routes/AppRoutes.jsx";
 function App() {
   return (
     <>
-      <Header />
+      <Header /> 
       <main id="main-content">
         <AppRoutes />
       </main>
