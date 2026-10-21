@@ -4,15 +4,15 @@
    Estructura Principal y Layout
    ========================================== */
 .signup-container {
-  height: 1200px;
-  width: 2700px;
+    height: 1200px;
+  width: 2400px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff7ed;
-  box-sizing: border-box;
-  margin-left: 0;
+   margin-left: 0;
   margin-right: 0;
+  box-sizing: border-box;
 }
 
 .signup-card {
