@@ -1,0 +1,315 @@
+.panel-page-container {
+  width: 100%;
+  background-color: #faf7f2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #333333;
+}
+
+.panel-main-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Barra superior */
+.panel-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f1e5;
+  border: 1px solid #e5d7c3;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+}
+
+.panel-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.panel-logo-icon {
+  background-color: #ffffff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.panel-brand-name {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #2b2b2b;
+}
+
+.panel-badge-admin {
+  background: linear-gradient(135deg, #df9b52, #bd732f);
+  color: white;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.panel-user-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.panel-notification-icon {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.panel-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.user-avatar-placeholder {
+  width: 38px;
+  height: 38px;
+  background-color: #dcd0bc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.user-info-text strong {
+  color: #2b2b2b;
+}
+
+.user-info-text small {
+  color: #726555;
+  font-size: 0.75rem;
+}
+
+/* Submenú de pestañas */
+.panel-subnav {
+  display: flex;
+  gap: 1.8rem;
+  border-bottom: 1px solid #e8dbc4;
+  padding-bottom: 0.4rem;
+  overflow-x: auto;
+}
+
+.subnav-btn {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #8c7a6b;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.subnav-btn:hover {
+  color: #bd732f;
+}
+
+.subnav-btn.active {
+  color: #2b2b2b;
+}
+
+.subnav-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -0.4rem;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #bd732f;
+  border-radius: 2px;
+}
+
+/* Caja de contenido */
+.panel-content-box {
+  background-color: #f8f1e5;
+  border: 1px solid #e5d7c3;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: left;
+  min-height:min-content;
+  max-height:max-content
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2b2b2b;
+  margin-bottom: 0.4rem;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: #726555;
+}
+
+/* Contenedor principal que alinea horizontalmente las flechas y el menú */
+.panel-subnav-container {
+  position: relative;
+  display: flex;
+  flex-direction: row; /* Asegura que todo vaya en una sola línea horizontal */
+  align-items: center;
+  width: 100%;
+}
+
+/* Submenú de pestañas grande y rediseñado */
+.panel-subnav {
+  display: flex;
+  gap: 0.8rem;
+  background-color: #f2e6d0;
+  border: 1px solid #e0d0b5;
+  padding: 0.5rem;
+  border-radius: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ocultar completamente la barra de desplazamiento en todos los navegadores */
+.panel-subnav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.panel-subnav {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* ========================================================== */
+/* BOTONES DE FLECHAS: OCULTOS EN PC, VISIBLES EN RESPONSIVE  */
+/* ========================================================== */
+.nav-arrow-btn {
+  display: none; /* Por defecto están ocultos en computadoras */
+}
+
+@media (max-width: 768px) {
+  /* En lugar de separar los bordes, conectamos las flechas a la altura de la barra */
+  .panel-subnav-container {
+    background-color: #f2e6d0;
+    border: 1px solid #e0d0b5;
+    border-radius: 14px;
+    overflow: hidden; /* Garantiza que las flechas encajen exacto en las esquinas */
+  }
+
+  /* Ajustamos la barra interna para que no duplique bordes */
+  .panel-subnav {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.5rem 0.2rem;
+  }
+
+  /* Flechas con altura uniforme y color cálido suave */
+  .nav-arrow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e5d7c3; /* Tono crema sutil y coherente con el panel */
+    color: #726555; /* Mismo tono de texto que los botones inactivos */
+    border: none;
+    width: 36px;
+    align-self: stretch; /* Se estira para tener exactamente la misma altura que la barra */
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    flex-shrink: 0;
+  }
+
+  .nav-arrow-btn.left {
+    border-right: 1px solid #e0d0b5;
+  }
+
+  .nav-arrow-btn.right {
+    border-left: 1px solid #e0d0b5;
+  }
+
+  /* Efecto al presionar o pasar el dedo/mouse */
+  .nav-arrow-btn:active,
+  .nav-arrow-btn:hover {
+    background-color: #df9b52;
+    color: #ffffff;
+  }
+}
+
+/* Botones de pestañas rediseñados como tarjetas/cápsulas flotantes */
+.subnav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #726555;
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  position: relative;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Efecto al pasar el cursor (Hover) */
+.subnav-btn:hover {
+  color: #2b2b2b;
+  background-color: rgba(255, 248, 234, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Pestaña Activa con degradado y relieve elegante */
+.subnav-btn.active {
+  color: #2b2b2b;
+}
+
+/* Línea o indicador inferior dinámico para la pestaña activa */
+.subnav-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(135deg, #664200, #8f7d6c);
+  border-radius: 2px 2px 0 0;
+}
+
+
+
+
+
+
+
+
+
+

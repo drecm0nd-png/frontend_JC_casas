@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 import './SignUp.css';
+=======
+import "./SingUp.css";
+>>>>>>> 2e36d63 (paneles)
 import { useNavigate } from 'react-router-dom';
 function SingUp() {
     const navigate = useNavigate();

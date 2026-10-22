@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
 import Logo from "../../assets/img/logo.png";
+import CarroLogo from "../../assets/img/carro_logo.png";
 import Button from "../Button/Button.jsx";
 import Breadcrumbs from "./Breadcrumbs.jsx";
 import "./Header.css";
@@ -20,7 +21,7 @@ function Header() {
     <header className="header">
       <div className="header-top">
         <Link to="/" className="header-brand" onClick={closeMenu}>
-          <img src={Logo} alt="" className="header-logo" />
+          <img src={Logo} alt="Logo JC Casas" className="header-logo" />
           <span className="header-title">JC Casas Restaurante</span>
         </Link>
 
@@ -42,16 +43,39 @@ function Header() {
           className={`header-nav ${isMenuOpen ? "is-open" : ""}`}
           aria-label="Navegación principal"
         >
-          <NavLink to="/" onClick={closeMenu}>Inicio</NavLink>
+          <NavLink to="/" onClick={closeMenu}>
+            Nosotros
+          </NavLink>
+          <NavLink to="/menu" onClick={closeMenu}>
+            Menú
+          </NavLink>
+          <NavLink to="/panel" onClick={closeMenu}>
+            Panel
+          </NavLink>
+
+          {/* Botón Carrito de Pedidos */}
+          <NavLink 
+            to="/pedidos" 
+            onClick={closeMenu} 
+            className="header-cart-btn"
+            title="Ver mis pedidos"
+            aria-label="Ir a pedidos"
+          >
+            <img src={CarroLogo} alt="Icono Carrito" className="cart-icon-img" />
+          </NavLink>
+
           {isAuthenticated ? (
-            <>
-              <NavLink to="/dashboard" onClick={closeMenu}>Panel</NavLink>
-              <Button className="header-logout" variant="secondary" onClick={handleLogout}>
-                Cerrar sesión
-              </Button>
-            </>
+            <Button
+              className="header-logout"
+              variant="secondary"
+              onClick={handleLogout}
+            >
+              Cerrar sesión
+            </Button>
           ) : (
-            <NavLink to="/login" onClick={closeMenu}>Acceso de demostración</NavLink>
+            <NavLink to="/login" onClick={closeMenu} className="header-register">
+              Iniciar sesión
+            </NavLink>
           )}
         </nav>
       </div>

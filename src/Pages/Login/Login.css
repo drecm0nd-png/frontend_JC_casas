@@ -1,29 +1,50 @@
 @import "../../Styles/Variables.css";
 
+<<<<<<< HEAD
 /* Contenedor Principal: se adapta al ancho de la pantalla */
 .login-container {
   min-height: 100vh;
+=======
+/* Contenedor Principal: le damos un respiro vertical con padding */
+.login-container {
+  min-height: auto;
+>>>>>>> 2e36d63 (paneles)
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-color: #fff7ed;
+<<<<<<< HEAD
   margin-left: 0;
   margin-right: 0;
   padding: 1rem;
+=======
+  margin: 0;
+  padding: 2rem 1rem;
+>>>>>>> 2e36d63 (paneles)
   box-sizing: border-box;
+  animation: fadeInSubtle 0.25s ease-out forwards;
 }
 
+<<<<<<< HEAD
 /* Tarjeta: fluida en móvil y con ancho máximo de 1500px en escritorio */
+=======
+/* Tarjeta: sin espacios intermedios y estirada hacia abajo */
+>>>>>>> 2e36d63 (paneles)
 .login-card {
   display: flex;
   width: 100%;
   max-width: 1500px;
+<<<<<<< HEAD
   min-height: 700px;
+=======
+  min-height: 800px;
+>>>>>>> 2e36d63 (paneles)
   background-color: var(--Backgrounds, #F4ECDD);
   border-radius: 1rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  gap: 0; /* 👈 Elimina cualquier espacio o línea divisoria entre columnas */
 }
 
 /* Lado Izquierdo: Formulario */
@@ -46,13 +67,20 @@
   gap: 0.75rem;
 }
 
+<<<<<<< HEAD
 /* Lado Derecho: Imagen de Fondo (Se oculta en móvil y se muestra desde 900px) */
+=======
+/* Lado Derecho: Imagen de Fondo sin marcos */
+>>>>>>> 2e36d63 (paneles)
 .login-image-section {
   flex: 1;
   display: none;
   position: relative;
   height: auto;
   width: auto;
+  padding: 0;
+  margin-left: -5px; /* 👈 Esto soluciona el espacio de subpíxeles solapando 1 píxel */
+  overflow: hidden;
 }
 
 @media (min-width: 900px) {
@@ -65,6 +93,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 /* ==========================================
@@ -295,4 +324,19 @@
     width: 130px;
     height: 130px;
   }
+<<<<<<< HEAD
+=======
+}
+
+/* Animación sutil */
+@keyframes fadeInSubtle {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+>>>>>>> 2e36d63 (paneles)
 }

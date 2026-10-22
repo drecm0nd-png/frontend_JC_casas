@@ -1,0 +1,479 @@
+/* ==========================================
+   Contenedor Principal y Animación de Entrada
+   ========================================== */
+.menu-page-container {
+  width: 100%;
+  background-color: #faf8f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #2d2d2d;
+  animation: fadeInSubtle 0.3s ease-out forwards;
+}
+
+.menu-main-content {
+  max-width: 1480px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  flex-grow: 1;
+}
+
+/* ==========================================
+   Banner de Estado del Pedido (Degradado Visto & Destacado)
+   ========================================== */
+.order-status-banner-btn {
+  width: 100%;
+  /* Degradado más vivo, denso y contrastado */
+  background: linear-gradient(135deg, #fbe3c7 0%, #eab883 100%);
+  border: 1px solid #dfa56b;
+  border-radius: 12px;
+  padding: 1rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.12);
+}
+
+.order-status-banner-btn:hover {
+  /* Al pasar el cursor cambia a un tono sólido más firme y cálido */
+  background: #e8ac73;
+  border-color: #d19355;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(180, 83, 9, 0.2);
+}
+
+.order-status-banner-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.1);
+}
+
+.order-status-banner-btn .banner-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.order-status-banner-btn .banner-icon {
+  font-size: 1.5rem;
+}
+
+.order-status-banner-btn .banner-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-status-banner-btn .banner-text strong {
+  font-size: 1rem;
+  color: #78350f; /* Un café/ámbar un poco más oscuro para mejor legibilidad */
+}
+
+.order-status-banner-btn .banner-text small {
+  font-size: 0.85rem;
+  color: #584635;
+}
+
+.order-status-banner-btn .banner-arrow {
+  color: #78350f;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.order-status-banner-btn:hover .banner-arrow {
+  transform: translateX(4px);
+  color: #451a03;
+}
+
+/* ==========================================
+   Hero Card (Almuerzo Corriente / Ejecutivo)
+   ========================================== */
+.hero-dish-card {
+  background: linear-gradient(135deg, #3d352e, #2b241f);
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.hero-overlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-info {
+  text-align: left;
+}
+
+.hero-badge {
+  background-color: #fde68a;
+  color: #78350f;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.hero-info h2 {
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 0.4rem 0;
+}
+
+.hero-info p {
+  color: #d1d5db;
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem 0;
+}
+
+.hero-price {
+  color: #fde68a;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: block;
+}
+
+.btn-primary-action {
+  background-color: #bd732f;
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary-action:hover {
+  background-color: #a76b32;
+}
+
+/* ==========================================
+   Sección Agrupada de Componentes (Difuminado Invertido)
+   ========================================== */
+.horizontal-section-group-3 {
+  background: linear-gradient(180deg, #faf8f5 0%, #ebd8c3 100%);
+  /* Quitamos el borde superior para lograr el efecto de fusión/difuminado directo con la página */
+  border: 1px solid #dfcca9;
+  border-top: none; 
+  border-radius: 0 0 20px 20px; /* Redondeamos solo la base para mantener el remate limpio */
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.lunch-section-title-wrapper {
+  grid-column: 1 / -1;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px dashed #dfcca9;
+  padding-bottom: 0.75rem;
+}
+
+.lunch-section-title-wrapper h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #78350f;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.third-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Cabecera de Categoría en Escritorio */
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.step-number {
+  background-color: #bd732f;
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.category-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin: 0;
+}
+
+/* Botón Desplegable para Móviles (Oculto en Escritorio) */
+.category-toggle-btn {
+  display: none;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #ebd8c3;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.category-toggle-btn:hover {
+  background-color: #faf5ee;
+}
+
+.category-toggle-btn .toggle-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  color: #8c7a6b;
+}
+
+.category-toggle-btn.is-open .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+/* Cuadrícula Interna de Tarjetas */
+.cards-grid-vertical {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* ==========================================
+   Tarjetas de Componentes (Mini Cards)
+   ========================================== */
+.mini-card {
+  background-color: #ffffff;
+  border: 1px solid #eaddce;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mini-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+}
+
+.mini-card-img {
+  height: 140px;
+  background-color: #f3ebd8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c7a6b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.mini-card-body {
+  padding: 0.85rem 0.95rem;
+}
+
+.mini-card-body h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin: 0 0 0.15rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-card-body p {
+  font-size: 0.78rem;
+  color: #726555;
+  margin: 0;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================
+   Secciones Adicionales & Bebidas
+   ========================================== */
+.extra-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2b2b2b;
+  text-align: left;
+  margin: 0;
+}
+
+.cards-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.extra-card {
+  background-color: #ffffff;
+  border: 1px solid #eaddce;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.extra-img {
+  height: 130px;
+  background-color: #efe5d5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c7a6b;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.extra-body {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.extra-body h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin: 0 0 0.3rem 0;
+}
+
+.extra-body p {
+  font-size: 0.85rem;
+  color: #726555;
+  margin: 0;
+  flex-grow: 1;
+  line-height: 1.3;
+}
+
+.extra-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.price {
+  font-weight: 800;
+  color: #bd732f;
+  font-size: 1.1rem;
+}
+
+.btn-add {
+  background-color: #fde68a;
+  color: #78350f;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add:hover {
+  background-color: #fcd34d;
+}
+
+/* ==========================================
+   Diseño Responsivo (Consolidado)
+   ========================================== */
+@media (max-width: 1024px) {
+  .horizontal-section-group-3 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .category-toggle-btn {
+    display: flex;
+  }
+
+  .cards-grid-vertical {
+    display: none;
+    margin-top: 0.5rem;
+  }
+
+  .cards-grid-vertical.is-expanded {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .cards-grid-vertical.is-expanded,
+  .cards-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-overlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+/* ==========================================
+   Keyframes para Animaciones
+   ========================================== */
+@keyframes fadeInSubtle {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
