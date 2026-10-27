@@ -3,30 +3,31 @@
 /* ==========================================
    Estructura Principal y Layout
    ========================================== */
+/* Contenedor Principal: alineado arriba y con espacio controlado para acercarlo al header */
 .signup-container {
-   min-height: 100vh;
+  min-height: auto;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-color: #fff7ed;
   margin-left: 0;
   margin-right: 0;
-  padding: 1rem;
+  padding: 2rem 1rem; /* Mismo respiro superior/inferior que el login */
   box-sizing: border-box;
 }
 
+/* Tarjeta: con la misma altura mínima estirada hacia abajo */
 .signup-card {
   display: flex;
   width: 100%;
   max-width: 1500px;
-  min-height: 700px;
+  min-height: 800px; /* Misma altura que el login para mantener consistencia visual */
   background-color: var(--Backgrounds, #F4ECDD);
   border-radius: 1rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
-
 /* Lado Izquierdo: Formulario */
 .signup-form-section {
   flex: 1;
@@ -266,5 +267,19 @@
   .brand-logo {
     width: 130px;
     height: 130px;
+  }
+}
+.signup-container {
+  animation: fadeInSlide 0.35s ease-out forwards;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

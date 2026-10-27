@@ -17,8 +17,6 @@ function AppRoutes() {
       {/* Rutas de Autenticación */}
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<SignUp />} />
-<<<<<<< HEAD
-=======
 
       {/* Rutas del Menú y Pedidos */}
       <Route path="/menu" element={<Menu />} />
@@ -26,7 +24,6 @@ function AppRoutes() {
 
       {/* Rutas de Panel y Dashboard (con protección en dashboard) */}
       <Route path="/panel" element={<Panel />} />
->>>>>>> 2e36d63 (paneles)
       <Route
         path="/dashboard"
         element={
