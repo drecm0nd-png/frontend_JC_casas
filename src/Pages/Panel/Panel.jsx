@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import InventarioM from "./ComponentPanel/InventarioM/InventarioM.jsx";
 import InventarioAd from "./ComponentPanel/InventarioAdicional/InventarioAd.jsx";
+import Permisos from "./ComponentPanel/Permisos/Permisos.jsx";
+import Impresion from "./ComponentPanel/Impresion/Impresion.jsx";
 import "./Panel.css";
 
 export default function Panel() {
@@ -64,12 +66,6 @@ export default function Panel() {
               Configuración
             </button>
             <button 
-              className={`subnav-btn ${activeTab === "puntuacion" ? "active" : ""}`}
-              onClick={() => setActiveTab("puntuacion")}
-            >
-              Puntuación
-            </button>
-            <button 
               className={`subnav-btn ${activeTab === "impresion" ? "active" : ""}`}
               onClick={() => setActiveTab("impresion")}
             >
@@ -86,7 +82,6 @@ export default function Panel() {
         <section className="panel-content-box">
           {activeTab === "menu" && <InventarioM />}
 
-          {/* Componente InventarioAd montado para la pestaña de adicionales */}
           {activeTab === "adicionales" && <InventarioAd />}
 
           {activeTab === "pedidos" && (
@@ -95,30 +90,17 @@ export default function Panel() {
               <p className="section-desc">Visualiza y actualiza el estado de las entregas asignadas.</p>
             </div>
           )}
-          {activeTab === "permisos" && (
-            <div>
-              <h2 className="section-title">Gestión de Permisos</h2>
-              <p className="section-desc">Administra los roles y accesos del personal.</p>
-            </div>
-          )}
+
+          {activeTab === "permisos" && <Permisos />}
+
           {activeTab === "configuracion" && (
             <div>
               <h2 className="section-title">Configuración</h2>
               <p className="section-desc">Ajustes generales del sistema.</p>
             </div>
           )}
-          {activeTab === "puntuacion" && (
-            <div>
-              <h2 className="section-title">Puntuación</h2>
-              <p className="section-desc">Calificaciones y opiniones de los clientes.</p>
-            </div>
-          )}
-          {activeTab === "impresion" && (
-            <div>
-              <h2 className="section-title">Impresión</h2>
-              <p className="section-desc">Configuración de impresoras y comandas.</p>
-            </div>
-          )}
+
+          {activeTab === "impresion" && <Impresion />}
         </section>
 
       </main>

@@ -1,0 +1,376 @@
+.impresion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.impresion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(229, 215, 195, 0.6);
+}
+
+.impresion-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2b2b2b;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.02em;
+}
+
+.impresion-desc {
+  font-size: 0.9rem;
+  color: #726555;
+}
+
+/* Tarjeta de Configuración de Impresora */
+.printer-config-card {
+  background-color: #ffffff;
+  border: 1px solid #e5d7c3;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  gap: 1rem;
+}
+
+.printer-config-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.printer-icon {
+  width: 45px;
+  height: 45px;
+  background-color: #fef3c7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.printer-select {
+  margin-top: 0.3rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #e5d7c3;
+  border-radius: 8px;
+  background-color: #fcfbfa;
+  font-size: 0.9rem;
+  color: #2b2b2b;
+  font-weight: 600;
+  width: 100%;
+  max-width: 320px;
+  outline: none;
+}
+
+.btn-test-print {
+  background: linear-gradient(135deg, #df9b52, #bd732f);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(189, 115, 47, 0.2);
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.btn-test-print:hover {
+  opacity: 0.9;
+}
+
+/* Métricas Superiores */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 1px solid #e5d7c3;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.metric-icon-box {
+  width: 45px;
+  height: 45px;
+  background-color: #fef3c7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.metric-icon-box.success {
+  background-color: #d1fae5;
+}
+
+.metric-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #8c7a6b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2b2b2b;
+  margin: 0.1rem 0 0 0;
+}
+
+/* Barra de Filtro por Fecha */
+.catalog-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fcfbfa;
+  border: 1px solid #e5d7c3;
+  border-radius: 12px;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.filter-date-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.filter-date-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #726555;
+}
+
+.date-input-field {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #e5d7c3;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+  color: #2b2b2b;
+  outline: none;
+}
+
+.date-badge-info {
+  font-size: 0.85rem;
+  color: #726555;
+}
+
+/* Sección de Historial */
+.catalog-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.section-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #78350f;
+  margin: 0;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.item-card-accordion {
+  background-color: #ffffff;
+  border: 1px solid #e5d7c3;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.item-card-accordion.expanded {
+  border-color: #bd732f;
+  box-shadow: 0 4px 14px rgba(189, 115, 47, 0.08);
+}
+
+.item-card-header {
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.item-card-header:hover {
+  background-color: #fcfbfa;
+}
+
+.item-info-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-avatar-box {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #f8f1e5, #efe3d0);
+  border: 1px solid #e5d7c3;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.item-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.1rem;
+}
+
+.item-id-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #8c7a6b;
+  background-color: #f8f1e5;
+  border: 1px solid #e5d7c3;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.item-email-tag {
+  font-size: 0.75rem;
+  color: #8c7a6b;
+}
+
+.item-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2b2b2b;
+  margin: 0;
+}
+
+.item-info-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price-tag-view {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #bd732f;
+}
+
+.status-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.status-pill.active {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.chevron-arrow {
+  font-size: 0.75rem;
+  color: #8c7a6b;
+  transition: transform 0.3s ease;
+}
+
+.chevron-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.item-dropdown-body {
+  padding: 0 1.2rem 1.2rem 1.2rem;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #f0e6d6;
+  margin-bottom: 1rem;
+}
+
+.dropdown-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  background-color: #fcfbfa;
+  border: 1px solid #f0e6d6;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.empty-catalog-box {
+  background-color: #ffffff;
+  border: 1px solid #e5d7c3;
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+  color: #726555;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .printer-config-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-test-print {
+    width: 100%;
+  }
+  .catalog-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .item-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .item-info-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .dropdown-content-grid {
+    grid-template-columns: 1fr;
+  }
+}

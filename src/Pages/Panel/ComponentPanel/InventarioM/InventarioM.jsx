@@ -7,7 +7,6 @@ const INITIAL_ITEMS = [
     nombre: "Fríjoles Guisados",
     descripcion: "Guisados estilo tradicional",
     categoria: "Principio",
-    precio: 0,
     cantidad: 20,
     disponible: true,
   },
@@ -16,7 +15,6 @@ const INITIAL_ITEMS = [
     nombre: "Lentejas Caseras",
     descripcion: "Con ahogado de la casa",
     categoria: "Principio",
-    precio: 0,
     cantidad: 15,
     disponible: true,
   },
@@ -25,7 +23,6 @@ const INITIAL_ITEMS = [
     nombre: "Carne Asada",
     descripcion: "Corte magro a la plancha",
     categoria: "Proteína",
-    precio: 2000,
     cantidad: 12,
     disponible: true,
   },
@@ -34,7 +31,6 @@ const INITIAL_ITEMS = [
     nombre: "Pechuga a la Plancha",
     descripcion: "Fileteada con sazón casera",
     categoria: "Proteína",
-    precio: 0,
     cantidad: 8,
     disponible: true,
   },
@@ -43,7 +39,6 @@ const INITIAL_ITEMS = [
     nombre: "Arroz Blanco",
     descripcion: "Porción tradicional de la casa",
     categoria: "Acompañamiento",
-    precio: 0,
     cantidad: 30,
     disponible: true,
   },
@@ -52,7 +47,6 @@ const INITIAL_ITEMS = [
     nombre: "Tajada o Ensalada",
     descripcion: "Maduro frito o ensalada fresca",
     categoria: "Acompañamiento",
-    precio: 0,
     cantidad: 4,
     disponible: true,
   },
@@ -75,7 +69,6 @@ export default function InventarioM() {
   const [newNombre, setNewNombre] = useState("");
   const [newDesc, setNewDesc] = useState("");
   const [newCategoria, setNewCategoria] = useState("Principio");
-  const [newPrecio, setNewPrecio] = useState(0);
   const [newCantidad, setNewCantidad] = useState(10);
 
   // Estados para el Modal de Confirmación de Eliminación
@@ -115,7 +108,7 @@ export default function InventarioM() {
   const handleAddSubmit = (e) => {
     e.preventDefault();
     const nuevoElemento = {
-      id: Date.now(), // ID único basado en timestamp
+      id: Date.now(),
       nombre: newNombre,
       descripcion: newDesc,
       categoria: newCategoria,
@@ -128,7 +121,6 @@ export default function InventarioM() {
     // Limpiar campos
     setNewNombre("");
     setNewDesc("");
-    setNewPrecio(0);
     setNewCantidad(10);
     setNewCategoria("Principio");
   };
@@ -187,7 +179,7 @@ export default function InventarioM() {
         <div>
           <h2 className="inventario-title">Inventario de Componentes</h2>
           <p className="inventario-desc">
-            Gestiona la disponibilidad, stock y precios adicionales del menú. Haz clic en una tarjeta para ver opciones.
+            Gestiona la disponibilidad y stock de los componentes del menú. Haz clic en una tarjeta para ver opciones.
           </p>
         </div>
         <button className="btn-add-element" onClick={() => setIsAddModalOpen(true)}>
@@ -281,13 +273,6 @@ export default function InventarioM() {
                     
                     <div className="dropdown-controls-grid">
                       <div className="control-group">
-                        <span className="control-label">Precio Extra</span>
-                        <span className="price-tag">
-                          {item.precio > 0 ? `$ ${item.precio.toLocaleString()}` : "Incluido"}
-                        </span>
-                      </div>
-
-                      <div className="control-group">
                         <span className="control-label">Cantidad en Stock</span>
                         <div className="quantity-control">
                           <button onClick={(e) => updateCantidad(item.id, -1, e)}>-</button>
@@ -355,30 +340,17 @@ export default function InventarioM() {
                 />
               </div>
 
-              <div className="form-row-dual">
-                <div className="form-group">
-                  <label>Categoría:</label>
-                  <select 
-                    value={newCategoria} 
-                    onChange={(e) => setNewCategoria(e.target.value)}
-                    className="modal-select"
-                  >
-                    <option value="Principio">Principio</option>
-                    <option value="Proteína">Proteína</option>
-                    <option value="Acompañamiento">Acompañamiento</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label>Precio Extra ($):</label>
-                  <input 
-                    type="number" 
-                    min="0"
-                    step="500"
-                    value={newPrecio} 
-                    onChange={(e) => setNewPrecio(e.target.value)} 
-                  />
-                </div>
+              <div className="form-group">
+                <label>Categoría:</label>
+                <select 
+                  value={newCategoria} 
+                  onChange={(e) => setNewCategoria(e.target.value)}
+                  className="modal-select"
+                >
+                  <option value="Principio">Principio</option>
+                  <option value="Proteína">Proteína</option>
+                  <option value="Acompañamiento">Acompañamiento</option>
+                </select>
               </div>
 
               <div className="form-group">
