@@ -1,6 +1,4 @@
-import Facebook from "../../assets/img/facebook_logo.png";
-import Instagram from "../../assets/img/instagram_logo.png";
-import Whatsapp from "../../assets/img/whatsapp_logo.png";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import "./Footer.css";
 
 function Footer() {
@@ -15,13 +13,13 @@ function Footer() {
           </p>
           <div className="footer-social">
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de JC Casas">
-              <img src={Facebook} alt="" />
+              <FaFacebookF aria-hidden="true" />
             </a>
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de JC Casas">
-              <img src={Instagram} alt="" />
+              <FaInstagram aria-hidden="true" />
             </a>
             <a href="https://www.whatsapp.com/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de JC Casas">
-              <img src={Whatsapp} alt="" />
+              <FaWhatsapp aria-hidden="true" />
             </a>
           </div>
         </div>

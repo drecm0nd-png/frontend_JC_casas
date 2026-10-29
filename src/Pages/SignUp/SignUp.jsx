@@ -14,7 +14,7 @@ function SingUp() {
             <header className="signup-header">
               <img 
                 className="brand-logo" 
-                src="/src/assets/img/Logo_Restaurante (2).png" 
+                src="/src/assets/img/logo_restaurante.png" 
                 alt="Logo Restaurante JCasas" 
               />
               <h1 className="brand-title">JCasas</h1>

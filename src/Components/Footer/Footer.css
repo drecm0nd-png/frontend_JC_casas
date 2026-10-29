@@ -57,14 +57,18 @@
   gap: 0.75rem;
 }
 
-.footer-social img {
+.footer-social a {
+  color: #000;
+}
+
+.footer-social svg {
   height: 30px;
-  width: auto; /* Mantiene proporción correcta anulando el reset global */
+  width: 30px; /* Mantiene proporción correcta anulando el reset global */
   transition: opacity 0.2s ease;
 }
 
-.footer-social a:hover img,
-.footer-social a:focus-visible img {
+.footer-social a:hover svg,
+.footer-social a:focus-visible svg {
   opacity: 0.7;
 }
 
