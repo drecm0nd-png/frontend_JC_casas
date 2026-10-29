@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import Button from '../../Components/Button/Button.jsx';
-import './RecuperarContrasena.css';
+﻿import { useState } from "react";
+import { FaKey } from "react-icons/fa";
+import Button from "../../Components/Button/Button.jsx";
+import "./RecuperarContrasena.css";
 
 function RecuperarContrasena({ isOpen, onClose }) {
-  const [emailRecovery, setEmailRecovery] = useState('');
+  const [emailRecovery, setEmailRecovery] = useState("");
 
   if (!isOpen) return null;
 
@@ -17,15 +18,10 @@ function RecuperarContrasena({ isOpen, onClose }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <header className="modal-header">
-         <img 
-      src="/src/assets/icons/icons8-llave-50.png" 
-      alt="Recuperar acceso" 
-      className="modal-header-icon" 
-    />
-          <h2 className="modal-title">Recuperar contraseña</h2>
+          <div className="modal-heading"><h2 className="modal-title">Recuperar contraseña</h2>
           <p className="modal-subtitle">
             Introduzca su correo electrónico para recuperar su contraseña
-          </p>
+          </p></div>
         </header>
 
         <form onSubmit={handleSubmit} className="modal-form">
