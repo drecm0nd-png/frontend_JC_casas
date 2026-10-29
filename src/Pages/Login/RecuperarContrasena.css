@@ -44,13 +44,14 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: #333333;
-  margin-bottom: 6px;
+  margin: 0;
 }
 
 .modal-subtitle {
   font-size: 0.85rem;
   color: #666666;
-  margin-bottom: 20px;
+  grid-column: 1 / -1;
+  margin: 0 0 20px;
 }
 
 .modal-form {
@@ -63,17 +64,16 @@
   width: 100%;
   padding: 12px 16px;
   background-color: #ffffff; /* Fondo beige claro coherente con el formulario de Login */
-  border-color:#171616;     /* Borde visible en tono terracota/beige */
+  border-color: #171616; /* Borde visible en tono terracota/beige */
   border-radius: 8px;
-  color: #070707;               /* Texto oscuro para que se vea lo que escribes */
+  color: #070707; /* Texto oscuro para que se vea lo que escribes */
   font-size: 0.95rem;
 
-    box-shadow: 0 0 0 3px rgba(22, 22, 21,0.30);
+  box-shadow: 0 0 0 3px rgba(22, 22, 21, 0.3);
   box-sizing: border-box;
 }
 
 /* Estado al hacer foco en el campo */
-
 
 .modal-actions {
   display: flex;
@@ -97,7 +97,26 @@
   background-color: #f3f4f6;
 }
 
-.modal-header-icon{
-    padding-left: 162px;
-    padding-bottom: 15px;
+/* Encabezado documentado: icono y título comparten fila; la descripción va debajo. */
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.modal-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  text-align: left;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-subtitle {
+  margin: 0;
 }
