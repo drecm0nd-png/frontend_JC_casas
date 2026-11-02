@@ -1,7 +1,7 @@
 @import "../../Styles/Variables.css";
 
 /* ==========================================
-   Estructura Principal y Layout
+    Estructura Principal y Layout
    ========================================== */
 /* Contenedor Principal: alineado arriba y con espacio controlado para acercarlo al header */
 .signup-container {
@@ -23,7 +23,7 @@
   width: 100%;
   max-width: 1500px;
   min-height: 800px; /* Misma altura que el login para mantener consistencia visual */
-  background-color: var(--Backgrounds, #F4ECDD);
+  background-color: var(--color-auth-surface, #f4ecdd);
   border-radius: 1rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -36,7 +36,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #F4ECDD;
+  background-color: #f4ecdd;
   width: 100%;
   box-sizing: border-box;
 }
@@ -71,7 +71,7 @@
 }
 
 /* ==========================================
-   Encabezado (Logo y Título)
+    Encabezado (Logo y Título)
    ========================================== */
 .signup-header {
   display: flex;
@@ -92,18 +92,18 @@
 .brand-title {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   margin: 0;
 }
 
 .brand-subtitle {
   font-size: 0.875rem;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   margin: 0;
 }
 
 /* ==========================================
-   Pestañas (Tabs)
+    Pestañas (Tabs)
    ========================================== */
 .tab-container {
   display: flex;
@@ -131,7 +131,7 @@
 }
 
 .tab-button.active {
-  background-color: var(--Color-boton);
+  background-color: var(--color-auth-button);
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -142,7 +142,7 @@
 }
 
 /* ==========================================
-   Campos del Formulario
+    Campos del Formulario
    ========================================== */
 .form-group {
   display: flex;
@@ -185,7 +185,7 @@
   border: none;
   outline: none;
   font-size: 0.875rem;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   line-height: 1.2;
 }
 
@@ -207,23 +207,23 @@
 .checkbox-input {
   width: 0.95rem;
   height: 0.95rem;
-  accent-color: var(--Color-boton);
+  accent-color: var(--color-auth-button);
   cursor: pointer;
 }
 
 .checkbox-text {
   font-size: 0.8rem;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   font-weight: 500;
 }
 
 /* ==========================================
-   Botón de Acción
+    Botón de Acción
    ========================================== */
 .btn-submit {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--Color-boton) !important;
+  background-color: var(--color-auth-button) !important;
   color: #ffffff !important;
   opacity: 1 !important;
   font-size: 0.95rem;
@@ -237,7 +237,7 @@
 }
 
 .btn-submit:hover {
-  background-color: #A36B2B !important;
+  background-color: #a36b2b !important;
 }
 
 .login-redirect-container {
@@ -249,7 +249,7 @@
 .login-redirect-link {
   font-size: 0.825rem;
   font-weight: 600;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   background: none;
   border: none;
   cursor: pointer;
@@ -257,7 +257,7 @@
 }
 
 /* ==========================================
-   Ajustes específicos para teléfonos
+    Ajustes específicos para teléfonos
    ========================================== */
 @media (max-width: 480px) {
   .signup-form-section {

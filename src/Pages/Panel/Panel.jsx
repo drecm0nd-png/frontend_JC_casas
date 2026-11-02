@@ -19,8 +19,7 @@ export default function Panel() {
 
   return (
     <div className="panel-page-container">
-      <main className="panel-main-content">
-        
+      <div className="panel-main-content">
         {/* Cabecera Superior del Panel */}
         <header className="panel-top-bar">
           <div className="panel-brand-group">
@@ -30,42 +29,50 @@ export default function Panel() {
 
         {/* Contenedor con Flechas Laterales y Barra de Pestañas */}
         <div className="panel-subnav-container">
-          <button className="nav-arrow-btn left" onClick={() => scrollNav("left")} title="Desplazar izquierda">
+          <button
+            className="nav-arrow-btn left"
+            onClick={() => scrollNav("left")}
+            title="Desplazar izquierda"
+          >
             ‹
           </button>
 
-          <nav className="panel-subnav" ref={scrollRef} aria-label="Secciones del panel">
-            <button 
+          <nav
+            className="panel-subnav"
+            ref={scrollRef}
+            aria-label="Secciones del panel"
+          >
+            <button
               className={`subnav-btn ${activeTab === "menu" ? "active" : ""}`}
               onClick={() => setActiveTab("menu")}
             >
               Gestion del Menu
             </button>
-            <button 
+            <button
               className={`subnav-btn ${activeTab === "adicionales" ? "active" : ""}`}
               onClick={() => setActiveTab("adicionales")}
             >
               Gestion de Adicionales
             </button>
-            <button 
+            <button
               className={`subnav-btn ${activeTab === "pedidos" ? "active" : ""}`}
               onClick={() => setActiveTab("pedidos")}
             >
               Pedidos
             </button>
-            <button 
+            <button
               className={`subnav-btn ${activeTab === "permisos" ? "active" : ""}`}
               onClick={() => setActiveTab("permisos")}
             >
               Permisos
             </button>
-            <button 
+            <button
               className={`subnav-btn ${activeTab === "configuracion" ? "active" : ""}`}
               onClick={() => setActiveTab("configuracion")}
             >
               Configuración
             </button>
-            <button 
+            <button
               className={`subnav-btn ${activeTab === "impresion" ? "active" : ""}`}
               onClick={() => setActiveTab("impresion")}
             >
@@ -73,7 +80,11 @@ export default function Panel() {
             </button>
           </nav>
 
-          <button className="nav-arrow-btn right" onClick={() => scrollNav("right")} title="Desplazar derecha">
+          <button
+            className="nav-arrow-btn right"
+            onClick={() => scrollNav("right")}
+            title="Desplazar derecha"
+          >
             ›
           </button>
         </div>
@@ -87,7 +98,9 @@ export default function Panel() {
           {activeTab === "pedidos" && (
             <div>
               <h2 className="section-title">Gestión de Pedidos</h2>
-              <p className="section-desc">Visualiza y actualiza el estado de las entregas asignadas.</p>
+              <p className="section-desc">
+                Visualiza y actualiza el estado de las entregas asignadas.
+              </p>
             </div>
           )}
 
@@ -102,8 +115,7 @@ export default function Panel() {
 
           {activeTab === "impresion" && <Impresion />}
         </section>
-
-      </main>
+      </div>
     </div>
   );
 }

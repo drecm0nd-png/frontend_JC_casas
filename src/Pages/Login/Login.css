@@ -20,11 +20,11 @@
   width: 100%;
   max-width: 1500px;
   min-height: 800px;
-  background-color: var(--Backgrounds, #F4ECDD);
+  background-color: var(--color-auth-surface, #f4ecdd);
   border-radius: 1rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  gap: 0; /* 👈 Elimina cualquier espacio o línea divisoria entre columnas */
+  gap: 0; /* Elimina cualquier espacio o línea divisoria entre columnas */
 }
 
 /* Lado Izquierdo: Formulario */
@@ -35,7 +35,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #F4ECDD;
+  background-color: #f4ecdd;
   width: 100%;
 }
 
@@ -55,7 +55,7 @@
   height: auto;
   width: auto;
   padding: 0;
-  margin-left: -5px; /* 👈 Esto soluciona el espacio de subpíxeles solapando 1 píxel */
+  margin-left: -5px; /* Solapa un píxel para corregir el espacio entre columnas */
   overflow: hidden;
 }
 
@@ -73,7 +73,7 @@
 }
 
 /* ==========================================
-   Encabezado (Logo y Título)
+    Encabezado (Logo y Título)
    ========================================== */
 .login-header {
   display: flex;
@@ -94,16 +94,16 @@
 .brand-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
 }
 
 .brand-subtitle {
   font-size: 0.95rem;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
 }
 
 /* ==========================================
-   Pestañas (Tabs: Iniciar Sesión / Registro)
+    Pestañas (Tabs: Iniciar Sesión / Registro)
    ========================================== */
 .tab-container {
   display: flex;
@@ -126,7 +126,7 @@
 }
 
 .tab-button.active {
-  background-color: var(--Color-boton);
+  background-color: var(--color-auth-button);
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -137,7 +137,7 @@
 }
 
 /* ==========================================
-   Campos del Formulario (Inputs)
+    Campos del Formulario (Inputs)
    ========================================== */
 .form-group {
   display: flex;
@@ -177,7 +177,7 @@
 
 .input-text {
   font-size: 0.95rem;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
 }
 
 .input-field {
@@ -186,7 +186,7 @@
   border: none;
   outline: none;
   font-size: 0.95rem;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   font-family: inherit;
 }
 
@@ -205,7 +205,7 @@
 }
 
 /* ==========================================
-   Enlace y Botones de Acción
+    Enlace y Botones de Acción
    ========================================== */
 .forgot-password-container {
   display: flex;
@@ -215,7 +215,7 @@
 .forgot-password-link {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   text-decoration: none;
 }
 
@@ -226,7 +226,7 @@
 .btn-submit {
   width: 100%;
   padding: 0.875rem;
-  background-color: var(--Color-boton) !important;
+  background-color: var(--color-auth-button) !important;
   color: #ffffff !important;
   opacity: 1 !important;
   font-size: 1rem;
@@ -239,11 +239,11 @@
 }
 
 .btn-submit:hover {
-  background-color: #A36B2B !important;
+  background-color: #a36b2b !important;
 }
 
 /* ==========================================
-   Separador "O continúa con"
+    Separador "O continúa con"
    ========================================== */
 .divider-container {
   display: flex;
@@ -260,12 +260,12 @@
 .divider-text {
   padding: 0 1rem;
   font-size: 0.875rem;
-  color: var(--Color-texto);
+  color: var(--color-auth-text);
   font-weight: 500;
 }
 
 /* ==========================================
-   Botón OAuth (Google)
+    Botón OAuth (Google)
    ========================================== */
 .btn-google {
   width: 100%;
@@ -289,7 +289,7 @@
 }
 
 /* ==========================================
-   Ajustes específicos para teléfonos
+    Ajustes específicos para teléfonos
    ========================================== */
 @media (max-width: 480px) {
   .login-form-section {
@@ -302,7 +302,8 @@
   }
 }
 
-/* Animación sutil */
+    /* Animación sutil */
+
 @keyframes fadeInSubtle {
   0% {
     opacity: 0;

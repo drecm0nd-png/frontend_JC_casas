@@ -31,11 +31,15 @@ function LunchBuilder() {
   );
 
   function toggleSection(sectionId) {
-    setExpandedSection((current) => current === sectionId ? null : sectionId);
+    setExpandedSection((current) => (current === sectionId ? null : sectionId));
   }
 
   function updateSelection(category, optionId, checked) {
-    if (!checked && selections[category].length === 1 && expandedSection === "extras") {
+    if (
+      !checked &&
+      selections[category].length === 1 &&
+      expandedSection === "extras"
+    ) {
       setExpandedSection(category);
     }
 
@@ -48,11 +52,11 @@ function LunchBuilder() {
   }
 
   function updateExtra(optionId, checked) {
-    setExtras((current) => (
+    setExtras((current) =>
       checked
         ? [...current, optionId]
-        : current.filter((selectedId) => selectedId !== optionId)
-    ));
+        : current.filter((selectedId) => selectedId !== optionId),
+    );
   }
 
   const extrasExpanded = baseComplete && expandedSection === "extras";
@@ -98,25 +102,33 @@ function LunchBuilder() {
                     <legend className="lunch-sr-only">
                       Selecciona al menos una opción de {label}
                     </legend>
-                    {DEMO_OPTIONS.map(({ id: optionId, label: optionLabel }) => {
-                      const isSelected = selections[id].includes(optionId);
+                    {DEMO_OPTIONS.map(
+                      ({ id: optionId, label: optionLabel }) => {
+                        const isSelected = selections[id].includes(optionId);
 
-                      return (
-                        <label
-                          className={`lunch-option ${isSelected ? "is-selected" : ""}`}
-                          key={optionId}
-                        >
-                          <input
-                            type="checkbox"
-                            name={id}
-                            value={optionId}
-                            checked={isSelected}
-                            onChange={(event) => updateSelection(id, optionId, event.target.checked)}
-                          />
-                          <span>{optionLabel}</span>
-                        </label>
-                      );
-                    })}
+                        return (
+                          <label
+                            className={`lunch-option ${isSelected ? "is-selected" : ""}`}
+                            key={optionId}
+                          >
+                            <input
+                              type="checkbox"
+                              name={id}
+                              value={optionId}
+                              checked={isSelected}
+                              onChange={(event) =>
+                                updateSelection(
+                                  id,
+                                  optionId,
+                                  event.target.checked,
+                                )
+                              }
+                            />
+                            <span>{optionLabel}</span>
+                          </label>
+                        );
+                      },
+                    )}
                   </fieldset>
                 </div>
               </div>
@@ -125,7 +137,9 @@ function LunchBuilder() {
         })}
       </div>
 
-      <section className={`lunch-extras ${baseComplete ? "is-available" : "is-locked"}`}>
+      <section
+        className={`lunch-extras ${baseComplete ? "is-available" : "is-locked"}`}
+      >
         <h3 className="lunch-category-heading">
           <button
             id="lunch-trigger-extras"
@@ -156,7 +170,9 @@ function LunchBuilder() {
         >
           <div className="lunch-accordion-panel-inner">
             <fieldset className="lunch-options" disabled={!extrasExpanded}>
-              <legend className="lunch-sr-only">Adicionales de demostración</legend>
+              <legend className="lunch-sr-only">
+                Adicionales de demostración
+              </legend>
               {DEMO_EXTRAS.map(({ id, label }) => {
                 const isSelected = extras.includes(id);
 
@@ -170,7 +186,9 @@ function LunchBuilder() {
                       name="extras"
                       value={id}
                       checked={isSelected}
-                      onChange={(event) => updateExtra(id, event.target.checked)}
+                      onChange={(event) =>
+                        updateExtra(id, event.target.checked)
+                      }
                     />
                     <span>{label}</span>
                   </label>

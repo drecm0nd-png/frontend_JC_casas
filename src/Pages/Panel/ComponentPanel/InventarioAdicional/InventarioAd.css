@@ -7,8 +7,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .adicionales-header {
@@ -91,8 +97,14 @@
   flex-shrink: 0;
 }
 
-.metric-icon.blue { background-color: #eaf3ff; color: #2b6cb0; }
-.metric-icon.green { background-color: #e6f4ea; color: #1e7e34; }
+.metric-icon.blue {
+  background-color: #eaf3ff;
+  color: #2b6cb0;
+}
+.metric-icon.green {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+}
 
 .metric-info {
   display: flex;
@@ -258,8 +270,16 @@
   display: inline-block;
 }
 
-.badge-cat.sopas { background-color: #fef3d6; color: #b7791f; border: 1px solid #fde68a; }
-.badge-cat.bebidas { background-color: #eaf3ff; color: #2b6cb0; border: 1px solid #c6f6d5; }
+.badge-cat.sopas {
+  background-color: #fef3d6;
+  color: #b7791f;
+  border: 1px solid #fde68a;
+}
+.badge-cat.bebidas {
+  background-color: #eaf3ff;
+  color: #2b6cb0;
+  border: 1px solid #c6f6d5;
+}
 
 .status-badge {
   border: 1px solid transparent;
@@ -289,8 +309,14 @@
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dropdown-divider {
@@ -385,13 +411,13 @@
   transition: all 0.2s ease;
 }
 
-.btn-icon.edit:hover { 
-  background-color: #e2e8f0; 
+.btn-icon.edit:hover {
+  background-color: #e2e8f0;
   border-color: #cbd5e1;
 }
 
-.btn-icon.delete:hover { 
-  background-color: #ffeeec; 
+.btn-icon.delete:hover {
+  background-color: #ffeeec;
   border-color: #fecaca;
   color: #dc2626;
 }
@@ -464,7 +490,8 @@
   color: #726555;
 }
 
-.form-group input, .modal-select {
+.form-group input,
+.modal-select {
   padding: 0.7rem 0.9rem;
   border: 1px solid #e5d7c3;
   border-radius: 8px;

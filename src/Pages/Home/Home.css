@@ -55,7 +55,11 @@
   border: 1px dashed var(--color-stroke);
   border-radius: 4px;
   background:
-    radial-gradient(ellipse at 75% 70%, rgba(196, 131, 42, 0.14), transparent 36%),
+    radial-gradient(
+      ellipse at 75% 70%,
+      rgba(196, 131, 42, 0.14),
+      transparent 36%
+    ),
     linear-gradient(135deg, var(--color-background), var(--color-card));
   color: var(--color-text);
   text-align: center;
@@ -147,4 +151,3 @@
     width: 3.75rem;
   }
 }
-

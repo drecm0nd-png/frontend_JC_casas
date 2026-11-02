@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Footer from "../../Components/Footer/Footer.jsx";
+import { FaTruck, FaPen, FaRotate, FaLocationDot } from "react-icons/fa6";
 import "./Pedidos.css";
 
 export default function Pedidos() {
@@ -145,7 +145,7 @@ export default function Pedidos() {
       </section>
 
       {/* CONTENIDO CENTRADO CON ANCHO MÁXIMO */}
-      <main className="pedidos-main-content">
+      <div className="pedidos-main-content">
         <div className="pedidos-grid-layout">
           {/* Columna Izquierda: Pedidos */}
           <section className="pedidos-section">
@@ -198,7 +198,7 @@ export default function Pedidos() {
                       </div>
                     </div>
                     <div className="timeline-step current">
-                      <div className="step-indicator pulse">🚚</div>
+                      <div className="step-indicator pulse"><FaTruck aria-hidden="true" /></div>
                       <div className="step-content">
                         <strong>Repartidor en Camino</strong>
                         <span>Estimado: 10 - 15 min</span>
@@ -253,7 +253,7 @@ export default function Pedidos() {
                           alert("Abriendo módulo para modificar el pedido...")
                         }
                       >
-                        ✏️ Editar el Pedido
+                        <FaPen aria-hidden="true" /> Editar el Pedido
                       </button>
                     </div>
                   </div>
@@ -329,7 +329,7 @@ export default function Pedidos() {
                           )
                         }
                       >
-                        🔄 Volver a Pedir
+                        <FaRotate aria-hidden="true" /> Volver a Pedir
                       </button>
                     </div>
                   </div>
@@ -405,7 +405,7 @@ export default function Pedidos() {
                           )
                         }
                       >
-                        🔄 Volver a Pedir
+                        <FaRotate aria-hidden="true" /> Volver a Pedir
                       </button>
                     </div>
                   </div>
@@ -420,7 +420,7 @@ export default function Pedidos() {
 
             <div className="address-card-modern">
               <div className="address-display-box">
-                <div className="pin-icon">📍</div>
+                <div className="pin-icon"><FaLocationDot aria-hidden="true" /></div>
                 <div className="address-details">
                   <small>Ubicación Actual</small>
                   <p>{direccion}</p>
@@ -484,7 +484,7 @@ export default function Pedidos() {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

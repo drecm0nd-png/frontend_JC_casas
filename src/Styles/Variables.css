@@ -5,10 +5,10 @@
     COLORES
      ========================================================== */
   --color-background: #fffdf7; /* Fondo general */
-  
-    --Backgrounds:#ffffff;
-    --Color-boton: #C78E4B;
-    --Color-texto: #3A1F00;
+
+  --color-auth-surface: #ffffff;
+  --color-auth-button: #c78e4b;
+  --color-auth-text: #3a1f00;
   --color-header: #6b3a1f; /* Encabezado y pie de página */
   --color-card: #f5eddd; /* Tarjetas y hero */
   --color-accent: #d96b43; /* Acentos y detalles */
@@ -19,7 +19,8 @@
   /* ==========================================================
     FAMILIA TIPOGRÁFICA
      ========================================================== */
-  --font-family-base: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-base:
+    "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* ==========================================================
     PESOS TIPOGRÁFICOS (Roboto)
@@ -61,14 +62,14 @@
    ========================================================== */
 @media (max-width: 768px) {
   :root {
-    --font-size-hero: 1.85rem;          /* ~30px */
-    --font-size-section-title: 1.5rem;  /* ~24px */
-    --font-size-subtitle: 1.25rem;       /* ~20px */
-    --font-size-card-title: 1.125rem;    /* ~18px */
-    --font-size-lead: 1rem;              /* ~16px */
-    --font-size-body: 0.9375rem;         /* ~15px */
-    --font-size-small: 0.8125rem;        /* ~13px */
-    --font-size-caption: 0.6875rem;      /* ~11px */
+    --font-size-hero: 1.85rem; /* ~30px */
+    --font-size-section-title: 1.5rem; /* ~24px */
+    --font-size-subtitle: 1.25rem; /* ~20px */
+    --font-size-card-title: 1.125rem; /* ~18px */
+    --font-size-lead: 1rem; /* ~16px */
+    --font-size-body: 0.9375rem; /* ~15px */
+    --font-size-small: 0.8125rem; /* ~13px */
+    --font-size-caption: 0.6875rem; /* ~11px */
 
     /* Reducción de márgenes internos para que no queden pantallas apretadas */
     --page-padding: 1rem;
