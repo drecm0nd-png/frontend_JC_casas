@@ -13,7 +13,7 @@ function AppRoutes() {
     <Routes>
       {/* Ruta principal */}
       <Route path="/" element={<Home />} />
-      
+
       {/* Rutas de Autenticación */}
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<SignUp />} />
@@ -39,7 +39,9 @@ function AppRoutes() {
         element={
           <section className="page-layout" aria-labelledby="not-found-title">
             <h1 id="not-found-title">Página no encontrada</h1>
-            <p>La dirección solicitada no corresponde a una página disponible.</p>
+            <p>
+              La dirección solicitada no corresponde a una página disponible.
+            </p>
           </section>
         }
       />

@@ -19,7 +19,8 @@ const MEAL_SECTIONS = [
     id: "acompanamiento",
     title: "Acompañamiento",
     photoLabel: "Fotografía de Acompañamiento pendiente de recurso aprobado",
-    description: "Descripción de Acompañamiento pendiente de contenido aprobado.",
+    description:
+      "Descripción de Acompañamiento pendiente de contenido aprobado.",
   },
 ];
 

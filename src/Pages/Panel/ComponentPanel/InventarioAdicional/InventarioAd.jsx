@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaGlassWater, FaBowlFood, FaPen, FaTrash, FaTriangleExclamation } from "react-icons/fa6";
 import "./InventarioAd.css";
 
 const INITIAL_ADICIONALES = [
@@ -82,7 +83,9 @@ export default function AdicionalesM() {
   const [deletingId, setDeletingId] = useState(null);
 
   const totalAdicionales = adicionales.length;
-  const disponibles = adicionales.filter((item) => item.disponible && item.cantidad > 0).length;
+  const disponibles = adicionales.filter(
+    (item) => item.disponible && item.cantidad > 0,
+  ).length;
 
   const updateCantidad = (id, delta, e) => {
     e.stopPropagation();
@@ -97,7 +100,7 @@ export default function AdicionalesM() {
           };
         }
         return item;
-      })
+      }),
     );
   };
 
@@ -105,8 +108,8 @@ export default function AdicionalesM() {
     e.stopPropagation();
     setAdicionales((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, disponible: !item.disponible } : item
-      )
+        item.id === id ? { ...item, disponible: !item.disponible } : item,
+      ),
     );
   };
 
@@ -151,8 +154,8 @@ export default function AdicionalesM() {
               categoria: tempCategoria,
               precio: Number(tempPrecio),
             }
-          : item
-      )
+          : item,
+      ),
     );
     setEditingItem(null);
   };
@@ -182,12 +185,18 @@ export default function AdicionalesM() {
       {/* Cabecera */}
       <div className="adicionales-header">
         <div>
-          <h2 className="adicionales-title">Gestión de Adicionales y Bebidas</h2>
+          <h2 className="adicionales-title">
+            Gestión de Adicionales y Bebidas
+          </h2>
           <p className="adicionales-desc">
-            Administra productos independientes como sopas, ensaladas y bebidas con sus respectivos precios y stock.
+            Administra productos independientes como sopas, ensaladas y bebidas
+            con sus respectivos precios y stock.
           </p>
         </div>
-        <button className="btn-add-element" onClick={() => setIsAddModalOpen(true)}>
+        <button
+          className="btn-add-element"
+          onClick={() => setIsAddModalOpen(true)}
+        >
           <span>+</span> Añadir producto
         </button>
       </div>
@@ -195,7 +204,7 @@ export default function AdicionalesM() {
       {/* Métricas */}
       <div className="metrics-grid">
         <div className="metric-card">
-          <div className="metric-icon blue">🥤</div>
+          <div className="metric-icon blue"><FaGlassWater aria-hidden="true" /></div>
           <div className="metric-info">
             <span className="metric-label">Total Productos</span>
             <strong className="metric-value">{totalAdicionales}</strong>
@@ -240,7 +249,7 @@ export default function AdicionalesM() {
                 <div className="card-summary-row">
                   <div className="element-detail">
                     <div className="element-avatar">
-                      {item.categoria === "Bebidas" ? "🥤" : "🍲"}
+                      {item.categoria === "Bebidas" ? <FaGlassWater aria-hidden="true" /> : <FaBowlFood aria-hidden="true" />}
                     </div>
                     <div>
                       <strong className="element-name">{item.nombre}</strong>
@@ -249,8 +258,12 @@ export default function AdicionalesM() {
                   </div>
 
                   <div className="card-summary-badges">
-                    <span className="price-tag-badge">${item.precio.toLocaleString()}</span>
-                    <span className={`badge-cat ${item.categoria === "Bebidas" ? "bebidas" : "sopas"}`}>
+                    <span className="price-tag-badge">
+                      ${item.precio.toLocaleString()}
+                    </span>
+                    <span
+                      className={`badge-cat ${item.categoria === "Bebidas" ? "bebidas" : "sopas"}`}
+                    >
                       {item.categoria}
                     </span>
                     <button
@@ -258,28 +271,47 @@ export default function AdicionalesM() {
                       className={`status-badge ${item.disponible && item.cantidad > 0 ? "available" : "unavailable"}`}
                       onClick={(e) => toggleDisponible(item.id, e)}
                     >
-                      {item.disponible && item.cantidad > 0 ? "Disponible" : "Agotado"}
+                      {item.disponible && item.cantidad > 0
+                        ? "Disponible"
+                        : "Agotado"}
                     </button>
-                    <span className="expand-chevron">{isExpanded ? "▲" : "▼"}</span>
+                    <span className="expand-chevron">
+                      {isExpanded ? "▲" : "▼"}
+                    </span>
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="card-dropdown-content" onClick={(e) => e.stopPropagation()}>
+                  <div
+                    className="card-dropdown-content"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <div className="dropdown-divider"></div>
 
                     <div className="dropdown-controls-grid">
                       <div className="control-group">
                         <span className="control-label">Precio Unitario</span>
-                        <span className="price-tag">${item.precio.toLocaleString()}</span>
+                        <span className="price-tag">
+                          ${item.precio.toLocaleString()}
+                        </span>
                       </div>
 
                       <div className="control-group">
-                        <span className="control-label">Inventario / Stock</span>
+                        <span className="control-label">
+                          Inventario / Stock
+                        </span>
                         <div className="quantity-control">
-                          <button onClick={(e) => updateCantidad(item.id, -1, e)}>-</button>
+                          <button
+                            onClick={(e) => updateCantidad(item.id, -1, e)}
+                          >
+                            -
+                          </button>
                           <span>{item.cantidad}</span>
-                          <button onClick={(e) => updateCantidad(item.id, 1, e)}>+</button>
+                          <button
+                            onClick={(e) => updateCantidad(item.id, 1, e)}
+                          >
+                            +
+                          </button>
                         </div>
                       </div>
 
@@ -291,14 +323,14 @@ export default function AdicionalesM() {
                             title="Editar"
                             onClick={(e) => handleEditClick(item, e)}
                           >
-                            ✏️ Editar
+                            <FaPen aria-hidden="true" /> Editar
                           </button>
                           <button
                             className="btn-icon delete"
                             title="Eliminar"
                             onClick={(e) => handleDeleteClick(item.id, e)}
                           >
-                            🗑️ Eliminar
+                            <FaTrash aria-hidden="true" /> Eliminar
                           </button>
                         </div>
                       </div>
@@ -317,7 +349,12 @@ export default function AdicionalesM() {
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Añadir Nuevo Adicional o Bebida</h3>
-              <button className="modal-close-btn" onClick={() => setIsAddModalOpen(false)}>✕</button>
+              <button
+                className="modal-close-btn"
+                onClick={() => setIsAddModalOpen(false)}
+              >
+                ✕
+              </button>
             </div>
             <form onSubmit={handleAddSubmit} className="modal-form">
               <div className="form-group">
@@ -380,7 +417,11 @@ export default function AdicionalesM() {
               </div>
 
               <div className="modal-actions">
-                <button type="button" className="btn-secondary" onClick={() => setIsAddModalOpen(false)}>
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => setIsAddModalOpen(false)}
+                >
                   Cancelar
                 </button>
                 <button type="submit" className="btn-primary">
@@ -398,7 +439,12 @@ export default function AdicionalesM() {
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Editar Adicional / Bebida</h3>
-              <button className="modal-close-btn" onClick={() => setEditingItem(null)}>✕</button>
+              <button
+                className="modal-close-btn"
+                onClick={() => setEditingItem(null)}
+              >
+                ✕
+              </button>
             </div>
             <form onSubmit={handleSaveEdit} className="modal-form">
               <div className="form-group">
@@ -448,7 +494,11 @@ export default function AdicionalesM() {
               </div>
 
               <div className="modal-actions">
-                <button type="button" className="btn-secondary" onClick={() => setEditingItem(null)}>
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => setEditingItem(null)}
+                >
                   Cancelar
                 </button>
                 <button type="submit" className="btn-primary">
@@ -463,15 +513,29 @@ export default function AdicionalesM() {
       {/* ================= MODAL DE ELIMINACIÓN ================= */}
       {deletingId !== null && (
         <div className="modal-overlay" onClick={() => setDeletingId(null)}>
-          <div className="modal-card confirm-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="confirm-icon">⚠️</div>
+          <div
+            className="modal-card confirm-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="confirm-icon"><FaTriangleExclamation aria-hidden="true" /></div>
             <h3>¿Estás seguro que deseas eliminar este producto?</h3>
-            <p>Se borrará del menú de adicionales e inventario de forma permanente.</p>
+            <p>
+              Se borrará del menú de adicionales e inventario de forma
+              permanente.
+            </p>
             <div className="modal-actions">
-              <button type="button" className="btn-secondary" onClick={() => setDeletingId(null)}>
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={() => setDeletingId(null)}
+              >
                 Cancelar
               </button>
-              <button type="button" className="btn-danger" onClick={confirmDelete}>
+              <button
+                type="button"
+                className="btn-danger"
+                onClick={confirmDelete}
+              >
                 Sí, eliminar
               </button>
             </div>

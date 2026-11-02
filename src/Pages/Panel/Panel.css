@@ -43,7 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .panel-brand-name {
@@ -152,8 +152,8 @@
   border-radius: 12px;
   padding: 2rem;
   text-align: left;
-  min-height:min-content;
-  max-height:max-content
+  min-height: min-content;
+  max-height: max-content;
 }
 
 .section-title {
@@ -303,13 +303,3 @@
   background: linear-gradient(135deg, #664200, #8f7d6c);
   border-radius: 2px 2px 0 0;
 }
-
-
-
-
-
-
-
-
-
-

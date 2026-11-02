@@ -1,12 +1,43 @@
 import { useState } from "react";
+import { FaUsers, FaCrown, FaMagnifyingGlass, FaMotorcycle, FaUser } from "react-icons/fa6";
 import "./Permisos.css";
 
 const USERS_DATA = [
-  { id: "USR-001", nombre: "Carlos Mendoza", email: "carlos.mendoza@email.com", rol: "administrador", estado: "Activo" },
-  { id: "USR-002", nombre: "Laura Restrepo", email: "laura.restrepo@email.com", rol: "repartidor", estado: "Activo" },
-  { id: "USR-003", nombre: "Alejandro Torres", email: "alejandro.torres@email.com", rol: "cliente", estado: "Activo" },
-  { id: "USR-004", nombre: "Mariana Gómez", email: "mariana.gomez@email.com", rol: "cliente", estado: "Inactivo" },
-  { id: "USR-005", nombre: "Santiago Ramírez", email: "santiago.ramirez@email.com", rol: "repartidor", estado: "Activo" },
+  {
+    id: "USR-001",
+    nombre: "Carlos Mendoza",
+    email: "carlos.mendoza@email.com",
+    rol: "administrador",
+    estado: "Activo",
+  },
+  {
+    id: "USR-002",
+    nombre: "Laura Restrepo",
+    email: "laura.restrepo@email.com",
+    rol: "repartidor",
+    estado: "Activo",
+  },
+  {
+    id: "USR-003",
+    nombre: "Alejandro Torres",
+    email: "alejandro.torres@email.com",
+    rol: "cliente",
+    estado: "Activo",
+  },
+  {
+    id: "USR-004",
+    nombre: "Mariana Gómez",
+    email: "mariana.gomez@email.com",
+    rol: "cliente",
+    estado: "Inactivo",
+  },
+  {
+    id: "USR-005",
+    nombre: "Santiago Ramírez",
+    email: "santiago.ramirez@email.com",
+    rol: "repartidor",
+    estado: "Activo",
+  },
 ];
 
 export default function Permisos() {
@@ -25,14 +56,15 @@ export default function Permisos() {
       user.id.toLowerCase().includes(term) ||
       user.email.toLowerCase().includes(term);
 
-    const matchesFilter =
-      activeFilter === "todos" || user.rol === activeFilter;
+    const matchesFilter = activeFilter === "todos" || user.rol === activeFilter;
 
     return matchesSearch && matchesFilter;
   });
 
   const totalUsuarios = usuarios.length;
-  const totalAdministradores = usuarios.filter((u) => u.rol === "administrador").length;
+  const totalAdministradores = usuarios.filter(
+    (u) => u.rol === "administrador",
+  ).length;
 
   const handleOpenModal = (user, e) => {
     e.stopPropagation();
@@ -45,7 +77,7 @@ export default function Permisos() {
     if (!selectedUser) return;
 
     setUsuarios((prev) =>
-      prev.map((u) => (u.id === selectedUser.id ? { ...u, rol: tempRol } : u))
+      prev.map((u) => (u.id === selectedUser.id ? { ...u, rol: tempRol } : u)),
     );
     setSelectedUser(null);
   };
@@ -61,7 +93,8 @@ export default function Permisos() {
         <div>
           <h2 className="permisos-title">Gestión de Permisos y Roles</h2>
           <p className="permisos-desc">
-            Administra los usuarios del sistema, busca por nombre o ID y actualiza sus permisos y accesos.
+            Administra los usuarios del sistema, busca por nombre o ID y
+            actualiza sus permisos y accesos.
           </p>
         </div>
       </div>
@@ -69,14 +102,14 @@ export default function Permisos() {
       {/* Tarjetas de Métricas Superiores */}
       <div className="metrics-grid">
         <div className="metric-card">
-          <div className="metric-icon-box">👥</div>
+          <div className="metric-icon-box"><FaUsers aria-hidden="true" /></div>
           <div>
             <span className="metric-label">Total de Usuarios</span>
             <h3 className="metric-value">{totalUsuarios}</h3>
           </div>
         </div>
         <div className="metric-card">
-          <div className="metric-icon-box success">👑</div>
+          <div className="metric-icon-box success"><FaCrown aria-hidden="true" /></div>
           <div>
             <span className="metric-label">Administradores</span>
             <h3 className="metric-value">{totalAdministradores}</h3>
@@ -87,7 +120,7 @@ export default function Permisos() {
       {/* Barra de Búsqueda y Pestañas de Filtro */}
       <div className="catalog-toolbar">
         <div className="permisos-search-box">
-          <span className="search-icon">🔍</span>
+          <span className="search-icon"><FaMagnifyingGlass aria-hidden="true" /></span>
           <input
             type="text"
             className="permisos-search-input"
@@ -96,7 +129,10 @@ export default function Permisos() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           {searchTerm && (
-            <button className="clear-search-btn" onClick={() => setSearchTerm("")}>
+            <button
+              className="clear-search-btn"
+              onClick={() => setSearchTerm("")}
+            >
               ✕
             </button>
           )}
@@ -143,10 +179,13 @@ export default function Permisos() {
                   key={user.id}
                   className={`item-card-accordion ${isExpanded ? "expanded" : ""}`}
                 >
-                  <div className="item-card-header" onClick={() => toggleExpand(user.id)}>
+                  <div
+                    className="item-card-header"
+                    onClick={() => toggleExpand(user.id)}
+                  >
                     <div className="item-info-left">
                       <div className="item-avatar-box">
-                        {user.rol === "administrador" ? "👑" : user.rol === "repartidor" ? "🛵" : "👤"}
+                        {user.rol === "administrador" ? <FaCrown aria-hidden="true" /> : user.rol === "repartidor" ? <FaMotorcycle aria-hidden="true" /> : <FaUser aria-hidden="true" />}
                       </div>
                       <div>
                         <div className="item-meta-row">
@@ -161,7 +200,9 @@ export default function Permisos() {
                       <span className={`role-pill-badge ${user.rol}`}>
                         {user.rol}
                       </span>
-                      <span className={`status-pill ${user.estado === "Activo" ? "active" : "inactive"}`}>
+                      <span
+                        className={`status-pill ${user.estado === "Activo" ? "active" : "inactive"}`}
+                      >
                         {user.estado}
                       </span>
                       <button
@@ -170,7 +211,11 @@ export default function Permisos() {
                       >
                         Cambiar Rol
                       </button>
-                      <span className={`chevron-arrow ${isExpanded ? "rotate" : ""}`}>▼</span>
+                      <span
+                        className={`chevron-arrow ${isExpanded ? "rotate" : ""}`}
+                      >
+                        ▼
+                      </span>
                     </div>
                   </div>
 
@@ -180,15 +225,32 @@ export default function Permisos() {
                       <div className="dropdown-content-grid">
                         <div>
                           <strong>Información detallada de acceso:</strong>
-                          <p style={{ margin: "0.3rem 0 0 0", color: "#726555", fontSize: "0.85rem" }}>
-                            Este usuario cuenta con perfil de tipo <strong>{user.rol.toUpperCase()}</strong>. 
-                            Puedes modificar sus privilegios de seguridad haciendo clic en el botón "Cambiar Rol".
+                          <p
+                            style={{
+                              margin: "0.3rem 0 0 0",
+                              color: "#726555",
+                              fontSize: "0.85rem",
+                            }}
+                          >
+                            Este usuario cuenta con perfil de tipo{" "}
+                            <strong>{user.rol.toUpperCase()}</strong>. Puedes
+                            modificar sus privilegios de seguridad haciendo clic
+                            en el botón "Cambiar Rol".
                           </p>
                         </div>
-                        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "center",
+                          }}
+                        >
                           <button
                             className="btn-modal-save"
-                            style={{ padding: "0.5rem 1rem", fontSize: "0.82rem" }}
+                            style={{
+                              padding: "0.5rem 1rem",
+                              fontSize: "0.82rem",
+                            }}
                             onClick={(e) => handleOpenModal(user, e)}
                           >
                             Configurar Permisos
@@ -214,7 +276,10 @@ export default function Permisos() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Modificar Rol de Usuario</h3>
-              <button className="modal-close-btn" onClick={() => setSelectedUser(null)}>
+              <button
+                className="modal-close-btn"
+                onClick={() => setSelectedUser(null)}
+              >
                 ✕
               </button>
             </div>
@@ -229,7 +294,9 @@ export default function Permisos() {
               <label className="modal-label">Selecciona el nuevo rol:</label>
 
               <div className="roles-options-grid">
-                <label className={`role-option-card ${tempRol === "cliente" ? "selected" : ""}`}>
+                <label
+                  className={`role-option-card ${tempRol === "cliente" ? "selected" : ""}`}
+                >
                   <input
                     type="radio"
                     name="rol"
@@ -237,14 +304,16 @@ export default function Permisos() {
                     checked={tempRol === "cliente"}
                     onChange={(e) => setTempRol(e.target.value)}
                   />
-                  <span className="role-icon">👤</span>
+                  <span className="role-icon"><FaUser aria-hidden="true" /></span>
                   <div>
                     <strong>Cliente</strong>
                     <small>Acceso estándar para compras y pedidos</small>
                   </div>
                 </label>
 
-                <label className={`role-option-card ${tempRol === "repartidor" ? "selected" : ""}`}>
+                <label
+                  className={`role-option-card ${tempRol === "repartidor" ? "selected" : ""}`}
+                >
                   <input
                     type="radio"
                     name="rol"
@@ -252,14 +321,16 @@ export default function Permisos() {
                     checked={tempRol === "repartidor"}
                     onChange={(e) => setTempRol(e.target.value)}
                   />
-                  <span className="role-icon">🛵</span>
+                  <span className="role-icon"><FaMotorcycle aria-hidden="true" /></span>
                   <div>
                     <strong>Repartidor</strong>
                     <small>Gestión y entrega de pedidos asignados</small>
                   </div>
                 </label>
 
-                <label className={`role-option-card ${tempRol === "administrador" ? "selected" : ""}`}>
+                <label
+                  className={`role-option-card ${tempRol === "administrador" ? "selected" : ""}`}
+                >
                   <input
                     type="radio"
                     name="rol"
@@ -267,7 +338,7 @@ export default function Permisos() {
                     checked={tempRol === "administrador"}
                     onChange={(e) => setTempRol(e.target.value)}
                   />
-                  <span className="role-icon">👑</span>
+                  <span className="role-icon"><FaCrown aria-hidden="true" /></span>
                   <div>
                     <strong>Administrador</strong>
                     <small>Control total sobre menú, pedidos y permisos</small>
@@ -276,7 +347,11 @@ export default function Permisos() {
               </div>
 
               <div className="modal-actions-row">
-                <button type="button" className="btn-modal-cancel" onClick={() => setSelectedUser(null)}>
+                <button
+                  type="button"
+                  className="btn-modal-cancel"
+                  onClick={() => setSelectedUser(null)}
+                >
                   Cancelar
                 </button>
                 <button type="submit" className="btn-modal-save">

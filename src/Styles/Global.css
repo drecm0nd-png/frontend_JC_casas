@@ -123,13 +123,6 @@ ol {
   Úsalas en tus contenedores de React para controlar pantallas enteras
    ========================================================== */
 
-/* Contenedor principal de cualquier pantalla */
-.page-layout {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--page-padding);
-}
-
 /* Grilla de tarjetas o secciones: se acomodan solas sin @media queries */
 .auto-grid {
   display: grid;

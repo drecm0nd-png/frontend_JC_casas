@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaBowlFood, FaDrumstickBite, FaBowlRice, FaTriangleExclamation, FaPen, FaTrash, FaFolderOpen } from "react-icons/fa6";
 import "./InventarioM.css";
 
 const INITIAL_ITEMS = [
@@ -62,7 +63,7 @@ export default function InventarioM() {
   const [tempNombre, setTempNombre] = useState("");
   const [tempDesc, setTempDesc] = useState("");
   const [tempCategoria, setTempCategoria] = useState("Principio");
-  const [tempIcono, setTempIcono] = useState("🍲");
+  const [tempIcono, setTempIcono] = useState("Principio");
 
   // Estados para el Modal de Añadir Nuevo Elemento
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -75,8 +76,12 @@ export default function InventarioM() {
   const [deletingId, setDeletingId] = useState(null);
 
   const totalElementos = items.length;
-  const disponibles = items.filter((item) => item.disponible && item.cantidad > 0).length;
-  const pocoStock = items.filter((item) => item.cantidad <= 5 || !item.disponible).length;
+  const disponibles = items.filter(
+    (item) => item.disponible && item.cantidad > 0,
+  ).length;
+  const pocoStock = items.filter(
+    (item) => item.cantidad <= 5 || !item.disponible,
+  ).length;
 
   const updateCantidad = (id, delta, e) => {
     e.stopPropagation();
@@ -91,7 +96,7 @@ export default function InventarioM() {
           };
         }
         return item;
-      })
+      }),
     );
   };
 
@@ -99,8 +104,8 @@ export default function InventarioM() {
     e.stopPropagation();
     setItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, disponible: !item.disponible } : item
-      )
+        item.id === id ? { ...item, disponible: !item.disponible } : item,
+      ),
     );
   };
 
@@ -131,7 +136,8 @@ export default function InventarioM() {
     setTempNombre(item.nombre);
     setTempDesc(item.descripcion);
     setTempCategoria(item.categoria);
-    const iconoActual = item.categoria === "Principio" ? "🍲" : item.categoria === "Proteína" ? "🥩" : "🍚";
+    const iconoActual =
+      item.categoria;
     setTempIcono(iconoActual);
   };
 
@@ -140,14 +146,14 @@ export default function InventarioM() {
     setItems((prev) =>
       prev.map((item) =>
         item.id === editingItem.id
-          ? { 
-              ...item, 
-              nombre: tempNombre, 
-              descripcion: tempDesc, 
-              categoria: tempCategoria 
+          ? {
+              ...item,
+              nombre: tempNombre,
+              descripcion: tempDesc,
+              categoria: tempCategoria,
             }
-          : item
-      )
+          : item,
+      ),
     );
     setEditingItem(null);
   };
@@ -179,10 +185,14 @@ export default function InventarioM() {
         <div>
           <h2 className="inventario-title">Inventario de Componentes</h2>
           <p className="inventario-desc">
-            Gestiona la disponibilidad y stock de los componentes del menú. Haz clic en una tarjeta para ver opciones.
+            Gestiona la disponibilidad y stock de los componentes del menú. Haz
+            clic en una tarjeta para ver opciones.
           </p>
         </div>
-        <button className="btn-add-element" onClick={() => setIsAddModalOpen(true)}>
+        <button
+          className="btn-add-element"
+          onClick={() => setIsAddModalOpen(true)}
+        >
           <span>+</span> Añadir nuevo elemento
         </button>
       </div>
@@ -190,7 +200,7 @@ export default function InventarioM() {
       {/* Tarjetas de Métricas */}
       <div className="metrics-grid">
         <div className="metric-card">
-          <div className="metric-icon blue">🍲</div>
+          <div className="metric-icon blue"><FaBowlFood aria-hidden="true" /></div>
           <div className="metric-info">
             <span className="metric-label">Total Componentes</span>
             <strong className="metric-value">{totalElementos}</strong>
@@ -204,7 +214,7 @@ export default function InventarioM() {
           </div>
         </div>
         <div className="metric-card">
-          <div className="metric-icon orange">⚠️</div>
+          <div className="metric-icon orange"><FaTriangleExclamation aria-hidden="true" /></div>
           <div className="metric-info">
             <span className="metric-label">Poco Stock / Agotados</span>
             <strong className="metric-value">{pocoStock}</strong>
@@ -234,17 +244,17 @@ export default function InventarioM() {
           {itemsFiltrados.map((item) => {
             const isExpanded = expandedId === item.id;
             return (
-              <div 
-                key={item.id} 
+              <div
+                key={item.id}
                 className={`accordion-card ${isExpanded ? "expanded" : ""}`}
                 onClick={() => toggleExpand(item.id)}
               >
                 <div className="card-summary-row">
                   <div className="element-detail">
                     <div className="element-avatar">
-                      {item.categoria === "Principio" && "🍲"}
-                      {item.categoria === "Proteína" && "🥩"}
-                      {item.categoria === "Acompañamiento" && "🍚"}
+                      {item.categoria === "Principio" && <FaBowlFood aria-hidden="true" />}
+                      {item.categoria === "Proteína" && <FaDrumstickBite aria-hidden="true" />}
+                      {item.categoria === "Acompañamiento" && <FaBowlRice aria-hidden="true" />}
                     </div>
                     <div>
                       <strong className="element-name">{item.nombre}</strong>
@@ -253,7 +263,9 @@ export default function InventarioM() {
                   </div>
 
                   <div className="card-summary-badges">
-                    <span className={`badge-cat ${item.categoria.toLowerCase()}`}>
+                    <span
+                      className={`badge-cat ${item.categoria.toLowerCase()}`}
+                    >
                       {item.categoria}
                     </span>
                     <button
@@ -261,42 +273,57 @@ export default function InventarioM() {
                       className={`status-badge ${item.disponible && item.cantidad > 0 ? "available" : "unavailable"}`}
                       onClick={(e) => toggleDisponible(item.id, e)}
                     >
-                      {item.disponible && item.cantidad > 0 ? "Disponible" : "Agotado"}
+                      {item.disponible && item.cantidad > 0
+                        ? "Disponible"
+                        : "Agotado"}
                     </button>
-                    <span className="expand-chevron">{isExpanded ? "▲" : "▼"}</span>
+                    <span className="expand-chevron">
+                      {isExpanded ? "▲" : "▼"}
+                    </span>
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="card-dropdown-content" onClick={(e) => e.stopPropagation()}>
+                  <div
+                    className="card-dropdown-content"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <div className="dropdown-divider"></div>
-                    
+
                     <div className="dropdown-controls-grid">
                       <div className="control-group">
                         <span className="control-label">Cantidad en Stock</span>
                         <div className="quantity-control">
-                          <button onClick={(e) => updateCantidad(item.id, -1, e)}>-</button>
+                          <button
+                            onClick={(e) => updateCantidad(item.id, -1, e)}
+                          >
+                            -
+                          </button>
                           <span>{item.cantidad}</span>
-                          <button onClick={(e) => updateCantidad(item.id, 1, e)}>+</button>
+                          <button
+                            onClick={(e) => updateCantidad(item.id, 1, e)}
+                          >
+                            +
+                          </button>
                         </div>
                       </div>
 
                       <div className="control-group actions-group">
                         <span className="control-label">Acciones</span>
                         <div className="action-buttons">
-                          <button 
-                            className="btn-icon edit" 
+                          <button
+                            className="btn-icon edit"
                             title="Editar"
                             onClick={(e) => handleEditClick(item, e)}
                           >
-                            ✏️ Editar
+                            <FaPen aria-hidden="true" /> Editar
                           </button>
-                          <button 
-                            className="btn-icon delete" 
+                          <button
+                            className="btn-icon delete"
                             title="Eliminar"
                             onClick={(e) => handleDeleteClick(item.id, e)}
                           >
-                            🗑️ Eliminar
+                            <FaTrash aria-hidden="true" /> Eliminar
                           </button>
                         </div>
                       </div>
@@ -315,35 +342,40 @@ export default function InventarioM() {
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Añadir Nuevo Elemento</h3>
-              <button className="modal-close-btn" onClick={() => setIsAddModalOpen(false)}>✕</button>
+              <button
+                className="modal-close-btn"
+                onClick={() => setIsAddModalOpen(false)}
+              >
+                ✕
+              </button>
             </div>
             <form onSubmit={handleAddSubmit} className="modal-form">
               <div className="form-group">
                 <label>Nombre del elemento:</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Ej. Sancocho de Gallina"
-                  value={newNombre} 
-                  onChange={(e) => setNewNombre(e.target.value)} 
-                  required 
+                  value={newNombre}
+                  onChange={(e) => setNewNombre(e.target.value)}
+                  required
                 />
               </div>
 
               <div className="form-group">
                 <label>Descripción / Detalle:</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Ej. Caldo tradicional con presa"
-                  value={newDesc} 
-                  onChange={(e) => setNewDesc(e.target.value)} 
-                  required 
+                  value={newDesc}
+                  onChange={(e) => setNewDesc(e.target.value)}
+                  required
                 />
               </div>
 
               <div className="form-group">
                 <label>Categoría:</label>
-                <select 
-                  value={newCategoria} 
+                <select
+                  value={newCategoria}
                   onChange={(e) => setNewCategoria(e.target.value)}
                   className="modal-select"
                 >
@@ -355,17 +387,21 @@ export default function InventarioM() {
 
               <div className="form-group">
                 <label>Cantidad Inicial en Stock:</label>
-                <input 
-                  type="number" 
+                <input
+                  type="number"
                   min="0"
-                  value={newCantidad} 
-                  onChange={(e) => setNewCantidad(e.target.value)} 
-                  required 
+                  value={newCantidad}
+                  onChange={(e) => setNewCantidad(e.target.value)}
+                  required
                 />
               </div>
 
               <div className="modal-actions">
-                <button type="button" className="btn-secondary" onClick={() => setIsAddModalOpen(false)}>
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => setIsAddModalOpen(false)}
+                >
                   Cancelar
                 </button>
                 <button type="submit" className="btn-primary">
@@ -383,40 +419,43 @@ export default function InventarioM() {
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Editar Elemento</h3>
-              <button className="modal-close-btn" onClick={() => setEditingItem(null)}>✕</button>
+              <button
+                className="modal-close-btn"
+                onClick={() => setEditingItem(null)}
+              >
+                ✕
+              </button>
             </div>
             <form onSubmit={handleSaveEdit} className="modal-form">
               <div className="form-group">
                 <label>Nombre del elemento:</label>
-                <input 
-                  type="text" 
-                  value={tempNombre} 
-                  onChange={(e) => setTempNombre(e.target.value)} 
-                  required 
+                <input
+                  type="text"
+                  value={tempNombre}
+                  onChange={(e) => setTempNombre(e.target.value)}
+                  required
                 />
               </div>
 
               <div className="form-group">
                 <label>Descripción / Detalle:</label>
-                <input 
-                  type="text" 
-                  value={tempDesc} 
-                  onChange={(e) => setTempDesc(e.target.value)} 
-                  required 
+                <input
+                  type="text"
+                  value={tempDesc}
+                  onChange={(e) => setTempDesc(e.target.value)}
+                  required
                 />
               </div>
 
               <div className="form-row-dual">
                 <div className="form-group">
                   <label>Categoría:</label>
-                  <select 
-                    value={tempCategoria} 
+                  <select
+                    value={tempCategoria}
                     onChange={(e) => {
                       const nuevaCat = e.target.value;
                       setTempCategoria(nuevaCat);
-                      if (nuevaCat === "Principio") setTempIcono("🍲");
-                      else if (nuevaCat === "Proteína") setTempIcono("🥩");
-                      else if (nuevaCat === "Acompañamiento") setTempIcono("🍚");
+                      setTempIcono(nuevaCat);
                     }}
                     className="modal-select"
                   >
@@ -429,22 +468,37 @@ export default function InventarioM() {
                 <div className="form-group">
                   <label>Imagen / Icono (Mock):</label>
                   <div className="image-mock-selector">
-                    <span className="mock-preview-icon">{tempIcono}</span>
-                    <input 
-                      type="file" 
-                      id="upload-file-mock" 
+                    <span className="mock-preview-icon">
+                      {tempIcono === "Principio" && <FaBowlFood aria-hidden="true" />}
+                      {tempIcono === "Proteína" && <FaDrumstickBite aria-hidden="true" />}
+                      {tempIcono === "Acompañamiento" && <FaBowlRice aria-hidden="true" />}
+                    </span>
+                    <input
+                      type="file"
+                      id="upload-file-mock"
                       style={{ display: "none" }}
-                      onChange={() => alert("Función de subida de imagen simulada correctamente.")}
+                      onChange={() =>
+                        alert(
+                          "Función de subida de imagen simulada correctamente.",
+                        )
+                      }
                     />
-                    <label htmlFor="upload-file-mock" className="btn-upload-mock">
-                      📁 Cambiar
+                    <label
+                      htmlFor="upload-file-mock"
+                      className="btn-upload-mock"
+                    >
+                      <FaFolderOpen aria-hidden="true" /> Cambiar
                     </label>
                   </div>
                 </div>
               </div>
 
               <div className="modal-actions">
-                <button type="button" className="btn-secondary" onClick={() => setEditingItem(null)}>
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => setEditingItem(null)}
+                >
                   Cancelar
                 </button>
                 <button type="submit" className="btn-primary">
@@ -459,15 +513,29 @@ export default function InventarioM() {
       {/* ================= MODAL DE CONFIRMACIÓN DE ELIMINACIÓN ================= */}
       {deletingId !== null && (
         <div className="modal-overlay" onClick={() => setDeletingId(null)}>
-          <div className="modal-card confirm-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="confirm-icon">⚠️</div>
+          <div
+            className="modal-card confirm-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="confirm-icon"><FaTriangleExclamation aria-hidden="true" /></div>
             <h3>¿Estás seguro que deseas eliminar este elemento?</h3>
-            <p>Esta acción no se puede deshacer y el componente se borrará del menú.</p>
+            <p>
+              Esta acción no se puede deshacer y el componente se borrará del
+              menú.
+            </p>
             <div className="modal-actions">
-              <button type="button" className="btn-secondary" onClick={() => setDeletingId(null)}>
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={() => setDeletingId(null)}
+              >
                 Cancelar
               </button>
-              <button type="button" className="btn-danger" onClick={confirmDelete}>
+              <button
+                type="button"
+                className="btn-danger"
+                onClick={confirmDelete}
+              >
                 Sí, eliminar
               </button>
             </div>

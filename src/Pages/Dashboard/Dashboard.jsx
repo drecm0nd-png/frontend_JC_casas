@@ -9,7 +9,10 @@ function Dashboard() {
       <p className="page-eyebrow">Área protegida de demostración</p>
       <h1 id="dashboard-title">Panel</h1>
       <p>Sesión local activa{user?.name ? ` para ${user.name}` : ""}.</p>
-      <p>Este panel es una estructura inicial; todavía no contiene funciones de negocio.</p>
+      <p>
+        Este panel es una estructura inicial; todavía no contiene funciones de
+        negocio.
+      </p>
       <LogoutButton />
     </section>
   );

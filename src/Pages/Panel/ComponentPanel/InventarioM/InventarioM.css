@@ -7,8 +7,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Header */
@@ -83,7 +89,9 @@
   align-items: center;
   gap: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .metric-card:hover {
@@ -103,9 +111,18 @@
   flex-shrink: 0;
 }
 
-.metric-icon.blue { background-color: #eaf3ff; color: #2b6cb0; }
-.metric-icon.green { background-color: #e6f4ea; color: #1e7e34; }
-.metric-icon.orange { background-color: #fef3d6; color: #b7791f; }
+.metric-icon.blue {
+  background-color: #eaf3ff;
+  color: #2b6cb0;
+}
+.metric-icon.green {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+}
+.metric-icon.orange {
+  background-color: #fef3d6;
+  color: #b7791f;
+}
 
 .metric-info {
   display: flex;
@@ -270,9 +287,21 @@
   display: inline-block;
 }
 
-.badge-cat.principio { background-color: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; }
-.badge-cat.proteína { background-color: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
-.badge-cat.acompañamiento { background-color: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+.badge-cat.principio {
+  background-color: #eef2ff;
+  color: #4f46e5;
+  border: 1px solid #c7d2fe;
+}
+.badge-cat.proteína {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+.badge-cat.acompañamiento {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
 
 .status-badge {
   border: 1px solid transparent;
@@ -303,8 +332,14 @@
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dropdown-divider {
@@ -401,13 +436,13 @@
   transition: all 0.2s ease;
 }
 
-.btn-icon.edit:hover { 
-  background-color: #e2e8f0; 
+.btn-icon.edit:hover {
+  background-color: #e2e8f0;
   border-color: #cbd5e1;
 }
 
-.btn-icon.delete:hover { 
-  background-color: #ffeeec; 
+.btn-icon.delete:hover {
+  background-color: #ffeeec;
   border-color: #fecaca;
   color: #dc2626;
 }
@@ -498,8 +533,12 @@
 }
 
 @keyframes fadeInModal {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-card {
@@ -517,8 +556,14 @@
 }
 
 @keyframes scaleUpModal {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .modal-header {

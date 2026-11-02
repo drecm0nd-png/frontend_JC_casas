@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../../Components/Footer/Footer.jsx";
+import { FaStopwatch } from "react-icons/fa6";
 import "./Menu.css";
 
 export default function Menu() {
@@ -13,22 +13,25 @@ export default function Menu() {
 
   return (
     <div className="menu-page-container">
-      <main className="menu-main-content">
-        
+      <div className="menu-main-content">
         {/* Banner interactivo de Estado del Pedido que redirige a /pedidos */}
-        <button 
-          type="button" 
+        <button
+          type="button"
           className="order-status-banner-btn"
           onClick={() => navigate("/pedidos")}
         >
           <div className="banner-content">
-            <span className="banner-icon" role="img" aria-label="Reloj">⏱️</span>
+            <span className="banner-icon" aria-hidden="true">
+              <FaStopwatch />
+            </span>
             <div className="banner-text">
               <strong>Tu pedido va en camino</strong>
               <small>Tiempo estimado de llegada: 10 a 15 min</small>
             </div>
           </div>
-          <span className="banner-arrow" aria-hidden="true">&gt;</span>
+          <span className="banner-arrow" aria-hidden="true">
+            &gt;
+          </span>
         </button>
 
         {/* Banner Destacado del Almuerzo Tradicional */}
@@ -46,7 +49,6 @@ export default function Menu() {
 
         {/* SECCIÓN AGRUPADA DE INGREDIENTES CON DEGRADADO Y ENCABEZADOS */}
         <section className="horizontal-section-group-3">
-          
           {/* Título de la sección para dar contexto */}
           <div className="lunch-section-title-wrapper">
             <h3>Componentes de tu almuerzo</h3>
@@ -61,7 +63,7 @@ export default function Menu() {
             </div>
 
             {/* Botón interactivo visible en móvil */}
-            <button 
+            <button
               type="button"
               className={`category-toggle-btn ${openPrincipio ? "is-open" : ""}`}
               onClick={() => setOpenPrincipio(!openPrincipio)}
@@ -71,7 +73,9 @@ export default function Menu() {
             </button>
 
             {/* Cuadrícula de tarjetas */}
-            <div className={`cards-grid-vertical ${openPrincipio ? "is-expanded" : ""}`}>
+            <div
+              className={`cards-grid-vertical ${openPrincipio ? "is-expanded" : ""}`}
+            >
               <div className="mini-card">
                 <div className="mini-card-img">Fríjoles</div>
                 <div className="mini-card-body">
@@ -99,7 +103,7 @@ export default function Menu() {
             </div>
 
             {/* Botón interactivo visible en móvil */}
-            <button 
+            <button
               type="button"
               className={`category-toggle-btn ${openProteina ? "is-open" : ""}`}
               onClick={() => setOpenProteina(!openProteina)}
@@ -109,7 +113,9 @@ export default function Menu() {
             </button>
 
             {/* Cuadrícula de tarjetas */}
-            <div className={`cards-grid-vertical ${openProteina ? "is-expanded" : ""}`}>
+            <div
+              className={`cards-grid-vertical ${openProteina ? "is-expanded" : ""}`}
+            >
               <div className="mini-card">
                 <div className="mini-card-img">Carne</div>
                 <div className="mini-card-body">
@@ -137,7 +143,7 @@ export default function Menu() {
             </div>
 
             {/* Botón interactivo visible en móvil */}
-            <button 
+            <button
               type="button"
               className={`category-toggle-btn ${openAcompanamiento ? "is-open" : ""}`}
               onClick={() => setOpenAcompanamiento(!openAcompanamiento)}
@@ -147,7 +153,9 @@ export default function Menu() {
             </button>
 
             {/* Cuadrícula de tarjetas */}
-            <div className={`cards-grid-vertical ${openAcompanamiento ? "is-expanded" : ""}`}>
+            <div
+              className={`cards-grid-vertical ${openAcompanamiento ? "is-expanded" : ""}`}
+            >
               <div className="mini-card">
                 <div className="mini-card-img">Arroz</div>
                 <div className="mini-card-body">
@@ -165,7 +173,6 @@ export default function Menu() {
               </div>
             </div>
           </div>
-
         </section>
 
         {/* ADICIONALES: SOPAS Y ENSALADAS */}
@@ -251,8 +258,7 @@ export default function Menu() {
             </div>
           </div>
         </section>
-
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,34 +1,77 @@
 import { useState } from "react";
+import { FaPrint, FaFileLines, FaMoneyBillWave, FaReceipt } from "react-icons/fa6";
 import "./Impresion.css";
 
 // Historial de ejemplo con fechas y montos
+
 const HISTORIAL_IMPRESIONES = [
-  { id: "CMD-1042", fecha: "2026-10-27", hora: "14:30", cliente: "Carlos Mendoza", items: "2x Sopa de Ajiaco, 1x Jugo Natural", total: 20000, impresora: "Impresora Cocina 1 (EPSON TM-T20)", estado: "Impreso" },
-  { id: "CMD-1041", fecha: "2026-10-27", hora: "13:15", cliente: "Laura Restrepo", items: "1x Sopa de Sancocho, 1x Limonada", total: 13000, impresora: "Impresora Barra ( térmica)", estado: "Impreso" },
-  { id: "CMD-1040", fecha: "2026-10-27", hora: "12:05", cliente: "Alejandro Torres", items: "3x Ensalada Especial, 2x Gaseosas", total: 26500, impresora: "Impresora Cocina 1 (EPSON TM-T20)", estado: "Impreso" },
-  { id: "CMD-1039", fecha: "2026-10-26", hora: "20:40", cliente: "Mariana Gómez", items: "1x Sopa de Ajiaco, 1x Cerveza", total: 12500, impresora: "Impresora Barra ( térmica)", estado: "Impreso" },
+  {
+    id: "CMD-1042",
+    fecha: "2026-10-27",
+    hora: "14:30",
+    cliente: "Carlos Mendoza",
+    items: "2x Sopa de Ajiaco, 1x Jugo Natural",
+    total: 20000,
+    impresora: "Impresora Cocina 1 (EPSON TM-T20)",
+    estado: "Impreso",
+  },
+  {
+    id: "CMD-1041",
+    fecha: "2026-10-27",
+    hora: "13:15",
+    cliente: "Laura Restrepo",
+    items: "1x Sopa de Sancocho, 1x Limonada",
+    total: 13000,
+    impresora: "Impresora Barra ( térmica)",
+    estado: "Impreso",
+  },
+  {
+    id: "CMD-1040",
+    fecha: "2026-10-27",
+    hora: "12:05",
+    cliente: "Alejandro Torres",
+    items: "3x Ensalada Especial, 2x Gaseosas",
+    total: 26500,
+    impresora: "Impresora Cocina 1 (EPSON TM-T20)",
+    estado: "Impreso",
+  },
+  {
+    id: "CMD-1039",
+    fecha: "2026-10-26",
+    hora: "20:40",
+    cliente: "Mariana Gómez",
+    items: "1x Sopa de Ajiaco, 1x Cerveza",
+    total: 12500,
+    impresora: "Impresora Barra ( térmica)",
+    estado: "Impreso",
+  },
 ];
 
 const DISPOSITIVOS_DISPONIBLES = [
   "Impresora Cocina 1 (EPSON TM-T20)",
   "Impresora Barra ( térmica)",
   "Impresora Caja Principal (Bluetooth)",
-  "Impresora Secundaria Cocina"
+  "Impresora Secundaria Cocina",
 ];
 
 export default function Impresion() {
-  const [impresoraSeleccionada, setImpresoraSeleccionada] = useState(DISPOSITIVOS_DISPONIBLES[0]);
+  const [impresoraSeleccionada, setImpresoraSeleccionada] = useState(
+    DISPOSITIVOS_DISPONIBLES[0],
+  );
   // Fecha actual por defecto en formato YYYY-MM-DD
   const [fechaFiltro, setFechaFiltro] = useState("2026-10-27");
   const [expandedCardId, setExpandedCardId] = useState(null);
 
   // Filtrar impresiones según la fecha seleccionada
   const impresionesDelDia = HISTORIAL_IMPRESIONES.filter(
-    (item) => item.fecha === fechaFiltro
+    (item) => item.fecha === fechaFiltro,
   );
 
   // Calcular el valor total de las ventas de ese día
-  const totalVentasDia = impresionesDelDia.reduce((acc, item) => acc + item.total, 0);
+  const totalVentasDia = impresionesDelDia.reduce(
+    (acc, item) => acc + item.total,
+    0,
+  );
   const totalImpresionesDia = impresionesDelDia.length;
 
   const toggleExpand = (id) => {
@@ -46,7 +89,8 @@ export default function Impresion() {
         <div>
           <h2 className="impresion-title">Impresión y Comandas</h2>
           <p className="impresion-desc">
-            Configura el dispositivo de salida y consulta el historial de comandas impresas junto con el total de ventas.
+            Configura el dispositivo de salida y consulta el historial de
+            comandas impresas junto con el total de ventas.
           </p>
         </div>
       </div>
@@ -54,9 +98,11 @@ export default function Impresion() {
       {/* Configuración de Dispositivo */}
       <div className="printer-config-card">
         <div className="printer-config-info">
-          <span className="printer-icon">🖨️</span>
+          <span className="printer-icon"><FaPrint aria-hidden="true" /></span>
           <div>
-            <span className="metric-label">Dispositivo Activo para Comandas</span>
+            <span className="metric-label">
+              Dispositivo Activo para Comandas
+            </span>
             <select
               className="printer-select"
               value={impresoraSeleccionada}
@@ -78,14 +124,14 @@ export default function Impresion() {
       {/* Tarjetas de Métricas del Día */}
       <div className="metrics-grid">
         <div className="metric-card">
-          <div className="metric-icon-box">📄</div>
+          <div className="metric-icon-box"><FaFileLines aria-hidden="true" /></div>
           <div>
             <span className="metric-label">Comandas Impresas (Día)</span>
             <h3 className="metric-value">{totalImpresionesDia}</h3>
           </div>
         </div>
         <div className="metric-card">
-          <div className="metric-icon-box success">💰</div>
+          <div className="metric-icon-box success"><FaMoneyBillWave aria-hidden="true" /></div>
           <div>
             <span className="metric-label">Valor Total Ventas (Día)</span>
             <h3 className="metric-value">${totalVentasDia.toLocaleString()}</h3>
@@ -96,7 +142,9 @@ export default function Impresion() {
       {/* Barra de Filtro por Día */}
       <div className="catalog-toolbar">
         <div className="filter-date-group">
-          <label htmlFor="fecha-input" className="filter-date-label">Filtrar por Fecha:</label>
+          <label htmlFor="fecha-input" className="filter-date-label">
+            Filtrar por Fecha:
+          </label>
           <input
             id="fecha-input"
             type="date"
@@ -123,22 +171,33 @@ export default function Impresion() {
                   key={item.id}
                   className={`item-card-accordion ${isExpanded ? "expanded" : ""}`}
                 >
-                  <div className="item-card-header" onClick={() => toggleExpand(item.id)}>
+                  <div
+                    className="item-card-header"
+                    onClick={() => toggleExpand(item.id)}
+                  >
                     <div className="item-info-left">
-                      <div className="item-avatar-box">🧾</div>
+                      <div className="item-avatar-box"><FaReceipt aria-hidden="true" /></div>
                       <div>
                         <div className="item-meta-row">
                           <span className="item-id-tag">{item.id}</span>
-                          <span className="item-email-tag">{item.fecha} - {item.hora}</span>
+                          <span className="item-email-tag">
+                            {item.fecha} - {item.hora}
+                          </span>
                         </div>
                         <h4 className="item-name">{item.cliente}</h4>
                       </div>
                     </div>
 
                     <div className="item-info-right">
-                      <span className="price-tag-view">${item.total.toLocaleString()}</span>
+                      <span className="price-tag-view">
+                        ${item.total.toLocaleString()}
+                      </span>
                       <span className="status-pill active">{item.estado}</span>
-                      <span className={`chevron-arrow ${isExpanded ? "rotate" : ""}`}>▼</span>
+                      <span
+                        className={`chevron-arrow ${isExpanded ? "rotate" : ""}`}
+                      >
+                        ▼
+                      </span>
                     </div>
                   </div>
 
@@ -148,13 +207,26 @@ export default function Impresion() {
                       <div className="dropdown-content-grid">
                         <div>
                           <strong>Detalle de Productos en Comanda:</strong>
-                          <p style={{ margin: "0.3rem 0 0 0", color: "#726555", fontSize: "0.85rem" }}>
+                          <p
+                            style={{
+                              margin: "0.3rem 0 0 0",
+                              color: "#726555",
+                              fontSize: "0.85rem",
+                            }}
+                          >
                             {item.items}
                           </p>
                         </div>
                         <div>
                           <strong>Dispositivo de Salida:</strong>
-                          <p style={{ margin: "0.3rem 0 0 0", color: "#bd732f", fontSize: "0.82rem", fontWeight: "700" }}>
+                          <p
+                            style={{
+                              margin: "0.3rem 0 0 0",
+                              color: "#bd732f",
+                              fontSize: "0.82rem",
+                              fontWeight: "700",
+                            }}
+                          >
                             {item.impresora}
                           </p>
                         </div>
@@ -166,7 +238,10 @@ export default function Impresion() {
             })
           ) : (
             <div className="empty-catalog-box">
-              <p>No se encontraron impresiones ni ventas registradas para la fecha {fechaFiltro}.</p>
+              <p>
+                No se encontraron impresiones ni ventas registradas para la
+                fecha {fechaFiltro}.
+              </p>
             </div>
           )}
         </div>

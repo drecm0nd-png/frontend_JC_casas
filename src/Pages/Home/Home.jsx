@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Button from "../../Components/Button/Button.jsx";
 import MealSections from "../../Components/MealSections/MealSections.jsx";
 import Logo from "../../assets/img/logo.png";
@@ -8,10 +7,12 @@ function Home() {
   function scrollToLunch() {
     const lunchSection = document.getElementById("menu");
     const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    lunchSection?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    lunchSection?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
   }
 
   return (
@@ -32,8 +33,15 @@ function Home() {
       </section>
 
       {/* Sección intermedia (puedes decidir si mantenerla o no) */}
-      <section className="home-food-section" aria-label="Fotografía del restaurante">
-        <div className="home-food-placeholder" role="img" aria-label="Fotografía de plato pendiente de un recurso aprobado">
+      <section
+        className="home-food-section"
+        aria-label="Fotografía del restaurante"
+      >
+        <div
+          className="home-food-placeholder"
+          role="img"
+          aria-label="Fotografía de plato pendiente de un recurso aprobado"
+        >
           <span>Fotografía de plato pendiente de recurso aprobado</span>
         </div>
       </section>
@@ -51,9 +59,7 @@ function Home() {
             Estamos preparando nuestro espacio digital para compartir contigo la
             historia y la propuesta gastronómica del restaurante JC Casas.
           </p>
-          <p>
-            Esta es la página de inicio de la primera etapa del proyecto.
-          </p>
+          <p>Esta es la página de inicio de la primera etapa del proyecto.</p>
         </div>
         <img className="home-about-logo" src={Logo} alt="Logo de JC Casas" />
       </section>
@@ -70,4 +76,3 @@ function Home() {
 }
 
 export default Home;
-
