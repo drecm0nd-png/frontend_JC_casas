@@ -6,15 +6,22 @@
      ========================================================== */
   --color-background: #fffdf7; /* Fondo general */
 
-  --color-auth-surface: #ffffff;
-  --color-auth-button: #c78e4b;
-  --color-auth-text: #3a1f00;
+  --color-auth-surface: #fffdf7;
+  --color-auth-button: #3a1f00;
+  --color-auth-text: #291600;
   --color-header: #6b3a1f; /* Encabezado y pie de página */
   --color-card: #f5eddd; /* Tarjetas y hero */
-  --color-accent: #d96b43; /* Acentos y detalles */
-  --color-button-primary: #c4832a; /* Botón principal */
-  --color-text: #3a1f00; /* Texto general */
+  --color-accent: #a1634d; /* Acentos y detalles */
+  --color-button-primary: #3a1f00; /* Botón principal */
+  --color-text: #291600; /* Texto general */
+  --color-text-inverse: #fffdf7; /* Texto sobre fondos oscuros */
   --color-stroke: #6b3a1f80; /* Bordes y líneas (50% de opacidad) */
+
+  /* Colores semánticos para estados */
+  --color-success: #16a34a;
+  --color-warning: #b7791f;
+  --color-error: #dc2626;
+  --color-info: #2b6cb0;
 
   /* ==========================================================
     FAMILIA TIPOGRÁFICA

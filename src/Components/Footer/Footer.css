@@ -58,7 +58,7 @@
 }
 
 .footer-social a {
-  color: #000;
+  color: var(--color-text);
 }
 
 .footer-social svg {

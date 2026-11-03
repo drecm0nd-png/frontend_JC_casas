@@ -1,10 +1,10 @@
 .panel-page-container {
   width: 100%;
-  background-color: #faf7f2;
+  background-color: var(--color-background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #333333;
+  color: var(--color-text);
 }
 
 .panel-main-content {
@@ -23,8 +23,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f1e5;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-stroke);
   padding: 0.8rem 1.5rem;
   border-radius: 10px;
 }
@@ -36,7 +36,7 @@
 }
 
 .panel-logo-icon {
-  background-color: #ffffff;
+  background-color: var(--color-text-inverse);
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -49,11 +49,11 @@
 .panel-brand-name {
   font-weight: 800;
   font-size: 1.1rem;
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 .panel-badge-admin {
-  background: linear-gradient(135deg, #df9b52, #bd732f);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-button-primary));
   color: white;
   padding: 0.3rem 0.9rem;
   border-radius: 20px;
@@ -81,7 +81,7 @@
 .user-avatar-placeholder {
   width: 38px;
   height: 38px;
-  background-color: #dcd0bc;
+  background-color: var(--color-card);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -96,11 +96,11 @@
 }
 
 .user-info-text strong {
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 .user-info-text small {
-  color: #726555;
+  color: var(--color-text);
   font-size: 0.75rem;
 }
 
@@ -108,7 +108,7 @@
 .panel-subnav {
   display: flex;
   gap: 1.8rem;
-  border-bottom: 1px solid #e8dbc4;
+  border-bottom: 1px solid var(--color-stroke);
   padding-bottom: 0.4rem;
   overflow-x: auto;
 }
@@ -118,7 +118,7 @@
   border: none;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #8c7a6b;
+  color: var(--color-header);
   cursor: pointer;
   padding: 0.4rem 0.2rem;
   position: relative;
@@ -127,11 +127,11 @@
 }
 
 .subnav-btn:hover {
-  color: #bd732f;
+  color: var(--color-button-primary);
 }
 
 .subnav-btn.active {
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 .subnav-btn.active::after {
@@ -141,14 +141,14 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #bd732f;
+  background-color: var(--color-button-primary);
   border-radius: 2px;
 }
 
 /* Caja de contenido */
 .panel-content-box {
-  background-color: #f8f1e5;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-stroke);
   border-radius: 12px;
   padding: 2rem;
   text-align: left;
@@ -159,13 +159,13 @@
 .section-title {
   font-size: 1.8rem;
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   margin-bottom: 0.4rem;
 }
 
 .section-desc {
   font-size: 0.95rem;
-  color: #726555;
+  color: var(--color-text);
 }
 
 /* Contenedor principal que alinea horizontalmente las flechas y el menú */
@@ -181,8 +181,8 @@
 .panel-subnav {
   display: flex;
   gap: 0.8rem;
-  background-color: #f2e6d0;
-  border: 1px solid #e0d0b5;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-stroke);
   padding: 0.5rem;
   border-radius: 14px;
   overflow-x: auto;
@@ -212,8 +212,8 @@
 @media (max-width: 768px) {
   /* En lugar de separar los bordes, conectamos las flechas a la altura de la barra */
   .panel-subnav-container {
-    background-color: #f2e6d0;
-    border: 1px solid #e0d0b5;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-stroke);
     border-radius: 14px;
     overflow: hidden; /* Garantiza que las flechas encajen exacto en las esquinas */
   }
@@ -231,8 +231,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e5d7c3; /* Tono crema sutil y coherente con el panel */
-    color: #726555; /* Mismo tono de texto que los botones inactivos */
+    background-color: var(--color-stroke); /* Tono crema sutil y coherente con el panel */
+    color: var(--color-text); /* Mismo tono de texto que los botones inactivos */
     border: none;
     width: 36px;
     align-self: stretch; /* Se estira para tener exactamente la misma altura que la barra */
@@ -245,18 +245,18 @@
   }
 
   .nav-arrow-btn.left {
-    border-right: 1px solid #e0d0b5;
+    border-right: 1px solid var(--color-stroke);
   }
 
   .nav-arrow-btn.right {
-    border-left: 1px solid #e0d0b5;
+    border-left: 1px solid var(--color-stroke);
   }
 
   /* Efecto al presionar o pasar el dedo/mouse */
   .nav-arrow-btn:active,
   .nav-arrow-btn:hover {
-    background-color: #df9b52;
-    color: #ffffff;
+    background-color: var(--color-accent);
+    color: var(--color-text-inverse);
   }
 }
 
@@ -266,7 +266,7 @@
   border: 1px solid transparent;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #726555;
+  color: var(--color-text);
   cursor: pointer;
   padding: 0.7rem 1.2rem;
   border-radius: 10px;
@@ -281,15 +281,15 @@
 
 /* Efecto al pasar el cursor (Hover) */
 .subnav-btn:hover {
-  color: #2b2b2b;
-  background-color: rgba(255, 248, 234, 0.6);
+  color: var(--color-text);
+  background-color: color-mix(in srgb, var(--color-background) 60%, transparent);
   transform: translateY(-2px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.04);
 }
 
 /* Pestaña Activa con degradado y relieve elegante */
 .subnav-btn.active {
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 /* Línea o indicador inferior dinámico para la pestaña activa */
@@ -300,6 +300,6 @@
   left: 15%;
   width: 70%;
   height: 3px;
-  background: linear-gradient(135deg, #664200, #8f7d6c);
+  background: linear-gradient(135deg, var(--color-button-primary), var(--color-header));
   border-radius: 2px 2px 0 0;
 }

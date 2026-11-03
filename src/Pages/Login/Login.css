@@ -7,7 +7,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background-color: #fff7ed;
+  background-color: var(--color-background);
   margin: 0;
   padding: 2rem 1rem;
   box-sizing: border-box;
@@ -20,7 +20,7 @@
   width: 100%;
   max-width: 1500px;
   min-height: 800px;
-  background-color: var(--color-auth-surface, #f4ecdd);
+  background-color: var(--color-auth-surface);
   border-radius: 1rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -35,7 +35,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #f4ecdd;
+  background-color: var(--color-auth-surface);
   width: 100%;
 }
 
@@ -107,7 +107,7 @@
    ========================================== */
 .tab-container {
   display: flex;
-  background-color: #f5f5f4;
+  background-color: var(--color-card);
   padding: 0.25rem;
   border-radius: 0.75rem;
   margin-top: 0.5rem;
@@ -127,13 +127,13 @@
 
 .tab-button.active {
   background-color: var(--color-auth-button);
-  color: #ffffff;
+  color: var(--color-auth-surface);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .tab-button.inactive {
   background-color: transparent;
-  color: #57534e;
+  color: var(--color-text);
 }
 
 /* ==========================================
@@ -148,7 +148,7 @@
 .form-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #292524;
+  color: var(--color-text);
 }
 
 .input-box {
@@ -156,8 +156,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
-  background-color: #fff7ed;
-  border: 1px solid #f3f4f6;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-stroke);
   border-radius: 0.75rem;
   gap: 0.75rem;
 }
@@ -227,7 +227,7 @@
   width: 100%;
   padding: 0.875rem;
   background-color: var(--color-auth-button) !important;
-  color: #ffffff !important;
+  color: var(--color-auth-surface) !important;
   opacity: 1 !important;
   font-size: 1rem;
   font-weight: 700;
@@ -239,7 +239,7 @@
 }
 
 .btn-submit:hover {
-  background-color: #a36b2b !important;
+  background-color: var(--color-button-primary) !important;
 }
 
 /* ==========================================
@@ -254,7 +254,7 @@
 .divider-line {
   flex: 1;
   height: 1px;
-  background-color: #e7e5e4;
+  background-color: var(--color-stroke);
 }
 
 .divider-text {
@@ -274,18 +274,18 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background-color: #fafaf9;
-  border: 1px solid #e7e5e4;
+  background-color: var(--color-auth-surface);
+  border: 1px solid var(--color-stroke);
   border-radius: 0.75rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #292524;
+  color: var(--color-text);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .btn-google:hover {
-  background-color: #f5f5f4;
+  background-color: var(--color-card);
 }
 
 /* ==========================================

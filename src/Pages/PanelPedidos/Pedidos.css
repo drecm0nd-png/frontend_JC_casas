@@ -3,11 +3,11 @@
    ========================================== */
 .pedidos-page-container {
   width: 100%;
-  background-color: #faf7f2; /* Coincide con el fondo general del panel */
+  background-color: var(--color-background); /* Coincide con el fondo general del panel */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #333333;
+  color: var(--color-text);
   font-family: inherit;
   animation: fadeInSubtle 0.3s ease-in-out forwards;
 }
@@ -28,8 +28,8 @@
    ========================================== */
 .pedidos-hero-banner-full {
   width: 100%;
-  background-color: #f8f1e5;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-stroke);
   border-radius: 12px;
   padding: 2.2rem 1.5rem;
   text-align: center;
@@ -49,7 +49,7 @@
 .hero-subcaption {
   font-size: 0.78rem;
   font-weight: 800;
-  color: #bd732f;
+  color: var(--color-button-primary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -57,21 +57,21 @@
 .pedidos-hero-title {
   font-size: 2rem;
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   margin: 0;
   line-height: 1.2;
 }
 
 .pedidos-hero-subtitle {
   font-size: 0.95rem;
-  color: #726555;
+  color: var(--color-text);
   margin: 0 0 1rem 0;
   max-width: 550px;
 }
 
 .pedidos-hero-inner .client-profile-chip {
-  background-color: #ffffff;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-stroke);
   padding: 0.4rem 1rem;
   border-radius: 20px;
   display: flex;
@@ -100,7 +100,7 @@
 .section-heading {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   text-align: left;
   margin: 0;
 }
@@ -109,8 +109,8 @@
     Tarjeta de Pedido Activo / Histórico
    ========================================== */
 .order-card-modern {
-  background: #ffffff;
-  border: 1px solid #e5d7c3;
+  background: var(--color-card);
+  border: 1px solid var(--color-stroke);
   border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   overflow: hidden;
@@ -119,8 +119,8 @@
 }
 
 .order-card-modern:hover {
-  border-color: #dfbc99;
-  box-shadow: 0 6px 16px rgba(189, 115, 47, 0.06);
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--color-accent) 6%, transparent);
 }
 
 .order-card-header {
@@ -129,13 +129,13 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  background-color: #fcfbfa;
+  background-color: var(--color-background);
   transition: background-color 0.2s ease;
   user-select: none;
 }
 
 .order-card-header:hover {
-  background-color: #f8f1e5;
+  background-color: var(--color-card);
 }
 
 .order-header-left {
@@ -147,7 +147,7 @@
 .order-id-tag {
   font-size: 0.72rem;
   font-weight: 800;
-  color: #8c7a6b;
+  color: var(--color-header);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -155,14 +155,14 @@
 .order-main-title {
   font-size: 1.1rem;
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   margin: 0;
 }
 
 .order-summary-price {
   font-size: 1rem;
   font-weight: 800;
-  color: #bd732f;
+  color: var(--color-button-primary);
   margin-top: 0.1rem;
 }
 
@@ -174,8 +174,8 @@
 
 /* Badge de Estado */
 .status-badge-pill {
-  background-color: #fef3d6;
-  color: #92400e;
+  background-color: color-mix(in srgb, var(--color-warning) 18%, var(--color-background));
+  color: var(--color-warning);
   font-size: 0.72rem;
   font-weight: 800;
   padding: 0.3rem 0.8rem;
@@ -184,21 +184,21 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  border: 1px solid #fde68a;
-  box-shadow: 0 2px 4px rgba(146, 64, 14, 0.04);
+  border: 1px solid var(--color-warning);
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--color-warning) 4%, transparent);
 }
 
 .pulsing-dot {
   width: 6px;
   height: 6px;
-  background-color: #d97706;
+  background-color: var(--color-warning);
   border-radius: 50%;
   animation: pulseEffect 1.5s infinite;
 }
 
 .arrow-icon-wrapper {
   font-size: 0.8rem;
-  color: #8c7a6b;
+  color: var(--color-header);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -225,7 +225,7 @@
   max-height: 800px;
   opacity: 1;
   visibility: visible;
-  border-top-color: #f0e6d6;
+  border-top-color: var(--color-stroke);
 }
 
 .order-body-inner {
@@ -240,10 +240,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  background-color: #f8f1e5;
+  background-color: var(--color-card);
   padding: 1rem;
   border-radius: 10px;
-  border: 1px solid #ebdcc5;
+  border: 1px solid var(--color-stroke);
 }
 
 .timeline-step {
@@ -263,8 +263,8 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: #e2d4bc;
-  color: #726555;
+  background-color: var(--color-card);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -274,13 +274,13 @@
 }
 
 .timeline-step.done .step-indicator {
-  background-color: #10b981;
-  color: #ffffff;
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
 }
 
 .timeline-step.current .step-indicator {
-  background-color: #bd732f;
-  color: #ffffff;
+  background-color: var(--color-button-primary);
+  color: var(--color-text-inverse);
 }
 
 .step-content {
@@ -290,18 +290,18 @@
 
 .step-content strong {
   font-size: 0.85rem;
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 .step-content span {
   font-size: 0.72rem;
-  color: #726555;
+  color: var(--color-text);
 }
 
 /* Resumen de Productos */
 .products-summary-box {
-  background-color: #fcfbfa;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-stroke);
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -312,7 +312,7 @@
 .products-summary-box h4 {
   font-size: 0.9rem;
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -324,7 +324,7 @@
   flex-direction: column;
   gap: 0.8rem;
   font-size: 0.85rem;
-  color: #5d5246;
+  color: var(--color-text);
 }
 
 .products-list li {
@@ -332,7 +332,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border-bottom: 1px dashed #f0e6d6;
+  border-bottom: 1px dashed var(--color-stroke);
   padding-bottom: 0.6rem;
 }
 
@@ -349,7 +349,7 @@
 
 .item-qty {
   font-weight: 800;
-  color: #bd732f;
+  color: var(--color-button-primary);
 }
 
 .item-price-action {
@@ -360,13 +360,13 @@
 
 .item-price {
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text);
   white-space: nowrap;
 }
 
 .btn-action-delete {
-  background-color: #fee2e2;
-  color: #b91c1c;
+  background-color: color-mix(in srgb, var(--color-error) 14%, var(--color-background));
+  color: var(--color-error);
   border: none;
   width: 24px;
   height: 24px;
@@ -381,22 +381,22 @@
 }
 
 .btn-action-delete:hover {
-  background-color: #fecaca;
+  background-color: color-mix(in srgb, var(--color-error) 24%, var(--color-background));
 }
 
 .total-calculation-row {
   display: flex;
   justify-content: space-between;
-  border-top: 1px dashed #e5d7c3;
+  border-top: 1px dashed var(--color-stroke);
   padding-top: 0.6rem;
   margin-top: 0.2rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 .final-price-tag {
-  color: #bd732f;
+  color: var(--color-button-primary);
   font-size: 1.1rem;
   font-weight: 800;
 }
@@ -408,9 +408,9 @@
 }
 
 .btn-secondary-action {
-  background-color: #f8f1e5;
-  color: #726555;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-stroke);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: 700;
@@ -420,16 +420,16 @@
 }
 
 .btn-secondary-action:hover {
-  background-color: #ebdcc5;
-  color: #2b2b2b;
+  background-color: var(--color-card);
+  color: var(--color-text);
 }
 
 /* ==========================================
     Tarjeta de Dirección
    ========================================== */
 .address-card-modern {
-  background: #ffffff;
-  border: 1px solid #e5d7c3;
+  background: var(--color-card);
+  border: 1px solid var(--color-stroke);
   border-radius: 14px;
   padding: 1.2rem;
   display: flex;
@@ -443,8 +443,8 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  background-color: #fcfbfa;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-stroke);
   border-radius: 10px;
   padding: 0.9rem;
 }
@@ -455,7 +455,7 @@
 
 .address-details small {
   font-size: 0.7rem;
-  color: #8c7a6b;
+  color: var(--color-header);
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 0.05em;
@@ -465,26 +465,26 @@
   margin: 0.1rem 0 0 0;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 .btn-primary-action-full {
-  background: linear-gradient(135deg, #df9b52, #bd732f);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-button-primary));
+  color: var(--color-text-inverse);
   border: none;
   padding: 0.75rem;
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(189, 115, 47, 0.2);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--color-accent) 20%, transparent);
   transition:
     transform 0.2s ease,
     background 0.2s ease;
 }
 
 .btn-primary-action-full:hover {
-  background: linear-gradient(135deg, #e5a45f, #a86224);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-header));
   transform: translateY(-1px);
 }
 
@@ -500,7 +500,7 @@
 /* Campos separados y lista de sugerencias local del formulario de entrega. */
 .address-form-intro {
   margin: 0;
-  color: #726555;
+  color: var(--color-text);
   font-size: 0.82rem;
 }
 
@@ -534,8 +534,8 @@
   margin: 0;
   padding: 0.25rem;
   list-style: none;
-  background: #fff;
-  border: 1px solid #e5d7c3;
+  background: var(--color-card);
+  border: 1px solid var(--color-stroke);
   border-radius: 8px;
   box-shadow: 0 6px 16px rgba(43, 43, 43, 0.12);
 }
@@ -543,7 +543,7 @@
 .address-suggestions button {
   width: 100%;
   padding: 0.55rem 0.65rem;
-  color: #2b2b2b;
+  color: var(--color-text);
   text-align: left;
   background: transparent;
   border: 0;
@@ -553,30 +553,30 @@
 
 .address-suggestions button:hover,
 .address-suggestions button:focus-visible {
-  background: #f8f1e5;
+  background: var(--color-card);
   outline: none;
 }
 
 .modern-address-form label {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #726555;
+  color: var(--color-text);
 }
 
 .modern-input {
   padding: 0.7rem 0.9rem;
-  border: 1px solid #e5d7c3;
+  border: 1px solid var(--color-stroke);
   border-radius: 8px;
   font-size: 0.9rem;
   outline: none;
-  background-color: #fcfbfa;
-  color: #2b2b2b;
+  background-color: var(--color-background);
+  color: var(--color-text);
   transition: border-color 0.2s ease;
 }
 
 .modern-input:focus {
-  border-color: #bd732f;
-  background-color: #ffffff;
+  border-color: var(--color-button-primary);
+  background-color: var(--color-card);
 }
 
 .form-buttons-group {
@@ -586,8 +586,8 @@
 }
 
 .btn-confirm-save {
-  background: linear-gradient(135deg, #df9b52, #bd732f);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-button-primary));
+  color: var(--color-text-inverse);
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 8px;
@@ -603,9 +603,9 @@
 }
 
 .btn-dismiss-cancel {
-  background-color: #f8f1e5;
-  color: #726555;
-  border: 1px solid #e5d7c3;
+  background-color: var(--color-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-stroke);
   padding: 0.6rem 0.9rem;
   border-radius: 8px;
   font-weight: 700;
@@ -615,8 +615,8 @@
 }
 
 .btn-dismiss-cancel:hover {
-  background-color: #ebdcc5;
-  color: #2b2b2b;
+  background-color: var(--color-card);
+  color: var(--color-text);
 }
 
 /* ==========================================
@@ -631,15 +631,15 @@
 @keyframes pulseEffect {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-warning) 40%, transparent);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 5px rgba(217, 119, 6, 0);
+    box-shadow: 0 0 0 5px transparent;
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0);
+    box-shadow: 0 0 0 0 transparent;
   }
 }
 

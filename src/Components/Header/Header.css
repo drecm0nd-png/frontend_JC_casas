@@ -3,7 +3,7 @@
    ========================================== */
 .header {
   background-color: var(--color-header);
-  color: #ffffff;
+  color: var(--color-text-inverse);
   position: relative;
 }
 
@@ -117,12 +117,12 @@
 /* ---------- Botón Iniciar Sesión / Registro ---------- */
 .header-register {
   padding: 0.4rem 1rem;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--color-text-inverse);
   border-radius: 4px;
 }
 
 .header-register:hover {
-  background-color: #ffffff;
+  background-color: var(--color-text-inverse);
   color: var(--color-header);
   opacity: 1;
 }
@@ -174,7 +174,7 @@
 .burger-line {
   width: 100%;
   height: 2px;
-  background-color: #ffffff;
+  background-color: var(--color-text-inverse);
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
@@ -214,7 +214,7 @@
     right: 0;
     width: 280px;
     height: 100vh;
-    background-color: var(--color-header, #2b241f);
+    background-color: var(--color-header);
     z-index: 100;
     flex-direction: column;
     align-items: flex-start;
@@ -243,7 +243,7 @@
   .header-nav a.active {
     background-color: rgba(255, 255, 255, 0.05);
     text-decoration: none;
-    border-left: 4px solid var(--color-accent, #bd732f);
+    border-left: 4px solid var(--color-accent);
     padding-left: 1.75rem;
   }
 
@@ -272,7 +272,7 @@
 
   .header-cart-btn::after {
     content: "Mis Pedidos";
-    color: #ffffff;
+    color: var(--color-text-inverse);
     font-size: 0.95rem;
     font-weight: 600;
   }
@@ -285,20 +285,20 @@
       rgba(255, 255, 255, 0.12)
     ) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    border-left: 4px solid var(--color-accent, #bd732f) !important;
+    border-left: 4px solid var(--color-accent) !important;
     padding-left: 1rem !important;
   }
 
   /* Botón Iniciar Sesión en Móvil (Color Sólido de Acento) */
   .header-nav a.header-register {
     border: none;
-    background-color: var(--color-accent, #bd732f);
-    color: #ffffff;
+    background-color: var(--color-accent);
+    color: var(--color-text-inverse);
     text-align: center;
   }
 
   .header-nav a.header-register:hover {
-    background-color: var(--color-button-primary, #a76b32);
+    background-color: var(--color-button-primary);
   }
 
   /* Overlay móvil */

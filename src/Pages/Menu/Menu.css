@@ -3,11 +3,11 @@
    ========================================== */
 .menu-page-container {
   width: 100%;
-  background-color: #faf8f5;
+  background-color: var(--color-background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #2d2d2d;
+  color: var(--color-text);
   animation: fadeInSubtle 0.3s ease-out forwards;
 }
 
@@ -27,9 +27,8 @@
    ========================================== */
 .order-status-banner-btn {
   width: 100%;
-  /* Degradado más vivo, denso y contrastado */
-  background: linear-gradient(135deg, #fbe3c7 0%, #eab883 100%);
-  border: 1px solid #dfa56b;
+  background: var(--color-card);
+  border: 1px solid var(--color-stroke);
   border-radius: 12px;
   padding: 1rem 1.8rem;
   display: flex;
@@ -43,20 +42,20 @@
     border-color 0.3s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.12);
+  box-shadow: 0 4px 14px rgba(41, 22, 0, 0.08);
 }
 
 .order-status-banner-btn:hover {
   /* Al pasar el cursor cambia a un tono sólido más firme y cálido */
-  background: #e8ac73;
-  border-color: #d19355;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(180, 83, 9, 0.2);
+  box-shadow: 0 6px 18px rgba(41, 22, 0, 0.12);
 }
 
 .order-status-banner-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.1);
+  box-shadow: 0 2px 6px rgba(41, 22, 0, 0.06);
 }
 
 .order-status-banner-btn .banner-content {
@@ -76,16 +75,16 @@
 
 .order-status-banner-btn .banner-text strong {
   font-size: 1rem;
-  color: #78350f; /* Un café/ámbar un poco más oscuro para mejor legibilidad */
+  color: var(--color-header); /* Un café/ámbar un poco más oscuro para mejor legibilidad */
 }
 
 .order-status-banner-btn .banner-text small {
   font-size: 0.85rem;
-  color: #584635;
+  color: var(--color-text);
 }
 
 .order-status-banner-btn .banner-arrow {
-  color: #78350f;
+  color: var(--color-header);
   font-weight: bold;
   font-size: 1.2rem;
   transition:
@@ -95,14 +94,14 @@
 
 .order-status-banner-btn:hover .banner-arrow {
   transform: translateX(4px);
-  color: #451a03;
+  color: var(--color-text);
 }
 
 /* ==========================================
     Hero Card (Almuerzo Corriente / Ejecutivo)
    ========================================== */
 .hero-dish-card {
-  background: linear-gradient(135deg, #3d352e, #2b241f);
+  background: linear-gradient(135deg, var(--color-header), var(--color-text));
   border-radius: 16px;
   padding: 2.5rem 3rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
@@ -119,8 +118,8 @@
 }
 
 .hero-badge {
-  background-color: #fde68a;
-  color: #78350f;
+  background-color: var(--color-card);
+  color: var(--color-text);
   font-size: 0.8rem;
   font-weight: 800;
   padding: 0.3rem 0.8rem;
@@ -131,28 +130,28 @@
 }
 
 .hero-info h2 {
-  color: #ffffff;
+  color: var(--color-text-inverse);
   font-size: 2.2rem;
   font-weight: 800;
   margin: 0 0 0.4rem 0;
 }
 
 .hero-info p {
-  color: #d1d5db;
+  color: var(--color-card);
   font-size: 1.05rem;
   margin: 0 0 0.6rem 0;
 }
 
 .hero-price {
-  color: #fde68a;
+  color: var(--color-card);
   font-size: 1.6rem;
   font-weight: 800;
   display: block;
 }
 
 .btn-primary-action {
-  background-color: #bd732f;
-  color: #ffffff;
+  background-color: var(--color-card);
+  color: var(--color-text);
   border: none;
   padding: 0.9rem 2rem;
   border-radius: 8px;
@@ -163,16 +162,16 @@
 }
 
 .btn-primary-action:hover {
-  background-color: #a76b32;
+  background-color: var(--color-accent);
 }
 
 /* ==========================================
     Sección Agrupada de Componentes (Difuminado Invertido)
    ========================================== */
 .horizontal-section-group-3 {
-  background: linear-gradient(180deg, #faf8f5 0%, #ebd8c3 100%);
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-card) 100%);
   /* Quitamos el borde superior para lograr el efecto de fusión/difuminado directo con la página */
-  border: 1px solid #dfcca9;
+  border: 1px solid var(--color-stroke);
   border-top: none;
   border-radius: 0 0 20px 20px; /* Redondeamos solo la base para mantener el remate limpio */
   padding: 2.5rem 2rem;
@@ -186,14 +185,14 @@
 .lunch-section-title-wrapper {
   grid-column: 1 / -1;
   margin-bottom: 0.5rem;
-  border-bottom: 2px dashed #dfcca9;
+  border-bottom: 2px dashed var(--color-stroke);
   padding-bottom: 0.75rem;
 }
 
 .lunch-section-title-wrapper h3 {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #78350f;
+  color: var(--color-header);
   margin: 0;
   display: flex;
   align-items: center;
@@ -215,8 +214,8 @@
 }
 
 .step-number {
-  background-color: #bd732f;
-  color: #ffffff;
+  background-color: var(--color-button-primary);
+  color: var(--color-text-inverse);
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -231,7 +230,7 @@
 .category-header h3 {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -239,13 +238,13 @@
 .category-toggle-btn {
   display: none;
   width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #ebd8c3;
+  background-color: var(--color-text-inverse);
+  border: 1px solid var(--color-card);
   border-radius: 10px;
   padding: 1rem 1.2rem;
   font-size: 1rem;
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text);
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
@@ -255,13 +254,13 @@
 }
 
 .category-toggle-btn:hover {
-  background-color: #faf5ee;
+  background-color: var(--color-background);
 }
 
 .category-toggle-btn .toggle-arrow {
   font-size: 1.1rem;
   transition: transform 0.3s ease;
-  color: #8c7a6b;
+  color: var(--color-header);
 }
 
 .category-toggle-btn.is-open .toggle-arrow {
@@ -279,8 +278,8 @@
     Tarjetas de Componentes (Mini Cards)
    ========================================== */
 .mini-card {
-  background-color: #ffffff;
-  border: 1px solid #eaddce;
+  background-color: var(--color-text-inverse);
+  border: 1px solid var(--color-stroke);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
@@ -298,11 +297,11 @@
 
 .mini-card-img {
   height: 140px;
-  background-color: #f3ebd8;
+  background-color: var(--color-card);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #8c7a6b;
+  color: var(--color-header);
   font-size: 0.9rem;
   font-weight: 600;
   text-align: center;
@@ -316,7 +315,7 @@
 .mini-card-body h4 {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text);
   margin: 0 0 0.15rem 0;
   white-space: nowrap;
   overflow: hidden;
@@ -325,7 +324,7 @@
 
 .mini-card-body p {
   font-size: 0.78rem;
-  color: #726555;
+  color: var(--color-text);
   margin: 0;
   line-height: 1.2;
   display: -webkit-box;
@@ -347,7 +346,7 @@
 .section-title {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   text-align: left;
   margin: 0;
 }
@@ -359,8 +358,8 @@
 }
 
 .extra-card {
-  background-color: #ffffff;
-  border: 1px solid #eaddce;
+  background-color: var(--color-text-inverse);
+  border: 1px solid var(--color-stroke);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
@@ -371,11 +370,11 @@
 
 .extra-img {
   height: 130px;
-  background-color: #efe5d5;
+  background-color: var(--color-card);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #8c7a6b;
+  color: var(--color-header);
   font-size: 0.95rem;
   font-weight: 600;
 }
@@ -390,13 +389,13 @@
 .extra-body h4 {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text);
   margin: 0 0 0.3rem 0;
 }
 
 .extra-body p {
   font-size: 0.85rem;
-  color: #726555;
+  color: var(--color-text);
   margin: 0;
   flex-grow: 1;
   line-height: 1.3;
@@ -411,13 +410,13 @@
 
 .price {
   font-weight: 800;
-  color: #bd732f;
+  color: var(--color-button-primary);
   font-size: 1.1rem;
 }
 
 .btn-add {
-  background-color: #fde68a;
-  color: #78350f;
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
   border: none;
   width: 32px;
   height: 32px;
@@ -432,7 +431,7 @@
 }
 
 .btn-add:hover {
-  background-color: #fcd34d;
+  background-color: var(--color-button-primary);
 }
 
 /* ==========================================
