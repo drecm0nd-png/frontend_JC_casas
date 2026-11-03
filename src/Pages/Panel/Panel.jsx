@@ -3,6 +3,7 @@ import InventarioM from "./ComponentPanel/InventarioM/InventarioM.jsx";
 import InventarioAd from "./ComponentPanel/InventarioAdicional/InventarioAd.jsx";
 import Permisos from "./ComponentPanel/Permisos/Permisos.jsx";
 import Impresion from "./ComponentPanel/Impresion/Impresion.jsx";
+import Configuracion from "./ComponentPanel/Configuracion/Configuracion.jsx";
 import "./Panel.css";
 
 export default function Panel() {
@@ -106,12 +107,8 @@ export default function Panel() {
 
           {activeTab === "permisos" && <Permisos />}
 
-          {activeTab === "configuracion" && (
-            <div>
-              <h2 className="section-title">Configuración</h2>
-              <p className="section-desc">Ajustes generales del sistema.</p>
-            </div>
-          )}
+          
+          {activeTab === "configuracion" && <Configuracion />}
 
           {activeTab === "impresion" && <Impresion />}
         </section>
