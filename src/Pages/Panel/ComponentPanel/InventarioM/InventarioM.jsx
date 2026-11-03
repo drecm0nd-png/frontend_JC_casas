@@ -1,6 +1,112 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBowlFood, FaDrumstickBite, FaBowlRice, FaTriangleExclamation, FaPen, FaTrash, FaFolderOpen } from "react-icons/fa6";
 import "./InventarioM.css";
+
+const CATEGORY_OPTIONS = [
+  { value: "Principio", Icon: FaBowlFood },
+  { value: "Proteína", Icon: FaDrumstickBite },
+  { value: "Acompañamiento", Icon: FaBowlRice },
+];
+
+function CategoryDropdown({ value, onChange, placeholder, invalid = false }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const triggerRef = useRef(null);
+  const optionRefs = useRef([]);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const closeOnOutsideClick = (event) => {
+      if (!dropdownRef.current?.contains(event.target)) setIsOpen(false);
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isOpen]);
+
+  const selectedOption = CATEGORY_OPTIONS.find((option) => option.value === value);
+  const SelectedIcon = selectedOption?.Icon;
+
+  return (
+    <div className="category-dropdown" ref={dropdownRef}>
+      <button
+        ref={triggerRef}
+        type="button"
+        className="category-dropdown-trigger"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-invalid={invalid}
+        onClick={() => {
+          if (isOpen) {
+            setIsOpen(false);
+          } else {
+            setIsOpen(true);
+            requestAnimationFrame(() => optionRefs.current[0]?.focus());
+          }
+        }}
+      >
+        <span className="category-dropdown-value">
+          {SelectedIcon && <SelectedIcon aria-hidden="true" />}
+          {selectedOption?.value || placeholder}
+        </span>
+        <svg
+          className={`category-dropdown-chevron${isOpen ? " is-open" : ""}`}
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+      {isOpen && (
+        <ul className="category-dropdown-options" role="listbox">
+          {CATEGORY_OPTIONS.map(({ value: option, Icon }, index) => (
+            <li key={option} role="none">
+              <button
+                ref={(element) => { optionRefs.current[index] = element; }}
+                type="button"
+                className="category-dropdown-option"
+                role="option"
+                aria-selected={value === option}
+                onKeyDown={(event) => {
+                  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+                    event.preventDefault();
+                    const direction = event.key === "ArrowDown" ? 1 : -1;
+                    const nextIndex = (index + direction + CATEGORY_OPTIONS.length) % CATEGORY_OPTIONS.length;
+                    optionRefs.current[nextIndex]?.focus();
+                  }
+                  if (event.key === "Escape") {
+                    setIsOpen(false);
+                    triggerRef.current?.focus();
+                  }
+                }}
+                onClick={() => {
+                  onChange(option);
+                  setIsOpen(false);
+                  triggerRef.current?.focus();
+                }}
+              >
+                <Icon aria-hidden="true" />
+                <span>{option}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {invalid && <span className="category-dropdown-error">Selecciona una categoría.</span>}
+    </div>
+  );
+}
 
 const INITIAL_ITEMS = [
   {
@@ -69,7 +175,8 @@ export default function InventarioM() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newNombre, setNewNombre] = useState("");
   const [newDesc, setNewDesc] = useState("");
-  const [newCategoria, setNewCategoria] = useState("Principio");
+  const [newCategoria, setNewCategoria] = useState("");
+  const [categoryError, setCategoryError] = useState(false);
   const [newCantidad, setNewCantidad] = useState(10);
 
   // Estados para el Modal de Confirmación de Eliminación
@@ -112,6 +219,10 @@ export default function InventarioM() {
   // Guardar nuevo elemento
   const handleAddSubmit = (e) => {
     e.preventDefault();
+    if (!newCategoria) {
+      setCategoryError(true);
+      return;
+    }
     const nuevoElemento = {
       id: Date.now(),
       nombre: newNombre,
@@ -127,7 +238,7 @@ export default function InventarioM() {
     setNewNombre("");
     setNewDesc("");
     setNewCantidad(10);
-    setNewCategoria("Principio");
+    setNewCategoria("");
   };
 
   const handleEditClick = (item, e) => {
@@ -191,7 +302,11 @@ export default function InventarioM() {
         </div>
         <button
           className="btn-add-element"
-          onClick={() => setIsAddModalOpen(true)}
+          onClick={() => {
+            setNewCategoria("");
+            setCategoryError(false);
+            setIsAddModalOpen(true);
+          }}
         >
           <span>+</span> Añadir nuevo elemento
         </button>
@@ -374,15 +489,15 @@ export default function InventarioM() {
 
               <div className="form-group">
                 <label>Categoría:</label>
-                <select
+                <CategoryDropdown
                   value={newCategoria}
-                  onChange={(e) => setNewCategoria(e.target.value)}
-                  className="modal-select"
-                >
-                  <option value="Principio">Principio</option>
-                  <option value="Proteína">Proteína</option>
-                  <option value="Acompañamiento">Acompañamiento</option>
-                </select>
+                  onChange={(category) => {
+                    setNewCategoria(category);
+                    setCategoryError(false);
+                  }}
+                  placeholder="Selecciona una categoría"
+                  invalid={categoryError}
+                />
               </div>
 
               <div className="form-group">
@@ -450,19 +565,14 @@ export default function InventarioM() {
               <div className="form-row-dual">
                 <div className="form-group">
                   <label>Categoría:</label>
-                  <select
+                  <CategoryDropdown
                     value={tempCategoria}
-                    onChange={(e) => {
-                      const nuevaCat = e.target.value;
-                      setTempCategoria(nuevaCat);
-                      setTempIcono(nuevaCat);
+                    onChange={(category) => {
+                      setTempCategoria(category);
+                      setTempIcono(category);
                     }}
-                    className="modal-select"
-                  >
-                    <option value="Principio">Principio</option>
-                    <option value="Proteína">Proteína</option>
-                    <option value="Acompañamiento">Acompañamiento</option>
-                  </select>
+                    placeholder="Selecciona una categoría"
+                  />
                 </div>
 
                 <div className="form-group">

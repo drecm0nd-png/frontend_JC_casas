@@ -58,13 +58,15 @@ svg {
 
 /* ==========================================================
   FORMULARIOS
-  Heredan la tipografía del sitio
+  Heredan la tipografía del sitio, para no alterar la propiedad background de los inputs
    ========================================================== */
 input,
 button,
 textarea,
 select {
-  font: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
   color: inherit;
 }
 

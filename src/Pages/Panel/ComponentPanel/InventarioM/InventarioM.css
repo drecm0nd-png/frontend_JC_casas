@@ -53,7 +53,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-accent) 28%, transparent);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-accent) 28%, transparent);
   transition: all 0.25s ease;
   white-space: nowrap;
 }
@@ -65,7 +66,8 @@
 
 .btn-add-element:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px color-mix(in srgb, var(--color-accent) 40%, transparent);
+  box-shadow: 0 6px 16px
+    color-mix(in srgb, var(--color-accent) 40%, transparent);
   background-color: var(--color-header);
 }
 
@@ -81,7 +83,11 @@
 }
 
 .metric-card {
-  background: linear-gradient(180deg, var(--color-text-inverse) 0%, var(--color-background) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-text-inverse) 0%,
+    var(--color-background) 100%
+  );
   border: 1px solid var(--color-stroke);
   border-radius: 12px;
   padding: 1rem 1.2rem;
@@ -112,15 +118,27 @@
 }
 
 .metric-icon.blue {
-  background-color: color-mix(in srgb, var(--color-info) 12%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-info) 12%,
+    var(--color-background)
+  );
   color: var(--color-info);
 }
 .metric-icon.green {
-  background-color: color-mix(in srgb, var(--color-success) 12%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-success) 12%,
+    var(--color-background)
+  );
   color: var(--color-success);
 }
 .metric-icon.orange {
-  background-color: color-mix(in srgb, var(--color-warning) 16%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-warning) 16%,
+    var(--color-background)
+  );
   color: var(--color-warning);
 }
 
@@ -191,7 +209,11 @@
 
 .filter-btn:hover {
   color: var(--color-text);
-  background-color: color-mix(in srgb, var(--color-text-inverse) 60%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-text-inverse) 60%,
+    transparent
+  );
 }
 
 .filter-btn.active {
@@ -288,19 +310,34 @@
 }
 
 .badge-cat.principio {
-  background-color: color-mix(in srgb, var(--color-accent) 12%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent) 12%,
+    var(--color-background)
+  );
   color: var(--color-accent);
-  border: 1px solid color-mix(in srgb, var(--color-info) 30%, var(--color-background));
+  border: 1px solid
+    color-mix(in srgb, var(--color-info) 30%, var(--color-background));
 }
 .badge-cat.proteína {
-  background-color: color-mix(in srgb, var(--color-error) 12%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-error) 12%,
+    var(--color-background)
+  );
   color: var(--color-error);
-  border: 1px solid color-mix(in srgb, var(--color-error) 28%, var(--color-background));
+  border: 1px solid
+    color-mix(in srgb, var(--color-error) 28%, var(--color-background));
 }
 .badge-cat.acompañamiento {
-  background-color: color-mix(in srgb, var(--color-success) 12%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-success) 12%,
+    var(--color-background)
+  );
   color: var(--color-success);
-  border: 1px solid color-mix(in srgb, var(--color-success) 28%, var(--color-background));
+  border: 1px solid
+    color-mix(in srgb, var(--color-success) 28%, var(--color-background));
 }
 
 .status-badge {
@@ -314,15 +351,31 @@
 }
 
 .status-badge.available {
-  background-color: color-mix(in srgb, var(--color-success) 12%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-success) 12%,
+    var(--color-background)
+  );
   color: var(--color-success);
-  border-color: color-mix(in srgb, var(--color-success) 28%, var(--color-background));
+  border-color: color-mix(
+    in srgb,
+    var(--color-success) 28%,
+    var(--color-background)
+  );
 }
 
 .status-badge.unavailable {
-  background-color: color-mix(in srgb, var(--color-error) 12%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-error) 12%,
+    var(--color-background)
+  );
   color: var(--color-error);
-  border-color: color-mix(in srgb, var(--color-error) 28%, var(--color-background));
+  border-color: color-mix(
+    in srgb,
+    var(--color-error) 28%,
+    var(--color-background)
+  );
 }
 
 /* Contenido que se despliega */
@@ -442,8 +495,16 @@
 }
 
 .btn-icon.delete:hover {
-  background-color: color-mix(in srgb, var(--color-error) 12%, var(--color-background));
-  border-color: color-mix(in srgb, var(--color-error) 28%, var(--color-background));
+  background-color: color-mix(
+    in srgb,
+    var(--color-error) 12%,
+    var(--color-background)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--color-error) 28%,
+    var(--color-background)
+  );
   color: var(--color-error);
 }
 
@@ -523,6 +584,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  padding: 1.5rem;
   background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
   display: flex;
@@ -548,11 +610,50 @@
   padding: 1.8rem;
   width: 90%;
   max-width: 420px;
+  max-height: calc(100vh - 3rem);
+  overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   animation: scaleUpModal 0.2s ease-in-out;
+}
+
+.modal-form {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.5rem;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+.modal-form::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+}
+
+.modal-form::-webkit-scrollbar-track {
+  margin-block: 12px;
+  background: transparent;
+}
+
+.modal-form::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  background-clip: content-box;
+}
+
+.modal-form::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0;
+  height: 0;
 }
 
 @keyframes scaleUpModal {
@@ -567,6 +668,9 @@
 }
 
 .modal-header {
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--color-text-inverse);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -605,6 +709,8 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  width: 100%;
   gap: 0.4rem;
 }
 
@@ -615,6 +721,8 @@
 }
 
 .form-group input {
+  box-sizing: border-box;
+  width: 100%;
   padding: 0.7rem 0.9rem;
   border: 1px solid var(--color-stroke);
   border-radius: 8px;
@@ -623,6 +731,10 @@
   background-color: var(--color-background);
   outline: none;
   transition: border-color 0.2s;
+}
+
+.form-group input[type="number"] {
+  padding-inline: 0.9rem;
 }
 
 .form-group input:focus {
@@ -716,21 +828,142 @@
   gap: 0.8rem;
 }
 
-.modal-select {
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--color-stroke);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: var(--color-text);
-  background-color: var(--color-background);
-  outline: none;
-  cursor: pointer;
-  transition: border-color 0.2s;
+.category-dropdown {
+  position: relative;
+  width: 100%;
 }
 
-.modal-select:focus {
-  border-color: var(--color-button-primary);
-  background-color: var(--color-text-inverse);
+.category-dropdown-trigger {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--color-stroke);
+  border-radius: 12px;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.category-dropdown-trigger:hover,
+.category-dropdown-trigger[aria-expanded="true"] {
+  border-color: var(--color-accent);
+}
+
+.category-dropdown-trigger[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.category-dropdown-value {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.category-dropdown-value > svg {
+  flex: 0 0 auto;
+  color: var(--color-accent);
+}
+
+.category-dropdown-chevron {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: rotate(270deg);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.category-dropdown-chevron.is-open {
+  transform: rotate(-270deg);
+}
+
+.category-dropdown-options {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 13rem;
+  margin: 0;
+  padding: 0.35rem;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--color-stroke);
+  border-radius: 12px;
+  background-color: var(--color-background);
+  box-shadow: 0 8px 20px rgb(41 22 0 / 16%);
+  animation: categoryDropdownIn 0.16s ease-out;
+}
+
+.category-dropdown-option {
+  width: 100%;
+  min-height: 2.7rem;
+  padding: 0.55rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border: 0;
+  border-radius: 8px;
+  color: var(--color-text);
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.category-dropdown-option > svg {
+  flex: 0 0 auto;
+  color: var(--color-accent);
+}
+
+.category-dropdown-option[aria-selected="true"] {
+  background-color: var(--color-card);
+  font-weight: 600;
+}
+
+.category-dropdown-option:hover,
+.category-dropdown-option:focus-visible {
+  outline: none;
+  color: var(--color-text-inverse);
+  background-color: var(--color-header);
+}
+
+.category-dropdown-option:hover > svg,
+.category-dropdown-option:focus-visible > svg {
+  color: var(--color-text-inverse);
+}
+
+.category-dropdown-error {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--color-error);
+  font-size: 0.75rem;
+}
+
+@keyframes categoryDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .image-mock-selector {
