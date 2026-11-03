@@ -40,7 +40,7 @@ function Login() {
             <header className="login-header">
               <img
                 className="brand-logo"
-                src="/src/assets/img/logo_restaurante.png"
+                src="/src/assets/img/logo.png"
                 alt="Logo Restaurante JCasas"
               />
               <h1 className="brand-title">JCasas</h1>

@@ -3,6 +3,7 @@ import InventarioM from "./ComponentPanel/InventarioM/InventarioM.jsx";
 import InventarioAd from "./ComponentPanel/InventarioAdicional/InventarioAd.jsx";
 import Permisos from "./ComponentPanel/Permisos/Permisos.jsx";
 import Impresion from "./ComponentPanel/Impresion/Impresion.jsx";
+import HistorialPedidos from "./ComponentPanel/Pedidos/Pedidos.jsx";
 import "./Panel.css";
 
 export default function Panel() {
@@ -95,14 +96,7 @@ export default function Panel() {
 
           {activeTab === "adicionales" && <InventarioAd />}
 
-          {activeTab === "pedidos" && (
-            <div>
-              <h2 className="section-title">Gestión de Pedidos</h2>
-              <p className="section-desc">
-                Visualiza y actualiza el estado de las entregas asignadas.
-              </p>
-            </div>
-          )}
+          {activeTab === "pedidos" &&  <HistorialPedidos/>}
 
           {activeTab === "permisos" && <Permisos />}
 
