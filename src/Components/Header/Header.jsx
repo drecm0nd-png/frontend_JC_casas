@@ -54,14 +54,18 @@ function Header() {
           </NavLink>
 
           {/* Botón Carrito de Pedidos */}
-          <NavLink 
-            to="/pedidos" 
-            onClick={closeMenu} 
+          <NavLink
+            to="/pedidos"
+            onClick={closeMenu}
             className="header-cart-btn"
             title="Ver mis pedidos"
             aria-label="Ir a pedidos"
           >
-            <img src={CarroLogo} alt="Icono Carrito" className="cart-icon-img" />
+            <img
+              src={CarroLogo}
+              alt="Icono Carrito"
+              className="cart-icon-img"
+            />
           </NavLink>
 
           {isAuthenticated ? (
@@ -73,7 +77,11 @@ function Header() {
               Cerrar sesión
             </Button>
           ) : (
-            <NavLink to="/login" onClick={closeMenu} className="header-register">
+            <NavLink
+              to="/login"
+              onClick={closeMenu}
+              className="header-register"
+            >
               Iniciar sesión
             </NavLink>
           )}

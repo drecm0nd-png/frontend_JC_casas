@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { FaBowlFood, FaDrumstickBite, FaBowlRice, FaTriangleExclamation, FaPen, FaTrash } from "react-icons/fa6";
+import {
+  FaBowlFood,
+  FaDrumstickBite,
+  FaBowlRice,
+  FaTriangleExclamation,
+  FaPen,
+  FaTrash,
+} from "react-icons/fa6";
 import "./InventarioM.css";
 
 const CATEGORY_OPTIONS = [
@@ -35,7 +42,9 @@ function CategoryDropdown({ value, onChange, placeholder, invalid = false }) {
     };
   }, [isOpen]);
 
-  const selectedOption = CATEGORY_OPTIONS.find((option) => option.value === value);
+  const selectedOption = CATEGORY_OPTIONS.find(
+    (option) => option.value === value,
+  );
   const SelectedIcon = selectedOption?.Icon;
 
   return (
@@ -73,7 +82,9 @@ function CategoryDropdown({ value, onChange, placeholder, invalid = false }) {
           {CATEGORY_OPTIONS.map(({ value: option, Icon }, index) => (
             <li key={option} role="none">
               <button
-                ref={(element) => { optionRefs.current[index] = element; }}
+                ref={(element) => {
+                  optionRefs.current[index] = element;
+                }}
                 type="button"
                 className="category-dropdown-option"
                 role="option"
@@ -82,7 +93,9 @@ function CategoryDropdown({ value, onChange, placeholder, invalid = false }) {
                   if (event.key === "ArrowDown" || event.key === "ArrowUp") {
                     event.preventDefault();
                     const direction = event.key === "ArrowDown" ? 1 : -1;
-                    const nextIndex = (index + direction + CATEGORY_OPTIONS.length) % CATEGORY_OPTIONS.length;
+                    const nextIndex =
+                      (index + direction + CATEGORY_OPTIONS.length) %
+                      CATEGORY_OPTIONS.length;
                     optionRefs.current[nextIndex]?.focus();
                   }
                   if (event.key === "Escape") {
@@ -103,7 +116,11 @@ function CategoryDropdown({ value, onChange, placeholder, invalid = false }) {
           ))}
         </ul>
       )}
-      {invalid && <span className="category-dropdown-error">Selecciona una categoría.</span>}
+      {invalid && (
+        <span className="category-dropdown-error">
+          Selecciona una categoría.
+        </span>
+      )}
     </div>
   );
 }
@@ -247,8 +264,7 @@ export default function InventarioM() {
     setTempNombre(item.nombre);
     setTempDesc(item.descripcion);
     setTempCategoria(item.categoria);
-    const iconoActual =
-      item.categoria;
+    const iconoActual = item.categoria;
     setTempIcono(iconoActual);
   };
 
@@ -315,7 +331,9 @@ export default function InventarioM() {
       {/* Tarjetas de Métricas */}
       <div className="metrics-grid">
         <div className="metric-card">
-          <div className="metric-icon blue"><FaBowlFood aria-hidden="true" /></div>
+          <div className="metric-icon blue">
+            <FaBowlFood aria-hidden="true" />
+          </div>
           <div className="metric-info">
             <span className="metric-label">Total Componentes</span>
             <strong className="metric-value">{totalElementos}</strong>
@@ -329,7 +347,9 @@ export default function InventarioM() {
           </div>
         </div>
         <div className="metric-card">
-          <div className="metric-icon orange"><FaTriangleExclamation aria-hidden="true" /></div>
+          <div className="metric-icon orange">
+            <FaTriangleExclamation aria-hidden="true" />
+          </div>
           <div className="metric-info">
             <span className="metric-label">Poco Stock / Agotados</span>
             <strong className="metric-value">{pocoStock}</strong>
@@ -367,9 +387,15 @@ export default function InventarioM() {
                 <div className="card-summary-row">
                   <div className="element-detail">
                     <div className="element-avatar">
-                      {item.categoria === "Principio" && <FaBowlFood aria-hidden="true" />}
-                      {item.categoria === "Proteína" && <FaDrumstickBite aria-hidden="true" />}
-                      {item.categoria === "Acompañamiento" && <FaBowlRice aria-hidden="true" />}
+                      {item.categoria === "Principio" && (
+                        <FaBowlFood aria-hidden="true" />
+                      )}
+                      {item.categoria === "Proteína" && (
+                        <FaDrumstickBite aria-hidden="true" />
+                      )}
+                      {item.categoria === "Acompañamiento" && (
+                        <FaBowlRice aria-hidden="true" />
+                      )}
                     </div>
                     <div>
                       <strong className="element-name">{item.nombre}</strong>
@@ -598,7 +624,9 @@ export default function InventarioM() {
             className="modal-card confirm-modal"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="confirm-icon"><FaTriangleExclamation aria-hidden="true" /></div>
+            <div className="confirm-icon">
+              <FaTriangleExclamation aria-hidden="true" />
+            </div>
             <h3>¿Estás seguro que deseas eliminar este elemento?</h3>
             <p>
               Esta acción no se puede deshacer y el componente se borrará del
