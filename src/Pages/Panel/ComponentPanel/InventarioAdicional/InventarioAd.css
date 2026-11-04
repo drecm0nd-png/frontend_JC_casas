@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+  min-width: 0;
   animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -70,7 +71,7 @@
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
   gap: 1rem;
 }
 
@@ -129,6 +130,7 @@
   border: 1px solid var(--color-stroke);
   border-radius: 12px;
   padding: 1.2rem;
+  min-width: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
@@ -236,18 +238,27 @@
   font-size: 0.9rem;
   color: var(--color-text);
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .element-desc {
   display: block;
   font-size: 0.75rem;
   color: var(--color-header);
+  overflow-wrap: anywhere;
 }
 
 .card-summary-badges {
   display: flex;
   align-items: center;
   gap: 0.8rem;
+}
+
+.item-category-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
 }
 
 .price-tag-badge {
@@ -777,5 +788,48 @@
   .action-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .adicionales-container {
+    gap: 1rem;
+  }
+
+  .adicionales-title {
+    font-size: clamp(1.35rem, 7vw, 1.65rem);
+  }
+
+  .cards-section-wrapper {
+    padding: 0.75rem;
+  }
+
+  .accordion-card {
+    padding: 0.75rem;
+  }
+
+  .category-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filter-btn {
+    padding-inline: 0.4rem;
+  }
+
+  .modal-overlay {
+    padding: 0.75rem;
+  }
+
+  .modal-card {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .form-row-dual {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .modal-actions {
+    flex-wrap: wrap;
   }
 }

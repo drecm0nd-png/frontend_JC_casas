@@ -373,14 +373,16 @@ export default function AdicionalesM() {
                   </div>
 
                   <div className="card-summary-badges">
-                    <span className="price-tag-badge">
-                      ${item.precio.toLocaleString()}
-                    </span>
-                    <span
-                      className={`badge-cat ${item.categoria === "Bebidas" ? "bebidas" : "sopas"}`}
-                    >
-                      {item.categoria}
-                    </span>
+                    <div className="item-category-price">
+                      <span
+                        className={`badge-cat ${item.categoria === "Bebidas" ? "bebidas" : "sopas"}`}
+                      >
+                        {item.categoria}
+                      </span>
+                      <span className="price-tag-badge">
+                        ${item.precio.toLocaleString()}
+                      </span>
+                    </div>
                     <button
                       type="button"
                       className={`status-badge ${item.disponible && item.cantidad > 0 ? "available" : "unavailable"}`}
@@ -583,7 +585,7 @@ export default function AdicionalesM() {
                 />
               </div>
 
-              <div className="form-row-dual">
+              <div className="form-row-dual form-category-price">
                 <div className="form-group">
                   <label>Categoría:</label>
                   <CategoryDropdown

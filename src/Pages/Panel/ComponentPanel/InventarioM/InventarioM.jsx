@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FaBowlFood, FaDrumstickBite, FaBowlRice, FaTriangleExclamation, FaPen, FaTrash, FaFolderOpen } from "react-icons/fa6";
+import { FaBowlFood, FaDrumstickBite, FaBowlRice, FaTriangleExclamation, FaPen, FaTrash } from "react-icons/fa6";
 import "./InventarioM.css";
 
 const CATEGORY_OPTIONS = [
@@ -562,45 +562,16 @@ export default function InventarioM() {
                 />
               </div>
 
-              <div className="form-row-dual">
-                <div className="form-group">
-                  <label>Categoría:</label>
-                  <CategoryDropdown
-                    value={tempCategoria}
-                    onChange={(category) => {
-                      setTempCategoria(category);
-                      setTempIcono(category);
-                    }}
-                    placeholder="Selecciona una categoría"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label>Imagen / Icono (Mock):</label>
-                  <div className="image-mock-selector">
-                    <span className="mock-preview-icon">
-                      {tempIcono === "Principio" && <FaBowlFood aria-hidden="true" />}
-                      {tempIcono === "Proteína" && <FaDrumstickBite aria-hidden="true" />}
-                      {tempIcono === "Acompañamiento" && <FaBowlRice aria-hidden="true" />}
-                    </span>
-                    <input
-                      type="file"
-                      id="upload-file-mock"
-                      style={{ display: "none" }}
-                      onChange={() =>
-                        alert(
-                          "Función de subida de imagen simulada correctamente.",
-                        )
-                      }
-                    />
-                    <label
-                      htmlFor="upload-file-mock"
-                      className="btn-upload-mock"
-                    >
-                      <FaFolderOpen aria-hidden="true" /> Cambiar
-                    </label>
-                  </div>
-                </div>
+              <div className="form-group">
+                <label>Categor&#237;a:</label>
+                <CategoryDropdown
+                  value={tempCategoria}
+                  onChange={(category) => {
+                    setTempCategoria(category);
+                    setTempIcono(category);
+                  }}
+                  placeholder="Selecciona una categoría"
+                />
               </div>
 
               <div className="modal-actions">
