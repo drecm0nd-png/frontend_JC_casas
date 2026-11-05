@@ -1,7 +1,14 @@
+import React, { useState } from "react";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
+
 function SingUp() {
   const navigate = useNavigate();
+
+  // Estados para la casilla de verificación y la ventana emergente (Modal)
+  const [aceptado, setAceptado] = useState(false);
+  const [mostrarModal, setMostrarModal] = useState(false);
+
   return (
     <div className="signup-container">
       <div className="signup-card">
@@ -38,7 +45,7 @@ function SingUp() {
               <div className="form-group">
                 <label className="form-label">Nombre</label>
                 <div className="input-box">
-                  <img src="/src/assets/icons/person.png" />
+                  <img src="/src/assets/icons/person.png" alt="user" />
                   <input
                     type="text"
                     className="input-field"
@@ -47,24 +54,10 @@ function SingUp() {
                 </div>
               </div>
 
-              {/* Campo: Apellido */}
-              <div className="form-group">
-                <label className="form-label">Apellido</label>
-                <div className="input-box">
-                  <img src="/src/assets/icons/person.png" />
-                  <input
-                    type="text"
-                    className="input-field"
-                    placeholder="Goodman"
-                  />
-                </div>
-              </div>
-
               {/* Campo: Email */}
               <div className="form-group">
                 <label className="form-label">Email - Correo Electrónico</label>
                 <div className="input-box">
-                  {/* Si tienes el icono de email, agrégalo aquí */}
                   <img
                     src="/src/assets/icons/mail.png"
                     alt="email"
@@ -82,7 +75,7 @@ function SingUp() {
               <div className="form-group">
                 <label className="form-label">Número</label>
                 <div className="input-box">
-                  <img src="/src/assets/icons/call_end (1).png" />
+                  <img src="/src/assets/icons/call_end (1).png" alt="phone" />
                   <input
                     type="tel"
                     className="input-field"
@@ -101,29 +94,40 @@ function SingUp() {
                     className="field-icon"
                   />
                   <input
-                    type="text"
+                    type="password"
                     className="input-field"
                     placeholder="••••••••••••"
                   />
                 </div>
               </div>
 
-              {/* Checkbox Términos */}
+              {/* Checkbox Términos con Enlace a Modal */}
               <div className="terms-container">
                 <label className="checkbox-label">
-                  <input type="checkbox" className="checkbox-input" />
+                  <input
+                    type="checkbox"
+                    className="checkbox-input"
+                    checked={aceptado}
+                    onChange={(e) => setAceptado(e.target.checked)}
+                  />
                   <span className="checkbox-text">
-                    Aceptar los términos y condiciones
+                    Aceptar los{" "}
+                    <button
+                      type="button"
+                      className="link-btn-terms"
+                      onClick={() => setMostrarModal(true)}
+                    >
+                      términos y condiciones
+                    </button>
                   </span>
                 </label>
               </div>
 
               {/* Botón de Enviar */}
-              <button type="submit" className="btn-submit">
+              <button type="submit" className="btn-submit" disabled={!aceptado}>
                 Registrarse
               </button>
             </form>
-            {/* Enlace inferior de redirección */}
           </div>
         </div>
 
@@ -136,6 +140,62 @@ function SingUp() {
           />
         </div>
       </div>
+
+      {/* Modal Emergente con los Términos del Sistema */}
+      {mostrarModal && (
+        <div className="modal-overlay" onClick={() => setMostrarModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Términos y Condiciones - JCasas</h3>
+              <button
+                type="button"
+                className="close-btn"
+                onClick={() => setMostrarModal(false)}
+              >
+                &times;
+              </button>
+            </div>
+
+            <div className="modal-body">
+              <h4>1. Horarios de Servicio y Pedidos</h4>
+              <p>
+                Los pedidos solo se receptarán y procesarán dentro del horario
+                operativo del restaurante (7:00 a.m. a 4:30 p.m.)[cite: 2].
+              </p>
+
+              <h4>2. Estructura del Pedido</h4>
+              <p>
+                Todo almuerzo solicitado debe estar compuesto obligatoriamente por un
+                (1) principio, una (1) proteína y un (1) acompañamiento[cite: 2]. Los
+                ingredientes adicionales solo podrán agregarse a un pedido base[cite: 2].
+              </p>
+
+              <h4>3. Precios y Tarifas de Domicilio</h4>
+              <p>
+                El valor del almuerzo en el local es de $13.000 COP y a domicilio
+                de $14.500 COP (incluyendo la tarifa de domicilio de $1.500 COP)[cite: 2, 3].
+              </p>
+
+              <h4>4. Disponibilidad de Menú</h4>
+              <p>
+                Los almuerzos y sus ingredientes están sujetos a la disponibilidad
+                de inventario en tiempo real dentro del restaurante[cite: 2].
+              </p>
+
+              <h4>5. Protección de Datos</h4>
+              <p>
+                Los datos personales registrados (Nombre, Teléfono, Email) serán
+                utilizados únicamente para gestionar y procesar las entregas de los
+                pedidos[cite: 2].
+              </p>
+            </div>
+
+            <div className="modal-footer">
+             
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
