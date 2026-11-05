@@ -4,20 +4,18 @@
   width: 100%;
 }
 
-/* Tarjeta contenedora con fondo crema */
 .config-card {
   background: #fdfbf7;
   border: 1px solid #e6dcc8;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
-/* Banner de las montañas */
 .config-banner-wrapper {
+  position: relative;
   width: 100%;
   height: 220px;
-  overflow: hidden;
 }
 
 .config-banner-img {
@@ -26,79 +24,231 @@
   object-fit: cover;
 }
 
-/* Cuerpo de la tarjeta */
-.config-body {
-  padding: 2rem 2.5rem;
+.config-avatar-floating {
+  position: absolute;
+  bottom: -35px;
+  left: 2.5rem;
+  z-index: 10;
+  cursor: pointer;
 }
 
-.config-title {
-  color: #2b2b2b;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-}
-
-.config-desc {
-  color: #726555;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  margin-bottom: 2rem;
-  max-width: 900px;
-}
-
-/* Grid de información de usuario */
-.config-user-info-grid {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-}
-
-/* Avatar */
 .config-avatar-circle {
-  width: 110px;
-  height: 110px;
+  width: 95px;
+  height: 95px;
   background: linear-gradient(135deg, #101828 0%, #1f2937 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border: 4px solid #fdfbf7;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  position: relative;
 }
 
-/* Detalles de texto */
+.config-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-edit-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #2b2b2b;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border: 2px solid #fdfbf7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.config-avatar-floating:hover .avatar-edit-overlay {
+  transform: scale(1.1);
+}
+
+.modal-avatar-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-avatar-preview .config-avatar-circle {
+  width: 100px;
+  height: 100px;
+}
+
+.config-body {
+  padding: 3.2rem 2.5rem 2.5rem 2.5rem;
+}
+
+.config-title {
+  color: #2b2b2b;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.config-desc {
+  color: #726555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 900px;
+}
+
+.config-grid-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.config-section-box {
+  background: #ffffff;
+  border: 1px solid #eae2d0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.config-section-box.full-width {
+  grid-column: 1 / -1;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2b2b2b;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #f3eeeb;
+  padding-bottom: 0.5rem;
+}
+
+.section-box-desc {
+  font-size: 0.88rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
 .config-details {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .config-field {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .config-label {
   font-weight: 600;
-  color: #2b2b2b;
-  margin-right: 0.5rem;
-}
-
-.config-value {
   color: #4b5563;
 }
 
-/* Botones de acción */
-.config-actions {
+.config-value {
+  color: #1f2937;
+}
+
+.config-badge-role {
+  background-color: #f3efe6;
+  color: #725e35;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.preferences-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.pref-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pref-title {
+  display: block;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.pref-desc {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2b2b2b;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.config-footer-actions {
   display: flex;
   gap: 1rem;
-  margin-top: 1.25rem;
+  border-top: 1px solid #eae2d0;
+  padding-top: 1.5rem;
   flex-wrap: wrap;
 }
 
 .btn-action {
-  padding: 0.55rem 1.25rem;
+  padding: 0.6rem 1.25rem;
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -110,10 +260,24 @@
 .btn-edit {
   background-color: #2b2b2b;
   color: #fff;
+  width: 100%;
+  text-align: center;
 }
 
 .btn-edit:hover {
   background-color: #404040;
+}
+
+.btn-secondary-pro {
+  background-color: #f3efe6;
+  color: #2b2b2b;
+  border: 1px solid #dcd4c3;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-secondary-pro:hover {
+  background-color: #e5dfd2;
 }
 
 .btn-logout {
@@ -136,22 +300,17 @@
   background-color: #fef2f2;
 }
 
-
-
-
-/* Estilos para el Modal / Aviso de Confirmación */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   backdrop-filter: blur(2px);
+  padding: 1rem;
 }
 
 .modal-card {
@@ -159,21 +318,9 @@
   padding: 2rem;
   border-radius: 12px;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   text-align: left;
-  animation: modalFadeIn 0.2s ease-out;
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .modal-title {
@@ -181,7 +328,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   margin-top: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .modal-desc {
@@ -189,6 +336,31 @@
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: #2b2b2b;
 }
 
 .modal-actions {
@@ -207,7 +379,6 @@
   border: 1px solid transparent;
 }
 
-/* Botón "No" / Cancelar (Discreto, estilo secundario) */
 .btn-cancel {
   background-color: #f3f4f6;
   color: #4b5563;
@@ -218,14 +389,38 @@
   background-color: #e5e7eb;
 }
 
-/* Botón "Sí" / Eliminar (Llamativo, resalta en rojo de alerta) */
+.btn-confirm-primary {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.btn-confirm-primary:hover {
+  background-color: #404040;
+}
+
 .btn-confirm-danger {
   background-color: #dc2626;
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
 }
 
 .btn-confirm-danger:hover {
   background-color: #b91c1c;
+}
+
+@media (max-width: 640px) {
+  .config-body {
+    padding: 3.5rem 1.25rem 1.5rem 1.25rem;
+  }
+  .config-avatar-floating {
+    left: 1.25rem;
+  }
+  .config-footer-actions {
+    flex-direction: column;
+  }
+  .config-footer-actions .btn-action {
+    width: 100%;
+    text-align: center;
+  }
 }
