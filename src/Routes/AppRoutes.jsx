@@ -4,7 +4,7 @@ import Home from "../Pages/Home/Home.jsx";
 import Login from "../Pages/Login/Login.jsx";
 import Menu from "../Pages/Menu/Menu.jsx";
 import Panel from "../Pages/Panel/Panel.jsx";
-import Pedidos from "../Pages/PanelPedidos/Pedidos.jsx";
+import Pedidos from "../Pages/Panel/ComponentPanel/Pedidos/Pedidos.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import SignUp from "../Pages/SignUp/SignUp.jsx";
 
