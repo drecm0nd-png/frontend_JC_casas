@@ -184,6 +184,7 @@ export const CONTACTO = {
   maps: "https://maps.google.com",
   instagram: "https://instagram.com",
   facebook: "https://facebook.com",
+  whatsapp: "https://wa.me/573228658935",
 };
 
 export const FOOTER_LINKS = [

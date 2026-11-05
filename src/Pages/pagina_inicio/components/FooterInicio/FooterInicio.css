@@ -151,42 +151,25 @@
 
 .inicio-footer__social {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.75rem;
   margin-top: 0.35rem;
 }
 
 .inicio-footer__social-link {
-  display: grid;
-  width: 2rem;
-  height: 2rem;
-  place-items: center;
-  border: 1px solid
-    color-mix(in srgb, var(--color-background) 22%, transparent);
-  border-radius: 50%;
-  background-color: color-mix(
-    in srgb,
-    var(--color-background) 8%,
-    transparent
-  );
-  color: var(--color-background);
-  font-size: 0.85rem;
+  display: inline-flex;
+  color: var(--color-text);
   text-decoration: none;
-  transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease;
 }
 
 .inicio-footer__social-link svg {
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 30px;
+  height: 30px;
+  transition: opacity 0.2s ease;
 }
 
 .inicio-footer__social-link:hover,
 .inicio-footer__social-link:focus-visible {
-  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-background));
-  background-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-background));
-  color: var(--color-header);
+  opacity: 0.7;
   text-decoration: none;
 }
 

@@ -1,5 +1,5 @@
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { MapPin, Mail, Phone } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import {
   CONTACTO,
   FOOTER_LEGAL_LINKS,
@@ -81,6 +81,15 @@ function FooterInicio({ onNavigate }) {
               </li>
               <li className="inicio-footer__social">
                 <a
+                  href={CONTACTO.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inicio-footer__social-link"
+                  aria-label="Facebook de JC Casas"
+                >
+                  <FaFacebookF aria-hidden="true" />
+                </a>
+                <a
                   href={CONTACTO.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -90,13 +99,13 @@ function FooterInicio({ onNavigate }) {
                   <FaInstagram aria-hidden="true" />
                 </a>
                 <a
-                  href={CONTACTO.facebook}
+                  href={CONTACTO.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inicio-footer__social-link"
-                  aria-label="Facebook de JC Casas"
+                  aria-label="WhatsApp de JC Casas"
                 >
-                  <FaFacebookF aria-hidden="true" />
+                  <FaWhatsapp aria-hidden="true" />
                 </a>
               </li>
             </ul>
