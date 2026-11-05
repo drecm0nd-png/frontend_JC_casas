@@ -15,6 +15,18 @@
   margin-right: 0;
   padding: 2rem 1rem; /* Mismo respiro superior/inferior que el login */
   box-sizing: border-box;
+  animation: fadeInSlide 0.35s ease-out forwards;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Tarjeta: con la misma altura mínima estirada hacia abajo */
@@ -28,6 +40,7 @@
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
+
 /* Lado Izquierdo: Formulario */
 .signup-form-section {
   flex: 1;
@@ -92,13 +105,13 @@
 .brand-title {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--color-auth-text);
+  color: var(--color-auth-text, #3a1f00);
   margin: 0;
 }
 
 .brand-subtitle {
   font-size: 0.875rem;
-  color: var(--color-auth-text);
+  color: var(--color-auth-text, #3a1f00);
   margin: 0;
 }
 
@@ -131,7 +144,7 @@
 }
 
 .tab-button.active {
-  background-color: var(--color-auth-button);
+  background-color: var(--color-button-primary, #c4832a);
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -185,11 +198,13 @@
   border: none;
   outline: none;
   font-size: 0.875rem;
-  color: var(--color-auth-text);
+  color: var(--color-auth-text, #3a1f00);
   line-height: 1.2;
 }
 
-/* Checkbox Términos */
+/* ==========================================
+    Checkbox Términos y Enlace Interactivo
+   ========================================== */
 .terms-container {
   display: flex;
   align-items: center;
@@ -207,23 +222,41 @@
 .checkbox-input {
   width: 0.95rem;
   height: 0.95rem;
-  accent-color: var(--color-auth-button);
+  accent-color: var(--color-button-primary, #c4832a);
   cursor: pointer;
 }
 
 .checkbox-text {
   font-size: 0.8rem;
-  color: var(--color-auth-text);
+  color: var(--color-auth-text, #3a1f00);
   font-weight: 500;
 }
 
+/* Enlace a los términos dentro del checkbox */
+.link-btn-terms {
+  background: none;
+  border: none;
+  color: var(--color-button-primary, #c4832a);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  padding: 0;
+  margin-left: 0.2rem;
+}
+
+.link-btn-terms:hover {
+  color: var(--color-accent, #d96b43);
+}
+
 /* ==========================================
-    Botón de Acción
+    Botón de Acción (Tonalidad Igual al Login)
    ========================================== */
 .btn-submit {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--color-auth-button) !important;
+  background-color: var(--color-button-primary, #c4832a) !important;
   color: #ffffff !important;
   opacity: 1 !important;
   font-size: 0.95rem;
@@ -232,12 +265,18 @@
   border-radius: 0.75rem;
   cursor: pointer;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
   margin-top: 0.25rem;
 }
 
 .btn-submit:hover {
   background-color: #a36b2b !important;
+}
+
+.btn-submit:disabled {
+  background-color: var(--color-button-primary, #c4832a) !important;
+  opacity: 0.85 !important;
+  cursor: not-allowed;
 }
 
 .login-redirect-container {
@@ -249,11 +288,120 @@
 .login-redirect-link {
   font-size: 0.825rem;
   font-weight: 600;
-  color: var(--color-auth-text);
+  color: var(--color-auth-text, #3a1f00);
   background: none;
   border: none;
   cursor: pointer;
   text-decoration: underline;
+}
+
+/* ==========================================
+    Estilos del Modal Emergente (Términos)
+   ========================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(58, 31, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+  animation: fadeInModal 0.25s ease-out forwards;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: var(--color-auth-surface, #ffffff);
+  border: 1px solid var(--color-stroke, #6b3a1f80);
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-card, #f5eddd);
+  border-bottom: 1px solid var(--color-stroke, #6b3a1f80);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: var(--font-size-card-title, 1.25rem);
+  color: var(--color-auth-text, #3a1f00);
+  font-weight: 700;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-header, #6b3a1f);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-auth-text, #3a1f00);
+  line-height: var(--line-height-normal, 1.5);
+}
+
+.modal-body h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-header, #6b3a1f);
+  font-size: var(--font-size-body, 1rem);
+  font-weight: 700;
+}
+
+.modal-body p {
+  margin: 0;
+  color: var(--color-auth-text, #3a1f00);
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--color-stroke, #6b3a1f80);
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--color-background, #fffdf7);
+}
+
+.btn-modal-accept {
+  background-color: var(--color-button-primary, #c4832a);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-modal-accept:hover {
+  background-color: #a36b2b;
 }
 
 /* ==========================================
@@ -267,19 +415,5 @@
   .brand-logo {
     width: 130px;
     height: 130px;
-  }
-}
-.signup-container {
-  animation: fadeInSlide 0.35s ease-out forwards;
-}
-
-@keyframes fadeInSlide {
-  0% {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
