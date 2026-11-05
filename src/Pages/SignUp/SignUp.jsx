@@ -160,33 +160,33 @@ function SingUp() {
               <h4>1. Horarios de Servicio y Pedidos</h4>
               <p>
                 Los pedidos solo se receptarán y procesarán dentro del horario
-                operativo del restaurante (7:00 a.m. a 4:30 p.m.)[cite: 2].
+                operativo del restaurante (7:00 a.m. a 4:30 p.m.).
               </p>
 
               <h4>2. Estructura del Pedido</h4>
               <p>
                 Todo almuerzo solicitado debe estar compuesto obligatoriamente por un
-                (1) principio, una (1) proteína y un (1) acompañamiento[cite: 2]. Los
-                ingredientes adicionales solo podrán agregarse a un pedido base[cite: 2].
+                (1) principio, una (1) proteína y un (1) acompañamiento. Los
+                ingredientes adicionales solo podrán agregarse a un pedido base.
               </p>
 
               <h4>3. Precios y Tarifas de Domicilio</h4>
               <p>
                 El valor del almuerzo en el local es de $13.000 COP y a domicilio
-                de $14.500 COP (incluyendo la tarifa de domicilio de $1.500 COP)[cite: 2, 3].
+                de $14.500 COP (incluyendo la tarifa de domicilio de $1.500 COP).
               </p>
 
               <h4>4. Disponibilidad de Menú</h4>
               <p>
                 Los almuerzos y sus ingredientes están sujetos a la disponibilidad
-                de inventario en tiempo real dentro del restaurante[cite: 2].
+                de inventario en tiempo real dentro del restaurante.
               </p>
 
               <h4>5. Protección de Datos</h4>
               <p>
                 Los datos personales registrados (Nombre, Teléfono, Email) serán
                 utilizados únicamente para gestionar y procesar las entregas de los
-                pedidos[cite: 2].
+                pedidos.
               </p>
             </div>
 
