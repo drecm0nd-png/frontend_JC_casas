@@ -1,0 +1,193 @@
+.menu-slide {
+  max-width: 48rem;
+}
+
+.menu-slide__title {
+  margin-bottom: 1.25rem;
+}
+
+.menu-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.menu-accordion__item {
+  overflow: hidden;
+  border: 1px solid var(--color-stroke);
+  border-radius: 0.75rem;
+  background-color: color-mix(
+    in srgb,
+    var(--color-background) 88%,
+    transparent
+  );
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: border-color 0.25s ease;
+}
+
+.inicio-slide.is-visible .menu-accordion__item {
+  animation: inicio-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.inicio-slide.is-visible .menu-accordion__item:nth-child(1) {
+  animation-delay: 240ms;
+}
+
+.inicio-slide.is-visible .menu-accordion__item:nth-child(2) {
+  animation-delay: 330ms;
+}
+
+.inicio-slide.is-visible .menu-accordion__item:nth-child(3) {
+  animation-delay: 420ms;
+}
+
+.menu-accordion__item.is-open {
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+.menu-accordion__heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.menu-accordion__trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menu-accordion__trigger:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--color-card) 65%,
+    transparent
+  );
+}
+
+.menu-accordion__trigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+  outline-offset: -2px;
+}
+
+.menu-accordion__trigger-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-medium);
+}
+
+.menu-accordion__section-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  color: color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+}
+
+.menu-accordion__chevron {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+  transition: transform 0.3s ease;
+}
+
+.menu-accordion__item.is-open .menu-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.menu-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.4s ease,
+    opacity 0.3s ease;
+}
+
+.menu-accordion__item.is-open .menu-accordion__panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.menu-accordion__panel-inner {
+  overflow: hidden;
+}
+
+.menu-accordion__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.25rem 1.5rem 1.25rem;
+  list-style: none;
+}
+
+.menu-accordion__dish {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-stroke);
+  border-radius: 0.6rem;
+  background-color: color-mix(
+    in srgb,
+    var(--color-card) 60%,
+    transparent
+  );
+}
+
+.menu-accordion__dish-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+}
+
+.menu-accordion__dish-title {
+  color: var(--color-text);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.35;
+}
+
+.menu-accordion__dish-text {
+  margin-top: 0.1rem;
+  color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-light);
+  line-height: 1.45;
+}
+
+@media (max-width: 600px) {
+  .menu-accordion__trigger {
+    padding: 0.9rem 1rem;
+  }
+
+  .menu-accordion__list {
+    grid-template-columns: 1fr;
+    padding: 0.25rem 1rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inicio-slide.is-visible .menu-accordion__item {
+    animation: none;
+    opacity: 1;
+    translate: none;
+    filter: none;
+  }
+}

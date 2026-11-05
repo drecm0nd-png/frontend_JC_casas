@@ -1,0 +1,11 @@
+.ambiente-slide {
+  max-width: 42rem;
+}
+
+.ambiente-slide__title {
+  max-width: 20ch;
+}
+
+.ambiente-slide__copy {
+  margin-bottom: 0;
+}

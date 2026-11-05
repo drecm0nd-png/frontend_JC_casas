@@ -1,18 +1,25 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "../Pages/Dashboard/Dashboard.jsx";
 import Home from "../Pages/Home/Home.jsx";
 import Login from "../Pages/Login/Login.jsx";
 import Menu from "../Pages/Menu/Menu.jsx";
 import Panel from "../Pages/Panel/Panel.jsx";
 import Pedidos from "../Pages/PanelPedidos/Pedidos.jsx";
+import PaginaInicio from "../Pages/pagina_inicio/PaginaInicio.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import SignUp from "../Pages/SignUp/SignUp.jsx";
 
 function AppRoutes() {
   return (
     <Routes>
-      {/* Ruta principal */}
-      <Route path="/" element={<Home />} />
+      {/* Página de inicio principal */}
+      <Route path="/" element={<PaginaInicio />} />
+
+      {/* Home anterior */}
+      <Route path="/home" element={<Home />} />
+
+      {/* Alias de la página de inicio */}
+      <Route path="/inicio" element={<Navigate to="/" replace />} />
 
       {/* Rutas de Autenticación */}
       <Route path="/login" element={<Login />} />

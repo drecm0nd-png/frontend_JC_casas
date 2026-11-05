@@ -1,0 +1,52 @@
+.slide-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.slide-background__image {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition:
+    opacity 1.2s ease-in-out,
+    transform 14s ease-out;
+}
+
+.slide-background__image.is-active {
+  opacity: 1;
+  transform: scale(1.07);
+}
+
+.slide-background__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at 20% 85%,
+      color-mix(in srgb, var(--color-card) 0%, transparent),
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-background) 12%, transparent) 0%,
+      color-mix(in srgb, var(--color-background) 36%, transparent) 45%,
+      color-mix(in srgb, var(--color-card) 82%, transparent) 100%
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-background__image {
+    transition: none;
+    transform: none;
+  }
+
+  .slide-background__image.is-active {
+    transform: none;
+  }
+}

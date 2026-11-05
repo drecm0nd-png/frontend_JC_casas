@@ -1,0 +1,213 @@
+.inicio-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  padding: 0.85rem var(--page-padding);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-background) 14%, transparent);
+  background-color: color-mix(in srgb, var(--color-header) 92%, transparent);
+  backdrop-filter: blur(12px);
+  animation: inicioFadeIn 0.25s ease-out;
+}
+
+.inicio-header__bar {
+  display: flex;
+  max-width: 80rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+/* ---------- Marca ---------- */
+
+.inicio-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-background);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.inicio-header__brand:hover .inicio-header__brand-name,
+.inicio-header__brand:focus-visible .inicio-header__brand-name {
+  color: color-mix(in srgb, var(--color-accent) 55%, var(--color-background));
+}
+
+.inicio-header__logo {
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border: 1px solid
+    color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-radius: 50%;
+  background-color: var(--color-background);
+  object-fit: cover;
+  box-shadow: 0 4px 6px -1px
+    color-mix(in srgb, var(--color-header) 28%, transparent);
+}
+
+.inicio-header__brand-name {
+  color: var(--color-background);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: none;
+  letter-spacing: normal;
+  transition: color 0.25s ease;
+}
+
+/* ---------- Navegación ---------- */
+
+.inicio-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.inicio-header__nav-link {
+  padding: 0.35rem 0;
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: color-mix(in srgb, var(--color-background) 82%, transparent);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.inicio-header__nav-link:hover,
+.inicio-header__nav-link:focus-visible {
+  border-bottom-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+/* ---------- Acciones ---------- */
+
+.inicio-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.inicio-header__cta {
+  min-height: 2.35rem;
+  padding: 0.45rem 1.15rem;
+}
+
+.inicio-header__burger {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  padding: 0;
+  border: 1px solid
+    color-mix(in srgb, var(--color-background) 22%, transparent);
+  border-radius: 0.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.inicio-header__burger-line {
+  width: 1.1rem;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--color-background);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.inicio-header__burger.is-open .inicio-header__burger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.inicio-header__burger.is-open .inicio-header__burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.inicio-header__burger.is-open .inicio-header__burger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 950px) {
+  .inicio-header__nav {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: var(--page-padding);
+    left: var(--page-padding);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border: 1px solid
+      color-mix(in srgb, var(--color-background) 16%, transparent);
+    border-radius: 0.75rem;
+    background-color: var(--color-header);
+    box-shadow: 0 1.25rem 2rem
+      color-mix(in srgb, var(--color-header) 45%, transparent);
+  }
+
+  .inicio-header__nav.is-open {
+    display: flex;
+  }
+
+  .inicio-header__nav-link {
+    padding: 0.75rem 0.9rem;
+    border-bottom: none;
+    border-radius: 0.5rem;
+    text-align: left;
+  }
+
+  .inicio-header__nav-link:hover,
+  .inicio-header__nav-link:focus-visible {
+    background-color: color-mix(
+      in srgb,
+      var(--color-background) 10%,
+      transparent
+    );
+  }
+
+  .inicio-header__burger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .inicio-header__brand-name {
+    display: none;
+  }
+
+  .inicio-header__cta {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.65rem;
+  }
+}
+
+@keyframes inicioFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

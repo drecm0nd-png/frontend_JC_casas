@@ -1,0 +1,272 @@
+/* ==========================================================
+   PÁGINA DE INICIO
+   Todos los colores provienen de las variables globales.
+   ========================================================== */
+
+.pagina-inicio {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+}
+
+/* ==========================================================
+   SECCIONES
+   ========================================================== */
+
+.inicio-slides {
+  position: relative;
+  z-index: 1;
+}
+
+.inicio-slide {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+  align-items: flex-end;
+  padding: clamp(6.5rem, 14vh, 9rem) var(--page-padding)
+    clamp(3.5rem, 9vh, 6rem);
+  scroll-margin-top: 4.5rem;
+}
+
+.inicio-slide > * {
+  width: 100%;
+  max-width: 48rem;
+}
+
+/* Revelado escalonado de los elementos de cada sección */
+.inicio-slide > * > * {
+  opacity: 0;
+  translate: 0 26px;
+  filter: blur(6px);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inicio-slide.is-visible > * > * {
+  opacity: 1;
+  translate: 0 0;
+  filter: blur(0);
+}
+
+.inicio-slide > * > *:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.inicio-slide > * > *:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.inicio-slide > * > *:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+.inicio-slide > * > *:nth-child(4) {
+  transition-delay: 240ms;
+}
+
+.inicio-slide > * > *:nth-child(5) {
+  transition-delay: 320ms;
+}
+
+.inicio-slide > * > *:nth-child(6) {
+  transition-delay: 400ms;
+}
+
+/* Contenedores que escalonan a sus propios hijos */
+.inicio-slide > * > .proceso-slide__grid,
+.inicio-slide > * > .menu-accordion,
+.inicio-slide > * > .hero-slide__tags {
+  opacity: 1;
+  translate: 0 0;
+  filter: none;
+  transition: none;
+}
+
+/* ==========================================================
+   TEXTOS COMPARTIDOS
+   ========================================================== */
+
+.inicio-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.inicio-step__number {
+  color: color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+  font-weight: var(--font-weight-bold);
+}
+
+.inicio-step__sep {
+  color: color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+}
+
+.inicio-eyebrow {
+  margin-bottom: 0.5rem;
+  color: color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.inicio-title {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+}
+
+.inicio-copy {
+  max-width: 46ch;
+  color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-normal);
+}
+
+/* Párrafos: color original, más peso y halo claro para resaltar */
+.inicio-slide .inicio-copy,
+.inicio-slide .historia-slide__text,
+.inicio-slide .proceso-slide__card-text,
+.inicio-slide .menu-accordion__dish-text {
+  font-weight: var(--font-weight-regular);
+  text-shadow:
+    0 0 6px color-mix(in srgb, var(--color-background) 90%, transparent),
+    0 1px 2px color-mix(in srgb, var(--color-background) 65%, transparent);
+}
+
+.inicio-card {
+  border: 1px solid var(--color-stroke);
+  border-radius: 0.9rem;
+  background-color: color-mix(in srgb, var(--color-card) 88%, transparent);
+  box-shadow: 0 1rem 2rem color-mix(in srgb, var(--color-header) 18%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+
+.inicio-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.inicio-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+  outline-offset: 3px;
+}
+
+.inicio-button--primary {
+  background-color: var(--color-button-primary);
+  color: var(--color-text);
+  box-shadow: 0 0.75rem 1.5rem
+    color-mix(in srgb, var(--color-header) 22%, transparent);
+}
+
+.inicio-button--primary:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 1.75rem
+    color-mix(in srgb, var(--color-header) 28%, transparent);
+}
+
+.inicio-button--ghost {
+  border-color: var(--color-stroke);
+  background-color: color-mix(
+    in srgb,
+    var(--color-background) 65%,
+    transparent
+  );
+  color: var(--color-text);
+}
+
+.inicio-button--ghost:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 58%, var(--color-header));
+  background-color: var(--color-card);
+  transform: translateY(-2px);
+}
+
+.inicio-button--outline {
+  border-color: color-mix(in srgb, var(--color-accent) 65%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent) 20%,
+    transparent
+  );
+  color: var(--color-background);
+}
+
+.inicio-button--outline:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+@keyframes inicio-reveal {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .inicio-slide {
+    padding-top: 6.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .inicio-button {
+    padding: 0.65rem 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inicio-slide > * > * {
+    opacity: 1;
+    translate: 0 0;
+    filter: none;
+    transition: none;
+  }
+}

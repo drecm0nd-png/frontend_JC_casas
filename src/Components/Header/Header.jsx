@@ -43,7 +43,7 @@ function Header() {
           className={`header-nav ${isMenuOpen ? "is-open" : ""}`}
           aria-label="Navegación principal"
         >
-          <NavLink to="/" onClick={closeMenu}>
+          <NavLink to="/home" onClick={closeMenu}>
             Nosotros
           </NavLink>
           <NavLink to="/menu" onClick={closeMenu}>
