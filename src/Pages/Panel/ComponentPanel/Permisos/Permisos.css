@@ -526,17 +526,87 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* ==========================================================
+   AJUSTE RESPONSIVO MÓVIL HASTA 767px (PANEL PERMISOS)
+   Transforma botones de texto en íconos SVG como en Menú/Pedidos
+   ========================================================== */
+@media (max-width: 767px) {
   .item-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.8rem !important;
   }
+  
   .item-info-right {
-    width: 100%;
-    justify-content: space-between;
+    width: 100% !important;
+    justify-content: space-between !important;
   }
+
   .dropdown-content-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 1. Barra contenedora de los filtros en móvil */
+  .filter-tabs {
+    display: flex !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    justify-content: space-around !important;
+    padding: 0.35rem !important;
+    box-sizing: border-box !important;
+    background-color: #f5eddd !important;
+    border-radius: 9999px !important;
+    border: 1px solid #e5d7c3 !important;
+    overflow: visible !important;
+  }
+
+  /* 2. Botones convertidos en Íconos */
+  .filter-tab-btn {
+    flex: 1 !important;
+    height: 2.4rem !important;
+    padding: 0 !important;
+    border-radius: 0.75rem !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.2rem 1.2rem !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+  }
+
+  /* Botón 1: "Todos" (Ícono Lista / Usuarios) */
+  .filter-tab-btn:nth-child(1) {
+    background-color: #fff7ed !important;
+    border-color: #fed7aa !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C4832A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='9' cy='7' r='4'%3E%3C/circle%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'%3E%3C/path%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'%3E%3C/path%3E%3C/svg%3E") !important;
+  }
+
+  /* Botón 2: "Administradores" (Ícono Corona / Escudo) */
+  .filter-tab-btn:nth-child(2) {
+    background-color: #fef3c7 !important;
+    border-color: #fde68a !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l3 12h14l3-12-6 7-4-5-4 5-6-7z'%3E%3C/path%3E%3C/svg%3E") !important;
+  }
+
+  /* Botón 3: "Repartidores" (Ícono Moto / Entrega) */
+  .filter-tab-btn:nth-child(3) {
+    background-color: #e0f2fe !important;
+    border-color: #bae6fd !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230284C7' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='5.5' cy='17.5' r='2.5'%3E%3C/circle%3E%3Ccircle cx='18.5' cy='17.5' r='2.5'%3E%3C/circle%3E%3Cpath d='M15 6h2a2 2 0 0 1 2 2v4h-3.5'%3E%3C/path%3E%3Cpath d='M9 18h6'%3E%3C/path%3E%3Cpath d='M10 9l-3 4.5'%3E%3C/path%3E%3C/svg%3E") !important;
+  }
+
+  /* Botón 4: "Clientes" (Ícono Usuario individual) */
+  .filter-tab-btn:nth-child(4) {
+    background-color: #f3f4f6 !important;
+    border-color: #e5e7eb !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234B5563' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='12' cy='7' r='4'%3E%3C/circle%3E%3C/svg%3E") !important;
+  }
+
+  /* Indicador activo */
+  .filter-tab-btn.active {
+    transform: scale(1.06) !important;
+    box-shadow: 0 3px 8px rgba(189, 115, 47, 0.35) !important;
+    outline: 2px solid #bd732f !important;
   }
 }

@@ -449,6 +449,7 @@
 
 /* ================================================= */
 /* RESPONSIVE PARA TELÉFONOS                          */
+/* REEMPLAZO EXCLUSIVO DE BOTONES POR ÍCONOS EN MÓVIL */
 /* ================================================= */
 @media (max-width: 768px) {
   .inventario-header {
@@ -472,18 +473,67 @@
     gap: 0.8rem;
   }
 
+  /* REEMPLAZO DE LA BARRA DE FILTROS A ÍCONOS */
   .category-filters {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.3rem;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0.4rem;
     padding: 0.3rem;
     border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
   }
 
   .filter-btn {
-    width: 100%;
-    text-align: center;
-    padding: 0.45rem;
+    flex: 1 !important;
+    width: auto !important;
+    height: 2.5rem !important;
+    padding: 0 !important;
+    border-radius: 10px !important;
+    color: transparent !important; /* Oculta todo el texto del botón */
+    font-size: 0 !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.25rem 1.25rem !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease;
+  }
+
+  /* Ícono 1: Todos (Filtro / Lista) */
+  .filter-btn:nth-child(1) {
+    background-color: #fff7ed !important;
+    border-color: #fed7aa !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C4832A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='8' y1='6' x2='21' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='12' x2='21' y2='12'%3E%3C/line%3E%3Cline x1='8' y1='18' x2='21' y2='18'%3E%3C/line%3E%3Cline x1='3' y1='6' x2='3.01' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='12' x2='3.01' y2='12'%3E%3C/line%3E%3Cline x1='3' y1='18' x2='3.01' y2='18'%3E%3C/line%3E%3C/svg%3E") !important;
+  }
+
+  /* Ícono 2: Principio (Tazón / Sopa) */
+  .filter-btn:nth-child(2) {
+    background-color: #fef3c7 !important;
+    border-color: #fde68a !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z'%3E%3C/path%3E%3Cpath d='M7 3v3'%3E%3C/path%3E%3Cpath d='M12 3v3'%3E%3C/path%3E%3Cpath d='M17 3v3'%3E%3C/path%3E%3C/svg%3E") !important;
+  }
+
+  /* Ícono 3: Proteína (Plato principal / Cubiertos) */
+  .filter-btn:nth-child(3) {
+    background-color: #fee2e2 !important;
+    border-color: #fca5a5 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23DC2626' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 2v20'%3E%3C/path%3E%3Cpath d='M14 2v6a3 3 0 0 0 6 0V2'%3E%3C/path%3E%3Cpath d='M4 2v7a3 3 0 0 0 3 3v10'%3E%3C/path%3E%3C/svg%3E") !important;
+  }
+
+  /* Ícono 4: Acompañamiento (Bebidas / Adicionales) */
+  .filter-btn:nth-child(4) {
+    background-color: #e0f2fe !important;
+    border-color: #bae6fd !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230284C7' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 1 1 0 8h-1'%3E%3C/path%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'%3E%3C/path%3E%3Cline x1='6' y1='2' x2='6' y2='4'%3E%3C/line%3E%3Cline x1='10' y1='2' x2='10' y2='4'%3E%3C/line%3E%3Cline x1='14' y1='2' x2='14' y2='4'%3E%3C/line%3E%3C/svg%3E") !important;
+  }
+
+  /* Filtro Activo */
+  .filter-btn.active {
+    transform: scale(1.06) !important;
+    box-shadow: 0 3px 8px rgba(189, 115, 47, 0.35) !important;
+    border-color: #bd732f !important;
+    outline: 2px solid #bd732f !important;
   }
 
   .card-summary-row {

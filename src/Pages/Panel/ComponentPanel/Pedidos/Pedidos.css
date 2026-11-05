@@ -259,6 +259,7 @@
   font-size: 0.95rem;
   color: var(--color-text, #3a1f00);
   word-break: break-word;
+  writing-mode: horizontal-tb;
 }
 
 .icon-map {
@@ -400,99 +401,130 @@
 }
 
 /* ==========================================================
-   AJUSTE RESPONSIVO MÓVIL (< 640px): 
-   Pills de Filtro convertidas a Botones de Ícono SVG (KPI style)
+   AJUSTE RESPONSIVO HASTA 767px (CUBRE DESDE MÓVILES HASTA TABLETS)
    ========================================================== */
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .pedidos-main-card {
-    padding: 1rem;
+    padding: 0.85rem !important;
   }
 
   .kpi-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .records-card {
-    padding: 1rem;
+    padding: 0.85rem !important;
   }
 
-  /* 1. Barra contenedora de los filtros en móvil */
+  /* 1. Barra contenedora de filtros */
   .filter-pills {
     display: flex !important;
     grid-template-columns: none !important;
-    gap: 0.5rem;
-    width: 100%;
-    justify-content: space-around;
-    padding: 0.4rem;
-    box-sizing: border-box;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    justify-content: space-around !important;
+    padding: 0.35rem !important;
+    box-sizing: border-box !important;
   }
 
-  /* 2. Botones de filtro convertidos en Íconos KPI en miniatura */
+  /* 2. Botones de filtro convertidos en Íconos en miniatura */
   .pill-button {
-    flex: 1;
-    height: 2.4rem;
+    flex: 1 !important;
+    height: 2.4rem !important;
     padding: 0 !important;
     border-radius: 0.75rem !important;
-    color: transparent !important; /* Oculta el texto nativo del botón */
+    color: transparent !important;
     font-size: 0 !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: 1.2rem 1.2rem !important;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
   }
 
-  /* Botón "Todos" (Ícono de Lista / Filtro) */
+  /* Íconos SVG */
   .pill-button:nth-child(1) {
-    background-color: #fff7ed;
-    border-color: #fed7aa;
+    background-color: #fff7ed !important;
+    border-color: #fed7aa !important;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C4832A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='8' y1='6' x2='21' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='12' x2='21' y2='12'%3E%3C/line%3E%3Cline x1='8' y1='18' x2='21' y2='18'%3E%3C/line%3E%3Cline x1='3' y1='6' x2='3.01' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='12' x2='3.01' y2='12'%3E%3C/line%3E%3Cline x1='3' y1='18' x2='3.01' y2='18'%3E%3C/line%3E%3C/svg%3E") !important;
   }
 
-  /* Botón "Entregados" (Ícono CheckCircle2 verde) */
   .pill-button:nth-child(2) {
-    background-color: #e8f5e9;
-    border-color: #c8e6c9;
+    background-color: #e8f5e9 !important;
+    border-color: #c8e6c9 !important;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232E7D32' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'%3E%3C/path%3E%3Cpolyline points='22 4 12 14.01 9 11.01'%3E%3C/polyline%3E%3C/svg%3E") !important;
   }
 
-  /* Botón "Pendientes" (Ícono Clock azul/amarillo) */
   .pill-button:nth-child(3) {
-    background-color: #fef3c7;
-    border-color: #fde68a;
+    background-color: #fef3c7 !important;
+    border-color: #fde68a !important;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E") !important;
   }
 
-  /* Botón "Cancelados" (Ícono XCircle rojo) */
   .pill-button:nth-child(4) {
-    background-color: #fee2e2;
-    border-color: #fca5a5;
+    background-color: #fee2e2 !important;
+    border-color: #fca5a5 !important;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23DC2626' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='15' y1='9' x2='9' y2='15'%3E%3C/line%3E%3Cline x1='9' y1='9' x2='15' y2='15'%3E%3C/line%3E%3C/svg%3E") !important;
   }
 
-  /* Estado Activo para resaltar la pestaña seleccionada en móvil */
   .pill-button.active {
-    transform: scale(1.05);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) !important;
-    outline: 2px solid var(--color-button-primary, #c4832a);
+    transform: scale(1.06) !important;
+    box-shadow: 0 3px 8px rgba(189, 115, 47, 0.35) !important;
+    outline: 2px solid var(--color-button-primary, #c4832a) !important;
   }
 
-  /* 3. Ajustes adicionales para las tarjetas del listado en móvil */
+  /* 3. Reorganización de la Cabecera de la Tarjeta */
   .item-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 1rem;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    padding: 0.85rem 1rem !important;
   }
 
+  /* ID y Dirección en formato horizontal continuo */
+  .item-info-left {
+    width: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.6rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Evita explícitamente la rotación vertical o salto anormal de palabras */
+  .pedido-direccion-compacta {
+    font-size: 0.85rem !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    writing-mode: horizontal-tb !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    flex: 1 !important;
+  }
+
+  /* Fila Inferior: Estado + Precio + Flecha */
   .item-info-right {
-    width: 100%;
-    justify-content: space-between;
-    border-top: 1px dashed #e5d7c3;
-    padding-top: 0.6rem;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-top: 1px dashed var(--color-stroke, #6b3a1f40) !important;
+    padding-top: 0.6rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .status-select {
+    font-size: 0.72rem !important;
+    padding: 0.3rem 0.65rem !important;
+  }
+
+  .pedido-precio {
+    font-size: 0.95rem !important;
   }
 
   .detail-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
