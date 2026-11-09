@@ -1,0 +1,369 @@
+@import "../../../../Styles/Variables.css";
+
+/* ==========================================================
+   MÓDULO DE CONFIGURACIÓN - JC CASAS RESTAURANTE
+   ========================================================== */
+
+.config-main-card {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  font-family: var(--font-family-base, inherit);
+  color: var(--color-text, #3a1f00);
+  box-sizing: border-box;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.config-header {
+  margin-bottom: 1.5rem;
+}
+
+.config-title {
+  font-size: 1.85rem;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text, #3a1f00);
+  margin: 0;
+}
+
+.config-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-header, #6b3a1f);
+  margin-top: 0.35rem;
+}
+
+.config-section-margin {
+  margin-bottom: 1.25rem;
+}
+
+/* Encabezados de Sección */
+.section-title-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-icon-amber { color: var(--color-button-primary, #c4832a); }
+.section-icon-purple { color: #7c3aed; }
+
+.section-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text, #3a1f00);
+  margin: 0;
+}
+
+.section-subheading {
+  font-size: 0.8rem;
+  color: var(--color-header, #6b3a1f);
+}
+
+/* Listado de Filas de Opciones */
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background-color: var(--color-background, #fffdf7);
+  border: 1px solid var(--color-stroke, #6b3a1f40);
+  border-radius: 0.75rem;
+  gap: 1rem;
+}
+
+.setting-row.column-layout {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.setting-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.setting-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text, #3a1f00);
+}
+
+.setting-desc {
+  font-size: 0.8rem;
+  color: var(--color-header, #6b3a1f);
+}
+
+/* Botón Toggle de Modo Oscuro */
+.pill-button-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-stroke, #6b3a1f80);
+  background-color: var(--color-card, #f5eddd);
+  color: var(--color-text, #3a1f00);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pill-button-toggle.active {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+/* Píldoras de tamaño de fuente en escritorio */
+.font-size-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  width: 100%;
+  background-color: var(--color-card, #f5eddd);
+  padding: 0.35rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-stroke, #6b3a1f80);
+  box-sizing: border-box;
+}
+
+.font-size-pills .pill-button {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text, #3a1f00);
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.font-size-pills .pill-button.active {
+  background-color: var(--color-button-primary, #c4832a);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(196, 131, 42, 0.25);
+}
+
+/* Slider de Brillo */
+.brightness-slider-box {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.config-range-input {
+  flex: 1;
+  accent-color: var(--color-button-primary, #c4832a);
+  cursor: pointer;
+}
+
+.slider-icon {
+  color: var(--color-header, #6b3a1f);
+}
+
+/* Master Switch de Desarrollador */
+.master-dev-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #7c3aed;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Contenedor Desarrollador con Candado */
+.dev-tools-wrapper {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.dev-tools-wrapper.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.lock-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(1px);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #6d28d9;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.margin-top-dev {
+  margin-top: 0.5rem;
+}
+
+.dev-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Toast flotante */
+.dev-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: #2b2b2b;
+  color: #ffffff;
+  padding: 0.75rem 1.1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-left: 4px solid var(--color-button-primary, #c4832a);
+}
+
+/* ==========================================================
+   RESPONSIVE HASTA 992px (CONVERSIÓN A ICONOS DE TAMAÑO PROGRESIVO)
+   ========================================================== */
+@media (max-width: 992px) {
+  .font-size-row {
+    align-items: stretch !important;
+  }
+  
+  .font-size-pills {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    justify-content: space-around !important;
+    padding: 0.35rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .font-size-pills .pill-button {
+    flex: 1 !important;
+    height: 2.4rem !important;
+    padding: 0 !important;
+    border-radius: 0.75rem !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.2rem 1.2rem !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+  }
+
+  /* Botón 1: Pequeña (1 línea pequeña) */
+  .font-size-pills .pill-button:nth-child(1) {
+    background-color: #fff7ed !important;
+    border-color: #fed7aa !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C4832A' stroke-width='2.5' stroke-linecap='round'%3E%3Cline x1='8' y1='12' x2='16' y2='12'%3E%3C/line%3E%3C/svg%3E") !important;
+  }
+
+  /* Botón 2: Normal (2 líneas medianas) */
+  .font-size-pills .pill-button:nth-child(2) {
+    background-color: #fef3c7 !important;
+    border-color: #fde68a !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round'%3E%3Cline x1='6' y1='9' x2='18' y2='9'%3E%3C/line%3E%3Cline x1='6' y1='15' x2='18' y2='15'%3E%3C/line%3E%3C/svg%3E") !important;
+  }
+
+  /* Botón 3: Grande (3 líneas escalonadas / grandes) */
+  .font-size-pills .pill-button:nth-child(3) {
+    background-color: #d1fae5 !important;
+    border-color: #a7f3d0 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23065F46' stroke-width='2.5' stroke-linecap='round'%3E%3Cline x1='5' y1='7' x2='19' y2='7'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3Cline x1='5' y1='17' x2='19' y2='17'%3E%3C/line%3E%3C/svg%3E") !important;
+  }
+
+  .font-size-pills .pill-button.active {
+    transform: scale(1.06) !important;
+    box-shadow: 0 3px 8px rgba(189, 115, 47, 0.35) !important;
+    outline: 2px solid var(--color-button-primary, #c4832a) !important;
+  }
+
+  .dev-actions-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

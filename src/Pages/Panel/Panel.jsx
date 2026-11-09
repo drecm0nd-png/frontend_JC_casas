@@ -3,9 +3,11 @@ import InventarioM from "./ComponentPanel/InventarioM/InventarioM.jsx";
 import InventarioAd from "./ComponentPanel/InventarioAdicional/InventarioAd.jsx";
 import Permisos from "./ComponentPanel/Permisos/Permisos.jsx";
 import Impresion from "./ComponentPanel/Impresion/Impresion.jsx";
-
-// APUNTA DIRECTAMENTE AL ARCHIVO QUE ESTÁS EDITANDO
 import Pedidos from "./ComponentPanel/Pedidos/Pedidos.jsx"; 
+
+// 1. IMPORTA TU NUEVO COMPONENTE DE CONFIGURACIÓN
+import Configuracion from "./ComponentPanel/Configuracion/Configuracion.jsx";
+
 import "./Panel.css";
 
 export default function Panel() {
@@ -46,17 +48,12 @@ export default function Panel() {
         <section className="panel-content-box">
           {activeTab === "menu" && <InventarioM />}
           {activeTab === "adicionales" && <InventarioAd />}
-          
-          {/* RENDERIZADO DEL COMPONENTE */}
           {activeTab === "pedidos" && <Pedidos />}
-
           {activeTab === "permisos" && <Permisos />}
-          {activeTab === "configuracion" && (
-            <div>
-              <h2 className="section-title">Configuración</h2>
-              <p className="section-desc">Ajustes generales del sistema.</p>
-            </div>
-          )}
+          
+          {/* 2. RENDERIZADO DEL COMPONENTE DE CONFIGURACIÓN */}
+          {activeTab === "configuracion" && <Configuracion />}
+
           {activeTab === "impresion" && <Impresion />}
         </section>
       </div>
