@@ -401,7 +401,7 @@
 }
 
 /* ==========================================================
-   MINI VENTANA EMERGENTE (MODAL ALMUERZO) - ESTILOS AISLADOS
+   MINI VENTANA EMERGENTE (MODAL CREAR ALMUERZO) - 520px MAX-WIDTH
    ========================================================== */
 
 /* Fondo transparente con desenfoque */
@@ -422,18 +422,19 @@
   animation: modalFadeIn 0.2s ease-out;
 }
 
-/* Contenedor principal del Modal */
-.modal-card {
-  background-color: var(--color-auth-surface, #ffffff);
-  border-radius: 1.25rem;
-  border: 1px solid var(--color-stroke, #6b3a1f80);
-  width: 100%;
-  max-width: 480px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+/* Contenedor principal del Modal ajustado exactamente a 520px de ancho */
+.modal-card,
+div.modal-card {
+  background-color: var(--color-auth-surface, #ffffff) !important;
+  border-radius: 1.25rem !important;
+  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
+  width: 100% !important;
+  max-width: 520px !important; /* ← AJUSTADO DE 980px A 520px */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
   animation: modalScaleUp 0.2s ease-out;
 }
 
@@ -481,7 +482,7 @@
   background-color: rgba(107, 58, 31, 0.1);
 }
 
-/* Cuerpo y Selects al 100% */
+/* Cuerpo y Selects al 100% del contenedor de 520px */
 .modal-card .modal-body {
   padding: 1.5rem;
   display: flex;
@@ -506,7 +507,7 @@
   display: block;
 }
 
-/* Solución del colapso: Forzar ancho completo */
+/* Forzar ancho completo en controles de formulario */
 .modal-card .form-group select,
 .modal-card .form-group input,
 .modal-card .form-group textarea {
@@ -538,7 +539,7 @@
   min-height: 75px;
 }
 
-/* Acciones */
+/* Acciones del Modal */
 .modal-card .modal-actions {
   display: flex;
   flex-direction: column;
@@ -627,6 +628,15 @@
 
   .records-card {
     padding: 0.85rem !important;
+  }
+
+  /* Ajuste responsivo del modal en pantallas móviles */
+  .modal-card,
+  div.modal-card {
+    width: 95% !important;
+    max-width: 100% !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
   }
 
   /* Filtros en móvil */

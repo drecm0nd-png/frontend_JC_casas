@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaStopwatch } from "react-icons/fa6";
 import { Plus, X } from "lucide-react";
+import BebidasSection from "../../Components/BebidasSection/BebidasSection";
 import "./Menu.css";
 
 export default function Menu() {
@@ -12,11 +13,11 @@ export default function Menu() {
   const [openProteina, setOpenProteina] = useState(false);
   const [openAcompanamiento, setOpenAcompanamiento] = useState(false);
 
-  // Estados para la mini ventana emergente (Modal)
+  // Estados para la ventana emergente (Modal)
   const [modalAbierto, setModalAbierto] = useState(false);
   const [itemSeleccionado, setItemSeleccionado] = useState(null);
 
-  // Estados del formulario dentro de la ventana emergente
+  // Estados del formulario dentro del modal
   const [principio, setPrincipio] = useState("");
   const [proteina, setProteina] = useState("");
   const [acompanamiento, setAcompanamiento] = useState("");
@@ -25,6 +26,10 @@ export default function Menu() {
   // Abrir Modal con el producto base seleccionado
   const handleAbrirModal = (item) => {
     setItemSeleccionado(item);
+    setPrincipio("");
+    setProteina("");
+    setAcompanamiento("");
+    setObservaciones("");
     setModalAbierto(true);
   };
 
@@ -41,6 +46,7 @@ export default function Menu() {
   // Confirmar creación del pedido
   const handleGuardarAlmuerzo = (e) => {
     e.preventDefault();
+
     const nuevoPedido = {
       base: itemSeleccionado,
       principio,
@@ -48,8 +54,9 @@ export default function Menu() {
       acompanamiento,
       observaciones
     };
-    console.log("Almuerzo creado exitosamente:", nuevoPedido);
-    alert(`¡${itemSeleccionado.nombre} agregado al pedido con éxito!`);
+
+    console.log("Pedido agregado exitosamente:", nuevoPedido);
+    alert(`¡${itemSeleccionado?.nombre} agregado al pedido con éxito!`);
     handleCerrarModal();
   };
 
@@ -87,6 +94,7 @@ export default function Menu() {
               <span className="hero-price">22.500$</span>
             </div>
             <button 
+              type="button"
               className="btn-primary-action"
               onClick={() => handleAbrirModal({ nombre: "Almuerzo Corriente / Ejecutivo", precio: 22500 })}
             >
@@ -211,6 +219,7 @@ export default function Menu() {
         <section className="extra-section">
           <h2 className="section-title">Adicionales: Sopas &amp; Ensaladas</h2>
           <div className="cards-grid-3">
+            
             <div className="extra-card">
               <div className="extra-img">Sopa de Ajiaco</div>
               <div className="extra-body">
@@ -264,83 +273,24 @@ export default function Menu() {
                 </div>
               </div>
             </div>
+
           </div>
         </section>
 
-        {/* BEBIDAS */}
-        <section className="extra-section">
-          <h2 className="section-title">Bebidas</h2>
-          <div className="cards-grid-3">
-            <div className="extra-card">
-              <div className="extra-img">Jugos</div>
-              <div className="extra-body">
-                <h4>Jugos Naturales</h4>
-                <p>Maracuyá, Mora, Mango o Lulo en agua o leche.</p>
-                <div className="extra-footer">
-                  <span className="price">4.000$</span>
-                  <button 
-                    type="button" 
-                    className="btn-add"
-                    onClick={() => handleAbrirModal({ nombre: "Jugos Naturales", precio: 4000 })}
-                  >
-                    <Plus size={18} />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="extra-card">
-              <div className="extra-img">Limonada</div>
-              <div className="extra-body">
-                <h4>Limonada Cerezada</h4>
-                <p>Refrescante limonada recién preparada con hielo.</p>
-                <div className="extra-footer">
-                  <span className="price">5.500$</span>
-                  <button 
-                    type="button" 
-                    className="btn-add"
-                    onClick={() => handleAbrirModal({ nombre: "Limonada Cerezada", precio: 5500 })}
-                  >
-                    <Plus size={18} />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="extra-card">
-              <div className="extra-img">Gaseosas</div>
-              <div className="extra-body">
-                <h4>Gaseosas y Refrescos</h4>
-                <p>Coca-Cola, Sprite, Colombiana o Postobón personal.</p>
-                <div className="extra-footer">
-                  <span className="price">3.500$</span>
-                  <button 
-                    type="button" 
-                    className="btn-add"
-                    onClick={() => handleAbrirModal({ nombre: "Gaseosas y Refrescos", precio: 3500 })}
-                  >
-                    <Plus size={18} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* COMPONENTE REUTILIZABLE DE BEBIDAS */}
+        <BebidasSection onSelectBebida={handleAbrirModal} />
 
       </div>
 
-      {/* MINI VENTANA EMERGENTE (MODAL) */}
+      {/* MINI VENTANA EMERGENTE (MODAL CON PASOS UNIFICADOS) */}
       {modalAbierto && (
         <div className="modal-overlay" onClick={handleCerrarModal}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             
-            {/* Encabezado Rediseñado */}
+            {/* Encabezado del Modal */}
             <div className="modal-header">
-              <div className="modal-header-info">
-                <span className="modal-header-badge">
-                  <span className="modal-header-badge-dot"></span>
-                  Personalización
-                </span>
+              <div>
+                <p className="modal-subtitle">Personalización</p>
                 <h3>{itemSeleccionado?.nombre}</h3>
               </div>
               <button 
@@ -358,10 +308,7 @@ export default function Menu() {
               
               {/* Paso 1: Principio */}
               <div className="form-group">
-                <div className="form-label-wrapper">
-                  <span className="step-badge-mini">1</span>
-                  <label>Selecciona un Principio / Grano</label>
-                </div>
+                <label>1. Selecciona un Principio / Grano</label>
                 <select 
                   value={principio} 
                   onChange={(e) => setPrincipio(e.target.value)}
@@ -376,10 +323,7 @@ export default function Menu() {
 
               {/* Paso 2: Proteína */}
               <div className="form-group">
-                <div className="form-label-wrapper">
-                  <span className="step-badge-mini">2</span>
-                  <label>Selecciona una Proteína / Carne</label>
-                </div>
+                <label>2. Selecciona una Proteína / Carne</label>
                 <select 
                   value={proteina} 
                   onChange={(e) => setProteina(e.target.value)}
@@ -395,10 +339,7 @@ export default function Menu() {
 
               {/* Paso 3: Acompañamiento */}
               <div className="form-group">
-                <div className="form-label-wrapper">
-                  <span className="step-badge-mini">3</span>
-                  <label>Selecciona un Acompañamiento</label>
-                </div>
+                <label>3. Selecciona un Acompañamiento</label>
                 <select 
                   value={acompanamiento} 
                   onChange={(e) => setAcompanamiento(e.target.value)}
@@ -411,11 +352,11 @@ export default function Menu() {
                 </select>
               </div>
 
-              {/* Observaciones */}
+              {/* Observaciones generales */}
               <div className="form-group">
-                <label style={{ marginLeft: "1.75rem" }}>Observaciones o Notas (Opcional)</label>
+                <label>Observaciones o Notas (Opcional)</label>
                 <textarea
-                  placeholder="Ej: Ensalada sin cebolla, poco arroz..."
+                  placeholder="Ej: Sin hielo, azúcar separada, poco arroz..."
                   value={observaciones}
                   onChange={(e) => setObservaciones(e.target.value)}
                   rows={2}
