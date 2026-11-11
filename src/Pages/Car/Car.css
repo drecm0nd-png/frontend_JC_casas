@@ -1,45 +1,107 @@
+/* --- ANIMACIONES GLOBALES --- */
+@keyframes carFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(246, 173, 85, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(246, 173, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(246, 173, 85, 0); }
+}
+
 /* Contenedor Principal */
 .car-page-container {
-  padding: 1.5rem 1rem;
-  background-color: #faf7f2;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, #faf7f2 0%, #f2eae1 100%);
   min-height: 100vh;
   box-sizing: border-box;
+  animation: carFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .car-inner-wrapper {
-  max-width: 1100px;
+  max-width: 1650px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 /* Cabecera */
+.car-header-section {
+  text-align: left;
+  border-bottom: 2px solid #ebdcc5;
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .car-header-section .car-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #bd732f;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
 .car-header-section .car-title {
   color: #2b2b2b;
   margin: 0.2rem 0 0.4rem 0;
-  font-size: 1.8rem;
+  font-size: 2.3rem;
+  font-weight: 800;
 }
 
 .car-header-section .car-description {
-  color: #555;
+  color: #666;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
-/* Grid Principal */
+.car-header-badge {
+  background: #f8f1e5;
+  border: 1px solid #ebdcc5;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #bd732f;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* --- GRID DE 3 COLUMNAS --- */
 .car-main-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 1.5rem;
-  align-items: start;
+  grid-template-columns: 1.15fr 1fr 1.15fr;
+  gap: 1.8rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1350px) {
+  .car-main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 900px) {
@@ -48,24 +110,33 @@
   }
 }
 
-/* Tarjetas Contenedoras */
+/* Tarjetas Base */
 .car-card-box {
-  background-color: #fcfbfa;
-  border: 1px solid #e5d7c3;
-  border-radius: 14px;
-  padding: 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid #ebdcc5;
+  border-radius: 20px;
+  padding: 1.8rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(189, 115, 47, 0.06);
+  transition: all 0.3s ease;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden; /* Evita desbordamientos */
+}
+
+.car-card-box:hover {
+  box-shadow: 0 16px 40px rgba(189, 115, 47, 0.1);
+  transform: translateY(-2px);
 }
 
 .car-card-inner-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #f0e6d6;
-  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #f2e8dc;
+  padding-bottom: 1rem;
   flex-wrap: wrap;
   gap: 0.8rem;
 }
@@ -73,45 +144,86 @@
 .car-card-inner-header h3 {
   margin: 0;
   color: #2b2b2b;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 800;
 }
 
-/* Botón Añadir Almuerzo */
-.btn-add-more {
-  background-color: #f8f1e5;
+/* Botón Añadir Almuerzo / Modificar */
+.btn-add-more,
+.btn-open-address-form {
+  background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
   color: #bd732f;
   border: 1.5px solid #ebdcc5;
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
+  padding: 0.65rem 1.1rem;
+  border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
 }
 
-/* Lista de Productos */
+.btn-add-more:hover,
+.btn-open-address-form:hover {
+  background: #bd732f;
+  color: #fff;
+  border-color: #bd732f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(189, 115, 47, 0.25);
+}
+
+/* Lista de Productos en Tarjetas Individuales (Ancho Fijo y Controlado) */
 .car-items-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.car-items-list::-webkit-scrollbar {
+  width: 5px;
+}
+.car-items-list::-webkit-scrollbar-thumb {
+  background: #ebdcc5;
+  border-radius: 10px;
 }
 
 .car-item-row {
-  border-bottom: 1px dashed #f0e6d6;
-  padding-bottom: 0.8rem;
+  background: #fcfbfa;
+  border: 1.5px solid #ebdcc5;
+  border-radius: 14px;
+  padding: 1.1rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(189, 115, 47, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  box-sizing: border-box; /* Clave para que el padding no expanda el ancho */
+}
+
+.car-item-row:hover {
+  border-color: #bd732f;
+  box-shadow: 0 6px 16px rgba(189, 115, 47, 0.08);
 }
 
 .car-item-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.8rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .car-item-info {
@@ -119,116 +231,195 @@
   gap: 0.8rem;
   align-items: center;
   flex: 1;
-  min-width: 180px;
+  min-width: 0; /* Permite que el texto colapse con ellipsis si es muy largo */
 }
 
 .car-item-qty {
   font-weight: 800;
   color: #bd732f;
   background-color: #f8f1e5;
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.car-item-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .car-item-name {
   color: #2b2b2b;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+.item-details-tags {
+  font-size: 0.78rem;
+  color: #666;
+  font-weight: 500;
+  line-height: 1.3;
+  background: #f4ede4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ebdcc5;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* --- BOTONES DE ACCIÓN LATERAL --- */
 .car-item-actions-wrapper {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-left: auto;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .car-item-price {
-  font-weight: 700;
+  font-weight: 800;
   color: #2b2b2b;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  white-space: nowrap;
 }
 
-.btn-delete-icon {
-  background-color: #fff5f5;
-  color: #dc2626;
-  border: 1px solid #fecaca;
-  width: 42px;
-  height: 42px;
+.btn-action-icon {
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
+  box-sizing: border-box;
 }
 
+.btn-action-icon.edit {
+  background-color: #fdf8f2;
+  color: #bd732f;
+  border-color: #ebdcc5;
+}
+
+.btn-action-icon.edit:hover {
+  background-color: #bd732f;
+  color: #fff;
+  border-color: #bd732f;
+}
+
+.btn-action-icon.delete {
+  background-color: #fff5f5;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.btn-action-icon.delete:hover {
+  background-color: #dc2626;
+  color: #fff;
+  border-color: #dc2626;
+}
+
+/* Controles de Cantidad Fijos (Sin alterar el ancho total) */
 .car-edit-controls {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  background: #f8fafc;
+  padding: 0.25rem;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  flex-shrink: 0;
 }
 
 .btn-qty-mod {
-  padding: 0.4rem 0.8rem;
-  background: #e2e8f0;
-  border: none;
-  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  background: #fff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
+  color: #1e293b;
+  min-width: 34px;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-qty-mod:hover {
+  background: #bd732f;
+  color: #fff;
+  border-color: #bd732f;
 }
 
 .car-qty-display {
-  font-weight: 700;
-  padding: 0 0.4rem;
+  font-weight: 800;
+  padding: 0 0.3rem;
   font-size: 1rem;
+  color: #1e293b;
+  text-align: center;
+  min-width: 20px;
+}
+
+/* Optimizador Táctil para Móviles */
+@media (max-width: 600px) {
+  .btn-action-icon {
+    width: 42px;
+    height: 42px;
+  }
+  .btn-qty-mod {
+    min-width: 38px;
+    min-height: 38px;
+    font-size: 1.1rem;
+  }
 }
 
 .car-confirm-delete-box {
   background-color: #fffaf0;
   border: 1.5px solid #f6ad55;
-  border-radius: 10px;
-  padding: 1rem;
+  border-radius: 12px;
+  padding: 0.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .car-confirm-delete-box span {
   font-weight: 700;
   color: #744210;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .car-confirm-btns {
   display: flex;
   gap: 0.5rem;
-  width: 100%;
-  justify-content: flex-end;
 }
 
 .btn-yes-delete, .btn-cancel-delete {
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.9rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
-.btn-yes-delete {
-  background-color: #dc2626;
-  color: #fff;
-  border: none;
-}
-
-.btn-cancel-delete {
-  background-color: #e2e8f0;
-  color: #4a5568;
-  border: none;
-}
+.btn-yes-delete { background-color: #dc2626; color: #fff; border: none; }
+.btn-cancel-delete { background-color: #e2e8f0; color: #4a5568; border: none; }
 
 .car-empty-state {
   text-align: center;
@@ -236,439 +427,682 @@
   color: #718096;
 }
 
-.car-empty-state p {
-  margin-bottom: 1.2rem;
-  font-size: 1.05rem;
-}
+.car-empty-state p { margin-bottom: 1rem; font-size: 1rem; }
 
 .btn-go-menu {
   background-color: #bd732f;
   color: #fff;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
+  padding: 0.8rem 1.4rem;
+  border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
   width: 100%;
-  max-width: 280px;
+  max-width: 260px;
 }
 
-.car-total-row {
+.btn-go-menu:hover { background-color: #a36125; transform: translateY(-2px); }
+
+/* --- PANEL DE PERSONALIZACIÓN INTEGRADO --- */
+.car-customization-panel {
+  background: #ffffff;
+  border: 1.5px solid #bd732f;
+  border-radius: 12px;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #e5d7c3;
-  padding-top: 1rem;
-  margin-top: 0.5rem;
-  font-size: 1.15rem;
-  font-weight: 700;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: carFadeIn 0.25s ease-out;
+  box-shadow: inset 0 2px 6px rgba(189, 115, 47, 0.05);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.car-total-price {
+.car-custom-title {
+  margin: 0;
+  font-size: 0.9rem;
   color: #bd732f;
-  font-size: 1.35rem;
+  font-weight: 800;
+  border-bottom: 1px dashed #ebdcc5;
+  padding-bottom: 0.4rem;
 }
 
+.car-custom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
+}
+
+@media (max-width: 500px) {
+  .car-custom-grid { grid-template-columns: 1fr; }
+}
+
+.car-custom-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.car-custom-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #555;
+}
+
+.car-custom-select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  background: #fff;
+  font-size: 0.82rem;
+  outline: none;
+  color: #2b2b2b;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.car-custom-select:focus {
+  border-color: #bd732f;
+  box-shadow: 0 0 0 2px rgba(189, 115, 47, 0.12);
+}
+
+.car-custom-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+  border-top: 1px solid #f2e8dc;
+  padding-top: 0.6rem;
+}
+
+.btn-save-custom {
+  background: #bd732f;
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.2rem;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: background 0.2s;
+}
+
+.btn-save-custom svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.btn-save-custom:hover { 
+  background: #a36125; 
+}
+
+.btn-cancel-custom {
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.btn-cancel-custom:hover { background: #cbd5e1; }
+
+/* --- SECCIÓN DE PAGOS ANCLADA ABAJO --- */
 .car-payment-actions {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  margin-top: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.car-financial-summary {
+  background: #fdfaf6;
+  border: 1.5px solid #ebdcc5;
+  border-radius: 14px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.car-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.car-summary-row.total {
+  border-top: 1px dashed #ebdcc5;
+  padding-top: 0.6rem;
+  margin-top: 0.2rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2b2b2b;
+}
+
+.car-summary-row.total .car-total-price {
+  color: #bd732f;
+  font-size: 1.35rem;
 }
 
 .btn-pay-now {
   width: 100%;
-  background-color: #2b2b2b;
+  background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
   color: #fff;
   border: none;
-  padding: 1rem;
-  border-radius: 12px;
+  padding: 1.15rem;
+  border-radius: 14px;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
-.car-sub-actions {
+.btn-pay-now:hover {
+  background: linear-gradient(135deg, #3d3d3d 0%, #2b2b2b 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* --- ACCIONES PARA ESCRITORIO --- */
+.car-sub-actions-desktop {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.4rem;
-  flex-wrap: wrap;
   gap: 0.8rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .car-sub-actions-desktop {
+    display: none;
+  }
 }
 
 .btn-toggle-edit {
   background: none;
   border: none;
-  color: #bd732f;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   cursor: pointer;
+  padding: 0.3rem 0;
+  color: #bd732f;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem 0;
 }
 
 .btn-cancel-cart {
   background: none;
   border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.3rem 0;
   color: #e53e3e;
+}
+
+/* --- BOTONES TÁCTILES MÓVILES CON DISEÑO HOVER PROFESIONAL --- */
+.car-sub-actions-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .car-sub-actions-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.btn-action-card-edit,
+.btn-action-card-cancel {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-sizing: border-box;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estilo y Hover para Editar Cantidades Móvil */
+.btn-action-card-edit {
+  background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
+  color: #bd732f;
+  border: 1.5px solid #ebdcc5;
+  box-shadow: 0 4px 12px rgba(189, 115, 47, 0.08);
+}
+
+.btn-action-card-edit:hover {
+  background: #bd732f;
+  color: #ffffff;
+  border-color: #bd732f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(189, 115, 47, 0.25);
+}
+
+.btn-action-card-edit:active {
+  transform: translateY(0);
+}
+
+/* Estilo y Hover para Vaciar Carrito Móvil */
+.btn-action-card-cancel {
+  background: #fff5f5;
+  color: #dc2626;
+  border: 1.5px solid #fecaca;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.05);
+}
+
+.btn-action-card-cancel:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25);
+}
+
+.btn-action-card-cancel:active {
+  transform: translateY(0);
+}
+
+/* --- MINI TARJETA DE CONFIRMACIÓN DE CANCELACIÓN (MÓVIL) --- */
+.car-cancel-mini-card {
+  background: #fff5f5;
+  border: 2px solid #f87171;
+  border-radius: 14px;
+  padding: 1.2rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: carFadeIn 0.25s ease-out;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.car-cancel-mini-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #7f1d1d;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.car-cancel-mini-card small {
+  color: #991b1b;
+  font-size: 0.8rem;
+}
+
+.car-cancel-mini-btns {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn-confirm-cancel-order {
+  flex: 1;
+  background-color: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 9px;
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  padding: 0.3rem 0;
+  transition: background 0.2s;
 }
 
-/* Dirección */
+.btn-confirm-cancel-order:hover {
+  background-color: #b91c1c;
+}
+
+.btn-abort-cancel {
+  background-color: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  padding: 0.75rem 1.1rem;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-abort-cancel:hover {
+  background-color: #cbd5e1;
+}
+
+/* --- COLUMNAS 2 Y 3 (DIRECCIÓN Y PEDIDOS) --- */
 .car-address-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f2e8dc;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.car-address-title-group {
+  display: flex;
+  align-items: center;
   gap: 0.9rem;
-  border-bottom: 1px solid #f0e6d6;
-  padding-bottom: 0.8rem;
 }
 
 .car-address-icon {
   background-color: #f8f1e5;
   color: #bd732f;
-  padding: 0.7rem;
-  border-radius: 10px;
+  padding: 0.75rem;
+  border-radius: 12px;
   display: flex;
 }
 
-.car-address-header h3 {
-  margin: 0;
-  font-size: 1.15rem;
-  color: #2b2b2b;
-}
-
-.car-address-header small {
-  color: #666;
-  font-size: 0.85rem;
-}
+.car-address-header h3 { margin: 0; font-size: 1.3rem; color: #2b2b2b; }
+.car-address-header small { color: #666; font-size: 0.85rem; }
 
 .car-current-address-badge {
   background-color: #f8f1e5;
-  padding: 0.9rem 1rem;
-  border-radius: 10px;
+  padding: 1.1rem;
+  border-radius: 14px;
   border: 1px solid #ebdcc5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.car-current-address-badge small {
-  color: #888;
-  display: block;
-  font-weight: 700;
-  font-size: 0.75rem;
+.car-current-address-badge small { color: #888; font-weight: 700; font-size: 0.75rem; }
+.car-current-address-badge p { margin: 0; font-weight: 700; color: #2b2b2b; font-size: 1rem; }
+
+.car-delivery-note-box {
+  background: #fdfaf6;
+  border: 1px dashed #ebdcc5;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.car-current-address-badge p {
-  margin: 0.3rem 0 0 0;
-  font-weight: 700;
-  color: #2b2b2b;
-  font-size: 1rem;
-}
-
-.btn-open-address-form {
-  background-color: #fff;
-  color: #bd732f;
-  border: 1.5px solid #bd732f;
-  padding: 0.8rem;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
+.car-delivery-note-box label { font-size: 0.8rem; font-weight: 700; color: #555; }
+.car-delivery-note-box textarea {
   width: 100%;
-  font-size: 0.95rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  resize: none;
+  outline: none;
+  background: #fff;
+  box-sizing: border-box;
 }
 
 .car-address-form {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1rem;
+  animation: carFadeIn 0.25s ease-out;
 }
 
-.car-form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.car-form-group label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #444;
-}
-
-.car-form-group input,
-.car-form-group select {
+.car-form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.car-form-group label { font-size: 0.85rem; font-weight: 700; color: #444; }
+.car-form-group input, .car-form-group select {
   width: 100%;
-  padding: 0.7rem;
-  border-radius: 8px;
+  padding: 0.8rem;
+  border-radius: 10px;
   border: 1px solid #cbd5e1;
   background-color: #fff;
   outline: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
   box-sizing: border-box;
 }
 
-.car-form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
+.car-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.car-form-buttons { display: flex; gap: 0.6rem; margin-top: 0.4rem; }
+.btn-save-address { flex: 1; background-color: #bd732f; color: #fff; border: none; padding: 0.9rem; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+.btn-cancel-address { background-color: #e2e8f0; color: #4a5568; border: none; padding: 0.9rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
 
-@media (max-width: 500px) {
-  .car-form-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.car-form-buttons {
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 0.5rem;
-}
-
-.btn-save-address {
-  flex: 1;
-  background-color: #bd732f;
-  color: #fff;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.btn-cancel-address {
-  background-color: #e2e8f0;
-  color: #4a5568;
-  border: none;
-  padding: 0.8rem 1.1rem;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* Historial */
-.car-history-container {
-  background-color: #fcfbfa;
-  border: 1px solid #e5d7c3;
-  border-radius: 14px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-.car-history-container h2 {
-  margin: 0;
-  color: #2b2b2b;
-  font-size: 1.25rem;
-}
-
-.car-history-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-}
-
-@media (max-width: 850px) {
-  .car-history-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* Panel Pedidos */
+.car-orders-column { display: flex; flex-direction: column; gap: 1.5rem; }
 .car-history-subcard {
-  background-color: #fff;
-  border: 1px solid #e5d7c3;
-  border-radius: 10px;
-  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #ebdcc5;
+  border-radius: 20px;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(189, 115, 47, 0.05);
 }
 
 .car-history-subcard h4 {
   margin: 0;
   color: #bd732f;
-  border-bottom: 1px solid #f0e6d6;
-  padding-bottom: 0.6rem;
-  font-size: 1.05rem;
+  border-bottom: 1px solid #f2e8dc;
+  padding-bottom: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 800;
 }
 
-.car-order-pending-item,
-.car-order-completed-item {
-  border-radius: 8px;
-  padding: 0.9rem;
+.car-orders-scroll-box {
   display: flex;
   flex-direction: column;
+  gap: 0.9rem;
+  max-height: 290px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.car-order-pending-item, .car-order-completed-item {
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.car-order-pending-item { background-color: #fffaf0; border: 1.5px solid #f6ad55; animation: pulseGlow 3s infinite; }
+.car-order-completed-item { background-color: #f8fafc; border: 1px solid #e2e8f0; }
+
+.car-order-item-top { display: flex; justify-content: space-between; align-items: center; }
+.car-order-id { font-weight: 800; color: #2b2b2b; font-size: 0.95rem; }
+.car-badge-pending { background-color: #f6ad55; color: #fff; padding: 0.25rem 0.7rem; border-radius: 12px; font-size: 0.75rem; font-weight: 800; }
+.car-badge-completed { background-color: #c6f6d5; color: #22543d; padding: 0.25rem 0.7rem; border-radius: 12px; font-size: 0.75rem; font-weight: 800; }
+.car-order-title { margin: 0; font-size: 0.9rem; color: #444; font-weight: 600; }
+
+.car-order-progress-bar { width: 100%; height: 6px; background: #fef08a; border-radius: 4px; overflow: hidden; margin-top: 0.2rem; }
+.car-order-progress-fill { height: 100%; background: #f59e0b; border-radius: 4px; width: 65%; }
+
+.car-order-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #666; border-top: 1px dashed #ebdcc5; padding-top: 0.6rem; }
+.car-order-amount { font-weight: 700; color: #bd732f; font-size: 1rem; }
+
+/* --- ESTILOS PARA LA SEGUNDA TARJETA (DIRECCIÓN Y MAPA) --- */
+.car-card-box.address-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Vista previa de Google Maps más grande y ubicada sobre la dirección */
+.car-map-preview-box {
+  width: 100%;
+  height: 170px; /* Aumentado de tamaño para que sea más grande */
+  background: linear-gradient(135deg, #f3e5d0 0%, #ebdcc5 100%);
+  border-radius: 14px;
+  border: 2px dashed #bd732f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-}
-
-.car-order-pending-item {
-  background-color: #fdf8f2;
-  border: 1px solid #f6ad55;
-}
-
-.car-order-completed-item {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-}
-
-.car-order-item-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.car-order-id {
-  font-weight: 800;
-  color: #2b2b2b;
-  font-size: 0.9rem;
-}
-
-.car-badge-pending {
-  background-color: #f6ad55;
-  color: #fff;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.car-badge-completed {
-  background-color: #c6f6d5;
-  color: #22543d;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.car-order-title {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #444;
-}
-
-.car-order-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  color: #666;
-  border-top: 1px dashed #ebdcc5;
-  padding-top: 0.5rem;
-}
-
-.car-order-amount {
-  font-weight: 700;
   color: #bd732f;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem; /* Margen para separarlo de la dirección */
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
 }
 
-.btn-reorder {
-  background-color: #f1f5f9;
-  color: #334155;
-  border: 1px solid #cbd5e1;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
+.car-map-preview-box:hover {
+  background: #ebdcc5;
+  border-color: #a36125;
+}
+
+.car-map-preview-box span {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* El bloque del comentario / instrucciones al fondo de todo */
+.car-delivery-note-box-bottom {
+  background: #fdfaf6;
+  border: 1px dashed #ebdcc5;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+.car-delivery-note-box-bottom label { 
+  font-size: 0.8rem; 
+  font-weight: 700; 
+  color: #555; 
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-.car-empty-history {
-  color: #718096;
-  font-size: 0.9rem;
-  text-align: center;
-  margin: 1rem 0;
+.car-delivery-note-box-bottom textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  resize: none;
+  outline: none;
+  background: #fff;
+  box-sizing: border-box;
 }
 
-/* Modal de Pago */
+/* --- MODAL DE PAGO Y CONTROLES --- */
 .car-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   padding: 1rem;
   box-sizing: border-box;
+  animation: carFadeIn 0.25s ease-out;
 }
 
 .car-modal-content {
-  background-color: #fff;
-  border-radius: 16px;
+  background-color: #ffffff;
+  border-radius: 20px;
   width: 100%;
-  max-width: 480px;
-  padding: 1.5rem;
+  max-width: 500px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  gap: 1.4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  animation: modalScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .car-modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 1rem;
 }
 
 .car-modal-header h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   color: #2b2b2b;
+  font-weight: 800;
 }
 
 .car-modal-close {
-  background: none;
+  background: #f1f5f9;
   border: none;
   cursor: pointer;
   color: #666;
-  padding: 0.3rem;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.car-modal-close:hover {
+  background: #e2e8f0;
+  color: #000;
 }
 
 .car-payment-methods {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.8rem;
 }
 
 .car-payment-option {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  padding: 0.8rem 1rem;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
   background-color: #f8fafc;
   border: 2px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #334155;
   cursor: pointer;
   text-align: left;
+  transition: all 0.2s;
 }
 
 .car-payment-option.active {
@@ -679,28 +1113,22 @@
 
 .car-qr-container {
   background-color: #faf7f2;
-  border: 1px solid #ebdcc5;
-  border-radius: 12px;
-  padding: 1rem;
+  border: 1.5px solid #ebdcc5;
+  border-radius: 14px;
+  padding: 1.2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-}
-
-.car-qr-container p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #444;
+  gap: 0.8rem;
 }
 
 .car-qr-box {
   background-color: #fff;
-  padding: 0.8rem;
-  border-radius: 10px;
+  padding: 1rem;
+  border-radius: 12px;
   display: inline-block;
   margin: 0 auto;
-  border: 1px solid #e5d7c3;
+  border: 1.5px solid #ebdcc5;
   max-width: 180px;
 }
 
@@ -708,22 +1136,17 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 6px;
-}
-
-.car-qr-tip {
-  font-size: 0.75rem;
-  color: #777;
+  border-radius: 8px;
 }
 
 .car-payment-info-box {
   background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
   padding: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #334155;
+  text-align: center;
 }
 
 .car-modal-footer {
@@ -732,13 +1155,18 @@
 
 .btn-confirm-final-pay {
   width: 100%;
-  background-color: #2b2b2b;
+  background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
   color: #fff;
   border: none;
-  padding: 0.9rem;
-  border-radius: 10px;
+  padding: 1.1rem;
+  border-radius: 12px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-confirm-final-pay:hover {
+  background: linear-gradient(135deg, #3d3d3d 0%, #2b2b2b 100%);
+  transform: translateY(-2px);
 }
