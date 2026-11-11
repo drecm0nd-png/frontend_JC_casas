@@ -65,11 +65,7 @@
   cursor: pointer;
   text-align: left;
   font-family: var(--font-family-base, inherit);
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(180, 83, 9, 0.12);
 }
 
@@ -115,9 +111,7 @@
   color: var(--color-header, #78350f);
   font-weight: bold;
   font-size: 1.2rem;
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .order-status-banner-btn:hover .banner-arrow {
@@ -312,9 +306,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mini-card:hover {
@@ -504,7 +496,9 @@
   }
 }
 
-/div.modal-overlay,
+/* ==========================================
+   MINI VENTANA EMERGENTE (MODAL WIZARD PASO A PASO)
+   ========================================== */
 .modal-overlay {
   position: fixed !important;
   top: 0 !important;
@@ -524,14 +518,12 @@
   box-sizing: border-box !important;
 }
 
-/* Tarjeta contenedora principal (Ensanchada a 650px) */
-div.modal-card,
 .modal-card {
   background-color: var(--color-auth-surface, #ffffff) !important;
   border-radius: 1.25rem !important;
   border: 1px solid var(--color-stroke, #6b3a1f80) !important;
   width: 95% !important;
-  max-width: 650px !important; /* ← SE ESTABLECE A 650PX DIRECTAMENTE */
+  max-width: 650px !important;
   min-width: 320px !important;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3) !important;
   overflow: hidden !important;
@@ -540,9 +532,7 @@ div.modal-card,
   flex-direction: column !important;
 }
 
-/* Encabezado del Modal */
-div.modal-card .modal-header,
-.modal-card .modal-header {
+.modal-header {
   padding: 1.2rem 1.6rem !important;
   background-color: var(--color-card, #f5eddd) !important;
   border-bottom: 1px solid var(--color-stroke, #6b3a1f80) !important;
@@ -554,14 +544,14 @@ div.modal-card .modal-header,
   width: 100% !important;
 }
 
-div.modal-card .modal-header h3 {
+.modal-header h3 {
   margin: 0 !important;
   font-size: var(--font-size-card-title, 1.25rem) !important;
   color: var(--color-text, #3a1f00) !important;
   font-weight: 700 !important;
 }
 
-div.modal-card .modal-subtitle {
+.modal-subtitle {
   font-size: var(--font-size-small, 0.85rem) !important;
   color: var(--color-button-primary, #c4832a) !important;
   font-weight: 700 !important;
@@ -569,7 +559,7 @@ div.modal-card .modal-subtitle {
   margin-bottom: 0.2rem !important;
 }
 
-div.modal-card .btn-close-modal {
+.btn-close-modal {
   background: none !important;
   border: none !important;
   color: var(--color-header, #6b3a1f) !important;
@@ -581,94 +571,174 @@ div.modal-card .btn-close-modal {
   justify-content: center !important;
 }
 
-/* Formulario y adaptabilidad de inputs al 100% del contenedor */
-div.modal-card .modal-body,
-div.modal-card form {
+/* ==========================================
+    Stepper / Indicador de Pasos
+   ========================================== */
+.stepper-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem 0.5rem;
+  background-color: var(--color-auth-surface, #ffffff);
+}
+
+.step-item {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #eaddce;
+  color: #8c7a6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.step-item.active {
+  background-color: var(--color-button-primary, #c4832a);
+  color: #ffffff;
+  border-color: #a36b2b;
+  box-shadow: 0 0 0 4px rgba(196, 131, 42, 0.2);
+}
+
+.step-line {
+  flex: 1;
+  height: 3px;
+  background-color: #eaddce;
+  margin: 0 8px;
+  transition: background-color 0.3s ease;
+}
+
+.step-line.active {
+  background-color: var(--color-button-primary, #c4832a);
+}
+
+/* ==========================================
+    Contenido Dinámico de los Pasos (Modal Form Body)
+   ========================================== */
+.step-body {
   padding: 1.5rem 1.8rem !important;
+  min-height: 290px;
   display: flex !important;
   flex-direction: column !important;
-  gap: 1.2rem !important;
+  justify-content: space-between !important;
   box-sizing: border-box !important;
   width: 100% !important;
 }
 
-div.modal-card .form-group {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.4rem !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+.fade-in {
+  animation: fadeInStep 0.35s ease-out forwards;
 }
 
-div.modal-card .form-group label {
-  font-size: var(--font-size-small, 0.875rem) !important;
-  font-weight: 700 !important;
-  color: var(--color-header, #6b3a1f) !important;
-  display: block !important;
-  margin: 0 !important;
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-/* Forzado de Selects, Inputs y Textareas al ancho completo */
-div.modal-card select,
-div.modal-card input[type="text"],
-div.modal-card textarea {
+.step-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-header, #6b3a1f);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  color: #726555;
+  margin-bottom: 1.25rem;
+}
+
+/* ==========================================
+    Inputs de Pasos Forzados al 100%
+   ========================================== */
+.step-select, .step-textarea {
   display: block !important;
   width: 100% !important;
   max-width: 100% !important;
   min-width: 100% !important;
-  padding: 0.75rem 1rem !important;
-  border-radius: 0.75rem !important;
-  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
-  background-color: var(--color-background, #fffdf7) !important;
-  font-size: var(--font-size-body, 0.95rem) !important;
-  color: var(--color-text, #3a1f00) !important;
-  font-family: var(--font-family-base, inherit) !important;
+  padding: 0.9rem !important;
+  border: 1px solid #eaddce !important;
+  border-radius: 10px !important;
+  font-size: 1rem !important;
+  background-color: #fffaf4 !important;
+  color: #3a1f00 !important;
   outline: none !important;
+  font-family: inherit !important;
+  transition: border-color 0.2s !important;
   box-sizing: border-box !important;
 }
 
-div.modal-card textarea {
+.step-select:focus, .step-textarea:focus {
+  border-color: var(--color-button-primary, #c4832a) !important;
+}
+
+.step-textarea {
   resize: vertical !important;
   min-height: 80px !important;
 }
 
-/* Resumen del detalle cuando no es un plato compuesto (Adicionales / Bebidas) */
-.product-detail-summary {
-  background-color: var(--color-background, #fffdf7);
-  border: 1px solid var(--color-stroke, #6b3a1f40);
-  border-radius: 0.75rem;
-  padding: 0.85rem 1rem;
+/* ==========================================
+    Banner de Autenticación Integrado
+   ========================================== */
+.login-prompt-banner {
+  margin-top: 1.25rem;
+  padding: 0.8rem 1rem;
+  background-color: #fef2e2;
+  border: 1px solid #fbdcba;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.product-detail-summary .detail-title {
+.login-prompt-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #8a5a22;
   font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-login-redirect {
+  background-color: #ffffff;
+  color: var(--color-button-primary, #c4832a);
+  border: 1px solid var(--color-button-primary, #c4832a);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
   font-weight: 700;
-  color: var(--color-header, #6b3a1f);
-  margin: 0 0 0.25rem 0;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.product-detail-summary .detail-desc {
-  font-size: 0.9rem;
-  color: var(--color-text, #3a1f00);
-  margin: 0;
+.btn-login-redirect:hover {
+  background-color: var(--color-button-primary, #c4832a);
+  color: #ffffff;
 }
 
-/* Botones de Acción al pie */
-div.modal-card .modal-actions {
+/* ==========================================
+    Botones de Acción (Wizard)
+   ========================================== */
+.step-actions {
   display: flex !important;
-  flex-direction: row !important;
-  justify-content: flex-end !important;
-  gap: 0.8rem !important;
-  margin-top: 0.6rem !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 2rem !important;
+  border-top: 1px solid #eaddce !important;
+  padding-top: 1rem !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
 
-div.modal-card .btn-cancel {
+.btn-cancel, .btn-save {
   width: auto !important;
-  background-color: var(--color-card, #f5eddd) !important;
-  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
-  color: var(--color-header, #6b3a1f) !important;
   padding: 0.75rem 1.4rem !important;
   border-radius: 0.75rem !important;
   font-weight: 700 !important;
@@ -676,14 +746,28 @@ div.modal-card .btn-cancel {
   cursor: pointer !important;
 }
 
-div.modal-card .btn-save {
-  width: auto !important;
+.btn-cancel {
+  background-color: var(--color-card, #f5eddd) !important;
+  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
+  color: var(--color-header, #6b3a1f) !important;
+}
+
+.btn-save {
   background-color: var(--color-button-primary, #c4832a) !important;
   color: #ffffff !important;
   border: none !important;
-  padding: 0.75rem 1.6rem !important;
-  border-radius: 0.75rem !important;
-  font-weight: 700 !important;
-  font-size: 0.875rem !important;
-  cursor: pointer !important;
+}
+
+.btn-save:disabled {
+  background-color: #eaddce !important;
+  color: #a89d91 !important;
+  cursor: not-allowed !important;
+}
+
+.btn-finish {
+  background-color: #2e7d32 !important;
+}
+
+.btn-finish:hover {
+  background-color: #236126 !important;
 }
