@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
 import Logo from "../../assets/img/logo.png";
 import CarroLogo from "../../assets/img/carro_logo.png";
@@ -10,12 +10,17 @@ import "./Header.css";
 function Header() {
   const { isAuthenticated, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
   const closeMenu = () => setIsMenuOpen(false);
 
   function handleLogout() {
     logout();
     closeMenu();
   }
+
+  // Verifica si la ruta actual es la de Login para alternar el botón
+  const isLoginPage = location.pathname === "/login";
 
   return (
     <header className="header">
@@ -53,13 +58,13 @@ function Header() {
             Panel
           </NavLink>
 
-          {/* Botón Carrito de Pedidos */}
+          {/* Botón Carrito de Pedidos dirigido a /car */}
           <NavLink 
-            to="/pedidos" 
+            to="/car" 
             onClick={closeMenu} 
             className="header-cart-btn"
-            title="Ver mis pedidos"
-            aria-label="Ir a pedidos"
+            title="Ver mi carrito"
+            aria-label="Ir al carrito de compras"
           >
             <img src={CarroLogo} alt="Icono Carrito" className="cart-icon-img" />
           </NavLink>
@@ -73,8 +78,12 @@ function Header() {
               Cerrar sesión
             </Button>
           ) : (
-            <NavLink to="/login" onClick={closeMenu} className="header-register">
-              Iniciar sesión
+            <NavLink
+              to={isLoginPage ? "/registro" : "/login"}
+              onClick={closeMenu}
+              className="header-register"
+            >
+              {isLoginPage ? "Registrarse" : "Iniciar sesión"}
             </NavLink>
           )}
         </nav>

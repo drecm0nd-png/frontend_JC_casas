@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Car from "../Pages/Car/Car.jsx";
 import Dashboard from "../Pages/Dashboard/Dashboard.jsx";
 import Home from "../Pages/Home/Home.jsx";
 import Login from "../Pages/Login/Login.jsx";
@@ -18,8 +19,9 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<SignUp />} />
 
-      {/* Rutas del Menú y Pedidos */}
+      {/* Rutas del Menú, Carrito y Pedidos */}
       <Route path="/menu" element={<Menu />} />
+      <Route path="/car" element={<Car />} />
       <Route path="/pedidos" element={<Pedidos />} />
 
       {/* Rutas de Panel y Dashboard (con protección en dashboard) */}

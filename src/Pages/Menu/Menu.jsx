@@ -85,12 +85,11 @@ export default function Menu() {
   return (
     <div className="menu-page-container">
       <div className="menu-main-content">
-        
-        {/* Banner interactivo de Estado del Pedido */}
+        {/* Banner interactivo de Estado del Pedido que redirige a /car */}
         <button
           type="button"
           className="order-status-banner-btn"
-          onClick={() => navigate("/pedidos")}
+          onClick={() => navigate("/car")}
         >
           <div className="banner-content">
             <span className="banner-icon" aria-hidden="true">
