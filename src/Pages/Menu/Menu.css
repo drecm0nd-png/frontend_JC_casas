@@ -1,35 +1,62 @@
+@import "../../Styles/Variables.css";
+
 /* ==========================================
-    Contenedor Principal y Animación de Entrada
+   Contenedor Principal y Animación de Entrada
    ========================================== */
 .menu-page-container {
   width: 100%;
-  background-color: #faf8f5;
+  background-color: var(--color-background, #faf8f5);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #2d2d2d;
-  animation: fadeInSubtle 0.3s ease-out forwards;
+  color: var(--color-text, #2d2d2d);
 }
 
 .menu-main-content {
   max-width: 1480px;
   width: 95%;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: var(--page-padding, 2rem 1rem);
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: var(--component-gap, 2.2rem);
   flex-grow: 1;
+  animation: fadeInSubtle 0.3s ease-out forwards;
+}
+
+@keyframes fadeInSubtle {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================
-    Banner de Estado del Pedido (Degradado Visto & Destacado)
+   Logo JCasas en Encabezado
+   ========================================== */
+.menu-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-brand-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ==========================================
+   Banner de Estado del Pedido
    ========================================== */
 .order-status-banner-btn {
   width: 100%;
-  /* Degradado más vivo, denso y contrastado */
   background: linear-gradient(135deg, #fbe3c7 0%, #eab883 100%);
-  border: 1px solid #dfa56b;
+  border: 1px solid var(--color-stroke, #dfa56b);
   border-radius: 12px;
   padding: 1rem 1.8rem;
   display: flex;
@@ -37,17 +64,12 @@
   align-items: center;
   cursor: pointer;
   text-align: left;
-  font-family: inherit;
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  font-family: var(--font-family-base, inherit);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(180, 83, 9, 0.12);
 }
 
 .order-status-banner-btn:hover {
-  /* Al pasar el cursor cambia a un tono sólido más firme y cálido */
   background: #e8ac73;
   border-color: #d19355;
   transform: translateY(-2px);
@@ -67,6 +89,7 @@
 
 .order-status-banner-btn .banner-icon {
   font-size: 1.5rem;
+  color: var(--color-header, #78350f);
 }
 
 .order-status-banner-btn .banner-text {
@@ -75,22 +98,20 @@
 }
 
 .order-status-banner-btn .banner-text strong {
-  font-size: 1rem;
-  color: #78350f; /* Un café/ámbar un poco más oscuro para mejor legibilidad */
+  font-size: var(--font-size-body, 1rem);
+  color: var(--color-header, #78350f);
 }
 
 .order-status-banner-btn .banner-text small {
-  font-size: 0.85rem;
+  font-size: var(--font-size-small, 0.85rem);
   color: #584635;
 }
 
 .order-status-banner-btn .banner-arrow {
-  color: #78350f;
+  color: var(--color-header, #78350f);
   font-weight: bold;
   font-size: 1.2rem;
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .order-status-banner-btn:hover .banner-arrow {
@@ -99,7 +120,7 @@
 }
 
 /* ==========================================
-    Hero Card (Almuerzo Corriente / Ejecutivo)
+   Hero Card (Almuerzo Corriente / Ejecutivo)
    ========================================== */
 .hero-dish-card {
   background: linear-gradient(135deg, #3d352e, #2b241f);
@@ -121,7 +142,7 @@
 .hero-badge {
   background-color: #fde68a;
   color: #78350f;
-  font-size: 0.8rem;
+  font-size: var(--font-size-caption, 0.8rem);
   font-weight: 800;
   padding: 0.3rem 0.8rem;
   border-radius: 4px;
@@ -132,14 +153,14 @@
 
 .hero-info h2 {
   color: #ffffff;
-  font-size: 2.2rem;
+  font-size: var(--font-size-subtitle, 2.2rem);
   font-weight: 800;
   margin: 0 0 0.4rem 0;
 }
 
 .hero-info p {
   color: #d1d5db;
-  font-size: 1.05rem;
+  font-size: var(--font-size-lead, 1.05rem);
   margin: 0 0 0.6rem 0;
 }
 
@@ -151,13 +172,13 @@
 }
 
 .btn-primary-action {
-  background-color: #bd732f;
+  background-color: var(--color-button-primary, #bd732f);
   color: #ffffff;
   border: none;
   padding: 0.9rem 2rem;
   border-radius: 8px;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: var(--font-size-body, 1.1rem);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -167,14 +188,13 @@
 }
 
 /* ==========================================
-    Sección Agrupada de Componentes (Difuminado Invertido)
+   Sección Agrupada de Componentes (Difuminado Invertido)
    ========================================== */
 .horizontal-section-group-3 {
   background: linear-gradient(180deg, #faf8f5 0%, #ebd8c3 100%);
-  /* Quitamos el borde superior para lograr el efecto de fusión/difuminado directo con la página */
-  border: 1px solid #dfcca9;
+  border: 1px solid var(--color-stroke, #dfcca9);
   border-top: none;
-  border-radius: 0 0 20px 20px; /* Redondeamos solo la base para mantener el remate limpio */
+  border-radius: 0 0 20px 20px;
   padding: 2.5rem 2rem;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
   display: grid;
@@ -191,9 +211,9 @@
 }
 
 .lunch-section-title-wrapper h3 {
-  font-size: 1.4rem;
+  font-size: var(--font-size-subtitle, 1.4rem);
   font-weight: 800;
-  color: #78350f;
+  color: var(--color-header, #78350f);
   margin: 0;
   display: flex;
   align-items: center;
@@ -215,12 +235,12 @@
 }
 
 .step-number {
-  background-color: #bd732f;
+  background-color: var(--color-button-primary, #bd732f);
   color: #ffffff;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  font-size: 0.85rem;
+  font-size: var(--font-size-small, 0.85rem);
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -229,13 +249,13 @@
 }
 
 .category-header h3 {
-  font-size: 1.15rem;
+  font-size: var(--font-size-card-title, 1.15rem);
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text, #2b2b2b);
   margin: 0;
 }
 
-/* Botón Desplegable para Móviles (Oculto en Escritorio) */
+/* Botón Desplegable para Móviles */
 .category-toggle-btn {
   display: none;
   width: 100%;
@@ -243,13 +263,13 @@
   border: 1px solid #ebd8c3;
   border-radius: 10px;
   padding: 1rem 1.2rem;
-  font-size: 1rem;
+  font-size: var(--font-size-body, 1rem);
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text, #2b2b2b);
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  font-family: inherit;
+  font-family: var(--font-family-base, inherit);
   transition: background-color 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
@@ -276,7 +296,7 @@
 }
 
 /* ==========================================
-    Tarjetas de Componentes (Mini Cards)
+   Tarjetas de Componentes (Mini Cards)
    ========================================== */
 .mini-card {
   background-color: #ffffff;
@@ -286,9 +306,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mini-card:hover {
@@ -303,7 +321,7 @@
   align-items: center;
   justify-content: center;
   color: #8c7a6b;
-  font-size: 0.9rem;
+  font-size: var(--font-size-body, 0.9rem);
   font-weight: 600;
   text-align: center;
   padding: 0.5rem;
@@ -314,9 +332,9 @@
 }
 
 .mini-card-body h4 {
-  font-size: 0.95rem;
+  font-size: var(--font-size-body, 0.95rem);
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text, #2b2b2b);
   margin: 0 0 0.15rem 0;
   white-space: nowrap;
   overflow: hidden;
@@ -324,7 +342,7 @@
 }
 
 .mini-card-body p {
-  font-size: 0.78rem;
+  font-size: var(--font-size-caption, 0.78rem);
   color: #726555;
   margin: 0;
   line-height: 1.2;
@@ -336,7 +354,7 @@
 }
 
 /* ==========================================
-    Secciones Adicionales & Bebidas
+   Secciones Adicionales & Bebidas
    ========================================== */
 .extra-section {
   display: flex;
@@ -345,9 +363,9 @@
 }
 
 .section-title {
-  font-size: 1.5rem;
+  font-size: var(--font-size-subtitle, 1.5rem);
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text, #2b2b2b);
   text-align: left;
   margin: 0;
 }
@@ -376,7 +394,7 @@
   align-items: center;
   justify-content: center;
   color: #8c7a6b;
-  font-size: 0.95rem;
+  font-size: var(--font-size-body, 0.95rem);
   font-weight: 600;
 }
 
@@ -388,14 +406,14 @@
 }
 
 .extra-body h4 {
-  font-size: 1.1rem;
+  font-size: var(--font-size-card-title, 1.1rem);
   font-weight: 700;
-  color: #2b2b2b;
+  color: var(--color-text, #2b2b2b);
   margin: 0 0 0.3rem 0;
 }
 
 .extra-body p {
-  font-size: 0.85rem;
+  font-size: var(--font-size-small, 0.85rem);
   color: #726555;
   margin: 0;
   flex-grow: 1;
@@ -411,8 +429,8 @@
 
 .price {
   font-weight: 800;
-  color: #bd732f;
-  font-size: 1.1rem;
+  color: var(--color-button-primary, #bd732f);
+  font-size: var(--font-size-card-title, 1.1rem);
 }
 
 .btn-add {
@@ -428,15 +446,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .btn-add:hover {
   background-color: #fcd34d;
+  transform: scale(1.05);
+}
+
+.btn-add:active {
+  transform: scale(0.95);
 }
 
 /* ==========================================
-    Diseño Responsivo (Consolidado)
+   Adaptación Responsiva
    ========================================== */
 @media (max-width: 1024px) {
   .horizontal-section-group-3 {
@@ -474,15 +497,277 @@
 }
 
 /* ==========================================
-    Keyframes para Animaciones
+   MINI VENTANA EMERGENTE (MODAL WIZARD PASO A PASO)
    ========================================== */
-@keyframes fadeInSubtle {
-  0% {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(58, 31, 0, 0.55) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 99999 !important;
+  padding: 1rem !important;
+  box-sizing: border-box !important;
+}
+
+.modal-card {
+  background-color: var(--color-auth-surface, #ffffff) !important;
+  border-radius: 1.25rem !important;
+  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
+  width: 95% !important;
+  max-width: 650px !important;
+  min-width: 320px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.modal-header {
+  padding: 1.2rem 1.6rem !important;
+  background-color: var(--color-card, #f5eddd) !important;
+  border-bottom: 1px solid var(--color-stroke, #6b3a1f80) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.modal-header h3 {
+  margin: 0 !important;
+  font-size: var(--font-size-card-title, 1.25rem) !important;
+  color: var(--color-text, #3a1f00) !important;
+  font-weight: 700 !important;
+}
+
+.modal-subtitle {
+  font-size: var(--font-size-small, 0.85rem) !important;
+  color: var(--color-button-primary, #c4832a) !important;
+  font-weight: 700 !important;
+  display: block !important;
+  margin-bottom: 0.2rem !important;
+}
+
+.btn-close-modal {
+  background: none !important;
+  border: none !important;
+  color: var(--color-header, #6b3a1f) !important;
+  cursor: pointer !important;
+  padding: 0.35rem !important;
+  border-radius: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ==========================================
+    Stepper / Indicador de Pasos
+   ========================================== */
+.stepper-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem 0.5rem;
+  background-color: var(--color-auth-surface, #ffffff);
+}
+
+.step-item {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #eaddce;
+  color: #8c7a6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.step-item.active {
+  background-color: var(--color-button-primary, #c4832a);
+  color: #ffffff;
+  border-color: #a36b2b;
+  box-shadow: 0 0 0 4px rgba(196, 131, 42, 0.2);
+}
+
+.step-line {
+  flex: 1;
+  height: 3px;
+  background-color: #eaddce;
+  margin: 0 8px;
+  transition: background-color 0.3s ease;
+}
+
+.step-line.active {
+  background-color: var(--color-button-primary, #c4832a);
+}
+
+/* ==========================================
+    Contenido Dinámico de los Pasos (Modal Form Body)
+   ========================================== */
+.step-body {
+  padding: 1.5rem 1.8rem !important;
+  min-height: 290px;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.fade-in {
+  animation: fadeInStep 0.35s ease-out forwards;
+}
+
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.step-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-header, #6b3a1f);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  color: #726555;
+  margin-bottom: 1.25rem;
+}
+
+/* ==========================================
+    Inputs de Pasos Forzados al 100%
+   ========================================== */
+.step-select, .step-textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  padding: 0.9rem !important;
+  border: 1px solid #eaddce !important;
+  border-radius: 10px !important;
+  font-size: 1rem !important;
+  background-color: #fffaf4 !important;
+  color: #3a1f00 !important;
+  outline: none !important;
+  font-family: inherit !important;
+  transition: border-color 0.2s !important;
+  box-sizing: border-box !important;
+}
+
+.step-select:focus, .step-textarea:focus {
+  border-color: var(--color-button-primary, #c4832a) !important;
+}
+
+.step-textarea {
+  resize: vertical !important;
+  min-height: 80px !important;
+}
+
+/* ==========================================
+    Banner de Autenticación Integrado
+   ========================================== */
+.login-prompt-banner {
+  margin-top: 1.25rem;
+  padding: 0.8rem 1rem;
+  background-color: #fef2e2;
+  border: 1px solid #fbdcba;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.login-prompt-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #8a5a22;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-login-redirect {
+  background-color: #ffffff;
+  color: var(--color-button-primary, #c4832a);
+  border: 1px solid var(--color-button-primary, #c4832a);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-login-redirect:hover {
+  background-color: var(--color-button-primary, #c4832a);
+  color: #ffffff;
+}
+
+/* ==========================================
+    Botones de Acción (Wizard)
+   ========================================== */
+.step-actions {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 2rem !important;
+  border-top: 1px solid #eaddce !important;
+  padding-top: 1rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.btn-cancel, .btn-save {
+  width: auto !important;
+  padding: 0.75rem 1.4rem !important;
+  border-radius: 0.75rem !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  cursor: pointer !important;
+}
+
+.btn-cancel {
+  background-color: var(--color-card, #f5eddd) !important;
+  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
+  color: var(--color-header, #6b3a1f) !important;
+}
+
+.btn-save {
+  background-color: var(--color-button-primary, #c4832a) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.btn-save:disabled {
+  background-color: #eaddce !important;
+  color: #a89d91 !important;
+  cursor: not-allowed !important;
+}
+
+.btn-finish {
+  background-color: #2e7d32 !important;
+}
+
+.btn-finish:hover {
+  background-color: #236126 !important;
 }
