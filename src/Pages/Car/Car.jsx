@@ -1,24 +1,45 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaLocationDot, FaPlus, FaTrash, FaTruck, FaPen, FaRotate, FaQrcode, FaMoneyBillWave, FaCreditCard, FaXmark } from "react-icons/fa6";
+import { FaLocationDot, FaPlus, FaTrash, FaTruck, FaPen, FaRotate, FaQrcode, FaMoneyBillWave, FaCreditCard, FaXmark, FaReceipt, FaNoteSticky, FaSliders, FaCheck, FaBan, FaMapLocationDot } from "react-icons/fa6";
 import qrImage from "../../assets/icons/codeQR.webp";
 import "./Car.css";
 
 export default function Car() {
   const navigate = useNavigate();
   
-  // Estados de Dirección
+  // Estados de Dirección y Notas
   const [direccion, setDireccion] = useState("Calle 18A # 45-20, Sur de Bogotá");
   const [editandoDireccion, setEditandoDireccion] = useState(false);
   const [partesDireccion, setPartesDireccion] = useState({ via: "", numero: "", complemento: "", zona: "" });
+  const [notaDomiciliario, setNotaDomiciliario] = useState("");
 
   // Estado del Carrito
   const [carritoItems, setCarritoItems] = useState([
-    { id: 1, nombre: "Almuerzo Corriente (Carne Asada + Fríjoles + Arroz)", precio: 22500, qty: 1 },
-    { id: 2, nombre: "Sopa de Ajiaco (Adicional)", precio: 8000, qty: 1 }
+    { 
+      id: 1, 
+      nombre: "Almuerzo Corriente", 
+      precio: 22500, 
+      qty: 1,
+      principio: "Fríjoles Guisados",
+      proteina: "Carne Asada",
+      acompanamiento: "Arroz y Tajada",
+      bebida: "Jugo de Mora"
+    },
+    { 
+      id: 2, 
+      nombre: "Sopa de Ajiaco (Adicional)", 
+      precio: 8000, 
+      qty: 1
+    }
   ]);
+
   const [itemAEliminarId, setItemAEliminarId] = useState(null);
+  const [itemEditandoId, setItemEditandoId] = useState(null);
+  const [tempCustom, setTempCustom] = useState({ principio: "", proteina: "", acompanamiento: "", bebida: "" });
   const [modoEdicionPedido, setModoEdicionPedido] = useState(false);
+  
+  // Estado para la mini tarjeta de confirmación de cancelación en móvil
+  const [mostrarMiniCardCancelacion, setMostrarMiniCardCancelacion] = useState(false);
 
   // Estados del Modal de Pago
   const [modalPagoAbierto, setModalPagoAbierto] = useState(false);
@@ -26,7 +47,8 @@ export default function Car() {
 
   // Historial y pendientes
   const [pedidosPendientes, setPedidosPendientes] = useState([
-    { id: "JC-8492", titulo: "Almuerzo Corriente / Ejecutivo", total: 30500, estado: "En Camino", tiempo: "10 - 15 min" }
+    { id: "JC-8492", titulo: "Almuerzo Corriente / Ejecutivo", total: 30500, estado: "En Camino", tiempo: "10 - 15 min" },
+    { id: "JC-8495", titulo: "Bandeja Paisa Especial + Jugo", total: 35000, estado: "En Preparación", tiempo: "25 min" }
   ]);
   
   const [pedidosHistorial] = useState([
@@ -34,9 +56,10 @@ export default function Car() {
     { id: "JC-7988", titulo: "Almuerzo Corriente + Sancocho", total: 30000, estado: "Entregado" }
   ]);
 
-  const totalCarrito = carritoItems.reduce((acc, item) => acc + (item.precio * item.qty), 0);
+  const subtotalCarrito = carritoItems.reduce((acc, item) => acc + (item.precio * item.qty), 0);
+  const costoEnvio = carritoItems.length > 0 ? 4000 : 0;
+  const totalConEnvio = subtotalCarrito + costoEnvio;
 
-  // Funciones de Carrito
   const confirmarEliminar = (id) => {
     setCarritoItems(carritoItems.filter(item => item.id !== id));
     setItemAEliminarId(null);
@@ -52,17 +75,43 @@ export default function Car() {
     }).filter(Boolean));
   };
 
-  const cancelarPedidoActual = () => {
-    if (window.confirm("¿Estás seguro de cancelar este carrito y vaciar los productos?")) {
-      setCarritoItems([]);
-      setModoEdicionPedido(false);
-    }
+  const iniciarEdicionPlato = (item) => {
+    setItemEditandoId(item.id);
+    setTempCustom({
+      principio: item.principio || "Fríjoles Guisados",
+      proteina: item.proteina || "Carne Asada",
+      acompanamiento: item.acompanamiento || "Arroz y Tajada",
+      bebida: item.bebida || "Jugo de Mora"
+    });
+  };
+
+  const guardarPersonalizacion = (id) => {
+    setCarritoItems(carritoItems.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          principio: tempCustom.principio,
+          proteina: tempCustom.proteina,
+          acompanamiento: tempCustom.acompanamiento,
+          bebida: tempCustom.bebida
+        };
+      }
+      return item;
+    }));
+    setItemEditandoId(null);
+  };
+
+  const ejecutarCancelacionTotal = () => {
+    setCarritoItems([]);
+    setModoEdicionPedido(false);
+    setMostrarMiniCardCancelacion(false);
+    alert("Pedido cancelado. Se ha notificado al domiciliario y a cocina para detener el proceso de entrega.");
   };
 
   const confirmarPagoFinal = () => {
     alert(`¡Pago con ${metodoSeleccionado.toUpperCase()} procesado con éxito! Tu pedido ha sido enviado a cocina.`);
     setPedidosPendientes([
-      { id: `JC-${Math.floor(1000 + Math.random() * 9000)}`, titulo: "Pedido Reciente del Carrito", total: totalCarrito, estado: "En Preparación", tiempo: "20 - 30 min" },
+      { id: `JC-${Math.floor(1000 + Math.random() * 9000)}`, titulo: "Nuevo Pedido Reciente", total: totalConEnvio, estado: "En Preparación", tiempo: "20 - 30 min" },
       ...pedidosPendientes
     ]);
     setCarritoItems([]);
@@ -85,18 +134,23 @@ export default function Car() {
         
         {/* Cabecera */}
         <div className="car-header-section">
-          <span className="car-subtitle">Restaurante JCasas</span>
-          <h1 className="car-title">Carrito &amp; Gestión de Pedidos</h1>
-          <p className="car-description">Administra tus productos, ajusta tu dirección de entrega y revisa el estado de tus platos.</p>
+          <div>
+            <span className="car-subtitle">Restaurante JCasas</span>
+            <h1 className="car-title">Carrito &amp; Gestión de Pedidos</h1>
+            <p className="car-description">Centro operativo en tiempo real para tus almuerzos, despachos y seguimiento.</p>
+          </div>
+          <div className="car-header-badge">
+            <FaReceipt /> {carritoItems.length} {carritoItems.length === 1 ? 'Plato seleccionado' : 'Platos seleccionados'}
+          </div>
         </div>
 
-        {/* CONTENEDOR PRINCIPAL EN GRID */}
+        {/* CONTENEDOR DE 3 COLUMNAS */}
         <div className="car-main-grid">
           
-          {/* COLUMNA IZQUIERDA: CARRITO Y ACCIONES */}
+          {/* COLUMNA 1: PRODUCTOS EN CARRITO */}
           <div className="car-card-box">
             <div className="car-card-inner-header">
-              <h3>Productos Seleccionados</h3>
+              <h3>Productos en Carrito</h3>
               <button
                 type="button"
                 onClick={() => navigate("/menu")}
@@ -114,7 +168,14 @@ export default function Car() {
                       <div className="car-item-content">
                         <div className="car-item-info">
                           <span className="car-item-qty">{item.qty}x</span>
-                          <span className="car-item-name">{item.nombre}</span>
+                          <div className="car-item-details-wrapper">
+                            <span className="car-item-name">{item.nombre}</span>
+                            {item.principio && itemEditandoId !== item.id && (
+                              <span className="item-details-tags">
+                                {item.principio} • {item.proteina} • {item.acompanamiento} • {item.bebida}
+                              </span>
+                            )}
+                          </div>
                         </div>
                         
                         <div className="car-item-actions-wrapper">
@@ -125,32 +186,115 @@ export default function Car() {
                               <button type="button" onClick={() => modificarCantidad(item.id, -1)} className="btn-qty-mod">-</button>
                               <span className="car-qty-display">{item.qty}</span>
                               <button type="button" onClick={() => modificarCantidad(item.id, 1)} className="btn-qty-mod">+</button>
+                            </div>
+                          ) : (
+                            <>
+                              {item.principio && itemEditandoId !== item.id && (
+                                <button
+                                  type="button"
+                                  onClick={() => iniciarEdicionPlato(item)}
+                                  title="Personalizar componentes del almuerzo"
+                                  className="btn-action-icon edit"
+                                >
+                                  <FaSliders size={15} />
+                                </button>
+                              )}
                               <button
                                 type="button"
                                 onClick={() => setItemAEliminarId(item.id)}
-                                className="btn-delete-icon"
+                                title="Eliminar producto"
+                                className="btn-action-icon delete"
                               >
                                 <FaTrash size={15} />
                               </button>
-                            </div>
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={() => setItemAEliminarId(item.id)}
-                              title="Eliminar producto"
-                              className="btn-delete-icon"
-                            >
-                              <FaTrash size={15} />
-                            </button>
+                            </>
                           )}
                         </div>
                       </div>
                     ) : (
                       <div className="car-confirm-delete-box">
-                        <span>¿Eliminar este producto?</span>
+                        <span>¿Eliminar plato?</span>
                         <div className="car-confirm-btns">
-                          <button type="button" onClick={() => confirmarEliminar(item.id)} className="btn-yes-delete">Sí, eliminar</button>
-                          <button type="button" onClick={() => setItemAEliminarId(null)} className="btn-cancel-delete">Cancelar</button>
+                          <button type="button" onClick={() => confirmarEliminar(item.id)} className="btn-yes-delete">Sí</button>
+                          <button type="button" onClick={() => setItemAEliminarId(null)} className="btn-cancel-delete">No</button>
+                        </div>
+                      </div>
+                    )}
+
+                    {itemEditandoId === item.id && (
+                      <div className="car-customization-panel">
+                        <h4 className="car-custom-title">Modificar componentes de tu almuerzo</h4>
+                        <div className="car-custom-grid">
+                          <div className="car-custom-group">
+                            <label>Principio:</label>
+                            <select 
+                              className="car-custom-select"
+                              value={tempCustom.principio}
+                              onChange={(e) => setTempCustom({...tempCustom, principio: e.target.value})}
+                            >
+                              <option value="Fríjoles Guisados">Fríjoles Guisados</option>
+                              <option value="Lentejas Caseras">Lentejas Caseras</option>
+                              <option value="Pasta del Día">Pasta del Día</option>
+                            </select>
+                          </div>
+
+                          <div className="car-custom-group">
+                            <label>Proteína:</label>
+                            <select 
+                              className="car-custom-select"
+                              value={tempCustom.proteina}
+                              onChange={(e) => setTempCustom({...tempCustom, proteina: e.target.value})}
+                            >
+                              <option value="Carne Asada">Carne Asada</option>
+                              <option value="Pechuga a la Plancha">Pechuga a la Plancha</option>
+                              <option value="Sobrebarriga en Salsa">Sobrebarriga en Salsa</option>
+                              <option value="Cerdo Frito">Cerdo Frito</option>
+                            </select>
+                          </div>
+
+                          <div className="car-custom-group">
+                            <label>Acompañamiento:</label>
+                            <select 
+                              className="car-custom-select"
+                              value={tempCustom.acompanamiento}
+                              onChange={(e) => setTempCustom({...tempCustom, acompanamiento: e.target.value})}
+                            >
+                              <option value="Arroz y Tajada">Arroz y Tajada</option>
+                              <option value="Arroz y Ensalada">Arroz y Ensalada</option>
+                              <option value="Solo Arroz">Solo Arroz</option>
+                            </select>
+                          </div>
+
+                          <div className="car-custom-group">
+                            <label>Bebida / Jugo:</label>
+                            <select 
+                              className="car-custom-select"
+                              value={tempCustom.bebida}
+                              onChange={(e) => setTempCustom({...tempCustom, bebida: e.target.value})}
+                            >
+                              <option value="Jugo de Mora">Jugo de Mora</option>
+                              <option value="Jugo de Maracuyá">Jugo de Maracuyá</option>
+                              <option value="Limonada Cerezada">Limonada Cerezada</option>
+                              <option value="Gaseosa Personal">Gaseosa Personal</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="car-custom-actions">
+                          <button 
+                            type="button" 
+                            onClick={() => guardarPersonalizacion(item.id)} 
+                            className="btn-save-custom"
+                          >
+                            <FaCheck size={11} /> Confirmar Cambios
+                          </button>
+                          <button 
+                            type="button" 
+                            onClick={() => setItemEditandoId(null)} 
+                            className="btn-cancel-custom"
+                          >
+                            Cancelar
+                          </button>
                         </div>
                       </div>
                     )}
@@ -165,187 +309,264 @@ export default function Car() {
             </ul>
 
             {carritoItems.length > 0 && (
-              <>
-                <div className="car-total-row">
-                  <span>Total a Pagar:</span>
-                  <span className="car-total-price">{totalCarrito.toLocaleString()} $</span>
+              <div className="car-payment-actions">
+                <div className="car-financial-summary">
+                  <div className="car-summary-row">
+                    <span>Subtotal platos:</span>
+                    <span>{subtotalCarrito.toLocaleString()} $</span>
+                  </div>
+                  <div className="car-summary-row">
+                    <span>Costo de domicilio:</span>
+                    <span>{costoEnvio.toLocaleString()} $</span>
+                  </div>
+                  <div className="car-summary-row total">
+                    <span>Total a Pagar:</span>
+                    <span className="car-total-price">{totalConEnvio.toLocaleString()} $</span>
+                  </div>
                 </div>
 
-                <div className="car-payment-actions">
+                <button
+                  type="button"
+                  onClick={() => setModalPagoAbierto(true)}
+                  className="btn-pay-now"
+                >
+                  <FaTruck size={19} /> Proceder al Pago ({totalConEnvio.toLocaleString()} $)
+                </button>
+
+                <div className="car-sub-actions-desktop">
                   <button
                     type="button"
-                    onClick={() => setModalPagoAbierto(true)}
-                    className="btn-pay-now"
+                    onClick={() => setModoEdicionPedido(!modoEdicionPedido)}
+                    className="btn-toggle-edit"
                   >
-                    <FaTruck size={18} /> Proceder al Pago ({totalCarrito.toLocaleString()} $)
+                    <FaPen size={12} /> {modoEdicionPedido ? "Finalizar edición" : "Editar cantidades"}
                   </button>
 
-                  <div className="car-sub-actions">
-                    <button
-                      type="button"
-                      onClick={() => setModoEdicionPedido(!modoEdicionPedido)}
-                      className="btn-toggle-edit"
-                    >
-                      <FaPen size={13} /> {modoEdicionPedido ? "Finalizar edición" : "Editar pedido"}
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={cancelarPedidoActual}
-                      className="btn-cancel-cart"
-                    >
-                      Cancelar pedido
-                    </button>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-
-          {/* COLUMNA DERECHA: DIRECCIÓN */}
-          <div className="car-card-box">
-            <div className="car-address-header">
-              <div className="car-address-icon">
-                <FaLocationDot size={20} />
-              </div>
-              <div>
-                <h3>Dirección de Entrega</h3>
-                <small>Especifica tu ubicación exacta</small>
-              </div>
-            </div>
-
-            <div className="car-current-address-badge">
-              <small>UBICACIÓN ACTUAL:</small>
-              <p>{direccion}</p>
-            </div>
-
-            {!editandoDireccion ? (
-              <button
-                type="button"
-                onClick={() => setEditandoDireccion(true)}
-                className="btn-open-address-form"
-              >
-                Modificar / Especificar Dirección
-              </button>
-            ) : (
-              <form onSubmit={guardarDireccion} className="car-address-form">
-                <div className="car-form-group">
-                  <label>Tipo de Vía:</label>
-                  <select 
-                    value={partesDireccion.via} 
-                    onChange={(e) => setPartesDireccion({...partesDireccion, via: e.target.value})}
+                  <button
+                    type="button"
+                    onClick={ejecutarCancelacionTotal}
+                    className="btn-cancel-cart"
                   >
-                    <option value="">Seleccionar vía...</option>
-                    <option value="Calle">Calle</option>
-                    <option value="Carrera">Carrera</option>
-                    <option value="Diagonal">Diagonal</option>
-                    <option value="Transversal">Transversal</option>
-                    <option value="Avenida">Avenida</option>
-                  </select>
+                    Vaciar carrito
+                  </button>
                 </div>
 
-                <div className="car-form-group">
-                  <label>Nomenclatura (Ej: 18A # 45-20):</label>
-                  <input
-                    type="text"
-                    placeholder="Ej: 18A # 45-20"
-                    value={partesDireccion.numero}
-                    onChange={(e) => setPartesDireccion({...partesDireccion, numero: e.target.value})}
-                    required
-                  />
-                </div>
-
-                <div className="car-form-row">
-                  <div className="car-form-group">
-                    <label>Complemento:</label>
-                    <input
-                      type="text"
-                      placeholder="Apto 302"
-                      value={partesDireccion.complemento}
-                      onChange={(e) => setPartesDireccion({...partesDireccion, complemento: e.target.value})}
-                    />
-                  </div>
-                  <div className="car-form-group">
-                    <label>Barrio / Zona:</label>
-                    <input
-                      type="text"
-                      placeholder="Prado Vegas"
-                      value={partesDireccion.zona}
-                      onChange={(e) => setPartesDireccion({...partesDireccion, zona: e.target.value})}
-                    />
-                  </div>
-                </div>
-
-                <div className="car-form-buttons">
-                  <button type="submit" className="btn-save-address">Guardar</button>
-                  <button type="button" onClick={() => setEditandoDireccion(false)} className="btn-cancel-address">Cancelar</button>
-                </div>
-              </form>
-            )}
-          </div>
-
-        </div>
-
-        {/* SECCIÓN INFERIOR: HISTORIAL */}
-        <div className="car-history-container">
-          <h2>Mis Pedidos &amp; Historial</h2>
-
-          <div className="car-history-grid">
-            
-            <div className="car-history-subcard">
-              <h4>Pedidos Pendientes / Activos</h4>
-              {pedidosPendientes.length > 0 ? (
-                pedidosPendientes.map((ped) => (
-                  <div key={ped.id} className="car-order-pending-item">
-                    <div className="car-order-item-top">
-                      <span className="car-order-id">Pedido #{ped.id}</span>
-                      <span className="car-badge-pending">{ped.estado}</span>
-                    </div>
-                    <p className="car-order-title">{ped.titulo}</p>
-                    <div className="car-order-footer">
-                      <span>Tiempo: <strong>{ped.tiempo}</strong></span>
-                      <span className="car-order-amount">{ped.total.toLocaleString()} $</span>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p className="car-empty-history">No tienes pedidos pendientes.</p>
-              )}
-            </div>
-
-            <div className="car-history-subcard">
-              <h4>Historial de Pedidos (Completados)</h4>
-              {pedidosHistorial.length > 0 ? (
-                pedidosHistorial.map((ped) => (
-                  <div key={ped.id} className="car-order-completed-item">
-                    <div className="car-order-item-top">
-                      <span className="car-order-id">Pedido #{ped.id}</span>
-                      <span className="car-badge-completed">✓ {ped.estado}</span>
-                    </div>
-                    <p className="car-order-title">{ped.titulo}</p>
-                    <div className="car-order-footer">
-                      <span className="car-order-amount">{ped.total.toLocaleString()} $</span>
+                <div className="car-sub-actions-mobile">
+                  {!mostrarMiniCardCancelacion ? (
+                    <>
                       <button
                         type="button"
-                        onClick={() => alert(`Añadiendo de nuevo el pedido #${ped.id}...`)}
-                        className="btn-reorder"
+                        onClick={() => setModoEdicionPedido(!modoEdicionPedido)}
+                        className="btn-action-card-edit"
                       >
-                        <FaRotate size={12} /> Volver a pedir
+                        <FaPen size={14} /> {modoEdicionPedido ? "Finalizar edición" : "Editar cantidades"}
                       </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setMostrarMiniCardCancelacion(true)}
+                        className="btn-action-card-cancel"
+                      >
+                        <FaBan size={14} /> Vaciar carrito
+                      </button>
+                    </>
+                  ) : (
+                    <div className="car-cancel-mini-card">
+                      <p>⚠️ ¿Deseas vaciar y cancelar el pedido?</p>
+                      <small>Al cancelar, el domiciliario y cocina detendrán de inmediato el proceso.</small>
+                      <div className="car-cancel-mini-btns">
+                        <button 
+                          type="button" 
+                          onClick={ejecutarCancelacionTotal} 
+                          className="btn-confirm-cancel-order"
+                        >
+                          Sí, cancelar
+                        </button>
+                        <button 
+                          type="button" 
+                          onClick={() => setMostrarMiniCardCancelacion(false)} 
+                          className="btn-abort-cancel"
+                        >
+                          Volver
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* COLUMNA 2: DIRECCIÓN, MAPA (ARRIBA) Y COMENTARIO AL FONDO */}
+          <div className="car-card-box address-card">
+            <div>
+              <div className="car-address-header">
+                <div className="car-address-title-group">
+                  <div className="car-address-icon">
+                    <FaLocationDot size={18} />
+                  </div>
+                  <div>
+                    <h3>Dirección de Entrega</h3>
+                    <small>Ubicación exacta de destino</small>
+                  </div>
+                </div>
+
+                {!editandoDireccion && (
+                  <button
+                    type="button"
+                    onClick={() => setEditandoDireccion(true)}
+                    className="btn-open-address-form"
+                  >
+                    <FaPen size={11} /> Modificar
+                  </button>
+                )}
+              </div>
+
+              {/* VISTA PREVIA DE MAPA / IMAGEN (COLOCADA SOBRE LA DIRECCIÓN) */}
+              <div className="car-map-preview-box" title="Búsqueda en Google Maps (Próximamente)">
+                <FaMapLocationDot size={26} />
+                <span>Vista previa de Mapa (Google Maps)</span>
+              </div>
+
+              <div className="car-current-address-badge">
+                <small>DESTINO ACTUAL:</small>
+                <p>{direccion}</p>
+              </div>
+
+              {editandoDireccion && (
+                <form onSubmit={guardarDireccion} className="car-address-form" style={{ marginTop: '1rem' }}>
+                  <div className="car-form-group">
+                    <label>Tipo de Vía:</label>
+                    <select 
+                      value={partesDireccion.via} 
+                      onChange={(e) => setPartesDireccion({...partesDireccion, via: e.target.value})}
+                    >
+                      <option value="">Seleccionar vía...</option>
+                      <option value="Calle">Calle</option>
+                      <option value="Carrera">Carrera</option>
+                      <option value="Diagonal">Diagonal</option>
+                      <option value="Transversal">Transversal</option>
+                      <option value="Avenida">Avenida</option>
+                    </select>
+                  </div>
+
+                  <div className="car-form-group">
+                    <label>Nomenclatura (Ej: 18A # 45-20):</label>
+                    <input
+                      type="text"
+                      placeholder="Ej: 18A # 45-20"
+                      value={partesDireccion.numero}
+                      onChange={(e) => setPartesDireccion({...partesDireccion, numero: e.target.value})}
+                      required
+                    />
+                  </div>
+
+                  <div className="car-form-row">
+                    <div className="car-form-group">
+                      <label>Complemento:</label>
+                      <input
+                        type="text"
+                        placeholder="Apto 302"
+                        value={partesDireccion.complemento}
+                        onChange={(e) => setPartesDireccion({...partesDireccion, complemento: e.target.value})}
+                      />
+                    </div>
+                    <div className="car-form-group">
+                      <label>Barrio / Zona:</label>
+                      <input
+                        type="text"
+                        placeholder="Prado Vegas"
+                        value={partesDireccion.zona}
+                        onChange={(e) => setPartesDireccion({...partesDireccion, zona: e.target.value})}
+                      />
                     </div>
                   </div>
-                ))
-              ) : (
-                <p className="car-empty-history">No hay registros en el historial.</p>
+
+                  <div className="car-form-buttons">
+                    <button type="submit" className="btn-save-address">Guardar</button>
+                    <button type="button" onClick={() => setEditandoDireccion(false)} className="btn-cancel-address">Cancelar</button>
+                  </div>
+                </form>
               )}
             </div>
 
+            {/* COMENTARIO / INSTRUCCIONES UBICADO HASTA ABAJO DE LA TARJETA */}
+            <div className="car-delivery-note-box-bottom">
+              <label><FaNoteSticky size={12} /> Instrucciones para el domiciliario:</label>
+              <textarea 
+                rows="2"
+                placeholder="Ej: Dejar en portería, timbre dañado..."
+                value={notaDomiciliario}
+                onChange={(e) => setNotaDomiciliario(e.target.value)}
+              />
+            </div>
           </div>
+
+          {/* COLUMNA 3: CENTRO DE MONITOREO DE PEDIDOS */}
+          <div className="car-orders-column">
+            
+            <div className="car-history-subcard">
+              <h4>Pedidos en Curso</h4>
+              <div className="car-orders-scroll-box">
+                {pedidosPendientes.length > 0 ? (
+                  pedidosPendientes.map((ped) => (
+                    <div key={ped.id} className="car-order-pending-item">
+                      <div className="car-order-item-top">
+                        <span className="car-order-id">Pedido #{ped.id}</span>
+                        <span className="car-badge-pending">{ped.estado}</span>
+                      </div>
+                      <p className="car-order-title">{ped.titulo}</p>
+                      <div className="car-order-progress-bar">
+                        <div className="car-order-progress-fill"></div>
+                      </div>
+                      <div className="car-order-footer">
+                        <span>Tiempo est: <strong>{ped.tiempo}</strong></span>
+                        <span className="car-order-amount">{ped.total.toLocaleString()} $</span>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className="car-empty-history">No tienes pedidos activos.</p>
+                )}
+              </div>
+            </div>
+
+            <div className="car-history-subcard">
+              <h4>Historial de Almuerzos</h4>
+              <div className="car-orders-scroll-box">
+                {pedidosHistorial.length > 0 ? (
+                  pedidosHistorial.map((ped) => (
+                    <div key={ped.id} className="car-order-completed-item">
+                      <div className="car-order-item-top">
+                        <span className="car-order-id">Pedido #{ped.id}</span>
+                        <span className="car-badge-completed">✓ Entregado</span>
+                      </div>
+                      <p className="car-order-title">{ped.titulo}</p>
+                      <div className="car-order-footer">
+                        <span className="car-order-amount">{ped.total.toLocaleString()} $</span>
+                        <button
+                          type="button"
+                          onClick={() => alert(`Añadiendo de nuevo el pedido #${ped.id} al carrito...`)}
+                          className="btn-reorder"
+                        >
+                          <FaRotate size={11} /> Repetir
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className="car-empty-history">No hay historial disponible.</p>
+                )}
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
-      {/* MODAL DE PAGO CON QR DE NEQUI */}
+      {/* MODAL DE PAGO */}
       {modalPagoAbierto && (
         <div className="car-modal-overlay">
           <div className="car-modal-content">
@@ -387,7 +608,7 @@ export default function Car() {
 
             {metodoSeleccionado === "nequi" && (
               <div className="car-qr-container">
-                <p>Escanea el código QR con Nequi para pagar <strong>{totalCarrito.toLocaleString()} $</strong>:</p>
+                <p>Escanea el código QR con Nequi para pagar <strong>{totalConEnvio.toLocaleString()} $</strong>:</p>
                 <div className="car-qr-box">
                   <img src={qrImage} alt="Código QR Nequi" className="car-qr-img" />
                 </div>
@@ -409,7 +630,7 @@ export default function Car() {
 
             <div className="car-modal-footer">
               <button type="button" onClick={confirmarPagoFinal} className="btn-confirm-final-pay">
-                Confirmar y Enviar Pedido ({totalCarrito.toLocaleString()} $)
+                Confirmar y Enviar Pedido ({totalConEnvio.toLocaleString()} $)
               </button>
             </div>
           </div>
