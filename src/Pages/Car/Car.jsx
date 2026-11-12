@@ -7,10 +7,11 @@ import "./Car.css";
 export default function Car() {
   const navigate = useNavigate();
   
-  // Estados de Dirección y Notas
-  const [direccion, setDireccion] = useState("Calle 18A # 45-20, Sur de Bogotá");
+  // Estados de Dirección inicializados con una dirección random de Prado Vegas, Soacha
+  const [direccion, setDireccion] = useState("Calle 30 Sur # 12-45");
+  const [lugarBarrio, setLugarBarrio] = useState("Soacha, Prado Vegas");
   const [editandoDireccion, setEditandoDireccion] = useState(false);
-  const [partesDireccion, setPartesDireccion] = useState({ via: "", numero: "", complemento: "", zona: "" });
+  const [partesDireccion, setPartesDireccion] = useState({ via: "", numero: "", lugar: "" });
   const [notaDomiciliario, setNotaDomiciliario] = useState("");
 
   // Estado del Carrito
@@ -120,12 +121,21 @@ export default function Car() {
 
   const guardarDireccion = (e) => {
     e.preventDefault();
-    const dirCompleta = `${partesDireccion.via} ${partesDireccion.numero}${partesDireccion.complemento ? `, ${partesDireccion.complemento}` : ""}${partesDireccion.zona ? `, ${partesDireccion.zona}` : ""}`.trim();
-    if (dirCompleta) {
-      setDireccion(dirCompleta);
+    const dirPrincipal = `${partesDireccion.via} ${partesDireccion.numero}`.trim();
+    const lugarSecundario = partesDireccion.lugar.trim();
+
+    if (dirPrincipal) {
+      setDireccion(dirPrincipal);
+      setLugarBarrio(lugarSecundario);
       setEditandoDireccion(false);
-      setPartesDireccion({ via: "", numero: "", complemento: "", zona: "" });
+      setPartesDireccion({ via: "", numero: "", lugar: "" });
     }
+  };
+
+  // Busca ÚNICAMENTE la nomenclatura + Soacha, Cundinamarca para evitar errores en mapas
+  const abrirGoogleMaps = () => {
+    const query = encodeURIComponent(`${direccion}, Soacha, Cundinamarca`);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, "_blank");
   };
 
   return (
@@ -397,7 +407,7 @@ export default function Car() {
             )}
           </div>
 
-          {/* COLUMNA 2: DIRECCIÓN, MAPA (ARRIBA) Y COMENTARIO AL FONDO */}
+          {/* COLUMNA 2: DIRECCIÓN, MAPA Y COMENTARIO AL FONDO */}
           <div className="car-card-box address-card">
             <div>
               <div className="car-address-header">
@@ -407,7 +417,7 @@ export default function Car() {
                   </div>
                   <div>
                     <h3>Dirección de Entrega</h3>
-                    <small>Ubicación exacta de destino</small>
+                    <small>Soacha, Cundinamarca</small>
                   </div>
                 </div>
 
@@ -422,24 +432,34 @@ export default function Car() {
                 )}
               </div>
 
-              {/* VISTA PREVIA DE MAPA / IMAGEN (COLOCADA SOBRE LA DIRECCIÓN) */}
-              <div className="car-map-preview-box" title="Búsqueda en Google Maps (Próximamente)">
-                <FaMapLocationDot size={26} />
-                <span>Vista previa de Mapa (Google Maps)</span>
-              </div>
+              {/* BLOQUE AGRUPADO: MAPA DEBAJO Y TARJETA DE DESTINO SIEMPRE ENCIMA */}
+              <div className="car-address-preview-wrapper">
+                <div 
+                  className="car-map-preview-box" 
+                  onClick={abrirGoogleMaps}
+                  title="Haz clic para abrir la dirección en Google Maps"
+                >
+                  <FaMapLocationDot size={26} />
+                  <span>Ver en Google Maps (Soacha)</span>
+                </div>
 
-              <div className="car-current-address-badge">
-                <small>DESTINO ACTUAL:</small>
-                <p>{direccion}</p>
+                <div className="car-current-address-badge">
+                  <small>SOACHA, CUNDINAMARCA</small>
+                  <p>{direccion}</p>
+                  {lugarBarrio && (
+                    <p className="car-address-place-sub">{lugarBarrio}</p>
+                  )}
+                </div>
               </div>
 
               {editandoDireccion && (
-                <form onSubmit={guardarDireccion} className="car-address-form" style={{ marginTop: '1rem' }}>
+                <form onSubmit={guardarDireccion} className="car-address-form">
                   <div className="car-form-group">
                     <label>Tipo de Vía:</label>
                     <select 
                       value={partesDireccion.via} 
                       onChange={(e) => setPartesDireccion({...partesDireccion, via: e.target.value})}
+                      required
                     >
                       <option value="">Seleccionar vía...</option>
                       <option value="Calle">Calle</option>
@@ -451,35 +471,24 @@ export default function Car() {
                   </div>
 
                   <div className="car-form-group">
-                    <label>Nomenclatura (Ej: 18A # 45-20):</label>
+                    <label>Nomenclatura (Ej: 30 Sur # 12-45):</label>
                     <input
                       type="text"
-                      placeholder="Ej: 18A # 45-20"
+                      placeholder="Ej: 30 Sur # 12-45"
                       value={partesDireccion.numero}
                       onChange={(e) => setPartesDireccion({...partesDireccion, numero: e.target.value})}
                       required
                     />
                   </div>
 
-                  <div className="car-form-row">
-                    <div className="car-form-group">
-                      <label>Complemento:</label>
-                      <input
-                        type="text"
-                        placeholder="Apto 302"
-                        value={partesDireccion.complemento}
-                        onChange={(e) => setPartesDireccion({...partesDireccion, complemento: e.target.value})}
-                      />
-                    </div>
-                    <div className="car-form-group">
-                      <label>Barrio / Zona:</label>
-                      <input
-                        type="text"
-                        placeholder="Prado Vegas"
-                        value={partesDireccion.zona}
-                        onChange={(e) => setPartesDireccion({...partesDireccion, zona: e.target.value})}
-                      />
-                    </div>
+                  <div className="car-form-group">
+                    <label>Barrio, lugar (opcional):</label>
+                    <input
+                      type="text"
+                      placeholder="Ej: Soacha, Prado Vegas"
+                      value={partesDireccion.lugar}
+                      onChange={(e) => setPartesDireccion({...partesDireccion, lugar: e.target.value})}
+                    />
                   </div>
 
                   <div className="car-form-buttons">
@@ -490,7 +499,7 @@ export default function Car() {
               )}
             </div>
 
-            {/* COMENTARIO / INSTRUCCIONES UBICADO HASTA ABAJO DE LA TARJETA */}
+            {/* COMENTARIO / INSTRUCCIONES AL FONDO DE LA TARJETA */}
             <div className="car-delivery-note-box-bottom">
               <label><FaNoteSticky size={12} /> Instrucciones para el domiciliario:</label>
               <textarea 
@@ -549,7 +558,7 @@ export default function Car() {
                           onClick={() => alert(`Añadiendo de nuevo el pedido #${ped.id} al carrito...`)}
                           className="btn-reorder"
                         >
-                          <FaRotate size={11} /> Repetir
+                          <FaRotate size={12} /> Repetir
                         </button>
                       </div>
                     </div>
@@ -618,7 +627,12 @@ export default function Car() {
 
             {metodoSeleccionado === "efectivo" && (
               <div className="car-payment-info-box">
-                <p>Prepara el dinero exacto para el domiciliario en: <strong>{direccion}</strong></p>
+                <p>
+                  Prepara el dinero exacto para el domiciliario en:{" "}
+                  <strong>
+                    {direccion}, Soacha, Cundinamarca{lugarBarrio ? ` (${lugarBarrio})` : ""}
+                  </strong>
+                </p>
               </div>
             )}
 
