@@ -1,4 +1,6 @@
-/* --- ANIMACIONES GLOBALES --- */
+/* ==========================================================================
+   1. ANIMACIONES GLOBALES
+   ========================================================================== */
 @keyframes carFadeIn {
   from {
     opacity: 0;
@@ -27,7 +29,9 @@
   100% { box-shadow: 0 0 0 0 rgba(246, 173, 85, 0); }
 }
 
-/* Contenedor Principal */
+/* ==========================================================================
+   2. CONTENEDOR PRINCIPAL Y CABECERA
+   ========================================================================== */
 .car-page-container {
   padding: 2.5rem 1.5rem;
   background: linear-gradient(135deg, #faf7f2 0%, #f2eae1 100%);
@@ -44,7 +48,6 @@
   gap: 2rem;
 }
 
-/* Cabecera */
 .car-header-section {
   text-align: left;
   border-bottom: 2px solid #ebdcc5;
@@ -90,7 +93,9 @@
   gap: 0.5rem;
 }
 
-/* --- GRID DE 3 COLUMNAS --- */
+/* ==========================================================================
+   3. GRID DE 3 COLUMNAS Y TARJETAS BASE
+   ========================================================================== */
 .car-main-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr 1.15fr;
@@ -110,7 +115,6 @@
   }
 }
 
-/* Tarjetas Base */
 .car-card-box {
   background-color: #ffffff;
   border: 1px solid #ebdcc5;
@@ -123,7 +127,13 @@
   height: 100%;
   box-sizing: border-box;
   width: 100%;
-  overflow: hidden; /* Evita desbordamientos */
+  overflow: hidden;
+}
+
+.car-card-box.address-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .car-card-box:hover {
@@ -148,7 +158,6 @@
   font-weight: 800;
 }
 
-/* Botón Añadir Almuerzo / Modificar */
 .btn-add-more,
 .btn-open-address-form {
   background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
@@ -175,7 +184,9 @@
   box-shadow: 0 4px 14px rgba(189, 115, 47, 0.25);
 }
 
-/* Lista de Productos en Tarjetas Individuales (Ancho Fijo y Controlado) */
+/* ==========================================================================
+   4. LISTA DE PRODUCTOS Y ACCIONES EN TARJETAS
+   ========================================================================== */
 .car-items-list {
   list-style: none;
   padding: 0;
@@ -190,13 +201,8 @@
   box-sizing: border-box;
 }
 
-.car-items-list::-webkit-scrollbar {
-  width: 5px;
-}
-.car-items-list::-webkit-scrollbar-thumb {
-  background: #ebdcc5;
-  border-radius: 10px;
-}
+.car-items-list::-webkit-scrollbar { width: 5px; }
+.car-items-list::-webkit-scrollbar-thumb { background: #ebdcc5; border-radius: 10px; }
 
 .car-item-row {
   background: #fcfbfa;
@@ -209,7 +215,7 @@
   flex-direction: column;
   gap: 0.8rem;
   width: 100%;
-  box-sizing: border-box; /* Clave para que el padding no expanda el ancho */
+  box-sizing: border-box;
 }
 
 .car-item-row:hover {
@@ -231,7 +237,7 @@
   gap: 0.8rem;
   align-items: center;
   flex: 1;
-  min-width: 0; /* Permite que el texto colapse con ellipsis si es muy largo */
+  min-width: 0;
 }
 
 .car-item-qty {
@@ -277,7 +283,6 @@
   max-width: 100%;
 }
 
-/* --- BOTONES DE ACCIÓN LATERAL --- */
 .car-item-actions-wrapper {
   display: flex;
   align-items: center;
@@ -329,7 +334,6 @@
   border-color: #dc2626;
 }
 
-/* Controles de Cantidad Fijos (Sin alterar el ancho total) */
 .car-edit-controls {
   display: flex;
   align-items: center;
@@ -373,17 +377,9 @@
   min-width: 20px;
 }
 
-/* Optimizador Táctil para Móviles */
 @media (max-width: 600px) {
-  .btn-action-icon {
-    width: 42px;
-    height: 42px;
-  }
-  .btn-qty-mod {
-    min-width: 38px;
-    min-height: 38px;
-    font-size: 1.1rem;
-  }
+  .btn-action-icon { width: 42px; height: 42px; }
+  .btn-qty-mod { min-width: 38px; min-height: 38px; font-size: 1.1rem; }
 }
 
 .car-confirm-delete-box {
@@ -399,52 +395,20 @@
   box-sizing: border-box;
 }
 
-.car-confirm-delete-box span {
-  font-weight: 700;
-  color: #744210;
-  font-size: 0.85rem;
-}
-
-.car-confirm-btns {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn-yes-delete, .btn-cancel-delete {
-  padding: 0.45rem 0.9rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
+.car-confirm-delete-box span { font-weight: 700; color: #744210; font-size: 0.85rem; }
+.car-confirm-btns { display: flex; gap: 0.5rem; }
+.btn-yes-delete, .btn-cancel-delete { padding: 0.45rem 0.9rem; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
 .btn-yes-delete { background-color: #dc2626; color: #fff; border: none; }
 .btn-cancel-delete { background-color: #e2e8f0; color: #4a5568; border: none; }
 
-.car-empty-state {
-  text-align: center;
-  padding: 2.5rem 1rem;
-  color: #718096;
-}
-
+.car-empty-state { text-align: center; padding: 2.5rem 1rem; color: #718096; }
 .car-empty-state p { margin-bottom: 1rem; font-size: 1rem; }
-
-.btn-go-menu {
-  background-color: #bd732f;
-  color: #fff;
-  border: none;
-  padding: 0.8rem 1.4rem;
-  border-radius: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 0.95rem;
-  width: 100%;
-  max-width: 260px;
-}
-
+.btn-go-menu { background-color: #bd732f; color: #fff; border: none; padding: 0.8rem 1.4rem; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 0.95rem; width: 100%; max-width: 260px; }
 .btn-go-menu:hover { background-color: #a36125; transform: translateY(-2px); }
 
-/* --- PANEL DE PERSONALIZACIÓN INTEGRADO --- */
+/* ==========================================================================
+   5. PANEL DE PERSONALIZACIÓN Y BOTÓN CONFIRMAR CAMBIOS
+   ========================================================================== */
 .car-customization-panel {
   background: #ffffff;
   border: 1.5px solid #bd732f;
@@ -478,34 +442,8 @@
   .car-custom-grid { grid-template-columns: 1fr; }
 }
 
-.car-custom-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.car-custom-group label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #555;
-}
-
-.car-custom-select {
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1.5px solid #cbd5e1;
-  background: #fff;
-  font-size: 0.82rem;
-  outline: none;
-  color: #2b2b2b;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.car-custom-select:focus {
-  border-color: #bd732f;
-  box-shadow: 0 0 0 2px rgba(189, 115, 47, 0.12);
-}
+.car-custom-group { display: flex; flex-direction: column; gap: 0.25rem; }
+.car-custom-group label { font-size: 0.75rem; font-weight: 700; color: #555; }
 
 .car-custom-actions {
   display: flex;
@@ -532,29 +470,17 @@
   transition: background 0.2s;
 }
 
-.btn-save-custom svg {
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.btn-save-custom:hover { 
-  background: #a36125; 
-}
+.btn-save-custom svg { flex-shrink: 0; margin-top: 1px; }
+.btn-save-custom:hover { background: #a36125; }
 
 .btn-cancel-custom {
-  background: #e2e8f0;
-  color: #4a5568;
-  border: none;
-  padding: 0.45rem 0.9rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.82rem;
-  cursor: pointer;
+  background: #e2e8f0; color: #4a5568; border: none; padding: 0.45rem 0.9rem; border-radius: 8px; font-weight: 700; font-size: 0.82rem; cursor: pointer;
 }
-
 .btn-cancel-custom:hover { background: #cbd5e1; }
 
-/* --- SECCIÓN DE PAGOS ANCLADA ABAJO --- */
+/* ==========================================================================
+   6. SECCIÓN FINANCIERA Y DE PAGOS
+   ========================================================================== */
 .car-payment-actions {
   display: flex;
   flex-direction: column;
@@ -624,7 +550,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-/* --- ACCIONES PARA ESCRITORIO --- */
 .car-sub-actions-desktop {
   display: flex;
   justify-content: space-between;
@@ -635,38 +560,18 @@
 }
 
 @media (max-width: 768px) {
-  .car-sub-actions-desktop {
-    display: none;
-  }
+  .car-sub-actions-desktop { display: none; }
 }
 
 .btn-toggle-edit {
-  background: none;
-  border: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  cursor: pointer;
-  padding: 0.3rem 0;
-  color: #bd732f;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  background: none; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; padding: 0.3rem 0; color: #bd732f; display: flex; align-items: center; gap: 0.4rem;
 }
 
 .btn-cancel-cart {
-  background: none;
-  border: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  cursor: pointer;
-  padding: 0.3rem 0;
-  color: #e53e3e;
+  background: none; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; padding: 0.3rem 0; color: #e53e3e;
 }
 
-/* --- BOTONES TÁCTILES MÓVILES CON DISEÑO HOVER PROFESIONAL --- */
-.car-sub-actions-mobile {
-  display: none;
-}
+.car-sub-actions-mobile { display: none; }
 
 @media (max-width: 768px) {
   .car-sub-actions-mobile {
@@ -695,7 +600,6 @@
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Estilo y Hover para Editar Cantidades Móvil */
 .btn-action-card-edit {
   background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
   color: #bd732f;
@@ -711,11 +615,6 @@
   box-shadow: 0 6px 18px rgba(189, 115, 47, 0.25);
 }
 
-.btn-action-card-edit:active {
-  transform: translateY(0);
-}
-
-/* Estilo y Hover para Vaciar Carrito Móvil */
 .btn-action-card-cancel {
   background: #fff5f5;
   color: #dc2626;
@@ -731,11 +630,6 @@
   box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25);
 }
 
-.btn-action-card-cancel:active {
-  transform: translateY(0);
-}
-
-/* --- MINI TARJETA DE CONFIRMACIÓN DE CANCELACIÓN (MÓVIL) --- */
 .car-cancel-mini-card {
   background: #fff5f5;
   border: 2px solid #f87171;
@@ -750,58 +644,17 @@
   width: 100%;
 }
 
-.car-cancel-mini-card p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #7f1d1d;
-  font-weight: 700;
-  line-height: 1.4;
-}
+.car-cancel-mini-card p { margin: 0; font-size: 0.95rem; color: #7f1d1d; font-weight: 700; line-height: 1.4; }
+.car-cancel-mini-card small { color: #991b1b; font-size: 0.8rem; }
+.car-cancel-mini-btns { display: flex; gap: 0.6rem; }
+.btn-confirm-cancel-order { flex: 1; background-color: #dc2626; color: #fff; border: none; padding: 0.75rem; border-radius: 9px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background 0.2s; }
+.btn-confirm-cancel-order:hover { background-color: #b91c1c; }
+.btn-abort-cancel { background-color: #e2e8f0; color: #4a5568; border: none; padding: 0.75rem 1.1rem; border-radius: 9px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background 0.2s; }
+.btn-abort-cancel:hover { background-color: #cbd5e1; }
 
-.car-cancel-mini-card small {
-  color: #991b1b;
-  font-size: 0.8rem;
-}
-
-.car-cancel-mini-btns {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.btn-confirm-cancel-order {
-  flex: 1;
-  background-color: #dc2626;
-  color: #fff;
-  border: none;
-  padding: 0.75rem;
-  border-radius: 9px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-confirm-cancel-order:hover {
-  background-color: #b91c1c;
-}
-
-.btn-abort-cancel {
-  background-color: #e2e8f0;
-  color: #4a5568;
-  border: none;
-  padding: 0.75rem 1.1rem;
-  border-radius: 9px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-abort-cancel:hover {
-  background-color: #cbd5e1;
-}
-
-/* --- COLUMNAS 2 Y 3 (DIRECCIÓN Y PEDIDOS) --- */
+/* ==========================================================================
+   7. DIRECCIÓN, MAPA Y TARJETA DE DESTINO SIEMPRE ENCIMA (Z-INDEX ALTO)
+   ========================================================================== */
 .car-address-header {
   display: flex;
   align-items: center;
@@ -812,23 +665,68 @@
   gap: 0.8rem;
 }
 
-.car-address-title-group {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-}
-
-.car-address-icon {
-  background-color: #f8f1e5;
-  color: #bd732f;
-  padding: 0.75rem;
-  border-radius: 12px;
-  display: flex;
-}
-
+.car-address-title-group { display: flex; align-items: center; gap: 0.9rem; }
+.car-address-icon { background-color: #f8f1e5; color: #bd732f; padding: 0.75rem; border-radius: 12px; display: flex; }
 .car-address-header h3 { margin: 0; font-size: 1.3rem; color: #2b2b2b; }
 .car-address-header small { color: #666; font-size: 0.85rem; }
 
+.car-address-preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0rem;
+  width: 100%;
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
+.car-map-preview-box {
+  width: 90%;
+  height: 160px;
+  background: 
+    linear-gradient(135deg, rgba(243, 229, 208, 0.84) 0%, rgba(235, 220, 197, 0.8) 100%),
+    url("../../assets/img/map.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: 2px dashed #bd732f;
+  border-bottom: none;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: #8c531e;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box;
+  z-index: 1; /* z-index menor para que el mapa quede por debajo en el hover */
+  box-shadow: inset 0 0 15px rgba(189, 115, 47, 0.1);
+}
+
+.car-map-preview-box:hover {
+  transform: scale(1.03);
+  border-color: #a36125;
+  box-shadow: 0 8px 20px rgba(189, 115, 47, 0.25), inset 0 0 15px rgba(189, 115, 47, 0.15);
+}
+
+.car-map-preview-box span { 
+  font-size: 0.75rem; 
+  color: #744210; 
+  font-weight: 600; 
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); 
+}
+
+/* Tarjeta de destino siempre por encima (Z-INDEX 10) con sombra superior marcada */
 .car-current-address-badge {
   background-color: #f8f1e5;
   padding: 1.1rem;
@@ -836,154 +734,25 @@
   border: 1px solid #ebdcc5;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-}
-
-.car-current-address-badge small { color: #888; font-weight: 700; font-size: 0.75rem; }
-.car-current-address-badge p { margin: 0; font-weight: 700; color: #2b2b2b; font-size: 1rem; }
-
-.car-delivery-note-box {
-  background: #fdfaf6;
-  border: 1px dashed #ebdcc5;
-  border-radius: 12px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.car-delivery-note-box label { font-size: 0.8rem; font-weight: 700; color: #555; }
-.car-delivery-note-box textarea {
+  gap: 0.3rem;
   width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 0.7rem;
-  font-size: 0.9rem;
-  resize: none;
-  outline: none;
-  background: #fff;
   box-sizing: border-box;
+  z-index: 10; 
+  position: relative;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(189, 115, 47, 0.08);
 }
 
-.car-address-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  animation: carFadeIn 0.25s ease-out;
+.car-current-address-badge small { color: #888; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.5px; }
+.car-current-address-badge p { margin: 0; font-weight: 700; color: #2b2b2b; font-size: 0.98rem; }
+
+/* Subtítulo del lugar/barrio en tono más opaco */
+.car-address-place-sub {
+  font-size: 0.85rem !important;
+  color: #8c6e53 !important;
+  font-weight: 600 !important;
+  margin-top: 0.1rem !important;
 }
 
-.car-form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-.car-form-group label { font-size: 0.85rem; font-weight: 700; color: #444; }
-.car-form-group input, .car-form-group select {
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: 10px;
-  border: 1px solid #cbd5e1;
-  background-color: #fff;
-  outline: none;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-.car-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-.car-form-buttons { display: flex; gap: 0.6rem; margin-top: 0.4rem; }
-.btn-save-address { flex: 1; background-color: #bd732f; color: #fff; border: none; padding: 0.9rem; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
-.btn-cancel-address { background-color: #e2e8f0; color: #4a5568; border: none; padding: 0.9rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
-
-/* Panel Pedidos */
-.car-orders-column { display: flex; flex-direction: column; gap: 1.5rem; }
-.car-history-subcard {
-  background-color: #ffffff;
-  border: 1px solid #ebdcc5;
-  border-radius: 20px;
-  padding: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-shadow: 0 10px 30px rgba(189, 115, 47, 0.05);
-}
-
-.car-history-subcard h4 {
-  margin: 0;
-  color: #bd732f;
-  border-bottom: 1px solid #f2e8dc;
-  padding-bottom: 0.8rem;
-  font-size: 1.2rem;
-  font-weight: 800;
-}
-
-.car-orders-scroll-box {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  max-height: 290px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.car-order-pending-item, .car-order-completed-item {
-  border-radius: 14px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.car-order-pending-item { background-color: #fffaf0; border: 1.5px solid #f6ad55; animation: pulseGlow 3s infinite; }
-.car-order-completed-item { background-color: #f8fafc; border: 1px solid #e2e8f0; }
-
-.car-order-item-top { display: flex; justify-content: space-between; align-items: center; }
-.car-order-id { font-weight: 800; color: #2b2b2b; font-size: 0.95rem; }
-.car-badge-pending { background-color: #f6ad55; color: #fff; padding: 0.25rem 0.7rem; border-radius: 12px; font-size: 0.75rem; font-weight: 800; }
-.car-badge-completed { background-color: #c6f6d5; color: #22543d; padding: 0.25rem 0.7rem; border-radius: 12px; font-size: 0.75rem; font-weight: 800; }
-.car-order-title { margin: 0; font-size: 0.9rem; color: #444; font-weight: 600; }
-
-.car-order-progress-bar { width: 100%; height: 6px; background: #fef08a; border-radius: 4px; overflow: hidden; margin-top: 0.2rem; }
-.car-order-progress-fill { height: 100%; background: #f59e0b; border-radius: 4px; width: 65%; }
-
-.car-order-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #666; border-top: 1px dashed #ebdcc5; padding-top: 0.6rem; }
-.car-order-amount { font-weight: 700; color: #bd732f; font-size: 1rem; }
-
-/* --- ESTILOS PARA LA SEGUNDA TARJETA (DIRECCIÓN Y MAPA) --- */
-.car-card-box.address-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Vista previa de Google Maps más grande y ubicada sobre la dirección */
-.car-map-preview-box {
-  width: 100%;
-  height: 170px; /* Aumentado de tamaño para que sea más grande */
-  background: linear-gradient(135deg, #f3e5d0 0%, #ebdcc5 100%);
-  border-radius: 14px;
-  border: 2px dashed #bd732f;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  color: #bd732f;
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 1rem; /* Margen para separarlo de la dirección */
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-sizing: border-box;
-}
-
-.car-map-preview-box:hover {
-  background: #ebdcc5;
-  border-color: #a36125;
-}
-
-.car-map-preview-box span {
-  font-size: 0.8rem;
-  color: #666;
-  font-weight: 500;
-}
-
-/* El bloque del comentario / instrucciones al fondo de todo */
 .car-delivery-note-box-bottom {
   background: #fdfaf6;
   border: 1px dashed #ebdcc5;
@@ -997,176 +766,138 @@
 }
 
 .car-delivery-note-box-bottom label { 
-  font-size: 0.8rem; 
-  font-weight: 700; 
-  color: #555; 
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  font-size: 0.8rem; font-weight: 700; color: #555; display: flex; align-items: center; gap: 0.4rem; 
 }
 
 .car-delivery-note-box-bottom textarea {
+  width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.6rem; font-size: 0.85rem; resize: none; outline: none; background: #fff; box-sizing: border-box;
+}
+
+.car-address-form { display: flex; flex-direction: column; gap: 1rem; animation: carFadeIn 0.25s ease-out; margin-top: 1rem; }
+.car-form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.car-form-group label { font-size: 0.85rem; font-weight: 700; color: #444; }
+
+.car-form-group select,
+.car-custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #ffffff;
+  border: 1.5px solid #ebdcc5;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2b2b2b;
   width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 0.6rem;
-  font-size: 0.85rem;
-  resize: none;
+  cursor: pointer;
   outline: none;
-  background: #fff;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23bd732f' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: all 0.25s ease;
+}
+
+.car-form-group select:focus, .car-custom-select:focus {
+  border-color: #bd732f; box-shadow: 0 0 0 3px rgba(189, 115, 47, 0.15);
+}
+
+.car-form-group select option, .car-custom-select option {
+  padding: 12px; font-size: 1rem; background: #ffffff; color: #2b2b2b;
+}
+
+.car-form-group input {
+  width: 100%; padding: 0.8rem; border-radius: 10px; border: 1px solid #cbd5e1; background-color: #fff; outline: none; font-size: 1rem; box-sizing: border-box;
+}
+
+.car-form-buttons { display: flex; gap: 0.6rem; margin-top: 0.4rem; }
+.btn-save-address { flex: 1; background-color: #bd732f; color: #fff; border: none; padding: 0.9rem; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+.btn-cancel-address { background-color: #e2e8f0; color: #4a5568; border: none; padding: 0.9rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+
+/* ==========================================================================
+   8. CENTRO DE MONITOREO DE PEDIDOS Y BOTÓN REPETIR
+   ========================================================================== */
+.car-orders-column { display: flex; flex-direction: column; gap: 1.5rem; }
+.car-history-subcard {
+  background-color: #ffffff; border: 1px solid #ebdcc5; border-radius: 20px; padding: 1.6rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: 0 10px 30px rgba(189, 115, 47, 0.05);
+}
+.car-history-subcard h4 { margin: 0; color: #bd732f; border-bottom: 1px solid #f2e8dc; padding-bottom: 0.8rem; font-size: 1.2rem; font-weight: 800; }
+.car-orders-scroll-box { display: flex; flex-direction: column; gap: 0.9rem; max-height: 290px; overflow-y: auto; padding-right: 4px; }
+.car-order-pending-item, .car-order-completed-item { border-radius: 14px; padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.car-order-pending-item { background-color: #fffaf0; border: 1.5px solid #f6ad55; animation: pulseGlow 3s infinite; }
+.car-order-completed-item { background-color: #f8fafc; border: 1px solid #e2e8f0; }
+.car-order-item-top { display: flex; justify-content: space-between; align-items: center; }
+.car-order-id { font-weight: 800; color: #2b2b2b; font-size: 0.95rem; }
+.car-badge-pending { background-color: #f6ad55; color: #fff; padding: 0.25rem 0.7rem; border-radius: 12px; font-size: 0.75rem; font-weight: 800; }
+.car-badge-completed { background-color: #c6f6d5; color: #22543d; padding: 0.25rem 0.7rem; border-radius: 12px; font-size: 0.75rem; font-weight: 800; }
+.car-order-title { margin: 0; font-size: 0.9rem; color: #444; font-weight: 600; }
+.car-order-progress-bar { width: 100%; height: 6px; background: #fef08a; border-radius: 4px; overflow: hidden; margin-top: 0.2rem; }
+.car-order-progress-fill { height: 100%; background: #f59e0b; border-radius: 4px; width: 65%; }
+.car-order-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #666; border-top: 1px dashed #ebdcc5; padding-top: 0.6rem; }
+.car-order-amount { font-weight: 700; color: #bd732f; font-size: 1rem; }
+
+.btn-reorder {
+  background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
+  color: #bd732f;
+  border: 1.5px solid #ebdcc5;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
 }
 
-/* --- MODAL DE PAGO Y CONTROLES --- */
+.btn-reorder svg { flex-shrink: 0; transition: transform 0.3s ease; }
+.btn-reorder:hover {
+  background: #bd732f; color: #ffffff; border-color: #bd732f; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(189, 115, 47, 0.2);
+}
+.btn-reorder:hover svg { transform: rotate(180deg); }
+.btn-reorder:active { transform: translateY(0); }
+
+.car-empty-history { color: #718096; font-size: 0.9rem; text-align: center; margin: 1.2rem 0; }
+
+/* ==========================================================================
+   9. MODAL DE PAGO
+   ========================================================================== */
 .car-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 1rem;
-  box-sizing: border-box;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); backdrop-filter: blur(4px);
+  display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 1rem; box-sizing: border-box;
   animation: carFadeIn 0.25s ease-out;
 }
 
 .car-modal-content {
-  background-color: #ffffff;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
+  background-color: #ffffff; border-radius: 20px; width: 100%; max-width: 500px; padding: 2rem;
+  display: flex; flex-direction: column; gap: 1.4rem; box-shadow: 0 20px 40px rgba(0,0,0,0.25); box-sizing: border-box;
   animation: modalScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.car-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #f1f5f9;
-  padding-bottom: 1rem;
-}
+.car-modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem; }
+.car-modal-header h3 { margin: 0; font-size: 1.35rem; color: #2b2b2b; font-weight: 800; }
+.car-modal-close { background: #f1f5f9; border: none; cursor: pointer; color: #666; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; }
+.car-modal-close:hover { background: #e2e8f0; color: #000; }
 
-.car-modal-header h3 {
-  margin: 0;
-  font-size: 1.35rem;
-  color: #2b2b2b;
-  font-weight: 800;
-}
-
-.car-modal-close {
-  background: #f1f5f9;
-  border: none;
-  cursor: pointer;
-  color: #666;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background 0.2s;
-}
-
-.car-modal-close:hover {
-  background: #e2e8f0;
-  color: #000;
-}
-
-.car-payment-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
+.car-payment-methods { display: flex; flex-direction: column; gap: 0.8rem; }
 .car-payment-option {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.2rem;
-  background-color: #f8fafc;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #334155;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s;
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem;
+  background-color: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; font-weight: 700; font-size: 1rem; color: #334155; cursor: pointer; text-align: left; transition: all 0.2s;
 }
+.car-payment-option.active { border-color: #bd732f; background-color: #fdf8f2; color: #bd732f; }
 
-.car-payment-option.active {
-  border-color: #bd732f;
-  background-color: #fdf8f2;
-  color: #bd732f;
-}
-
-.car-qr-container {
-  background-color: #faf7f2;
-  border: 1.5px solid #ebdcc5;
-  border-radius: 14px;
-  padding: 1.2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.car-qr-box {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 12px;
-  display: inline-block;
-  margin: 0 auto;
-  border: 1.5px solid #ebdcc5;
-  max-width: 180px;
-}
-
-.car-qr-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
-
-.car-payment-info-box {
-  background-color: #f8fafc;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1rem;
-  font-size: 0.95rem;
-  color: #334155;
-  text-align: center;
-}
-
-.car-modal-footer {
-  margin-top: 0.5rem;
-}
+.car-qr-container { background-color: #faf7f2; border: 1.5px solid #ebdcc5; border-radius: 14px; padding: 1.2rem; text-align: center; display: flex; flex-direction: column; gap: 0.8rem; }
+.car-qr-box { background-color: #fff; padding: 1rem; border-radius: 12px; display: inline-block; margin: 0 auto; border: 1.5px solid #ebdcc5; max-width: 180px; }
+.car-qr-img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.car-payment-info-box { background-color: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 1rem; font-size: 0.95rem; color: #334155; text-align: center; }
+.car-modal-footer { margin-top: 0.5rem; }
 
 .btn-confirm-final-pay {
-  width: 100%;
-  background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
-  color: #fff;
-  border: none;
-  padding: 1.1rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.05rem;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  width: 100%; background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%); color: #fff; border: none; padding: 1.1rem; border-radius: 12px; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: background 0.2s, transform 0.2s;
 }
-
-.btn-confirm-final-pay:hover {
-  background: linear-gradient(135deg, #3d3d3d 0%, #2b2b2b 100%);
-  transform: translateY(-2px);
-}
+.btn-confirm-final-pay:hover { background: linear-gradient(135deg, #3d3d3d 0%, #2b2b2b 100%); transform: translateY(-2px); }
