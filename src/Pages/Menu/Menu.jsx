@@ -4,8 +4,66 @@ import { FaStopwatch } from "react-icons/fa6";
 import { Plus, X, ArrowLeft, LogIn } from "lucide-react";
 import BebidasSection from "../../Components/BebidasSection/BebidasSection";
 import "./Menu.css";
+import TarjetasMenu from '../../Components/Tarjetas/TarjetasMenu'
+
+
+ 
+  
 
 export default function Menu() {
+
+   const DatosPrincipio=[ {
+     id:1,
+     imagen:'Frijoles',
+     titulo:'Frijoles Guisados',
+     descripcion:'Guisados estilo Tradicional.'
+   },
+
+   {
+    id:2,
+    imagen:'Lentejas',
+    titulo:'Lentejas Caseras',
+    descripcion:'Con ahogado de la casa.'
+   },
+
+  
+   ]
+
+
+    const DatosProteina=[ {
+     id:1,
+     imagen:'Carne',
+     titulo:'Carne Asada',
+     descripcion:'Corte magro a la plancha.'
+   },
+
+   {
+    id:2,
+    imagen:'Pechuga',
+    titulo:'Pechuga a la plancha ',
+    descripcion:'Fileteada con sazon casera.'
+   }
+   ]
+
+
+    const DatosAcompanamiento=[ {
+     id:1,
+     imagen:'Arroz',
+     titulo:'Arroz Blanco',
+     descripcion:'Porcion tradicional de la casa.'
+   },
+
+   {
+    id:2,
+    imagen:'Platano/Ensalada',
+    titulo:'Tajada o Ensalada ',
+    descripcion:'Maduro frito o ensalda fresca .'
+   }
+   ]
+
+
+
+
   const navigate = useNavigate();
 
   // Estados para controlar qué categoría se despliega en móviles
@@ -142,26 +200,32 @@ export default function Menu() {
               <span>Opciones de Principio</span>
               <span className="toggle-arrow">▼</span>
             </button>
-            <div className={`cards-grid-vertical ${openPrincipio ? "is-expanded" : ""}`}>
-              <div className="mini-card">
-                <div className="mini-card-img">Fríjoles</div>
-                <div className="mini-card-body">
-                  <h4>Fríjoles Guisados</h4>
-                  <p>Guisados estilo tradicional.</p>
-                </div>
-              </div>
-              <div className="mini-card">
-                <div className="mini-card-img">Lentejas</div>
-                <div className="mini-card-body">
-                  <h4>Lentejas Caseras</h4>
-                  <p>Con ahogado de la casa.</p>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Columna 2: Proteínas */}
-          <div className="third-column">
+             <div className={`cards-grid-vertical ${openPrincipio ? "is-expanded" : ""}`}>
+
+
+
+            {/*frijoles*/}
+
+            {DatosPrincipio.map((item)=> 
+              ( <TarjetasMenu
+                key={item.id} 
+                 imagen={item.imagen}
+                 titulo={item.titulo}
+                 descripcion={item.descripcion} /> )) }
+                 
+     
+      
+         
+                 
+         
+           </div>
+
+           </div>
+
+           {/* Columna 2: Proteínas */}
+
+             <div className="third-column">
             <div className="category-header">
               <span className="step-number">2</span>
               <h3>Opciones de Proteína</h3>
@@ -175,24 +239,26 @@ export default function Menu() {
               <span className="toggle-arrow">▼</span>
             </button>
             <div className={`cards-grid-vertical ${openProteina ? "is-expanded" : ""}`}>
-              <div className="mini-card">
-                <div className="mini-card-img">Carne</div>
-                <div className="mini-card-body">
-                  <h4>Carne Asada</h4>
-                  <p>Corte magro a la plancha.</p>
-                </div>
-              </div>
-              <div className="mini-card">
-                <div className="mini-card-img">Pechuga</div>
-                <div className="mini-card-body">
-                  <h4>Pechuga a la Plancha</h4>
-                  <p>Fileteada con sazón casera.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+              
+              {/* carne */}
 
-          {/* Columna 3: Acompañamientos */}
+                  {DatosProteina.map((item)=> 
+              ( <TarjetasMenu
+                key={item.id} 
+                 imagen={item.imagen}
+                 titulo={item.titulo}
+                 descripcion={item.descripcion} /> )) }
+                 
+             
+      
+                 
+           </div> 
+
+
+           </div>
+
+        {/* acompañamientos */}
+
           <div className="third-column">
             <div className="category-header">
               <span className="step-number">3</span>
@@ -207,22 +273,22 @@ export default function Menu() {
               <span className="toggle-arrow">▼</span>
             </button>
             <div className={`cards-grid-vertical ${openAcompanamiento ? "is-expanded" : ""}`}>
-              <div className="mini-card">
-                <div className="mini-card-img">Arroz</div>
-                <div className="mini-card-body">
-                  <h4>Arroz Blanco</h4>
-                  <p>Porción tradicional de la casa.</p>
-                </div>
+             
+
+
+                  {DatosAcompanamiento.map((item)=> 
+              ( <TarjetasMenu
+                key={item.id} 
+                 imagen={item.imagen}
+                 titulo={item.titulo}
+                 descripcion={item.descripcion} /> )) }
+          
+            
+             </div>
               </div>
-              <div className="mini-card">
-                <div className="mini-card-img">Plátano / Ensalada</div>
-                <div className="mini-card-body">
-                  <h4>Tajada o Ensalada</h4>
-                  <p>Maduro frito o ensalada fresca.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+         
+          
+
         </section>
 
         {/* ADICIONALES: SOPAS Y ENSALADAS */}
