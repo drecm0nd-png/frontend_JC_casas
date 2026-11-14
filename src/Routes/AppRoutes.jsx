@@ -8,6 +8,8 @@ import Panel from "../Pages/Panel/Panel.jsx";
 import Pedidos from "../Pages/Panel/ComponentPanel/Pedidos/Pedidos.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import SignUp from "../Pages/SignUp/SignUp.jsx";
+import Config from "../Pages/Config/Config.jsx";
+import Profile from "../Pages/Profile/Profile.jsx"; // <-- Ruta de la super tarjeta de perfil
 
 function AppRoutes() {
   return (
@@ -23,6 +25,12 @@ function AppRoutes() {
       <Route path="/menu" element={<Menu />} />
       <Route path="/car" element={<Car />} />
       <Route path="/pedidos" element={<Pedidos />} />
+
+      {/* Ruta de Configuración */}
+      <Route path="/configuracion" element={<Config />} />
+
+      {/* Ruta de Perfil Completo */}
+      <Route path="/perfil" element={<Profile />} />
 
       {/* Rutas de Panel y Dashboard (con protección en dashboard) */}
       <Route path="/panel" element={<Panel />} />

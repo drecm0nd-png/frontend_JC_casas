@@ -1,0 +1,45 @@
+.inventario-container-unified {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Barra del switch */
+.inventario-switch-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--bg-subnav, #f7ede1);
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle, rgba(226, 204, 179, 0.35));
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.switch-btn {
+  background: transparent;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary, #7a481c);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.switch-btn:hover {
+  color: var(--accent-color, #bd732f);
+}
+
+.switch-btn.active {
+  background-color: var(--accent-color, #bd732f);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(189, 115, 47, 0.25);
+}
+
+.inventario-subcontent {
+  width: 100%;
+}

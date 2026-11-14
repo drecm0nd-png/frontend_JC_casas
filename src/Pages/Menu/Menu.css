@@ -1,27 +1,29 @@
 @import "../../Styles/Variables.css";
 
 /* ==========================================
-   Contenedor Principal y Animación de Entrada
+   Contenedor Principal y Márgenes Laterales
    ========================================== */
 .menu-page-container {
   width: 100%;
-  background-color: var(--color-background, #faf8f5);
+  background: var(--color-background, #faf7f2);
   min-height: 100vh;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   color: var(--color-text, #2d2d2d);
+  transition: background 0.3s ease, color 0.3s ease;
+  animation: fadeInSubtle 0.3s ease-out forwards;
 }
 
 .menu-main-content {
-  max-width: 1480px;
-  width: 95%;
+  max-width: 1650px;
+  width: 100%;
   margin: 0 auto;
-  padding: var(--page-padding, 2rem 1rem);
   display: flex;
   flex-direction: column;
-  gap: var(--component-gap, 2.2rem);
-  flex-grow: 1;
-  animation: fadeInSubtle 0.3s ease-out forwards;
+  gap: 2.2rem;
+  box-sizing: border-box;
 }
 
 @keyframes fadeInSubtle {
@@ -33,6 +35,59 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ==========================================
+   Estilo Global de Cabecera (Unificado)
+   ========================================== */
+.global-header {
+  max-width: 1650px;
+  width: 100%;
+  margin: 0 auto 2rem auto;
+  text-align: left;
+  border-bottom: 2px solid var(--color-stroke, #ebdcc5);
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.global-header .g-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-primary, #bd732f);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.global-header .g-title {
+  color: var(--color-text, #2b2b2b);
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+
+.global-header .g-description {
+  color: var(--color-text-muted, #666);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.global-header .g-badge {
+  background: var(--color-badge-bg, #f8f1e5);
+  border: 1px solid var(--color-stroke, #ebdcc5);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--color-primary, #bd732f);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 /* ==========================================
@@ -67,6 +122,7 @@
   font-family: var(--font-family-base, inherit);
   transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(180, 83, 9, 0.12);
+  box-sizing: border-box;
 }
 
 .order-status-banner-btn:hover {
@@ -74,11 +130,6 @@
   border-color: #d19355;
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(180, 83, 9, 0.2);
-}
-
-.order-status-banner-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.1);
 }
 
 .order-status-banner-btn .banner-content {
@@ -114,11 +165,6 @@
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.order-status-banner-btn:hover .banner-arrow {
-  transform: translateX(4px);
-  color: #451a03;
-}
-
 /* ==========================================
    Hero Card (Almuerzo Corriente / Ejecutivo)
    ========================================== */
@@ -127,6 +173,7 @@
   border-radius: 16px;
   padding: 2.5rem 3rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
 }
 
 .hero-overlay {
@@ -172,7 +219,7 @@
 }
 
 .btn-primary-action {
-  background-color: var(--color-button-primary, #bd732f);
+  background-color: var(--color-primary, #bd732f);
   color: #ffffff;
   border: none;
   padding: 0.9rem 2rem;
@@ -184,29 +231,29 @@
 }
 
 .btn-primary-action:hover {
-  background-color: #a76b32;
+  background-color: var(--color-primary-hover, #a76b32);
 }
 
 /* ==========================================
-   Sección Agrupada de Componentes (Difuminado Invertido)
+   Sección Agrupada de Componentes
    ========================================== */
 .horizontal-section-group-3 {
-  background: linear-gradient(180deg, #faf8f5 0%, #ebd8c3 100%);
+  background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-stroke, #dfcca9);
-  border-top: none;
-  border-radius: 0 0 20px 20px;
+  border-radius: 16px;
   padding: 2.5rem 2rem;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   align-items: start;
+  box-sizing: border-box;
 }
 
 .lunch-section-title-wrapper {
   grid-column: 1 / -1;
   margin-bottom: 0.5rem;
-  border-bottom: 2px dashed #dfcca9;
+  border-bottom: 2px dashed var(--color-stroke, #dfcca9);
   padding-bottom: 0.75rem;
 }
 
@@ -215,9 +262,22 @@
   font-weight: 800;
   color: var(--color-header, #78350f);
   margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+}
+
+/* ==========================================
+   Sección Agrupada de Componentes (Con tu Degradado Original)
+   ========================================== */
+.horizontal-section-group-3 {
+  background: linear-gradient(180deg, var(--color-background, #faf8f5) 0%, #ebd8c3 100%);
+  border: 1px solid var(--color-stroke, #dfcca9);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: start;
+  box-sizing: border-box;
 }
 
 .third-column {
@@ -226,7 +286,6 @@
   gap: 1.2rem;
 }
 
-/* Cabecera de Categoría en Escritorio */
 .category-header {
   display: flex;
   align-items: center;
@@ -235,7 +294,7 @@
 }
 
 .step-number {
-  background-color: var(--color-button-primary, #bd732f);
+  background-color: var(--color-primary, #bd732f);
   color: #ffffff;
   width: 28px;
   height: 28px;
@@ -255,12 +314,11 @@
   margin: 0;
 }
 
-/* Botón Desplegable para Móviles */
 .category-toggle-btn {
   display: none;
   width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #ebd8c3;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-stroke, #ebd8c3);
   border-radius: 10px;
   padding: 1rem 1.2rem;
   font-size: var(--font-size-body, 1rem);
@@ -269,32 +327,14 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  font-family: var(--font-family-base, inherit);
-  transition: background-color 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
 }
 
-.category-toggle-btn:hover {
-  background-color: #faf5ee;
-}
-
-.category-toggle-btn .toggle-arrow {
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-  color: #8c7a6b;
-}
-
-.category-toggle-btn.is-open .toggle-arrow {
-  transform: rotate(180deg);
-}
-
-/* Cuadrícula Interna de Tarjetas */
 .cards-grid-vertical {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-
 
 /* ==========================================
    Secciones Adicionales & Bebidas
@@ -320,8 +360,8 @@
 }
 
 .extra-card {
-  background-color: #ffffff;
-  border: 1px solid #eaddce;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-stroke, #eaddce);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
@@ -332,11 +372,11 @@
 
 .extra-img {
   height: 130px;
-  background-color: #efe5d5;
+  background-color: var(--color-card, #efe5d5);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #8c7a6b;
+  color: var(--color-text-muted, #8c7a6b);
   font-size: var(--font-size-body, 0.95rem);
   font-weight: 600;
 }
@@ -348,21 +388,6 @@
   flex-grow: 1;
 }
 
-.extra-body h4 {
-  font-size: var(--font-size-card-title, 1.1rem);
-  font-weight: 700;
-  color: var(--color-text, #2b2b2b);
-  margin: 0 0 0.3rem 0;
-}
-
-.extra-body p {
-  font-size: var(--font-size-small, 0.85rem);
-  color: #726555;
-  margin: 0;
-  flex-grow: 1;
-  line-height: 1.3;
-}
-
 .extra-footer {
   display: flex;
   justify-content: space-between;
@@ -372,7 +397,7 @@
 
 .price {
   font-weight: 800;
-  color: var(--color-button-primary, #bd732f);
+  color: var(--color-primary, #bd732f);
   font-size: var(--font-size-card-title, 1.1rem);
 }
 
@@ -384,21 +409,10 @@
   height: 32px;
   border-radius: 50%;
   font-weight: bold;
-  font-size: 1.1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn-add:hover {
-  background-color: #fcd34d;
-  transform: scale(1.05);
-}
-
-.btn-add:active {
-  transform: scale(0.95);
 }
 
 /* ==========================================
@@ -427,6 +441,10 @@
 }
 
 @media (max-width: 650px) {
+  .menu-page-container {
+    padding: 1rem 0.75rem;
+  }
+
   .cards-grid-vertical.is-expanded,
   .cards-grid-3 {
     grid-template-columns: 1fr;
@@ -440,7 +458,7 @@
 }
 
 /* ==========================================
-   MINI VENTANA EMERGENTE (MODAL WIZARD PASO A PASO)
+   Modales y Wizard
    ========================================== */
 .modal-overlay {
   position: fixed !important;
@@ -452,7 +470,6 @@
   height: 100vh !important;
   background-color: rgba(58, 31, 0, 0.55) !important;
   backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -462,12 +479,11 @@
 }
 
 .modal-card {
-  background-color: var(--color-auth-surface, #ffffff) !important;
+  background-color: var(--color-surface, #ffffff) !important;
   border-radius: 1.25rem !important;
-  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
+  border: 1px solid var(--color-stroke, #ebdcc5) !important;
   width: 95% !important;
   max-width: 650px !important;
-  min-width: 320px !important;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3) !important;
   overflow: hidden !important;
   box-sizing: border-box !important;
@@ -477,52 +493,20 @@
 
 .modal-header {
   padding: 1.2rem 1.6rem !important;
-  background-color: var(--color-card, #f5eddd) !important;
-  border-bottom: 1px solid var(--color-stroke, #6b3a1f80) !important;
+  background-color: var(--color-card, #f8f1e5) !important;
+  border-bottom: 1px solid var(--color-stroke, #ebdcc5) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  gap: 1rem !important;
   box-sizing: border-box !important;
   width: 100% !important;
 }
 
-.modal-header h3 {
-  margin: 0 !important;
-  font-size: var(--font-size-card-title, 1.25rem) !important;
-  color: var(--color-text, #3a1f00) !important;
-  font-weight: 700 !important;
-}
-
-.modal-subtitle {
-  font-size: var(--font-size-small, 0.85rem) !important;
-  color: var(--color-button-primary, #c4832a) !important;
-  font-weight: 700 !important;
-  display: block !important;
-  margin-bottom: 0.2rem !important;
-}
-
-.btn-close-modal {
-  background: none !important;
-  border: none !important;
-  color: var(--color-header, #6b3a1f) !important;
-  cursor: pointer !important;
-  padding: 0.35rem !important;
-  border-radius: 0.5rem !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* ==========================================
-    Stepper / Indicador de Pasos
-   ========================================== */
 .stepper-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 2rem 0.5rem;
-  background-color: var(--color-auth-surface, #ffffff);
 }
 
 .step-item {
@@ -535,16 +519,11 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
 }
 
 .step-item.active {
-  background-color: var(--color-button-primary, #c4832a);
+  background-color: var(--color-primary, #bd732f);
   color: #ffffff;
-  border-color: #a36b2b;
-  box-shadow: 0 0 0 4px rgba(196, 131, 42, 0.2);
 }
 
 .step-line {
@@ -552,165 +531,58 @@
   height: 3px;
   background-color: #eaddce;
   margin: 0 8px;
-  transition: background-color 0.3s ease;
 }
 
 .step-line.active {
-  background-color: var(--color-button-primary, #c4832a);
+  background-color: var(--color-primary, #bd732f);
 }
 
-/* ==========================================
-    Contenido Dinámico de los Pasos (Modal Form Body)
-   ========================================== */
 .step-body {
   padding: 1.5rem 1.8rem !important;
-  min-height: 290px;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
   box-sizing: border-box !important;
   width: 100% !important;
 }
 
-.fade-in {
-  animation: fadeInStep 0.35s ease-out forwards;
-}
-
-@keyframes fadeInStep {
-  from { opacity: 0; transform: translateX(8px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-.step-label {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-header, #6b3a1f);
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
-.step-desc {
-  font-size: 0.85rem;
-  color: #726555;
-  margin-bottom: 1.25rem;
-}
-
-/* ==========================================
-    Inputs de Pasos Forzados al 100%
-   ========================================== */
 .step-select, .step-textarea {
   display: block !important;
   width: 100% !important;
-  max-width: 100% !important;
-  min-width: 100% !important;
   padding: 0.9rem !important;
-  border: 1px solid #eaddce !important;
+  border: 1.5px solid var(--color-stroke, #ebdcc5) !important;
   border-radius: 10px !important;
   font-size: 1rem !important;
-  background-color: #fffaf4 !important;
-  color: #3a1f00 !important;
-  outline: none !important;
-  font-family: inherit !important;
-  transition: border-color 0.2s !important;
+  background-color: var(--color-surface, #fffaf4) !important;
+  color: var(--color-text, #3a1f00) !important;
   box-sizing: border-box !important;
+  outline: none !important;
 }
 
-.step-select:focus, .step-textarea:focus {
-  border-color: var(--color-button-primary, #c4832a) !important;
-}
-
-.step-textarea {
-  resize: vertical !important;
-  min-height: 80px !important;
-}
-
-/* ==========================================
-    Banner de Autenticación Integrado
-   ========================================== */
-.login-prompt-banner {
-  margin-top: 1.25rem;
-  padding: 0.8rem 1rem;
-  background-color: #fef2e2;
-  border: 1px solid #fbdcba;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.login-prompt-info {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: #8a5a22;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.btn-login-redirect {
-  background-color: #ffffff;
-  color: var(--color-button-primary, #c4832a);
-  border: 1px solid var(--color-button-primary, #c4832a);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.btn-login-redirect:hover {
-  background-color: var(--color-button-primary, #c4832a);
-  color: #ffffff;
-}
-
-/* ==========================================
-    Botones de Acción (Wizard)
-   ========================================== */
 .step-actions {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
   margin-top: 2rem !important;
-  border-top: 1px solid #eaddce !important;
+  border-top: 1px solid var(--color-stroke, #ebdcc5) !important;
   padding-top: 1rem !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
 
 .btn-cancel, .btn-save {
-  width: auto !important;
   padding: 0.75rem 1.4rem !important;
   border-radius: 0.75rem !important;
   font-weight: 700 !important;
-  font-size: 0.875rem !important;
   cursor: pointer !important;
 }
 
 .btn-cancel {
-  background-color: var(--color-card, #f5eddd) !important;
-  border: 1px solid var(--color-stroke, #6b3a1f80) !important;
-  color: var(--color-header, #6b3a1f) !important;
+  background-color: var(--color-card, #f8f1e5) !important;
+  border: 1.5px solid var(--color-stroke, #ebdcc5) !important;
+  color: var(--color-primary, #bd732f) !important;
 }
 
 .btn-save {
-  background-color: var(--color-button-primary, #c4832a) !important;
+  background-color: var(--color-primary, #bd732f) !important;
   color: #ffffff !important;
   border: none !important;
 }
 
-.btn-save:disabled {
-  background-color: #eaddce !important;
-  color: #a89d91 !important;
-  cursor: not-allowed !important;
-}
-
-.btn-finish {
-  background-color: #2e7d32 !important;
-}
-
-.btn-finish:hover {
-  background-color: #236126 !important;
-}

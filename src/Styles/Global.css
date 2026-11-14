@@ -159,3 +159,78 @@ ol {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Contenedor cuando tiene el Sidebar a la izquierda */
+.app-with-sidebar {
+  display: flex;
+  min-height: 100vh;
+  background-color: #faf7f2;
+}
+
+/* Área de contenido que se ajusta al espacio restante */
+.app-with-sidebar .app-main-content {
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Contenedor a pantalla completa para Login y Registro (sin Sidebar) */
+.app-fullscreen {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #faf7f2;
+}
+
+.app-fullscreen .app-main-content {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Contenedor general que mantiene el Sidebar a la izquierda y el contenido a la derecha */
+.app-with-sidebar {
+  display: flex;
+  min-height: 100vh;
+  background-color: #faf7f2;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.app-with-sidebar .app-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   Adaptación Responsiva de la Cabecera Global
+   ========================================== */
+@media (max-width: 768px) {
+  .global-header {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .global-header .g-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .global-header .g-title {
+    font-size: 1.6rem; /* Se reduce notablemente en móviles para ganar espacio */
+    margin: 0.1rem 0 0.2rem 0;
+  }
+
+  .global-header .g-description {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .global-header .g-badge {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+}

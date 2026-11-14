@@ -4,65 +4,54 @@ import { FaStopwatch } from "react-icons/fa6";
 import { Plus, X, ArrowLeft, LogIn } from "lucide-react";
 import BebidasSection from "../../Components/BebidasSection/BebidasSection";
 import "./Menu.css";
-import TarjetasMenu from '../../Components/Tarjetas/TarjetasMenu'
-
-
- 
-  
+import TarjetasMenu from '../../Components/Tarjetas/TarjetasMenu';
 
 export default function Menu() {
 
-   const DatosPrincipio=[ {
-     id:1,
-     imagen:'Frijoles',
-     titulo:'Frijoles Guisados',
-     descripcion:'Guisados estilo Tradicional.'
-   },
+   const DatosPrincipio = [
+     {
+       id: 1,
+       imagen: 'Frijoles',
+       titulo: 'Frijoles Guisados',
+       descripcion: 'Guisados estilo Tradicional.'
+     },
+     {
+       id: 2,
+       imagen: 'Lentejas',
+       titulo: 'Lentejas Caseras',
+       descripcion: 'Con ahogado de la casa.'
+     }
+   ];
 
-   {
-    id:2,
-    imagen:'Lentejas',
-    titulo:'Lentejas Caseras',
-    descripcion:'Con ahogado de la casa.'
-   },
+   const DatosProteina = [
+     {
+       id: 1,
+       imagen: 'Carne',
+       titulo: 'Carne Asada',
+       descripcion: 'Corte magro a la plancha.'
+     },
+     {
+       id: 2,
+       imagen: 'Pechuga',
+       titulo: 'Pechuga a la plancha',
+       descripcion: 'Fileteada con sazon casera.'
+     }
+   ];
 
-  
-   ]
-
-
-    const DatosProteina=[ {
-     id:1,
-     imagen:'Carne',
-     titulo:'Carne Asada',
-     descripcion:'Corte magro a la plancha.'
-   },
-
-   {
-    id:2,
-    imagen:'Pechuga',
-    titulo:'Pechuga a la plancha ',
-    descripcion:'Fileteada con sazon casera.'
-   }
-   ]
-
-
-    const DatosAcompanamiento=[ {
-     id:1,
-     imagen:'Arroz',
-     titulo:'Arroz Blanco',
-     descripcion:'Porcion tradicional de la casa.'
-   },
-
-   {
-    id:2,
-    imagen:'Platano/Ensalada',
-    titulo:'Tajada o Ensalada ',
-    descripcion:'Maduro frito o ensalda fresca .'
-   }
-   ]
-
-
-
+   const DatosAcompanamiento = [
+     {
+       id: 1,
+       imagen: 'Arroz',
+       titulo: 'Arroz Blanco',
+       descripcion: 'Porcion tradicional de la casa.'
+     },
+     {
+       id: 2,
+       imagen: 'Platano/Ensalada',
+       titulo: 'Tajada o Ensalada',
+       descripcion: 'Maduro frito o ensalda fresca .'
+     }
+   ];
 
   const navigate = useNavigate();
 
@@ -78,7 +67,7 @@ export default function Menu() {
   // Estado para controlar el paso actual del formulario (1 al 4)
   const [pasoActual, setPasoActual] = useState(1);
 
-  // Estados del formulario dentro del modal[cite: 5]
+  // Estados del formulario dentro del modal
   const [principio, setPrincipio] = useState("");
   const [proteina, setProteina] = useState("");
   const [acompanamiento, setAcompanamiento] = useState("");
@@ -142,24 +131,20 @@ export default function Menu() {
 
   return (
     <div className="menu-page-container">
-      <div className="menu-main-content">
-        {/* Banner interactivo de Estado del Pedido que redirige a /car */}
-        <button
-          type="button"
-          className="order-status-banner-btn"
-          onClick={() => navigate("/car")}
-        >
-          <div className="banner-content">
-            <span className="banner-icon" aria-hidden="true">
-              <FaStopwatch />
-            </span>
-            <div className="banner-text">
-              <strong>Tu pedido va en camino</strong>
-              <small>Tiempo estimado de llegada: 10 a 15 min</small>
-            </div>
+      
+      {/* Cabecera unificada con la clase global */}
+      <div className="global-header">
+  <div>
+      <span className="g-subtitle">Nuestra Carta</span>
+          <h1 className="g-title">Menú de Almuerzos y Platos</h1>
+          <p className="g-description">Control en tiempo real para la selección de platos y personalización.</p>
           </div>
-          <span className="banner-arrow" aria-hidden="true">&gt;</span>
-        </button>
+          <div className="g-badge">
+          <span>JC Casas POS</span>
+        </div>
+      </div>
+
+      <div className="menu-main-content">
 
         {/* Banner Destacado del Almuerzo Tradicional */}
         <section className="hero-dish-card">
@@ -201,31 +186,20 @@ export default function Menu() {
               <span className="toggle-arrow">▼</span>
             </button>
 
-             <div className={`cards-grid-vertical ${openPrincipio ? "is-expanded" : ""}`}>
+            <div className={`cards-grid-vertical ${openPrincipio ? "is-expanded" : ""}`}>
+              {DatosPrincipio.map((item) => (
+                <TarjetasMenu
+                  key={item.id} 
+                  imagen={item.imagen}
+                  titulo={item.titulo}
+                  descripcion={item.descripcion} 
+                />
+              ))}
+            </div>
+          </div>
 
-
-
-            {/*frijoles*/}
-
-            {DatosPrincipio.map((item)=> 
-              ( <TarjetasMenu
-                key={item.id} 
-                 imagen={item.imagen}
-                 titulo={item.titulo}
-                 descripcion={item.descripcion} /> )) }
-                 
-     
-      
-         
-                 
-         
-           </div>
-
-           </div>
-
-           {/* Columna 2: Proteínas */}
-
-             <div className="third-column">
+          {/* Columna 2: Proteínas */}
+          <div className="third-column">
             <div className="category-header">
               <span className="step-number">2</span>
               <h3>Opciones de Proteína</h3>
@@ -239,26 +213,18 @@ export default function Menu() {
               <span className="toggle-arrow">▼</span>
             </button>
             <div className={`cards-grid-vertical ${openProteina ? "is-expanded" : ""}`}>
-              
-              {/* carne */}
+              {DatosProteina.map((item) => (
+                <TarjetasMenu
+                  key={item.id} 
+                  imagen={item.imagen}
+                  titulo={item.titulo}
+                  descripcion={item.descripcion} 
+                />
+              ))}
+            </div> 
+          </div>
 
-                  {DatosProteina.map((item)=> 
-              ( <TarjetasMenu
-                key={item.id} 
-                 imagen={item.imagen}
-                 titulo={item.titulo}
-                 descripcion={item.descripcion} /> )) }
-                 
-             
-      
-                 
-           </div> 
-
-
-           </div>
-
-        {/* acompañamientos */}
-
+          {/* Columna 3: Acompañamientos */}
           <div className="third-column">
             <div className="category-header">
               <span className="step-number">3</span>
@@ -273,22 +239,16 @@ export default function Menu() {
               <span className="toggle-arrow">▼</span>
             </button>
             <div className={`cards-grid-vertical ${openAcompanamiento ? "is-expanded" : ""}`}>
-             
-
-
-                  {DatosAcompanamiento.map((item)=> 
-              ( <TarjetasMenu
-                key={item.id} 
-                 imagen={item.imagen}
-                 titulo={item.titulo}
-                 descripcion={item.descripcion} /> )) }
-          
-            
-             </div>
-              </div>
-         
-          
-
+              {DatosAcompanamiento.map((item) => (
+                <TarjetasMenu
+                  key={item.id} 
+                  imagen={item.imagen}
+                  titulo={item.titulo}
+                  descripcion={item.descripcion} 
+                />
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* ADICIONALES: SOPAS Y ENSALADAS */}

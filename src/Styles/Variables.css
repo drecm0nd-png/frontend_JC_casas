@@ -76,3 +76,162 @@
     --component-gap: 1rem;
   }
 }
+
+/* ==========================================================================
+   VARIABLES GLOBALES DE TEMA (CLARO / OSCURO)
+   ========================================================== */
+
+/* Tema Claro (Por Defecto) */
+:root {
+  --bg-header-main: linear-gradient(135deg, #f2e3d0 0%, #e6cfb5 100%);
+  --bg-subnav: #f7ede1;
+  --bg-mobile-nav: #f7ede1;
+  --bg-mobile-header: #f2e3d0;
+  
+  --text-primary: #8c5321;
+  --text-secondary: #7a481c;
+  --accent-color: #bd732f;
+  --accent-hover: #a36125;
+
+  --auth-btn-bg: #fdfbf7;
+  --auth-btn-text: #bd732f;
+  
+  --border-subtle: rgba(226, 204, 179, 0.35);
+  --border-main: rgba(217, 188, 155, 0.4);
+}
+
+/* Tema Oscuro (Preparado pero INACTIVO hasta que me indiques) */
+[data-theme="dark"] {
+  --bg-header-main: linear-gradient(135deg, #1a1612 0%, #26201a 100%);
+  --bg-subnav: #1e1814;
+  --bg-mobile-nav: #1e1814;
+  --bg-mobile-header: #1a1612;
+  
+  --text-primary: #f2e3d0;
+  --text-secondary: #e6cfb5;
+  --accent-color: #d9822b;
+  --accent-hover: #f29d49;
+
+  --auth-btn-bg: #2a221b;
+  --auth-btn-text: #f2e3d0;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-main: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   VARIABLES GLOBALES (AÑADIDAS PARA LA SIDEBAR)
+   ========================================================================== */
+
+/* Tema Claro (Por Defecto) */
+:root {
+  /* ... (tus variables anteriores del header se mantienen igual) ... */
+
+  /* Nuevas variables para la Sidebar */
+  --bg-sidebar: #f7ede1;
+  --sidebar-text: #7a481c;
+  --sidebar-text-hover: #bd732f;
+  --sidebar-bg-hover: #f0e1d0;
+  --sidebar-border: rgba(226, 204, 179, 0.35);
+  --sidebar-active-bg: #ebdcc5;
+}
+
+/* Tema Oscuro (Preparado pero INACTIVO hasta que me indiques) */
+[data-theme="dark"] {
+  /* ... (tus variables oscuras anteriores del header se mantienen igual) ... */
+
+  /* Nuevas variables oscuras para la Sidebar */
+  --bg-sidebar: #1e1814;
+  --sidebar-text: #e6cfb5;
+  --sidebar-text-hover: #f29d49;
+  --sidebar-bg-hover: #26201a;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: #2a221b;
+}
+
+/* ==========================================================
+   ESTILO GLOBAL DE CABECERA (REUTILIZABLE POR CLASE)
+   ========================================================== */
+.global-header {
+  text-align: left;
+  border-bottom: 2px solid #ebdcc5;
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.global-header .g-subtitle {
+  font-size: 0.85rem;
+  color: #bd732f;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.global-header .g-title {
+  color: #2b2b2b;
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+
+.global-header .g-description {
+  color: #666;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.global-header .g-badge {
+  background: #f8f1e5;
+  border: 1px solid #ebdcc5;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #bd732f;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:root {
+  /* ==========================================
+     PALETA MODO CLARO (Por defecto)
+     ========================================== */
+  --color-background: #faf7f2;
+  --color-surface: #ffffff;
+  --color-card: #f8f1e5;
+  --color-text: #2b2b2b;
+  --color-text-muted: #666666;
+  --color-header: #78350f;
+  
+  --color-primary: #bd732f;
+  --color-primary-hover: #a76b32;
+  --color-stroke: #ebdcc5;
+  --color-badge-bg: #f8f1e5;
+
+  /* Tipografías y espaciados generales */
+}
+
+/* ==========================================
+   PALETA MODO NOCTURNO (Se activa con .dark-mode)
+   ========================================== */
+body.dark-mode, 
+.dark-mode {
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-card: #2a2a2a;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-header: #fde68a;
+  
+  --color-primary: #d97706;
+  --color-primary-hover: #b45309;
+  --color-stroke: #3f3f46;
+  --color-badge-bg: #27272a;
+}
