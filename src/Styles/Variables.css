@@ -1,0 +1,237 @@
+/* src/styles/variables.css */
+
+:root {
+  /* ==========================================================
+    COLORES
+     ========================================================== */
+  --color-background: #fffdf7; /* Fondo general */
+
+  --color-auth-surface: #ffffff;
+  --color-auth-button: #c78e4b;
+  --color-auth-text: #3a1f00;
+  --color-header: #6b3a1f; /* Encabezado y pie de página */
+  --color-card: #f5eddd; /* Tarjetas y hero */
+  --color-accent: #d96b43; /* Acentos y detalles */
+  --color-button-primary: #c4832a; /* Botón principal */
+  --color-text: #3a1f00; /* Texto general */
+  --color-stroke: #6b3a1f80; /* Bordes y líneas (50% de opacidad) */
+
+  /* ==========================================================
+    FAMILIA TIPOGRÁFICA
+     ========================================================== */
+  --font-family-base:
+    "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ==========================================================
+    PESOS TIPOGRÁFICOS (Roboto)
+     ========================================================== */
+  --font-weight-light: 300; /* Descripciones */
+  --font-weight-regular: 400; /* Párrafos y subtítulos */
+  --font-weight-medium: 500; /* Etiquetas y elementos de énfasis */
+  --font-weight-bold: 700; /* Títulos */
+
+  /* ==========================================================
+    TAMAÑOS DE FUENTE (Escritorio / Por defecto)
+    Base de 16px: 1rem = 16px. Las equivalencias en px vienen de Figma.
+     ========================================================== */
+  --font-size-hero: 2.5rem; /* 40px - Título del banner principal */
+  --font-size-section-title: 2rem; /* 32px - Títulos de sección */
+  --font-size-subtitle: 1.5rem; /* 24px - Subtítulos de sección */
+  --font-size-card-title: 1.25rem; /* 20px - Títulos de tarjetas */
+  --font-size-lead: 1.125rem; /* 18px - Descripciones */
+  --font-size-body: 1rem; /* 16px - Párrafos */
+  --font-size-small: 0.875rem; /* 14px - Texto secundario */
+  --font-size-caption: 0.75rem; /* 12px - Etiquetas pequeñas */
+
+  /* ==========================================================
+    ALTURA DE LÍNEA
+     ========================================================== */
+  --line-height-tight: 1.2; /* Títulos */
+  --line-height-normal: 1.5; /* Texto corrido */
+
+  /* ==========================================================
+    NUEVOS ESPACIADOS RESPONSIVE GLOBALES
+     ========================================================== */
+  --page-padding: 2rem;
+  --component-gap: 1.5rem;
+}
+
+/* ==========================================================
+  AJUSTE GLOBAL PARA MÓVILES Y TABLETS (Menos de 768px)
+  Reduce proporcionalmente las tipografías y espaciados de la app
+   ========================================================== */
+@media (max-width: 768px) {
+  :root {
+    --font-size-hero: 1.85rem; /* ~30px */
+    --font-size-section-title: 1.5rem; /* ~24px */
+    --font-size-subtitle: 1.25rem; /* ~20px */
+    --font-size-card-title: 1.125rem; /* ~18px */
+    --font-size-lead: 1rem; /* ~16px */
+    --font-size-body: 0.9375rem; /* ~15px */
+    --font-size-small: 0.8125rem; /* ~13px */
+    --font-size-caption: 0.6875rem; /* ~11px */
+
+    /* Reducción de márgenes internos para que no queden pantallas apretadas */
+    --page-padding: 1rem;
+    --component-gap: 1rem;
+  }
+}
+
+/* ==========================================================================
+   VARIABLES GLOBALES DE TEMA (CLARO / OSCURO)
+   ========================================================== */
+
+/* Tema Claro (Por Defecto) */
+:root {
+  --bg-header-main: linear-gradient(135deg, #f2e3d0 0%, #e6cfb5 100%);
+  --bg-subnav: #f7ede1;
+  --bg-mobile-nav: #f7ede1;
+  --bg-mobile-header: #f2e3d0;
+  
+  --text-primary: #8c5321;
+  --text-secondary: #7a481c;
+  --accent-color: #bd732f;
+  --accent-hover: #a36125;
+
+  --auth-btn-bg: #fdfbf7;
+  --auth-btn-text: #bd732f;
+  
+  --border-subtle: rgba(226, 204, 179, 0.35);
+  --border-main: rgba(217, 188, 155, 0.4);
+}
+
+/* Tema Oscuro (Preparado pero INACTIVO hasta que me indiques) */
+[data-theme="dark"] {
+  --bg-header-main: linear-gradient(135deg, #1a1612 0%, #26201a 100%);
+  --bg-subnav: #1e1814;
+  --bg-mobile-nav: #1e1814;
+  --bg-mobile-header: #1a1612;
+  
+  --text-primary: #f2e3d0;
+  --text-secondary: #e6cfb5;
+  --accent-color: #d9822b;
+  --accent-hover: #f29d49;
+
+  --auth-btn-bg: #2a221b;
+  --auth-btn-text: #f2e3d0;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-main: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   VARIABLES GLOBALES (AÑADIDAS PARA LA SIDEBAR)
+   ========================================================================== */
+
+/* Tema Claro (Por Defecto) */
+:root {
+  /* ... (tus variables anteriores del header se mantienen igual) ... */
+
+  /* Nuevas variables para la Sidebar */
+  --bg-sidebar: #f7ede1;
+  --sidebar-text: #7a481c;
+  --sidebar-text-hover: #bd732f;
+  --sidebar-bg-hover: #f0e1d0;
+  --sidebar-border: rgba(226, 204, 179, 0.35);
+  --sidebar-active-bg: #ebdcc5;
+}
+
+/* Tema Oscuro (Preparado pero INACTIVO hasta que me indiques) */
+[data-theme="dark"] {
+  /* ... (tus variables oscuras anteriores del header se mantienen igual) ... */
+
+  /* Nuevas variables oscuras para la Sidebar */
+  --bg-sidebar: #1e1814;
+  --sidebar-text: #e6cfb5;
+  --sidebar-text-hover: #f29d49;
+  --sidebar-bg-hover: #26201a;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: #2a221b;
+}
+
+/* ==========================================================
+   ESTILO GLOBAL DE CABECERA (REUTILIZABLE POR CLASE)
+   ========================================================== */
+.global-header {
+  text-align: left;
+  border-bottom: 2px solid #ebdcc5;
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.global-header .g-subtitle {
+  font-size: 0.85rem;
+  color: #bd732f;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.global-header .g-title {
+  color: #2b2b2b;
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+
+.global-header .g-description {
+  color: #666;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.global-header .g-badge {
+  background: #f8f1e5;
+  border: 1px solid #ebdcc5;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #bd732f;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:root {
+  /* ==========================================
+     PALETA MODO CLARO (Por defecto)
+     ========================================== */
+  --color-background: #faf7f2;
+  --color-surface: #ffffff;
+  --color-card: #f8f1e5;
+  --color-text: #2b2b2b;
+  --color-text-muted: #666666;
+  --color-header: #78350f;
+  
+  --color-primary: #bd732f;
+  --color-primary-hover: #a76b32;
+  --color-stroke: #ebdcc5;
+  --color-badge-bg: #f8f1e5;
+
+  /* Tipografías y espaciados generales */
+}
+
+/* ==========================================
+   PALETA MODO NOCTURNO (Se activa con .dark-mode)
+   ========================================== */
+body.dark-mode, 
+.dark-mode {
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-card: #2a2a2a;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-header: #fde68a;
+  
+  --color-primary: #d97706;
+  --color-primary-hover: #b45309;
+  --color-stroke: #3f3f46;
+  --color-badge-bg: #27272a;
+}

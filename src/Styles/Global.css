@@ -1,0 +1,236 @@
+/* src/styles/global.css */
+
+/* ==========================================================
+  RESET BÁSICO
+  Elimina márgenes y paddings por defecto del navegador
+   ========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================
+  ELEMENTO RAÍZ
+   ========================================================== */
+html {
+  font-size: 16px; /* Base para las medidas en rem */
+  scroll-behavior: smooth; /* Desplazamiento suave al usar enlaces internos */
+  -webkit-text-size-adjust: 100%; /* Evita que el texto cambie de tamaño en móviles */
+}
+
+/* Reducción extra opcional para celulares muy pequeños */
+@media (max-width: 480px) {
+  html {
+    font-size: 15px; /* Encoge un 6% extra toda la app si usas rems nativos */
+  }
+}
+
+/* ==========================================================
+  CUERPO DE LA PÁGINA
+   ========================================================== */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================
+  ELEMENTOS MULTIMEDIA
+  Imágenes adaptables al contenedor
+   ========================================================== */
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================
+  FORMULARIOS
+  Heredan la tipografía del sitio
+   ========================================================== */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ==========================================================
+  ENLACES
+   ========================================================== */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-button-primary);
+  text-decoration: underline;
+}
+
+/* ==========================================================
+  TÍTULOS
+  Estilos base; cada componente puede sobrescribirlos
+   ========================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-header);
+}
+
+h1 {
+  font-size: var(--font-size-hero);
+}
+h2 {
+  font-size: var(--font-size-section-title);
+}
+h3 {
+  font-size: var(--font-size-subtitle);
+}
+h4 {
+  font-size: var(--font-size-card-title);
+}
+
+/* ==========================================================
+  LISTAS
+   ========================================================== */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ==========================================================
+  ESTRUCUTURAS RESPONSIVE GLOBALES (Nuevas clases útiles)
+  Úsalas en tus contenedores de React para controlar pantallas enteras
+   ========================================================== */
+
+/* Grilla de tarjetas o secciones: se acomodan solas sin @media queries */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--component-gap);
+}
+
+/* Contenedor flexible: Fila en escritorio, Columna en celular automáticamente */
+.flex-stack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--component-gap);
+}
+
+@media (max-width: 768px) {
+  .flex-stack {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================
+  ACCESIBILIDAD
+   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Contenedor cuando tiene el Sidebar a la izquierda */
+.app-with-sidebar {
+  display: flex;
+  min-height: 100vh;
+  background-color: #faf7f2;
+}
+
+/* Área de contenido que se ajusta al espacio restante */
+.app-with-sidebar .app-main-content {
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Contenedor a pantalla completa para Login y Registro (sin Sidebar) */
+.app-fullscreen {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #faf7f2;
+}
+
+.app-fullscreen .app-main-content {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Contenedor general que mantiene el Sidebar a la izquierda y el contenido a la derecha */
+.app-with-sidebar {
+  display: flex;
+  min-height: 100vh;
+  background-color: #faf7f2;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.app-with-sidebar .app-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   Adaptación Responsiva de la Cabecera Global
+   ========================================== */
+@media (max-width: 768px) {
+  .global-header {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .global-header .g-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .global-header .g-title {
+    font-size: 1.6rem; /* Se reduce notablemente en móviles para ganar espacio */
+    margin: 0.1rem 0 0.2rem 0;
+  }
+
+  .global-header .g-description {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .global-header .g-badge {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+}
