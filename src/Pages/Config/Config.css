@@ -1,6 +1,18 @@
-/* ==========================================================================
-   1. ANIMACIONES GLOBALES
-   ========================================================================== */
+:root {
+  --bg-page: #faf7f2;
+  --bg-card: #ffffff;
+  --bg-subtle: #fdfaf6;
+  --text-main: #2b2b2b;
+  --text-muted: #666666;
+  --border-color: #ebdcc5;
+  --accent-color: #bd732f;
+  --accent-hover: #a36125;
+  --status-ok: #15803d;
+  --status-warn: #f59e0b;
+  --app-brightness: 100%;
+  --app-filter: none;
+}
+
 @keyframes configFadeIn {
   from {
     opacity: 0;
@@ -12,19 +24,31 @@
   }
 }
 
-/* ==========================================================================
-   2. CONTENEDOR PRINCIPAL Y CABECERA
-   ========================================================================== */
 .config-page-container {
   padding: 2.5rem 1.5rem;
-  background: linear-gradient(135deg, #faf7f2 0%, #f2eae1 100%);
+  background-color: var(--bg-page);
+  color: var(--text-main);
   min-height: 100vh;
   box-sizing: border-box;
+  filter: brightness(var(--app-brightness)) var(--app-filter);
+  transition: background-color 0.25s ease, color 0.25s ease, filter 0.2s ease;
   animation: configFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.config-page-container.font-small {
+  font-size: 0.9rem;
+}
+
+.config-page-container.font-normal {
+  font-size: 1rem;
+}
+
+.config-page-container.font-large {
+  font-size: 1.12rem;
+}
+
 .config-inner-wrapper {
-  max-width: 1400px;
+  max-width: 1450px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -33,7 +57,7 @@
 
 .config-header-section {
   text-align: left;
-  border-bottom: 2px solid #ebdcc5;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 1.2rem;
   display: flex;
   justify-content: space-between;
@@ -42,360 +66,68 @@
   gap: 1rem;
 }
 
-.config-header-section .config-subtitle {
+.config-subtitle {
   font-size: 0.85rem;
-  color: #bd732f;
+  color: var(--accent-color);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
 
-.config-header-section .config-title {
-  color: #2b2b2b;
+.config-title {
+  color: var(--text-main);
   margin: 0.2rem 0 0.4rem 0;
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 800;
 }
 
-.config-header-section .config-description {
-  color: #666;
+.config-description {
+  color: var(--text-muted);
   margin: 0;
   font-size: 1rem;
 }
 
 .config-header-badge {
-  background: #f8f1e5;
-  border: 1px solid #ebdcc5;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
   padding: 0.5rem 1rem;
   border-radius: 12px;
   font-weight: 700;
-  color: #bd732f;
+  color: var(--accent-color);
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* ==========================================================================
-   3. GRID DE 2 TARJETAS PRINCIPALES
-   ========================================================================== */
 .config-main-grid-two {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
   align-items: stretch;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 960px) {
   .config-main-grid-two {
     grid-template-columns: 1fr;
   }
 }
 
-.config-card-box {
-  background-color: #ffffff;
-  border: 1px solid #ebdcc5;
-  border-radius: 20px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 30px rgba(189, 115, 47, 0.06);
-  transition: all 0.3s ease;
-  height: 100%;
-  box-sizing: border-box;
-  width: 100%;
-  position: relative;
-}
-
-.config-card-box.admin-card {
-  border-color: #ddd6fe;
-  background-color: #fdfcff;
-}
-
-.config-card-inner-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #f2e8dc;
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.admin-card .config-card-inner-header {
-  border-bottom-color: #ede9fe;
-}
-
-.config-card-inner-header h3 {
-  margin: 0;
-  color: #2b2b2b;
-  font-size: 1.35rem;
-  font-weight: 800;
-}
-
-/* ==========================================================================
-   4. LISTAS Y FILAS DE OPCIONES
-   ========================================================================== */
-.config-options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.config-option-row {
-  background: #fcfbfa;
-  border: 1.5px solid #ebdcc5;
-  border-radius: 14px;
-  padding: 1rem 1.2rem;
-  transition: all 0.25s ease;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.admin-card .config-option-row {
-  background: #faf5ff;
-  border-color: #e9d5ff;
-}
-
-.config-option-row.column-layout {
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.config-option-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  flex: 1;
-  min-width: 0;
-}
-
-.config-option-title {
-  color: #2b2b2b;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.config-option-desc {
-  font-size: 0.8rem;
-  color: #666;
-  font-weight: 500;
-}
-
-/* Sliders y Controles de Rango */
-.config-range-input {
-  width: 100%;
-  accent-color: #bd732f;
-  cursor: pointer;
-  margin-top: 0.4rem;
-}
-
-/* Interruptor tipo Switch */
-.custom-switch {
-  position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.custom-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.custom-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #cbd5e1;
-  transition: .3s;
-  border-radius: 34px;
-}
-
-.custom-slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .3s;
-  border-radius: 50%;
-}
-
-input:checked + .custom-slider {
-  background-color: #bd732f;
-}
-
-.admin-card input:checked + .custom-slider {
-  background-color: #7c3aed;
-}
-
-input:checked + .custom-slider:before {
-  transform: translateX(22px);
-}
-
-/* Selectores */
-.config-select {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: #ffffff;
-  border: 1.5px solid #ebdcc5;
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #2b2b2b;
-  width: 100%;
-  outline: none;
-  box-sizing: border-box;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='%23bd732f' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  cursor: pointer;
-}
-
-.admin-card .config-select {
-  border-color: #e9d5ff;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='%237c3aed' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-}
-
-/* Botones */
-.config-btn-action {
-  background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
-  color: #bd732f;
-  border: 1.5px solid #ebdcc5;
-  padding: 0.75rem 1.2rem;
-  border-radius: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  transition: all 0.25s ease;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 0.5rem;
-}
-
-.config-btn-action:hover {
-  background: #bd732f;
-  color: #fff;
-  border-color: #bd732f;
-}
-
-.admin-card .config-btn-action {
-  background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
-  color: #7c3aed;
-  border-color: #ddd6fe;
-}
-
-.admin-card .config-btn-action:hover {
-  background: #7c3aed;
-  color: #fff;
-}
-
-/* Caja de Información del Sistema (Estilo consola limpia) */
-.system-info-box {
-  background: #f3e8ff;
-  border: 1.5px solid #ddd6fe;
-  border-radius: 14px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  color: #4c1d95;
-  font-weight: 600;
-}
-
-.system-info-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px dashed #e9d5ff;
-  padding-bottom: 0.3rem;
-}
-
-.system-info-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-/* ==========================================================================
-   5. EFECTO DE CANDADO / OCULTO PARA ADMIN
-   ========================================================================== */
-.config-dev-wrapper {
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.config-dev-wrapper.locked {
-  opacity: 0.35;
-  pointer-events: none;
-  filter: grayscale(30%);
-}
-
-.config-lock-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(2px);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  color: #7c3aed;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border-radius: 14px;
-  text-align: center;
-  padding: 1.5rem;
-  border: 1.5px dashed #ddd6fe;
-}
-
-.master-admin-switch {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.2rem;
-  background-color: #f5f3ff;
-  border: 1.5px solid #ddd6fe;
-  border-radius: 14px;
-  margin-bottom: 1.2rem;
-}
-
-/* Toast flotante */
 .config-toast {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background-color: #2b2b2b;
-  color: #ffffff;
-  padding: 0.85rem 1.25rem;
-  border-radius: 0.75rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1.5px solid var(--accent-color);
+  padding: 0.85rem 1.2rem;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  z-index: 1000;
-  border-left: 4px solid #bd732f;
-  animation: configFadeIn 0.3s ease-out;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+  animation: configFadeIn 0.25s ease-out;
 }
-

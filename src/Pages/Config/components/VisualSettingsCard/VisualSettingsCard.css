@@ -1,0 +1,143 @@
+.config-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  margin-top: 0.8rem;
+}
+
+.config-option-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: padding 0.2s ease, gap 0.2s ease;
+}
+
+.config-option-row.compact {
+  padding: 0.58rem 0.85rem;
+  gap: 0.7rem;
+}
+
+.config-option-row.column-layout {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.config-option-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.config-option-title {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.config-option-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.config-mb-sm {
+  margin-bottom: 0.4rem;
+}
+
+.config-mb-xs {
+  margin-bottom: 0.2rem;
+}
+
+.config-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.92rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.config-select:focus {
+  border-color: var(--accent-color);
+}
+
+.config-range-input {
+  width: 100%;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.custom-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.25s;
+  border-radius: 34px;
+}
+
+.custom-slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #ffffff;
+  transition: 0.25s;
+  border-radius: 50%;
+}
+
+.custom-switch input:checked + .custom-slider {
+  background-color: var(--accent-color);
+}
+
+.custom-switch input:checked + .custom-slider::before {
+  transform: translateX(22px);
+}
+
+.config-btn-action {
+  margin-top: 0.4rem;
+  width: 100%;
+  padding: 0.95rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.config-btn-action:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.config-btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
