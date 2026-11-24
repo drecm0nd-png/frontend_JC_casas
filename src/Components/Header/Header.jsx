@@ -1,20 +1,28 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
-import { 
-  FaArrowRightToBracket, 
-  FaRightFromBracket, 
-  FaUserPlus, 
-  FaBagShopping, 
-  FaLock, 
-  FaUserPen, 
+import {
+  FaArrowRightToBracket,
+  FaRightFromBracket,
+  FaUserPlus,
+  FaBagShopping,
+  FaLock,
+  FaUserPen,
   FaCircleInfo,
   FaBell,
-  FaUser 
+  FaUser
 } from "react-icons/fa6";
 import NotificationsDropdown from "../NotificationsDropdown/NotificationsDropdown";
 import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
 import "./Header.css";
+
+const PROFILE_TABS = [
+  { id: "perfil", label: "Perfil" },
+  { id: "seguridad", label: "Seguridad" },
+  { id: "notificaciones", label: "Notificaciones" },
+  { id: "preferencias", label: "Preferencias" },
+  { id: "cuenta", label: "Cuenta" }
+];
 
 function Header() {
   const { isAuthenticated, logout } = useAuth();
@@ -22,10 +30,8 @@ function Header() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Estado para controlar si el mouse está sobre la marca (Jcasas)
   const [showBrandMessage, setShowBrandMessage] = useState(false);
 
-  // Estados para notificaciones y perfil...
   const [showNotifications, setShowNotifications] = useState(false);
   const [tieneNotificaciones, setTieneNotificaciones] = useState(true);
   const notifRef = useRef(null);
@@ -36,10 +42,31 @@ function Header() {
   const isLoginPage = location.pathname === "/login";
   const currentPath = location.pathname;
 
+  const currentProfileTab = (() => {
+    if (location.state?.tab) return location.state.tab;
+    const params = new URLSearchParams(location.search);
+    const tabFromUrl = params.get("tab");
+    if (tabFromUrl) return tabFromUrl;
+    try {
+      return JSON.parse(localStorage.getItem("cfg:section") || '"perfil"');
+    } catch {
+      return "perfil";
+    }
+  })();
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
-  // ... (tus demás funciones de cierre y navegación dinámicas se mantienen igual)
+  const selectProfileTab = (tabId) => {
+    try {
+      localStorage.setItem("cfg:section", JSON.stringify(tabId));
+    } catch {
+      // Ignorado si no hay acceso a localStorage
+    }
+    window.dispatchEvent(new CustomEvent("cfg:tab-change", { detail: tabId }));
+    navigate(`/perfil?tab=${tabId}`, { state: { tab: tabId } });
+  };
+
   const getDynamicNavContent = () => {
     switch (currentPath) {
       case "/":
@@ -50,8 +77,8 @@ function Header() {
             { label: "Nosotros", href: "#nosotros" },
             { label: "Restaurante", href: "#restaurante" },
             { label: "Información", href: "#informacion" },
-            { label: "Contacto", href: "#contacto" },
-          ],
+            { label: "Contacto", href: "#contacto" }
+          ]
         };
       case "/menu":
         return {
@@ -59,8 +86,8 @@ function Header() {
           items: [
             { label: "Almuerzo", href: "#almuerzo" },
             { label: "Bebidas", href: "#bebidas" },
-            { label: "Adicionales", href: "#adicionales" },
-          ],
+            { label: "Adicionales", href: "#adicionales" }
+          ]
         };
       case "/panel":
         return {
@@ -69,60 +96,76 @@ function Header() {
             { label: "Inventario", to: "/panel?tab=inventario" },
             { label: "Pedidos", to: "/panel?tab=pedidos" },
             { label: "Permisos", to: "/panel?tab=permisos" },
-            { label: "Impresión", to: "/panel?tab=impresion" },
-          ],
+            { label: "Impresión", to: "/panel?tab=impresion" }
+          ]
+        };
+      case "/perfil":
+        return {
+          type: "links",
+          items: PROFILE_TABS.map((tab) => ({
+            label: tab.label,
+            tabId: tab.id,
+            isActive: currentProfileTab === tab.id,
+            isDanger: tab.id === "cuenta"
+          }))
         };
       case "/carrito":
       case "/car":
         return {
           type: "text",
           icon: <FaBagShopping size={16} />,
-          message: "Aquí podrás visualizar tus compras y el historial de las mismas",
+          message: "Aquí podrás visualizar tus compras y el historial de las mismas"
         };
       case "/configuracion":
       case "/config":
         return {
           type: "text",
           icon: <FaCircleInfo size={16} />,
-          message: "Aquí podrás configurar tus preferencias y ajustes del sistema",
-        };
-      case "/perfil":
-        return {
-          type: "text",
-          icon: <FaUser size={16} />,
-          message: "Aquí podrás administrar la información detallada de tu cuenta",
+          message: "Aquí podrás configurar tus preferencias y ajustes del sistema"
         };
       case "/login":
         return {
           type: "text",
           icon: <FaLock size={16} />,
-          message: "Inicia sesión aquí y ahora para operar en el sistema",
+          message: "Inicia sesión aquí y ahora para operar en el sistema"
         };
       case "/registro":
         return {
           type: "text",
           icon: <FaUserPen size={16} />,
-          message: "Regístrate ahora y forma parte de Jcasas",
+          message: "Regístrate ahora y forma parte de Jcasas"
         };
       default:
         return {
           type: "text",
           icon: <FaCircleInfo size={16} />,
-          message: "Sección informativa del sistema operativo",
+          message: "Sección informativa del sistema operativo"
         };
     }
   };
 
   const navContent = getDynamicNavContent();
 
+  const handleItemAction = (link) => {
+    if (link.tabId) {
+      selectProfileTab(link.tabId);
+    } else if (link.to) {
+      navigate(link.to);
+    } else if (link.href) {
+      const element = document.querySelector(link.href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <header className="header-wrapper">
       <div className="header-main">
-        {/* Contenedor de Marca con evento de hover */}
         <div className="header-brand-container">
-          <Link 
-            to="/" 
-            className="header-brand-text" 
+          <Link
+            to="/"
+            className="header-brand-text"
             onClick={closeMenu}
             onMouseEnter={() => setShowBrandMessage(true)}
             onMouseLeave={() => setShowBrandMessage(false)}
@@ -131,7 +174,6 @@ function Header() {
             <span className="header-subtitle">Restaurante</span>
           </Link>
 
-          {/* Mensaje emergente al pasar el mouse sobre Jcasas */}
           {showBrandMessage && (
             <div className="brand-hover-tooltip">
               ¿Qué vas a pedir hoy?
@@ -140,10 +182,9 @@ function Header() {
         </div>
 
         <div className="header-right-group">
-          {/* Campana de Notificaciones */}
           <div className="notification-wrapper-container" ref={notifRef} style={{ position: "relative" }}>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="header-notification-btn"
               title="Notificaciones"
               onClick={() => {
@@ -156,16 +197,15 @@ function Header() {
               {tieneNotificaciones && <span className="notification-badge-dot"></span>}
             </button>
 
-            <NotificationsDropdown 
-              isOpen={showNotifications} 
-              onClose={() => setShowNotifications(false)} 
+            <NotificationsDropdown
+              isOpen={showNotifications}
+              onClose={() => setShowNotifications(false)}
             />
           </div>
 
-          {/* Botón de Perfil */}
           <div className="profile-wrapper-container" ref={profileRef} style={{ position: "relative" }}>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="header-notification-btn"
               title="Perfil de Usuario"
               onClick={() => {
@@ -176,13 +216,12 @@ function Header() {
               <FaUser size={18} />
             </button>
 
-            <ProfileDropdown 
-              isOpen={showProfile} 
-              onClose={() => setShowProfile(false)} 
+            <ProfileDropdown
+              isOpen={showProfile}
+              onClose={() => setShowProfile(false)}
             />
           </div>
 
-          {/* Acciones de Escritorio */}
           <div className="header-right-actions desktop-only">
             {isAuthenticated ? (
               <button
@@ -219,33 +258,19 @@ function Header() {
         </div>
       </div>
 
-      {/* Barra secundaria con botones */}
       <nav className="header-subnav desktop-only">
         {navContent.type === "links" ? (
           <div className="subnav-links">
-            {navContent.items.map((link, index) => {
-              const handleActionClick = () => {
-                if (link.to) {
-                  navigate(link.to);
-                } else if (link.href) {
-                  const element = document.querySelector(link.href);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }
-              };
-
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  className="subnav-link"
-                  onClick={handleActionClick}
-                >
-                  {link.label}
-                </button>
-              );
-            })}
+            {navContent.items.map((link, index) => (
+              <button
+                key={index}
+                type="button"
+                className={`subnav-link ${link.isActive ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
+                onClick={() => handleItemAction(link)}
+              >
+                {link.label}
+              </button>
+            ))}
           </div>
         ) : (
           <div className="subnav-info-text">
@@ -255,7 +280,6 @@ function Header() {
         )}
       </nav>
 
-      {/* Panel Móvil */}
       <nav className={`header-nav ${menuOpen ? "is-open" : ""}`}>
         <div className="mobile-menu-header">
           <span className="mobile-menu-title">
@@ -265,30 +289,19 @@ function Header() {
 
         <div className="mobile-nav-links-group">
           {navContent.type === "links" ? (
-            navContent.items.map((link, index) => {
-              const handleMobileActionClick = () => {
-                closeMenu();
-                if (link.to) {
-                  navigate(link.to);
-                } else if (link.href) {
-                  const element = document.querySelector(link.href);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }
-              };
-
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  className="mobile-nav-link"
-                  onClick={handleMobileActionClick}
-                >
-                  {link.label}
-                </button>
-              );
-            })
+            navContent.items.map((link, index) => (
+              <button
+                key={index}
+                type="button"
+                className={`mobile-nav-link ${link.isActive ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
+                onClick={() => {
+                  closeMenu();
+                  handleItemAction(link);
+                }}
+              >
+                {link.label}
+              </button>
+            ))
           ) : (
             <div className="mobile-info-text-box">
               <div className="mobile-info-icon">{navContent.icon}</div>
