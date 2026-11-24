@@ -14,14 +14,8 @@ export default function DeliveryAddressCard({
   onGuardarDireccion,
   onAbrirGoogleMaps
 }) {
-  const modifyButton = !editandoDireccion && (
-    <button type="button" onClick={() => setEditandoDireccion(true)} className="btn-open-address-form">
-      <FaPen size={11} /> Modificar
-    </button>
-  );
-
   return (
-    <SectionCard className="address-card" action={modifyButton}>
+    <SectionCard className="address-card">
       <div>
         <div className="car-address-header">
           <div className="car-address-title-group">
@@ -33,6 +27,16 @@ export default function DeliveryAddressCard({
               <small>Soacha, Cundinamarca</small>
             </div>
           </div>
+
+          {!editandoDireccion && (
+            <button
+              type="button"
+              onClick={() => setEditandoDireccion(true)}
+              className="btn-open-address-form"
+            >
+              <FaPen size={11} /> Modificar
+            </button>
+          )}
         </div>
 
         <div className="car-address-preview-wrapper">
@@ -93,7 +97,13 @@ export default function DeliveryAddressCard({
 
             <div className="car-form-buttons">
               <button type="submit" className="btn-save-address">Guardar</button>
-              <button type="button" onClick={() => setEditandoDireccion(false)} className="btn-cancel-address">Cancelar</button>
+              <button
+                type="button"
+                onClick={() => setEditandoDireccion(false)}
+                className="btn-cancel-address"
+              >
+                Cancelar
+              </button>
             </div>
           </form>
         )}
