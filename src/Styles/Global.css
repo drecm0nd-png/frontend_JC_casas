@@ -234,3 +234,32 @@ ol {
     border-radius: 8px;
   }
 }
+
+/* ==========================================================
+  RESALTADO MOMENTÁNEO DE SECCIÓN (MENÚ)
+  Al navegar desde el header, la sección destino destella
+  y el efecto se desvanece solo.
+   ========================================================== */
+@keyframes sectionHighlight {
+  0% {
+    background-color: transparent;
+    transform: scale(1);
+  }
+  18% {
+    background-color: rgba(196, 154, 76, 0.3);
+    transform: scale(1.01);
+  }
+  65% {
+    background-color: rgba(196, 154, 76, 0.24);
+    transform: scale(1.008);
+  }
+  100% {
+    background-color: transparent;
+    transform: scale(1);
+  }
+}
+
+.section-highlight {
+  animation: sectionHighlight 2.4s ease-in-out forwards;
+  border-radius: 16px;
+}

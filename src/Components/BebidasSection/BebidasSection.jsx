@@ -28,7 +28,7 @@ const BEBIDAS_DEFAULT = [
 
 export default function BebidasSection({ bebidas = BEBIDAS_DEFAULT, onSelectBebida }) {
   return (
-    <section className="extra-section">
+    <section className="extra-section" id="bebidas">
       <h2 className="section-title">Bebidas</h2>
       
       <div className="cards-grid-3">

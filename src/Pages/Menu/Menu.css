@@ -721,3 +721,10 @@
   justify-content: center;
   box-shadow: 0 2px 6px rgba(189, 115, 47, 0.3);
 }
+
+/* Compensa el header fijo (sticky) al hacer scroll a una sección del menú */
+#almuerzo,
+#adicionales,
+#bebidas {
+  scroll-margin-top: 120px;
+}

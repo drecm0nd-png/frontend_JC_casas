@@ -36,8 +36,43 @@ function Header() {
   const isLoginPage = location.pathname === "/login";
   const currentPath = location.pathname;
 
+  
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
+
+  // Aplica el destello momentáneo a una sección
+  const flashSection = (el) => {
+    if (!el) return;
+    el.classList.remove("section-highlight");
+    void el.offsetWidth; // reinicia la animación si ya estaba aplicada
+    el.classList.add("section-highlight");
+    setTimeout(() => el.classList.remove("section-highlight"), 2400);
+  };
+
+  // Hace scroll suave a la sección y, solo en el menú, la resalta momentáneamente
+  const scrollToHash = (href) => {
+    const el = document.querySelector(href);
+    if (!el) return;
+
+    const isMenu = currentPath === "/menu";
+    // La última sección (Bebidas) se centra: no hay contenido suficiente debajo
+    // para alinearla arriba y el navegador no podría desplazarse.
+    const block = isMenu && !el.nextElementSibling ? "center" : "start";
+
+    el.scrollIntoView({ behavior: "smooth", block });
+
+    if (!isMenu) return;
+
+    const targets = [el];
+    // Al ir a Almuerzo, resaltar también los componentes del almuerzo
+    if (href === "#almuerzo") {
+      const componentes = document.querySelector("#componentes");
+      if (componentes) targets.push(componentes);
+    }
+
+    targets.forEach(flashSection);
+  };
 
   // ... (tus demás funciones de cierre y navegación dinámicas se mantienen igual)
   const getDynamicNavContent = () => {
@@ -228,10 +263,7 @@ function Header() {
                 if (link.to) {
                   navigate(link.to);
                 } else if (link.href) {
-                  const element = document.querySelector(link.href);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
+                  scrollToHash(link.href);
                 }
               };
 
@@ -271,10 +303,7 @@ function Header() {
                 if (link.to) {
                   navigate(link.to);
                 } else if (link.href) {
-                  const element = document.querySelector(link.href);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
+                scrollToHash(link.href);
                 }
               };
 

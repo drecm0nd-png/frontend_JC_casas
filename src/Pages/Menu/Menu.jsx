@@ -58,7 +58,7 @@ export default function Menu() {
       <div className="menu-main-content">
 
         {/* Banner Destacado del Almuerzo */}
-        <section className="hero-dish-card">
+        <section className="hero-dish-card" id="almuerzo">
           <div className="hero-overlay">
             <div className="hero-info">
               <span className="hero-badge">Plato Principal</span>
@@ -77,7 +77,7 @@ export default function Menu() {
         </section>
 
         {/* COMPONENTES EN VISTA PRINCIPAL */}
-        <section className="horizontal-section-group-3">
+        <section className="horizontal-section-group-3" id="componentes">
           <div className="lunch-section-title-wrapper">
             <h3>Componentes de tu almuerzo</h3>
           </div>
@@ -120,7 +120,7 @@ export default function Menu() {
         </section>
 
         {/* ADICIONALES */}
-        <section className="extra-section">
+        <section className="extra-section" id="adicionales">
           <h2 className="section-title">Adicionales: Sopas &amp; Ensaladas</h2>
           <div className="cards-grid-3">
             <div className="extra-card">
