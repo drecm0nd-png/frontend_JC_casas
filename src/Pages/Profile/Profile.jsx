@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from "react";
-import "./Configuracion.css";
+import "./Profile.css";
 
 /* ───────────── Iconos (SVG inline, sin dependencias) ───────────── */
 const ICONS = {
