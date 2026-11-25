@@ -10,6 +10,13 @@ export const PROFILE_SECTIONS = [
 ];
 
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Nombre: solo letras (con tildes y ñ) y un espacio entre palabras. Sin números ni símbolos.
+export const NAME_RE = /^\p{L}+(?: \p{L}+)*$/u;
+
+// Limpia lo que escribe el usuario: borra todo lo que no sea letra o espacio
+export const cleanName = (value = "") =>
+  value.replace(/[^\p{L} ]/gu, "").replace(/ {2,}/g, " ").replace(/^ /, "");
 export const MAX_IMG_MB = 2;
 
 export function getInitials(name = "") {
