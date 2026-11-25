@@ -14,7 +14,7 @@
 
 ## Estado y datos
 - Sin backend: `src/Services/Api.js`, `AuthService.js`, `UserService.js` y `src/Hooks/UseFetch.js` están vacíos; no hay fetch/axios ni env config.
-- Auth en memoria (`src/Context/AuthProvider.jsx`); en `Login` los campos email + contraseña son obligatorios y se compara con `jcasas` / `12345678` (temporales, sin validación del backend todavía); tras login navega a `/`.
+- Auth en memoria (`src/Context/AuthProvider.jsx`); en `Login` los campos email + contraseña son obligatorios y acepta cualquier credencial no vacía (temporal, sin validación del backend todavía); tras login navega a `destination`.
 - Carro: `src/Hooks/useCarState.js`, con datos hardcodeados (`INITIAL_ITEMS`, `INITIAL_PENDING`, `INITIAL_HISTORY`) y `alert()` en pago/cancelación. No sincroniza con LunchBuilder.
 - Menú: opciones duplicadas en `src/Pages/Menu/Menu.jsx` y `src/Components/LunchBuilder/LunchBuilder.jsx`.
 
