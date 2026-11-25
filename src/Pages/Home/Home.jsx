@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useAuth } from "../../Hooks/UseAuth.js";
 import {
   FaArrowDown,
   FaArrowUp,
@@ -9,7 +8,6 @@ import {
   FaPhone,
 } from "react-icons/fa";
 import { FaBowlRice, FaCarrot, FaDrumstickBite, FaPlus } from "react-icons/fa6";
-import LandingHeader from "../../Components/Landing/Header/LandingHeader.jsx";
 import LandingFooter from "../../Components/Landing/Footer/LandingFooter.jsx";
 import LandingButton from "../../Components/Landing/Button/LandingButton.jsx";
 import { scrollToSection } from "../../Utils/ScrollToSection.js";
@@ -119,7 +117,6 @@ function VideoRestaurante() {
 }
 
 function Home() {
-  const { isAuthenticated } = useAuth();
   const landingRef = useRef(null);
   const [preguntaAbierta, setPreguntaAbierta] = useState(0);
   const [mostrarVolverArriba, setMostrarVolverArriba] = useState(false);
@@ -182,7 +179,6 @@ function Home() {
       <a href="#contenido" className="lp-saltar">
         Saltar al contenido
       </a>
-      {!isAuthenticated && <LandingHeader />}
 
       <main id="contenido">
         <section
