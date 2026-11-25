@@ -5,13 +5,18 @@ import Button from "../../Components/Button/Button.jsx";
 import RecuperarContrasena from "./RecuperarContrasena.jsx";
 import "./Login.css";
 
+// Usuario y contraseña temporales: hasta que llegue la validación con el backend
+const USUARIO_REQUERIDO = "jcasas";
+const CONTRASENA_REQUERIDA = "12345678";
+
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuthenticated, login } = useAuth();
-  const destination = location.state?.from?.pathname ?? "/dashboard";
+  const destination = location.state?.from?.pathname ?? "/";
 
   const [email, setEmail] = useState("");
+  const [contrasena, setContrasena] = useState("");
   const [mostrarContrasena, setMostrarContrasena] = useState(false);
 
   // Estado para la modal
@@ -28,8 +33,14 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const userName = email.split("@")[0];
-    login({ name: userName.trim() || "Usuario de demostración" });
-    navigate(destination, { replace: true });
+    const name = userName.trim() || "Usuario de demostración";
+
+    if (userName === USUARIO_REQUERIDO && contrasena === CONTRASENA_REQUERIDA) {
+      login({ name });
+      navigate("/", { replace: true });
+    } else {
+      alert("Usuario o contraseña no válidos");
+    }
   };
 
   return (
@@ -81,6 +92,7 @@ function Login() {
                       placeholder="carlos@ejemplo.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -104,6 +116,9 @@ function Login() {
                       placeholder={
                         mostrarContrasena ? "Tu contraseña" : "••••••••"
                       }
+                      value={contrasena}
+                      onChange={(e) => setContrasena(e.target.value)}
+                      required
                     />
                   </div>
 
