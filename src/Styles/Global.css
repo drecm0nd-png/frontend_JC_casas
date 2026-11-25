@@ -329,3 +329,33 @@ footer,
     border-radius: 8px;
   }
 }
+
+/* ==========================================
+   Sidebar oculto hasta pasar el cursor por la esquina
+   (Landing autenticada: menú real aparece tras el hover)
+   ========================================== */
+.app-with-sidebar.app-shell-desplegable {
+  position: relative;
+}
+
+.app-with-sidebar.app-shell-desplegable .app-sidebar {
+  display: none;
+}
+
+.app-shell-corner {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 101;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.app-with-sidebar.app-shell-desplegable:hover .app-sidebar {
+  display: flex;
+}

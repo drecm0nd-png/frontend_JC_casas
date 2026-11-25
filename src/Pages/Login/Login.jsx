@@ -9,9 +9,10 @@ function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuthenticated, login } = useAuth();
-  const destination = location.state?.from?.pathname ?? "/dashboard";
+  const destination = location.state?.from?.pathname ?? "/";
 
   const [email, setEmail] = useState("");
+  const [contrasena, setContrasena] = useState("");
   const [mostrarContrasena, setMostrarContrasena] = useState(false);
 
   // Estado para la modal
@@ -25,10 +26,24 @@ function Login() {
     setMostrarContrasena((prevState) => !prevState);
   };
 
+  // Validación temporal para desarrollo frontend (acepta cualquier credencial no vacía)
   const handleSubmit = (event) => {
     event.preventDefault();
-    const userName = email.split("@")[0];
-    login({ name: userName.trim() || "Usuario de demostración" });
+
+    if (email.trim() !== "" && contrasena.trim() !== "") {
+      const userName = email.split("@")[0];
+      const name = userName.trim() || "Usuario de demostración";
+
+      login({ name, email: email.trim() });
+      navigate(destination, { replace: true });
+    } else {
+      alert("Por favor, ingresa un correo y una contraseña.");
+    }
+  };
+
+  // Acceso directo simulado para el botón de Google
+  const handleGoogleLogin = () => {
+    login({ name: "Usuario Google", email: "usuario.google@ejemplo.com" });
     navigate(destination, { replace: true });
   };
 
@@ -81,6 +96,7 @@ function Login() {
                       placeholder="carlos@ejemplo.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -104,6 +120,9 @@ function Login() {
                       placeholder={
                         mostrarContrasena ? "Tu contraseña" : "••••••••"
                       }
+                      value={contrasena}
+                      onChange={(e) => setContrasena(e.target.value)}
+                      required
                     />
                   </div>
 
@@ -158,7 +177,11 @@ function Login() {
               <div className="divider-line" />
             </div>
 
-            <button type="button" className="btn-google" onClick={handleSubmit}>
+            <button
+              type="button"
+              className="btn-google"
+              onClick={handleGoogleLogin}
+            >
               <img
                 className="field-icon"
                 src="/src/assets/icons/Icon (1).png"
