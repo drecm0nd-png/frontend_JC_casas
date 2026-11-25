@@ -2,151 +2,256 @@
 
 :root {
   /* ==========================================================
-    COLORES
+     COLORES GENERALES (TEMA CLARO / POR DEFECTO)
      ========================================================== */
-  --color-background: #fffdf7; /* Fondo general */
+  --color-background: #faf7f2;
+  --color-surface: #ffffff;
+  --color-card: #f8f1e5;
+  --color-footer: #efe4d2;
+  --color-text: #2b2b2b;
+  --color-text-muted: #666666;
+  --color-header: #4a2511;
+  --color-primary: #bd732f;
+  --color-primary-hover: #9e5d22;
+  --color-accent: #d96b43;
+  --color-button-primary: #c97d32;
+  --color-button-text: #ffffff;
+  --color-switch-active: #bd732f;
+  --color-switch-knob-active: #ffffff;
+  --color-admin-switch: #7c3aed;
+  --color-admin-knob: #ffffff;
+  --color-stroke: #e4cfb2;
+  --color-badge-bg: #f8f1e5;
 
   --color-auth-surface: #ffffff;
-  --color-auth-button: #c78e4b;
+  --color-auth-button: #c97d32;
   --color-auth-text: #3a1f00;
-  --color-header: #6b3a1f; /* Encabezado y pie de página */
-  --color-card: #f5eddd; /* Tarjetas y hero */
-  --color-accent: #d96b43; /* Acentos y detalles */
-  --color-button-primary: #c4832a; /* Botón principal */
-  --color-text: #3a1f00; /* Texto general */
-  --color-stroke: #6b3a1f80; /* Bordes y líneas (50% de opacidad) */
+
+  --filter-strength: 0.5;
+  --app-brightness: 100%;
+  --app-filter: none;
 
   /* ==========================================================
-    FAMILIA TIPOGRÁFICA
+     VARIABLES DEL HEADER (TEMA CLARO: CAFÉ Y LETRAS BLANCAS)
      ========================================================== */
-  --font-family-base:
-    "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hdr-main-bg: #4a2511;
+  --hdr-main-shadow: rgba(35, 16, 6, 0.35);
+  --hdr-subnav-bg: #6b381b;
+  --hdr-subnav-border: rgba(255, 255, 255, 0.16);
+  --hdr-text: #ffffff;
+  --hdr-text-muted: rgba(255, 255, 255, 0.88);
+  --hdr-hover: #f3d5b5;
+  --hdr-active: #ffe8cc;
+  --hdr-danger: #ffb8b8;
+  --hdr-danger-hover: #ffd6d6;
+  --hdr-btn-bg: rgba(255, 255, 255, 0.12);
+  --hdr-btn-border: rgba(255, 255, 255, 0.8);
+  --hdr-btn-hover-bg: #ffffff;
+  --hdr-btn-hover-text: #4a2511;
+  --hdr-icon-hover-bg: rgba(255, 255, 255, 0.14);
+  --hdr-icon-hover-border: rgba(255, 255, 255, 0.3);
+  --hdr-mobile-bg: #4a2511;
+  --hdr-mobile-head-bg: #361a0b;
+  --hdr-mobile-border: rgba(255, 255, 255, 0.16);
+  --hdr-mobile-item-bg: rgba(255, 255, 255, 0.08);
+  --hdr-mobile-item-hover-bg: rgba(255, 255, 255, 0.16);
+  --hdr-mobile-cta-bg: #7c4220;
+  --hdr-mobile-cta-hover: #934e27;
+  --hdr-mobile-cta-text: #ffffff;
+  --hdr-tooltip-bg: linear-gradient(135deg, #7c4220, #592d14);
+  --hdr-tooltip-text: #ffffff;
+  --hdr-badge-border: #4a2511;
+
+  --bg-header-main: #4a2511;
+  --bg-subnav: #6b381b;
+  --bg-mobile-nav: #4a2511;
+  --bg-mobile-header: #361a0b;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.88);
+  --accent-color: #bd732f;
+  --accent-hover: #9e5d22;
+  --auth-btn-bg: rgba(255, 255, 255, 0.12);
+  --auth-btn-text: #ffffff;
+  --border-subtle: rgba(255, 255, 255, 0.16);
+  --border-main: rgba(255, 255, 255, 0.25);
 
   /* ==========================================================
-    PESOS TIPOGRÁFICOS (Roboto)
+     VARIABLES DE LA SIDEBAR (TEMA CLARO: CAFÉ MÁS CERCANO AL HEADER)
      ========================================================== */
-  --font-weight-light: 300; /* Descripciones */
-  --font-weight-regular: 400; /* Párrafos y subtítulos */
-  --font-weight-medium: 500; /* Etiquetas y elementos de énfasis */
-  --font-weight-bold: 700; /* Títulos */
+  --bg-sidebar: #f7ede1;
+  --sidebar-text: #7a481c;
+  --sidebar-text-hover: #4a2511;
+  --sidebar-bg-hover: #f0e1d0;
+  --sidebar-border: #c8a27a;
+  --sidebar-active-bg: #ebdcc5;
+
+  --sb-bg: #ffffff;
+  --sb-border: #c8a27a;
+  --sb-divider: #e3ccb0;
+  --sb-shadow: 4px 0 20px rgba(74, 37, 17, 0.06);
+  --sb-text: #4a2e1b;
+  --sb-icon: #4a2511;
+  --sb-hover-bg: #f8f0e6;
+  --sb-hover-text: #4a2511;
+  --sb-hover-border: #b6895b;
+  --sb-active-bg: linear-gradient(135deg, #5c3018 0%, #4a2511 100%);
+  --sb-active-text: #ffffff;
+  --sb-active-icon: #ffffff;
+  --sb-active-border: #4a2511;
+  --sb-active-shadow: 0 6px 16px rgba(74, 37, 17, 0.24);
 
   /* ==========================================================
-    TAMAÑOS DE FUENTE (Escritorio / Por defecto)
-    Base de 16px: 1rem = 16px. Las equivalencias en px vienen de Figma.
+     TIPOGRAFÍA Y ESPACIADOS GLOBALES
      ========================================================== */
-  --font-size-hero: 2.5rem; /* 40px - Título del banner principal */
-  --font-size-section-title: 2rem; /* 32px - Títulos de sección */
-  --font-size-subtitle: 1.5rem; /* 24px - Subtítulos de sección */
-  --font-size-card-title: 1.25rem; /* 20px - Títulos de tarjetas */
-  --font-size-lead: 1.125rem; /* 18px - Descripciones */
-  --font-size-body: 1rem; /* 16px - Párrafos */
-  --font-size-small: 0.875rem; /* 14px - Texto secundario */
-  --font-size-caption: 0.75rem; /* 12px - Etiquetas pequeñas */
+  --font-family-base: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* ==========================================================
-    ALTURA DE LÍNEA
-     ========================================================== */
-  --line-height-tight: 1.2; /* Títulos */
-  --line-height-normal: 1.5; /* Texto corrido */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 
-  /* ==========================================================
-    NUEVOS ESPACIADOS RESPONSIVE GLOBALES
-     ========================================================== */
+  --font-size-hero: 2.5rem;
+  --font-size-section-title: 2rem;
+  --font-size-subtitle: 1.5rem;
+  --font-size-card-title: 1.25rem;
+  --font-size-lead: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-caption: 0.75rem;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
   --page-padding: 2rem;
   --component-gap: 1.5rem;
 }
 
 /* ==========================================================
-  AJUSTE GLOBAL PARA MÓVILES Y TABLETS (Menos de 768px)
-  Reduce proporcionalmente las tipografías y espaciados de la app
+   MODO OSCURO / NOCTURNO (CAFÉ LECHOSO EN PANTALLA + SIDEBAR OSCURA)
+   ========================================================== */
+[data-theme="dark"],
+:root.dark-mode,
+body.dark-mode,
+.dark-mode {
+  --color-background: #7b5234;
+  --color-surface: #694429;
+  --color-card: #8f613f;
+  --color-footer: #5d3b22;
+  --color-text: #fffaf3;
+  --color-text-muted: #f3dec2;
+  --color-header: #fff6e8;
+  --color-primary: #eadbc3;
+  --color-primary-hover: #f7ebd7;
+  --color-accent: #e6d5b8;
+  --color-button-primary: #eadbc3;
+  --color-button-text: #1f1108;
+  --color-switch-active: #eadbc3;
+  --color-switch-knob-active: #241207;
+  --color-admin-switch: #eab308;
+  --color-admin-knob: #1f1600;
+  --color-auth-button: #eadbc3;
+  --color-stroke: #c49c74;
+  --color-badge-bg: #6b452a;
+
+  /* Header en modo oscuro: barra principal beige, subnav beige cafesito y letras negras */
+  --hdr-main-bg: #f3ead8;
+  --hdr-main-shadow: rgba(28, 20, 12, 0.16);
+  --hdr-subnav-bg: #d9c5a7;
+  --hdr-subnav-border: rgba(24, 24, 24, 0.18);
+  --hdr-text: #181818;
+  --hdr-text-muted: #3a342c;
+  --hdr-hover: #5c3217;
+  --hdr-active: #000000;
+  --hdr-danger: #b91c1c;
+  --hdr-danger-hover: #7f1d1d;
+  --hdr-btn-bg: rgba(24, 24, 24, 0.06);
+  --hdr-btn-border: #181818;
+  --hdr-btn-hover-bg: #181818;
+  --hdr-btn-hover-text: #f3ead8;
+  --hdr-icon-hover-bg: rgba(24, 24, 24, 0.09);
+  --hdr-icon-hover-border: rgba(24, 24, 24, 0.25);
+  --hdr-mobile-bg: #f3ead8;
+  --hdr-mobile-head-bg: #d9c5a7;
+  --hdr-mobile-border: rgba(24, 24, 24, 0.16);
+  --hdr-mobile-item-bg: rgba(24, 24, 24, 0.05);
+  --hdr-mobile-item-hover-bg: rgba(24, 24, 24, 0.12);
+  --hdr-mobile-cta-bg: #181818;
+  --hdr-mobile-cta-hover: #2f2f2f;
+  --hdr-mobile-cta-text: #ffffff;
+  --hdr-tooltip-bg: linear-gradient(135deg, #d9c5a7, #c8b08e);
+  --hdr-tooltip-text: #181818;
+  --hdr-badge-border: #f3ead8;
+
+  --bg-header-main: #f3ead8;
+  --bg-subnav: #d9c5a7;
+  --bg-mobile-nav: #f3ead8;
+  --bg-mobile-header: #d9c5a7;
+  --text-primary: #181818;
+  --text-secondary: #3a342c;
+  --accent-color: #eadbc3;
+  --accent-hover: #f7ebd7;
+  --auth-btn-bg: rgba(24, 24, 24, 0.06);
+  --auth-btn-text: #181818;
+  --border-subtle: rgba(24, 24, 24, 0.16);
+  --border-main: rgba(24, 24, 24, 0.24);
+
+  /* Sidebar en modo oscuro: café más profundo para contrastar con el fondo lechoso */
+  --bg-sidebar: #382213;
+  --sidebar-text: #fff9f2;
+  --sidebar-text-hover: #eadbc3;
+  --sidebar-bg-hover: #5c3b24;
+  --sidebar-border: #9e6c43;
+  --sidebar-active-bg: #6b452a;
+
+  --sb-bg: #382213;
+  --sb-border: #9e6c43;
+  --sb-divider: #5c3b24;
+  --sb-shadow: 4px 0 20px rgba(18, 9, 3, 0.35);
+  --sb-text: #fff9f2;
+  --sb-icon: #eadbc3;
+  --sb-hover-bg: #5c3b24;
+  --sb-hover-text: #eadbc3;
+  --sb-hover-border: #b99976;
+  --sb-active-bg: linear-gradient(135deg, #eadbc3 0%, #d9c5a7 100%);
+  --sb-active-text: #1f1108;
+  --sb-active-icon: #1f1108;
+  --sb-active-border: #f7ebd7;
+  --sb-active-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+/* ==========================================================
+   MODO DALTÓNICO (MÁS AZUL EN TODA LA PÁGINA SOLO SI ESTÁ ACTIVO)
+   ========================================================== */
+[data-colorblind="true"],
+.colorblind-mode {
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #3b82f6;
+  --color-button-primary: #2563eb;
+  --color-button-text: #ffffff;
+  --color-switch-active: #2563eb;
+  --color-switch-knob-active: #ffffff;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+}
+
+/* ==========================================================
+   AJUSTE GLOBAL PARA MÓVILES Y TABLETS (< 768px)
    ========================================================== */
 @media (max-width: 768px) {
   :root {
-    --font-size-hero: 1.85rem; /* ~30px */
-    --font-size-section-title: 1.5rem; /* ~24px */
-    --font-size-subtitle: 1.25rem; /* ~20px */
-    --font-size-card-title: 1.125rem; /* ~18px */
-    --font-size-lead: 1rem; /* ~16px */
-    --font-size-body: 0.9375rem; /* ~15px */
-    --font-size-small: 0.8125rem; /* ~13px */
-    --font-size-caption: 0.6875rem; /* ~11px */
+    --font-size-hero: 1.85rem;
+    --font-size-section-title: 1.5rem;
+    --font-size-subtitle: 1.25rem;
+    --font-size-card-title: 1.125rem;
+    --font-size-lead: 1rem;
+    --font-size-body: 0.9375rem;
+    --font-size-small: 0.8125rem;
+    --font-size-caption: 0.6875rem;
 
-    /* Reducción de márgenes internos para que no queden pantallas apretadas */
     --page-padding: 1rem;
     --component-gap: 1rem;
   }
-}
-
-/* ==========================================================================
-   VARIABLES GLOBALES DE TEMA (CLARO / OSCURO)
-   ========================================================== */
-
-/* Tema Claro (Por Defecto) */
-:root {
-  --bg-header-main: linear-gradient(135deg, #f2e3d0 0%, #e6cfb5 100%);
-  --bg-subnav: #f7ede1;
-  --bg-mobile-nav: #f7ede1;
-  --bg-mobile-header: #f2e3d0;
-  
-  --text-primary: #8c5321;
-  --text-secondary: #7a481c;
-  --accent-color: #bd732f;
-  --accent-hover: #a36125;
-
-  --auth-btn-bg: #fdfbf7;
-  --auth-btn-text: #bd732f;
-  
-  --border-subtle: rgba(226, 204, 179, 0.35);
-  --border-main: rgba(217, 188, 155, 0.4);
-}
-
-/* Tema Oscuro (Preparado pero INACTIVO hasta que me indiques) */
-[data-theme="dark"] {
-  --bg-header-main: linear-gradient(135deg, #1a1612 0%, #26201a 100%);
-  --bg-subnav: #1e1814;
-  --bg-mobile-nav: #1e1814;
-  --bg-mobile-header: #1a1612;
-  
-  --text-primary: #f2e3d0;
-  --text-secondary: #e6cfb5;
-  --accent-color: #d9822b;
-  --accent-hover: #f29d49;
-
-  --auth-btn-bg: #2a221b;
-  --auth-btn-text: #f2e3d0;
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-main: rgba(255, 255, 255, 0.12);
-}
-
-/* ==========================================================================
-   VARIABLES GLOBALES (AÑADIDAS PARA LA SIDEBAR)
-   ========================================================================== */
-
-/* Tema Claro (Por Defecto) */
-:root {
-  /* ... (tus variables anteriores del header se mantienen igual) ... */
-
-  /* Nuevas variables para la Sidebar */
-  --bg-sidebar: #f7ede1;
-  --sidebar-text: #7a481c;
-  --sidebar-text-hover: #bd732f;
-  --sidebar-bg-hover: #f0e1d0;
-  --sidebar-border: rgba(226, 204, 179, 0.35);
-  --sidebar-active-bg: #ebdcc5;
-}
-
-/* Tema Oscuro (Preparado pero INACTIVO hasta que me indiques) */
-[data-theme="dark"] {
-  /* ... (tus variables oscuras anteriores del header se mantienen igual) ... */
-
-  /* Nuevas variables oscuras para la Sidebar */
-  --bg-sidebar: #1e1814;
-  --sidebar-text: #e6cfb5;
-  --sidebar-text-hover: #f29d49;
-  --sidebar-bg-hover: #26201a;
-  --sidebar-border: rgba(255, 255, 255, 0.08);
-  --sidebar-active-bg: #2a221b;
 }
 
 /* ==========================================================
@@ -154,7 +259,7 @@
    ========================================================== */
 .global-header {
   text-align: left;
-  border-bottom: 2px solid #ebdcc5;
+  border-bottom: 2px solid var(--color-stroke);
   padding-bottom: 1.2rem;
   display: flex;
   justify-content: space-between;
@@ -167,71 +272,34 @@
 
 .global-header .g-subtitle {
   font-size: 0.85rem;
-  color: #bd732f;
+  color: var(--color-primary);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
 
 .global-header .g-title {
-  color: #2b2b2b;
+  color: var(--color-text);
   margin: 0.2rem 0 0.4rem 0;
   font-size: 2.3rem;
   font-weight: 800;
 }
 
 .global-header .g-description {
-  color: #666;
+  color: var(--color-text-muted);
   margin: 0;
   font-size: 1rem;
 }
 
 .global-header .g-badge {
-  background: #f8f1e5;
-  border: 1px solid #ebdcc5;
+  background: var(--color-badge-bg);
+  border: 1px solid var(--color-stroke);
   padding: 0.5rem 1rem;
   border-radius: 12px;
   font-weight: 700;
-  color: #bd732f;
+  color: var(--color-primary);
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-:root {
-  /* ==========================================
-     PALETA MODO CLARO (Por defecto)
-     ========================================== */
-  --color-background: #faf7f2;
-  --color-surface: #ffffff;
-  --color-card: #f8f1e5;
-  --color-text: #2b2b2b;
-  --color-text-muted: #666666;
-  --color-header: #78350f;
-  
-  --color-primary: #bd732f;
-  --color-primary-hover: #a76b32;
-  --color-stroke: #ebdcc5;
-  --color-badge-bg: #f8f1e5;
-
-  /* Tipografías y espaciados generales */
-}
-
-/* ==========================================
-   PALETA MODO NOCTURNO (Se activa con .dark-mode)
-   ========================================== */
-body.dark-mode, 
-.dark-mode {
-  --color-background: #121212;
-  --color-surface: #1e1e1e;
-  --color-card: #2a2a2a;
-  --color-text: #f3f4f6;
-  --color-text-muted: #9ca3af;
-  --color-header: #fde68a;
-  
-  --color-primary: #d97706;
-  --color-primary-hover: #b45309;
-  --color-stroke: #3f3f46;
-  --color-badge-bg: #27272a;
 }

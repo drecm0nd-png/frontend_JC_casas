@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
 import {
@@ -29,6 +29,7 @@ function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState(location.hash || "");
 
   const [showBrandMessage, setShowBrandMessage] = useState(false);
 
@@ -42,6 +43,48 @@ function Header() {
   const isLoginPage = location.pathname === "/login";
   const currentPath = location.pathname;
 
+  useEffect(() => {
+    setActiveHash(location.hash || "");
+  }, [location.pathname, location.hash]);
+
+  useEffect(() => {
+    const hashTargets = {
+      "/": ["#nosotros", "#restaurante", "#informacion", "#contacto"],
+      "/inicio": ["#nosotros", "#restaurante", "#informacion", "#contacto"],
+      "/menu": ["#almuerzo", "#bebidas", "#adicionales"]
+    };
+
+    const targets = hashTargets[currentPath];
+    if (!targets) return;
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 180;
+      let currentSection = "";
+
+      for (const selector of targets) {
+        const el = document.querySelector(selector);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            currentSection = selector;
+            break;
+          }
+        }
+      }
+
+      if (currentSection) {
+        setActiveHash(currentSection);
+      } else if (window.scrollY < 120) {
+        setActiveHash("");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [currentPath]);
+
   const currentProfileTab = (() => {
     if (location.state?.tab) return location.state.tab;
     const params = new URLSearchParams(location.search);
@@ -52,6 +95,11 @@ function Header() {
     } catch {
       return "perfil";
     }
+  })();
+
+  const currentPanelTab = (() => {
+    const params = new URLSearchParams(location.search);
+    return params.get("tab") || "inventario";
   })();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -65,6 +113,22 @@ function Header() {
     }
     window.dispatchEvent(new CustomEvent("cfg:tab-change", { detail: tabId }));
     navigate(`/perfil?tab=${tabId}`, { state: { tab: tabId } });
+  };
+
+  const isLinkActive = (link) => {
+    if (link.tabId) {
+      return currentProfileTab === link.tabId;
+    }
+    if (link.to) {
+      const [, query] = link.to.split("?");
+      const params = new URLSearchParams(query || "");
+      const targetTab = params.get("tab");
+      return targetTab ? currentPanelTab === targetTab : false;
+    }
+    if (link.href) {
+      return activeHash === link.href;
+    }
+    return false;
   };
 
   const getDynamicNavContent = () => {
@@ -105,7 +169,6 @@ function Header() {
           items: PROFILE_TABS.map((tab) => ({
             label: tab.label,
             tabId: tab.id,
-            isActive: currentProfileTab === tab.id,
             isDanger: tab.id === "cuenta"
           }))
         };
@@ -152,6 +215,7 @@ function Header() {
     } else if (link.to) {
       navigate(link.to);
     } else if (link.href) {
+      setActiveHash(link.href);
       const element = document.querySelector(link.href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -261,16 +325,20 @@ function Header() {
       <nav className="header-subnav desktop-only">
         {navContent.type === "links" ? (
           <div className="subnav-links">
-            {navContent.items.map((link, index) => (
-              <button
-                key={index}
-                type="button"
-                className={`subnav-link ${link.isActive ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
-                onClick={() => handleItemAction(link)}
-              >
-                {link.label}
-              </button>
-            ))}
+            {navContent.items.map((link, index) => {
+              const active = isLinkActive(link);
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  className={`subnav-link ${active ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => handleItemAction(link)}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </div>
         ) : (
           <div className="subnav-info-text">
@@ -289,19 +357,23 @@ function Header() {
 
         <div className="mobile-nav-links-group">
           {navContent.type === "links" ? (
-            navContent.items.map((link, index) => (
-              <button
-                key={index}
-                type="button"
-                className={`mobile-nav-link ${link.isActive ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
-                onClick={() => {
-                  closeMenu();
-                  handleItemAction(link);
-                }}
-              >
-                {link.label}
-              </button>
-            ))
+            navContent.items.map((link, index) => {
+              const active = isLinkActive(link);
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  className={`mobile-nav-link ${active ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => {
+                    closeMenu();
+                    handleItemAction(link);
+                  }}
+                >
+                  {link.label}
+                </button>
+              );
+            })
           ) : (
             <div className="mobile-info-text-box">
               <div className="mobile-info-icon">{navContent.icon}</div>
