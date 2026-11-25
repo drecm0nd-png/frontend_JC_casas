@@ -5,10 +5,6 @@ import Button from "../../Components/Button/Button.jsx";
 import RecuperarContrasena from "./RecuperarContrasena.jsx";
 import "./Login.css";
 
-// Usuario y contraseña temporales: hasta que llegue la validación con el backend
-const USUARIO_REQUERIDO = "jcasas";
-const CONTRASENA_REQUERIDA = "12345678";
-
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,17 +26,25 @@ function Login() {
     setMostrarContrasena((prevState) => !prevState);
   };
 
+  // Validación temporal para desarrollo frontend (acepta cualquier credencial no vacía)
   const handleSubmit = (event) => {
     event.preventDefault();
-    const userName = email.split("@")[0];
-    const name = userName.trim() || "Usuario de demostración";
 
-    if (userName === USUARIO_REQUERIDO && contrasena === CONTRASENA_REQUERIDA) {
-      login({ name });
-      navigate("/", { replace: true });
+    if (email.trim() !== "" && contrasena.trim() !== "") {
+      const userName = email.split("@")[0];
+      const name = userName.trim() || "Usuario de demostración";
+
+      login({ name, email: email.trim() });
+      navigate(destination, { replace: true });
     } else {
-      alert("Usuario o contraseña no válidos");
+      alert("Por favor, ingresa un correo y una contraseña.");
     }
+  };
+
+  // Acceso directo simulado para el botón de Google
+  const handleGoogleLogin = () => {
+    login({ name: "Usuario Google", email: "usuario.google@ejemplo.com" });
+    navigate(destination, { replace: true });
   };
 
   return (
@@ -173,7 +177,11 @@ function Login() {
               <div className="divider-line" />
             </div>
 
-            <button type="button" className="btn-google" onClick={handleSubmit}>
+            <button
+              type="button"
+              className="btn-google"
+              onClick={handleGoogleLogin}
+            >
               <img
                 className="field-icon"
                 src="/src/assets/icons/Icon (1).png"
