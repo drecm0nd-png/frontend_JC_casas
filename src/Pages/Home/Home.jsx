@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useAuth } from "../../Hooks/UseAuth.js";
 import {
   FaArrowDown,
   FaArrowUp,
@@ -118,6 +119,7 @@ function VideoRestaurante() {
 }
 
 function Home() {
+  const { isAuthenticated } = useAuth();
   const landingRef = useRef(null);
   const [preguntaAbierta, setPreguntaAbierta] = useState(0);
   const [mostrarVolverArriba, setMostrarVolverArriba] = useState(false);
@@ -180,7 +182,7 @@ function Home() {
       <a href="#contenido" className="lp-saltar">
         Saltar al contenido
       </a>
-      <LandingHeader />
+      {!isAuthenticated && <LandingHeader />}
 
       <main id="contenido">
         <section
