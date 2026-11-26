@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
+import { scrollToSection } from "../../Utils/ScrollToSection.js";
 import {
   FaArrowRightToBracket,
   FaRightFromBracket,
@@ -10,7 +11,7 @@ import {
   FaUserPen,
   FaCircleInfo,
   FaBell,
-  FaUser
+  FaUser,
 } from "react-icons/fa6";
 import NotificationsDropdown from "../NotificationsDropdown/NotificationsDropdown";
 import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
@@ -21,7 +22,7 @@ const PROFILE_TABS = [
   { id: "seguridad", label: "Seguridad" },
   { id: "notificaciones", label: "Notificaciones" },
   { id: "preferencias", label: "Preferencias" },
-  { id: "cuenta", label: "Cuenta" }
+  { id: "cuenta", label: "Cuenta" },
 ];
 
 function Header() {
@@ -29,7 +30,7 @@ function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeHash, setActiveHash] = useState(location.hash || "");
+  const [activeHash, setActiveHash] = useState(location.hash || "#lp-portada");
 
   const [showBrandMessage, setShowBrandMessage] = useState(false);
 
@@ -44,14 +45,17 @@ function Header() {
   const currentPath = location.pathname;
 
   useEffect(() => {
-    setActiveHash(location.hash || "");
-  }, [location.pathname, location.hash]);
+    setActiveHash(
+      location.hash ||
+        (currentPath === "/" || currentPath === "/inicio" ? "#lp-portada" : "")
+    );
+  }, [location.pathname, location.hash, currentPath]);
 
   useEffect(() => {
     const hashTargets = {
-      "/": ["#nosotros", "#restaurante", "#informacion", "#contacto"],
-      "/inicio": ["#nosotros", "#restaurante", "#informacion", "#contacto"],
-      "/menu": ["#almuerzo", "#bebidas", "#adicionales"]
+      "/": ["#lp-portada", "#nosotros", "#menu", "#cobertura", "#preguntas-contacto"],
+      "/inicio": ["#lp-portada", "#nosotros", "#menu", "#cobertura", "#preguntas-contacto"],
+      "/menu": ["#almuerzo", "#bebidas", "#adicionales"],
     };
 
     const targets = hashTargets[currentPath];
@@ -75,8 +79,11 @@ function Header() {
 
       if (currentSection) {
         setActiveHash(currentSection);
-      } else if (window.scrollY < 120) {
-        setActiveHash("");
+      } else if (
+        window.scrollY < 140 &&
+        (currentPath === "/" || currentPath === "/inicio")
+      ) {
+        setActiveHash("#lp-portada");
       }
     };
 
@@ -120,12 +127,22 @@ function Header() {
       return currentProfileTab === link.tabId;
     }
     if (link.to) {
-      const [, query] = link.to.split("?");
-      const params = new URLSearchParams(query || "");
-      const targetTab = params.get("tab");
-      return targetTab ? currentPanelTab === targetTab : false;
+      const [pathname, query] = link.to.split("?");
+      if (query) {
+        const params = new URLSearchParams(query);
+        const targetTab = params.get("tab");
+        return targetTab ? currentPanelTab === targetTab : false;
+      }
+      return currentPath === pathname;
     }
     if (link.href) {
+      if (
+        link.href === "#lp-portada" &&
+        !activeHash &&
+        (currentPath === "/" || currentPath === "/inicio")
+      ) {
+        return true;
+      }
       return activeHash === link.href;
     }
     return false;
@@ -138,11 +155,12 @@ function Header() {
         return {
           type: "links",
           items: [
+            { label: "Inicio", href: "#lp-portada" },
             { label: "Nosotros", href: "#nosotros" },
-            { label: "Restaurante", href: "#restaurante" },
-            { label: "Información", href: "#informacion" },
-            { label: "Contacto", href: "#contacto" }
-          ]
+            { label: "Nuestro menú", href: "#menu" },
+            { label: "Horarios y ubicación", href: "#cobertura" },
+            { label: "Preguntas y contacto", href: "#preguntas-contacto" },
+          ],
         };
       case "/menu":
         return {
@@ -150,8 +168,8 @@ function Header() {
           items: [
             { label: "Almuerzo", href: "#almuerzo" },
             { label: "Bebidas", href: "#bebidas" },
-            { label: "Adicionales", href: "#adicionales" }
-          ]
+            { label: "Adicionales", href: "#adicionales" },
+          ],
         };
       case "/panel":
         return {
@@ -160,8 +178,8 @@ function Header() {
             { label: "Inventario", to: "/panel?tab=inventario" },
             { label: "Pedidos", to: "/panel?tab=pedidos" },
             { label: "Permisos", to: "/panel?tab=permisos" },
-            { label: "Impresión", to: "/panel?tab=impresion" }
-          ]
+            { label: "Impresión", to: "/panel?tab=impresion" },
+          ],
         };
       case "/perfil":
         return {
@@ -169,40 +187,40 @@ function Header() {
           items: PROFILE_TABS.map((tab) => ({
             label: tab.label,
             tabId: tab.id,
-            isDanger: tab.id === "cuenta"
-          }))
+            isDanger: tab.id === "cuenta",
+          })),
         };
       case "/carrito":
       case "/car":
         return {
           type: "text",
           icon: <FaBagShopping size={16} />,
-          message: "Aquí podrás visualizar tus compras y el historial de las mismas"
+          message: "Aquí podrás visualizar tus compras y el historial de las mismas",
         };
       case "/configuracion":
       case "/config":
         return {
           type: "text",
           icon: <FaCircleInfo size={16} />,
-          message: "Aquí podrás configurar tus preferencias y ajustes del sistema"
+          message: "Aquí podrás configurar tus preferencias y ajustes del sistema",
         };
       case "/login":
         return {
           type: "text",
           icon: <FaLock size={16} />,
-          message: "Inicia sesión aquí y ahora para operar en el sistema"
+          message: "Inicia sesión aquí y ahora para operar en el sistema",
         };
       case "/registro":
         return {
           type: "text",
           icon: <FaUserPen size={16} />,
-          message: "Regístrate ahora y forma parte de Jcasas"
+          message: "Regístrate ahora y forma parte de Jcasas",
         };
       default:
         return {
           type: "text",
           icon: <FaCircleInfo size={16} />,
-          message: "Sección informativa del sistema operativo"
+          message: "Sección informativa del sistema operativo",
         };
     }
   };
@@ -216,9 +234,23 @@ function Header() {
       navigate(link.to);
     } else if (link.href) {
       setActiveHash(link.href);
-      const element = document.querySelector(link.href);
+      const sectionId = link.href.replace(/^#/, "");
+      if (sectionId === "lp-portada") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const element =
+        document.getElementById(sectionId) || document.querySelector(link.href);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const headerOffset =
+          document.querySelector(".header-wrapper")?.offsetHeight || 90;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: Math.max(0, elementPosition - headerOffset - 12),
+          behavior: "smooth",
+        });
+      } else {
+        scrollToSection(sectionId);
       }
     }
   };
@@ -239,14 +271,16 @@ function Header() {
           </Link>
 
           {showBrandMessage && (
-            <div className="brand-hover-tooltip">
-              ¿Qué vas a pedir hoy?
-            </div>
+            <div className="brand-hover-tooltip">¿Qué vas a pedir hoy?</div>
           )}
         </div>
 
         <div className="header-right-group">
-          <div className="notification-wrapper-container" ref={notifRef} style={{ position: "relative" }}>
+          <div
+            className="notification-wrapper-container"
+            ref={notifRef}
+            style={{ position: "relative" }}
+          >
             <button
               type="button"
               className="header-notification-btn"
@@ -258,7 +292,9 @@ function Header() {
               }}
             >
               <FaBell size={18} />
-              {tieneNotificaciones && <span className="notification-badge-dot"></span>}
+              {tieneNotificaciones && (
+                <span className="notification-badge-dot"></span>
+              )}
             </button>
 
             <NotificationsDropdown
@@ -267,7 +303,11 @@ function Header() {
             />
           </div>
 
-          <div className="profile-wrapper-container" ref={profileRef} style={{ position: "relative" }}>
+          <div
+            className="profile-wrapper-container"
+            ref={profileRef}
+            style={{ position: "relative" }}
+          >
             <button
               type="button"
               className="header-notification-btn"
@@ -303,7 +343,11 @@ function Header() {
                 className="header-auth-btn"
                 title={isLoginPage ? "Registrarse" : "Iniciar sesión"}
               >
-                {isLoginPage ? <FaUserPlus size={16} /> : <FaArrowRightToBracket size={16} />}
+                {isLoginPage ? (
+                  <FaUserPlus size={16} />
+                ) : (
+                  <FaArrowRightToBracket size={16} />
+                )}
                 <span>{isLoginPage ? "Registrarse" : "Iniciar sesión"}</span>
               </NavLink>
             )}
@@ -331,7 +375,9 @@ function Header() {
                 <button
                   key={index}
                   type="button"
-                  className={`subnav-link ${active ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
+                  className={`subnav-link ${active ? "is-active" : ""} ${
+                    link.isDanger ? "is-danger" : ""
+                  }`}
                   aria-current={active ? "page" : undefined}
                   onClick={() => handleItemAction(link)}
                 >
@@ -363,7 +409,9 @@ function Header() {
                 <button
                   key={index}
                   type="button"
-                  className={`mobile-nav-link ${active ? "is-active" : ""} ${link.isDanger ? "is-danger" : ""}`}
+                  className={`mobile-nav-link ${active ? "is-active" : ""} ${
+                    link.isDanger ? "is-danger" : ""
+                  }`}
                   aria-current={active ? "page" : undefined}
                   onClick={() => {
                     closeMenu();
@@ -387,7 +435,10 @@ function Header() {
             <button
               type="button"
               className="header-register"
-              onClick={() => { logout(); closeMenu(); }}
+              onClick={() => {
+                logout();
+                closeMenu();
+              }}
             >
               <FaRightFromBracket size={16} />
               <span>Cerrar sesión</span>
@@ -398,7 +449,11 @@ function Header() {
               className="header-register"
               onClick={closeMenu}
             >
-              {isLoginPage ? <FaUserPlus size={16} /> : <FaArrowRightToBracket size={16} />}
+              {isLoginPage ? (
+                <FaUserPlus size={16} />
+              ) : (
+                <FaArrowRightToBracket size={16} />
+              )}
               <span>{isLoginPage ? "Registrarse" : "Iniciar sesión"}</span>
             </NavLink>
           )}

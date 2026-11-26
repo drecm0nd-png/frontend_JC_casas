@@ -11,8 +11,8 @@
 }
 
 .car-history-subcard {
-  background-color: #ffffff;
-  border: 1px solid #ebdcc5;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-stroke);
   border-radius: 20px;
   padding: 1.6rem;
   display: flex;
@@ -23,8 +23,8 @@
 
 .car-history-subcard h4 {
   margin: 0;
-  color: #bd732f;
-  border-bottom: 1px solid #f2e8dc;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-stroke);
   padding-bottom: 0.8rem;
   font-size: 1.2rem;
   font-weight: 800;
@@ -49,14 +49,25 @@
 }
 
 .car-order-pending-item {
-  background-color: #fffaf0;
-  border: 1.5px solid #f6ad55;
+  background-color: var(--car-order-card-bg);
+  border: 1.5px solid var(--color-primary);
   animation: pulseGlow 3s infinite;
 }
 
 .car-order-completed-item {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background-color: var(--car-order-card-bg);
+  border: 1px solid var(--car-order-card-border);
+}
+
+.car-order-pending-item .car-order-id,
+.car-order-pending-item .car-order-title,
+.car-order-pending-item .car-order-amount,
+.car-order-pending-item .car-order-footer,
+.car-order-completed-item .car-order-id,
+.car-order-completed-item .car-order-title,
+.car-order-completed-item .car-order-amount,
+.car-order-completed-item .car-order-footer {
+  color: var(--car-order-text) !important;
 }
 
 .car-order-item-top {
@@ -67,22 +78,14 @@
 
 .car-order-id {
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   font-size: 0.95rem;
 }
 
-.car-badge-pending {
-  background-color: #f6ad55;
-  color: #fff;
-  padding: 0.25rem 0.7rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
+.car-badge-pending,
 .car-badge-completed {
-  background-color: #c6f6d5;
-  color: #22543d;
+  background-color: var(--car-order-badge-bg);
+  color: var(--car-order-badge-text);
   padding: 0.25rem 0.7rem;
   border-radius: 12px;
   font-size: 0.75rem;
@@ -92,14 +95,14 @@
 .car-order-title {
   margin: 0;
   font-size: 0.9rem;
-  color: #444;
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
 .car-order-progress-bar {
   width: 100%;
   height: 6px;
-  background: #fef08a;
+  background: var(--car-order-progress-track);
   border-radius: 4px;
   overflow: hidden;
   margin-top: 0.2rem;
@@ -107,7 +110,7 @@
 
 .car-order-progress-fill {
   height: 100%;
-  background: #f59e0b;
+  background: var(--car-order-progress-fill);
   border-radius: 4px;
   width: 65%;
 }
@@ -117,21 +120,21 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: #666;
-  border-top: 1px dashed #ebdcc5;
+  color: var(--car-order-text);
+  border-top: 1px dashed var(--car-order-divider);
   padding-top: 0.6rem;
 }
 
 .car-order-amount {
   font-weight: 700;
-  color: #bd732f;
+  color: var(--color-primary);
   font-size: 1rem;
 }
 
 .btn-reorder {
-  background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
-  color: #bd732f;
-  border: 1.5px solid #ebdcc5;
+  background: var(--car-reorder-bg);
+  color: var(--car-reorder-text);
+  border: 1.5px solid var(--car-reorder-border);
   padding: 0.55rem 1rem;
   border-radius: 10px;
   font-size: 0.85rem;
@@ -145,17 +148,17 @@
   box-sizing: border-box;
 }
 
+.btn-reorder:hover {
+  background: var(--car-reorder-hover-bg);
+  color: var(--car-reorder-hover-text);
+  border-color: var(--car-reorder-hover-border);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(189, 115, 47, 0.2);
+}
+
 .btn-reorder svg {
   flex-shrink: 0;
   transition: transform 0.3s ease;
-}
-
-.btn-reorder:hover {
-  background: #bd732f;
-  color: #ffffff;
-  border-color: #bd732f;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(189, 115, 47, 0.2);
 }
 
 .btn-reorder:hover svg {
@@ -167,7 +170,7 @@
 }
 
 .car-empty-history {
-  color: #718096;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   text-align: center;
   margin: 1.2rem 0;

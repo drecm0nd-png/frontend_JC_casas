@@ -7,7 +7,8 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  background-color: #f4ecdd;
+  background-color: var(--color-background);
+  color: var(--color-text);
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -20,7 +21,8 @@
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: var(--color-auth-surface, #f4ecdd);
+  background-color: var(--color-auth-surface);
+  color: var(--color-text);
   border-radius: 0;
   box-shadow: none;
   overflow: hidden;
@@ -30,42 +32,54 @@
 
 /* Lado Izquierdo: Formulario centrado verticalmente */
 .login-form-section {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1.25rem 3rem;
-  background-color: #f4ecdd;
+  background-color: var(--color-background);
+  color: var(--color-text);
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  overflow-y: auto; /* Solo activa scroll si la ventana se encoge mucho */
+  overflow-y: auto;
 }
 
 .form-wrapper {
   width: 100%;
   max-width: 560px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
 
-/* Lado Derecho: Imagen de Fondo */
+/* Lado Derecho: Imagen de Fondo pegada al borde sin franja */
 .login-image-section {
-  flex: 1;
   display: none;
   position: relative;
   height: 100%;
-  width: 50%;
   padding: 0;
-  margin-left: -1px;
+  margin: 0;
   overflow: hidden;
+  background-color: var(--color-background);
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
+  .login-form-section {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+  }
+
   .login-image-section {
     display: block;
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
   }
 }
 
@@ -89,23 +103,23 @@
 }
 
 .brand-logo {
-  width: 145px;
-  height: 145px;
+  width: 165px;
+  height: 165px;
   border-radius: 9999px;
   object-fit: cover;
-  box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.16);
 }
 
 .brand-title {
   font-size: 1.85rem;
   font-weight: 700;
-  color: var(--color-auth-text);
+  color: var(--color-text);
   margin: 0;
 }
 
 .brand-subtitle {
   font-size: 1.05rem;
-  color: var(--color-auth-text);
+  color: var(--color-text-muted);
   margin: 0;
 }
 
@@ -114,7 +128,8 @@
    ========================================== */
 .tab-container {
   display: flex;
-  background-color: #f5f5f4;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-stroke);
   padding: 0.3rem;
   border-radius: 0.85rem;
   margin-top: 0.25rem;
@@ -134,18 +149,22 @@
 }
 
 .tab-button.active {
-  background-color: var(--color-auth-button);
+  background-color: #4a2511;
   color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
 }
 
 .tab-button.inactive {
   background-color: transparent;
-  color: #57534e;
+  color: var(--color-text-muted);
+}
+
+.tab-button.inactive:hover {
+  color: var(--color-text);
 }
 
 /* ==========================================
-    Campos del Formulario (Inputs)
+    Campos del Formulario (Inputs en beige)
    ========================================== */
 .form-group {
   display: flex;
@@ -156,7 +175,7 @@
 .form-label {
   font-size: 0.98rem;
   font-weight: 600;
-  color: #292524;
+  color: var(--color-text);
 }
 
 .input-box {
@@ -164,8 +183,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 1.1rem;
-  background-color: #fff7ed;
-  border: 1px solid #e7e5e4;
+  background-color: #f8f1e5;
+  border: 1px solid var(--color-stroke);
   border-radius: 0.85rem;
   gap: 0.75rem;
 }
@@ -185,7 +204,7 @@
 
 .input-text {
   font-size: 1.05rem;
-  color: var(--color-auth-text);
+  color: #2b2b2b;
 }
 
 .input-field {
@@ -194,8 +213,13 @@
   border: none;
   outline: none;
   font-size: 1.05rem;
-  color: var(--color-auth-text);
+  color: #2b2b2b;
   font-family: inherit;
+}
+
+.input-field::placeholder {
+  color: #6b5b4b;
+  opacity: 0.9;
 }
 
 .password-dots {
@@ -213,7 +237,7 @@
 }
 
 /* ==========================================
-    Enlace y Botones de Acción
+    Enlace y Botones de Acción (Botones cafés)
    ========================================== */
 .forgot-password-container {
   display: flex;
@@ -223,7 +247,7 @@
 .forgot-password-link {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--color-auth-text);
+  color: var(--color-text);
   text-decoration: none;
 }
 
@@ -234,7 +258,7 @@
 .btn-submit {
   width: 100%;
   padding: 0.9rem;
-  background-color: var(--color-auth-button) !important;
+  background-color: #4a2511 !important;
   color: #ffffff !important;
   opacity: 1 !important;
   font-size: 1.1rem;
@@ -242,12 +266,12 @@
   border: none;
   border-radius: 0.85rem;
   cursor: pointer;
-  box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.18);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-submit:hover {
-  background-color: #a36b2b !important;
+  background-color: #6b381b !important;
 }
 
 /* ==========================================
@@ -262,13 +286,13 @@
 .divider-line {
   flex: 1;
   height: 1px;
-  background-color: #d6d3d1;
+  background-color: var(--color-stroke);
 }
 
 .divider-text {
   padding: 0 1rem;
   font-size: 0.95rem;
-  color: var(--color-auth-text);
+  color: var(--color-text-muted);
   font-weight: 500;
 }
 
@@ -282,24 +306,136 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 0.85rem;
-  background-color: #fafaf9;
-  border: 1px solid #e7e5e4;
+  background-color: #4a2511;
+  border: 1px solid #4a2511;
   border-radius: 0.85rem;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #292524;
+  color: #ffffff;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .btn-google:hover {
-  background-color: #f5f5f4;
+  background-color: #6b381b;
 }
 
 /* ==========================================
-    Ajustes específicos para teléfonos
+    Modo Oscuro: textos blancos y campos beige
    ========================================== */
-@media (max-width: 600px) {
+[data-theme="dark"] .brand-title,
+.dark-mode .brand-title,
+[data-theme="dark"] .brand-subtitle,
+.dark-mode .brand-subtitle,
+[data-theme="dark"] .form-label,
+.dark-mode .form-label,
+[data-theme="dark"] .tab-button.inactive,
+.dark-mode .tab-button.inactive,
+[data-theme="dark"] .forgot-password-link,
+.dark-mode .forgot-password-link,
+[data-theme="dark"] .divider-text,
+.dark-mode .divider-text {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .input-box,
+.dark-mode .input-box {
+  background-color: #d9c5a7;
+  border-color: var(--color-stroke);
+}
+
+[data-theme="dark"] .input-field,
+.dark-mode .input-field,
+[data-theme="dark"] .input-text,
+.dark-mode .input-text {
+  color: #1f1108;
+}
+
+[data-theme="dark"] .input-field::placeholder,
+.dark-mode .input-field::placeholder {
+  color: #4a2e1b;
+}
+
+[data-theme="dark"] .tab-button.active,
+.dark-mode .tab-button.active,
+[data-theme="dark"] .btn-submit,
+.dark-mode .btn-submit,
+[data-theme="dark"] .btn-google,
+.dark-mode .btn-google {
+  background-color: #382213 !important;
+  border-color: #9e6c43;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .btn-submit:hover,
+.dark-mode .btn-submit:hover,
+[data-theme="dark"] .btn-google:hover,
+.dark-mode .btn-google:hover {
+  background-color: #5c3b24 !important;
+}
+
+/* ==========================================
+    Sidebar deslizable en Login
+   ========================================== */
+@media (min-width: 960px) {
+  .app-with-sidebar--auth .home-sidebar-arrow-btn {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 1200;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 3.25rem;
+    border: 1px solid var(--color-stroke);
+    border-left: none;
+    border-radius: 0 999px 999px 0;
+    background: #4a2511;
+    color: #ffffff;
+    font-size: 1.35rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(35, 16, 6, 0.16);
+  }
+
+  .app-with-sidebar--auth .app-main-content {
+    margin-left: 0;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .app-with-sidebar--auth .home-sidebar-drawer.is-collapsed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width, 260px);
+    height: 100vh;
+    z-index: 1210;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .app-with-sidebar--auth .home-sidebar-drawer.is-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width, 260px);
+    height: 100vh;
+    z-index: 1210;
+    transform: translateX(0);
+    pointer-events: auto;
+    box-shadow: 4px 0 24px rgba(35, 16, 6, 0.25);
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* ==========================================
+    Ajustes responsive y teléfonos
+   ========================================== */
+@media (max-width: 899px) {
   .login-container {
     height: auto;
     min-height: 100vh;
@@ -307,12 +443,30 @@
   }
 
   .login-form-section {
+    height: auto;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
     padding: 1.5rem 1.25rem;
   }
 
+  .form-wrapper {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-form-section {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .form-wrapper {
+    max-width: 100%;
+  }
+
   .brand-logo {
-    width: 125px;
-    height: 125px;
+    width: 140px;
+    height: 140px;
   }
 
   .brand-title {

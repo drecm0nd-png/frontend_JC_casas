@@ -34,8 +34,8 @@ body:has(.car-modal-overlay) {
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
-  align-items: flex-start;      /* ← Ancla desde arriba para subir la tarjeta */
-  padding: 8vh 1rem 1.5rem;     /* ← Sube la tarjeta (ajusta entre 5vh y 10vh si la quieres aún más arriba) */
+  align-items: flex-start;      /* Ancla desde arriba para subir la tarjeta */
+  padding: 8vh 1rem 1.5rem;     /* Sube la tarjeta (ajusta entre 5vh y 10vh si la quieres aún más arriba) */
   z-index: 99999;
   box-sizing: border-box;
   animation: carFadeIn 0.25s ease-out;
@@ -43,7 +43,7 @@ body:has(.car-modal-overlay) {
 }
 
 .car-modal-content {
-  background-color: #ffffff;
+  background-color: var(--color-card);
   border-radius: 20px;
   width: 100%;
   max-width: 500px;
@@ -65,7 +65,7 @@ body:has(.car-modal-overlay) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #f1f5f9;
+  border-bottom: 2px solid var(--color-stroke);
   padding-bottom: 0.85rem;
   flex-shrink: 0;
 }
@@ -73,15 +73,15 @@ body:has(.car-modal-overlay) {
 .car-modal-header h3 {
   margin: 0;
   font-size: 1.3rem;
-  color: #2b2b2b;
+  color: var(--color-text);
   font-weight: 800;
 }
 
 .car-modal-close {
-  background: #f1f5f9;
+  background: var(--color-card);
   border: none;
   cursor: pointer;
-  color: #666;
+  color: var(--color-text-muted);
   width: 36px;
   height: 36px;
   display: flex;
@@ -93,8 +93,8 @@ body:has(.car-modal-overlay) {
 }
 
 .car-modal-close:hover {
-  background: #e2e8f0;
-  color: #000;
+  background: var(--color-stroke);
+  color: var(--color-text);
 }
 
 .car-payment-methods {
@@ -109,26 +109,26 @@ body:has(.car-modal-overlay) {
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1.1rem;
-  background-color: #f8fafc;
-  border: 2px solid #e2e8f0;
+  background-color: var(--color-card);
+  border: 2px solid var(--color-stroke);
   border-radius: 12px;
   font-weight: 700;
   font-size: 0.98rem;
-  color: #334155;
+  color: var(--color-text);
   cursor: pointer;
   text-align: left;
   transition: all 0.2s;
 }
 
 .car-payment-option.active {
-  border-color: #bd732f;
-  background-color: #fdf8f2;
-  color: #bd732f;
+  border-color: var(--color-primary);
+  background-color: var(--color-card);
+  color: var(--color-primary);
 }
 
 .car-qr-container {
-  background-color: #faf7f2;
-  border: 1.5px solid #ebdcc5;
+  background-color: var(--color-card);
+  border: 1.5px solid var(--color-stroke);
   border-radius: 14px;
   padding: 1rem;
   text-align: center;
@@ -139,12 +139,12 @@ body:has(.car-modal-overlay) {
 }
 
 .car-qr-box {
-  background-color: #fff;
+  background-color: var(--color-card);
   padding: 0.75rem;
   border-radius: 12px;
   display: inline-block;
   margin: 0 auto;
-  border: 1.5px solid #ebdcc5;
+  border: 1.5px solid var(--color-stroke);
   max-width: 155px;
 }
 
@@ -156,12 +156,12 @@ body:has(.car-modal-overlay) {
 }
 
 .car-payment-info-box {
-  background-color: #f8fafc;
-  border: 1.5px solid #e2e8f0;
+  background-color: var(--color-card);
+  border: 1.5px solid var(--color-stroke);
   border-radius: 12px;
   padding: 0.9rem;
   font-size: 0.92rem;
-  color: #334155;
+  color: var(--color-text-muted);
   text-align: center;
 }
 
@@ -172,8 +172,8 @@ body:has(.car-modal-overlay) {
 
 .btn-confirm-final-pay {
   width: 100%;
-  background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+  color: var(--color-background);
   border: none;
   padding: 1rem;
   border-radius: 12px;
@@ -184,14 +184,14 @@ body:has(.car-modal-overlay) {
 }
 
 .btn-confirm-final-pay:hover {
-  background: linear-gradient(135deg, #3d3d3d 0%, #2b2b2b 100%);
+  background: linear-gradient(135deg, var(--color-text-muted) 0%, var(--color-text) 100%);
   transform: translateY(-2px);
 }
 
 /* ========== RESPONSIVE: TABLET Y MÓVIL MÁS ARRIBA Y SIN SCROLL ========== */
 @media (max-width: 768px) {
   .car-modal-overlay {
-    padding: 6vh 0.75rem 1rem !important; /* ← Sube la tarjeta en tablet/móvil */
+    padding: 6vh 0.75rem 1rem !important;
     align-items: flex-start !important;
     justify-content: center !important;
     overflow: hidden !important;
@@ -250,7 +250,7 @@ body:has(.car-modal-overlay) {
 
 @media (max-width: 520px) {
   .car-modal-overlay {
-    padding: 5vh 0.6rem 1rem !important;  /* ← Más arriba en celular */
+    padding: 5vh 0.6rem 1rem !important;
     align-items: flex-start !important;
     overflow: hidden !important;
   }

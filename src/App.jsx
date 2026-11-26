@@ -1,16 +1,41 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./Hooks/UseAuth.js";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import AppRoutes from "./Routes/AppRoutes";
 
-export default function App() {
-  const { isAuthenticated } = useAuth();
-  const { pathname } = useLocation();
+const PUBLIC_UNAUTH_ROUTES = new Set([
+  "/",
+  "/inicio",
+  "/configuracion",
+  "/config",
+  "/login",
+  "/registro",
+]);
 
-  // Sincroniza el modo oscuro globalmente (funciona tanto con shell como sin shell)
+export default function App() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const isHome = pathname === "/" || pathname === "/inicio";
+  const isAuthPage = pathname === "/login" || pathname === "/registro";
+  const isDrawerMode = isHome || isAuthPage;
+
+  const [sidebarHovered, setSidebarHovered] = useState(false);
+
+  useEffect(() => {
+    setSidebarHovered(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isAuthenticated && !PUBLIC_UNAUTH_ROUTES.has(pathname)) {
+      navigate("/", { replace: true });
+    }
+  }, [isAuthenticated, pathname, navigate]);
+
   useEffect(() => {
     try {
       const raw = localStorage.getItem("jcasas:config_state");
@@ -28,34 +53,47 @@ export default function App() {
     }
   }, []);
 
-  // Sin shell: la landing sin sesión y las pantallas de login/registro
-  const sinShell =
-    pathname === "/login" ||
-    pathname === "/registro" ||
-    (pathname === "/" && !isAuthenticated);
-  const landingConSesion = pathname === "/" && isAuthenticated;
-
-  if (sinShell) {
-    return <AppRoutes />;
-  }
-
   return (
     <div
       className={`app-with-sidebar${
-        landingConSesion ? " app-shell-desplegable" : ""
-      }`}
+        isDrawerMode ? " app-with-sidebar--home-trigger" : ""
+      }${isAuthPage ? " app-with-sidebar--auth" : ""}`}
     >
-      {landingConSesion && <span className="app-shell-corner" />}
-      <Sidebar />
+      {isDrawerMode && (
+        <button
+          type="button"
+          className="home-sidebar-arrow-btn"
+          aria-label="Mostrar menú lateral"
+          onMouseEnter={() => setSidebarHovered(true)}
+          onFocus={() => setSidebarHovered(true)}
+          onClick={() => setSidebarHovered((prev) => !prev)}
+        >
+          &rsaquo;
+        </button>
+      )}
+
+      <div
+        className={`home-sidebar-drawer${
+          isDrawerMode ? (sidebarHovered ? " is-open" : " is-collapsed") : ""
+        }`}
+        onMouseLeave={() => {
+          if (isDrawerMode) setSidebarHovered(false);
+        }}
+      >
+        <Sidebar
+          isHome={isDrawerMode}
+          isDrawerOpen={isDrawerMode ? sidebarHovered : true}
+        />
+      </div>
 
       <main className="app-main-content">
-        <Header />
+        {!isAuthPage && <Header />}
 
         <div className="app-page-wrapper">
           <AppRoutes />
         </div>
 
-        <Footer />
+        {!isAuthPage && <Footer />}
       </main>
     </div>
   );

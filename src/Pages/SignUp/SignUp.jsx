@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
 
-function SingUp() {
+function SignUp() {
   const navigate = useNavigate();
 
-  // Estados para la casilla de verificación y la ventana emergente (Modal)
   const [aceptado, setAceptado] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
+
+  const handleAceptarTerminos = () => {
+    setAceptado(true);
+    setMostrarModal(false);
+  };
 
   return (
     <div className="signup-container">
       <div className="signup-card">
-        {/* Columna Izquierda: Formulario */}
         <div className="signup-form-section">
           <div className="form-wrapper">
             <header className="signup-header">
@@ -25,7 +28,6 @@ function SingUp() {
               <p className="brand-subtitle">Regístrate para hacer tu pedido</p>
             </header>
 
-            {/* Pestañas de Navegación */}
             <div className="tab-container">
               <button
                 className="tab-button inactive"
@@ -39,13 +41,15 @@ function SingUp() {
               </button>
             </div>
 
-            {/* Formulario de registro */}
             <form className="form-wrapper" onSubmit={(e) => e.preventDefault()}>
-              {/* Campo: Nombre */}
               <div className="form-group">
                 <label className="form-label">Nombre</label>
                 <div className="input-box">
-                  <img src="/src/assets/icons/person.png" alt="user" />
+                  <img
+                    src="/src/assets/icons/person.png"
+                    alt="user"
+                    className="field-icon"
+                  />
                   <input
                     type="text"
                     className="input-field"
@@ -54,7 +58,6 @@ function SingUp() {
                 </div>
               </div>
 
-              {/* Campo: Email */}
               <div className="form-group">
                 <label className="form-label">Email - Correo Electrónico</label>
                 <div className="input-box">
@@ -71,11 +74,14 @@ function SingUp() {
                 </div>
               </div>
 
-              {/* Campo: Número */}
               <div className="form-group">
                 <label className="form-label">Número</label>
                 <div className="input-box">
-                  <img src="/src/assets/icons/call_end (1).png" alt="phone" />
+                  <img
+                    src="/src/assets/icons/call_end (1).png"
+                    alt="phone"
+                    className="field-icon"
+                  />
                   <input
                     type="tel"
                     className="input-field"
@@ -84,7 +90,6 @@ function SingUp() {
                 </div>
               </div>
 
-              {/* Campo: Contraseña */}
               <div className="form-group">
                 <label className="form-label">Contraseña</label>
                 <div className="input-box">
@@ -101,7 +106,6 @@ function SingUp() {
                 </div>
               </div>
 
-              {/* Checkbox Términos con Enlace a Modal */}
               <div className="terms-container">
                 <label className="checkbox-label">
                   <input
@@ -123,7 +127,6 @@ function SingUp() {
                 </label>
               </div>
 
-              {/* Botón de Enviar */}
               <button type="submit" className="btn-submit" disabled={!aceptado}>
                 Registrarse
               </button>
@@ -131,7 +134,6 @@ function SingUp() {
           </div>
         </div>
 
-        {/* Columna Derecha: Imagen Lateral */}
         <div className="signup-image-section">
           <img
             className="signup-bg-image"
@@ -141,15 +143,24 @@ function SingUp() {
         </div>
       </div>
 
-      {/* Modal Emergente con los Términos del Sistema */}
       {mostrarModal && (
         <div className="modal-overlay" onClick={() => setMostrarModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="terms-modal-title"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="modal-header">
-              <h3>Términos y Condiciones - JCasas</h3>
+              <div className="modal-header-titles">
+                <span className="modal-badge">JCasas Restaurante</span>
+                <h3 id="terms-modal-title">Términos y Condiciones</h3>
+              </div>
               <button
                 type="button"
                 className="close-btn"
+                aria-label="Cerrar términos y condiciones"
                 onClick={() => setMostrarModal(false)}
               >
                 &times;
@@ -157,41 +168,67 @@ function SingUp() {
             </div>
 
             <div className="modal-body">
-              <h4>1. Horarios de Servicio y Pedidos</h4>
-              <p>
-                Los pedidos solo se receptarán y procesarán dentro del horario
-                operativo del restaurante (7:00 a.m. a 4:30 p.m.).
-              </p>
+              <div className="terms-item">
+                <h4>1. Horarios de Servicio y Pedidos</h4>
+                <p>
+                  Los pedidos solo se receptarán y procesarán dentro del horario
+                  operativo del restaurante (7:00 a.m. a 4:30 p.m.).
+                </p>
+              </div>
 
-              <h4>2. Estructura del Pedido</h4>
-              <p>
-                Todo almuerzo solicitado debe estar compuesto obligatoriamente por un
-                (1) principio, una (1) proteína y un (1) acompañamiento. Los
-                ingredientes adicionales solo podrán agregarse a un pedido base.
-              </p>
+              <div className="terms-item">
+                <h4>2. Estructura del Pedido</h4>
+                <p>
+                  Todo almuerzo solicitado debe estar compuesto obligatoriamente
+                  por un (1) principio, una (1) proteína y un (1) acompañamiento.
+                  Los ingredientes adicionales solo podrán agregarse a un pedido
+                  base.
+                </p>
+              </div>
 
-              <h4>3. Precios y Tarifas de Domicilio</h4>
-              <p>
-                El valor del almuerzo en el local es de $13.000 COP y a domicilio
-                de $14.500 COP (incluyendo la tarifa de domicilio de $1.500 COP).
-              </p>
+              <div className="terms-item">
+                <h4>3. Precios y Tarifas de Domicilio</h4>
+                <p>
+                  El valor del almuerzo en el local es de $13.000 COP y a
+                  domicilio de $14.500 COP (incluyendo la tarifa de domicilio de
+                  $1.500 COP).
+                </p>
+              </div>
 
-              <h4>4. Disponibilidad de Menú</h4>
-              <p>
-                Los almuerzos y sus ingredientes están sujetos a la disponibilidad
-                de inventario en tiempo real dentro del restaurante.
-              </p>
+              <div className="terms-item">
+                <h4>4. Disponibilidad de Menú</h4>
+                <p>
+                  Los almuerzos y sus ingredientes están sujetos a la
+                  disponibilidad de inventario en tiempo real dentro del
+                  restaurante.
+                </p>
+              </div>
 
-              <h4>5. Protección de Datos</h4>
-              <p>
-                Los datos personales registrados (Nombre, Teléfono, Email) serán
-                utilizados únicamente para gestionar y procesar las entregas de los
-                pedidos.
-              </p>
+              <div className="terms-item">
+                <h4>5. Protección de Datos</h4>
+                <p>
+                  Los datos personales registrados (Nombre, Teléfono, Email) serán
+                  utilizados únicamente para gestionar y procesar las entregas de
+                  los pedidos.
+                </p>
+              </div>
             </div>
 
             <div className="modal-footer">
-             
+              <button
+                type="button"
+                className="btn-modal-cancel"
+                onClick={() => setMostrarModal(false)}
+              >
+                Cerrar
+              </button>
+              <button
+                type="button"
+                className="btn-modal-accept"
+                onClick={handleAceptarTerminos}
+              >
+                Aceptar términos
+              </button>
             </div>
           </div>
         </div>
@@ -200,4 +237,4 @@ function SingUp() {
   );
 }
 
-export default SingUp;
+export default SignUp;

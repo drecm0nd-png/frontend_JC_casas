@@ -1,5 +1,6 @@
 import { FaLocationDot, FaPen, FaNoteSticky, FaMapLocationDot } from "react-icons/fa6";
 import SectionCard from "../../../../Components/SectionCard/SectionCard";
+import mapImg from "../../../../assets/img/map.avif";
 import "./DeliveryAddressCard.css";
 
 export default function DeliveryAddressCard({
@@ -42,6 +43,7 @@ export default function DeliveryAddressCard({
         <div className="car-address-preview-wrapper">
           <div
             className="car-map-preview-box"
+            style={{ "--map-img": `url(${mapImg})` }}
             onClick={onAbrirGoogleMaps}
             title="Haz clic para abrir la dirección en Google Maps"
           >

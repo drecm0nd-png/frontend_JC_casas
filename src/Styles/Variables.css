@@ -32,6 +32,56 @@
   --app-filter: none;
 
   /* ==========================================================
+     VARIABLES DEL CARRITO (CAR) - TEMA CLARO (PALETA ORIGINAL)
+     ========================================================== */
+  --section-card-dark-bg: var(--color-surface);
+  --section-card-dark-border: var(--color-stroke);
+
+  --car-beige-btn-bg: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
+  --car-beige-btn-text: #bd732f;
+  --car-beige-btn-border: #ebdcc5;
+  --car-beige-btn-hover-bg: #bd732f;
+  --car-beige-btn-hover-text: #ffffff;
+  --car-beige-btn-hover-border: #bd732f;
+
+  --car-danger-btn-bg: #ffffff;
+  --car-danger-btn-text: #dc2626;
+  --car-danger-btn-border: #fecaca;
+  --car-danger-btn-hover-bg: #dc2626;
+  --car-danger-btn-hover-text: #ffffff;
+  --car-danger-btn-hover-border: #dc2626;
+
+  --car-input-beige-bg: #ffffff;
+  --car-input-beige-text: #2b2b2b;
+  --car-input-beige-placeholder: #8c8275;
+  --car-input-beige-border: #e4cfb2;
+
+  --car-order-card-bg: #ffffff;
+  --car-order-card-border: #ebdcc5;
+  --car-order-text: #000000;
+  --car-order-badge-bg: #fef3c7;
+  --car-order-badge-text: #92400e;
+  --car-order-progress-track: #e4cfb2;
+  --car-order-progress-fill: #bd732f;
+  --car-order-divider: #e4cfb2;
+
+  --car-reorder-bg: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
+  --car-reorder-text: #bd732f;
+  --car-reorder-border: #ebdcc5;
+  --car-reorder-hover-bg: #bd732f;
+  --car-reorder-hover-text: #ffffff;
+  --car-reorder-hover-border: #bd732f;
+
+  /* ==========================================================
+     VARIABLES DEL FOOTER (BEIGE EN AMBOS MODOS)
+     ========================================================== */
+  --footer-beige-bg: #f8f1e5;
+  --footer-beige-text: #2b2b2b;
+  --footer-beige-title: #4a2511;
+  --footer-beige-icon: #2b2b2b;
+  --footer-beige-border: #e4cfb2;
+
+  /* ==========================================================
      VARIABLES DEL HEADER (TEMA CLARO: CAFÉ Y LETRAS BLANCAS)
      ========================================================== */
   --hdr-main-bg: #4a2511;
@@ -124,6 +174,32 @@
 
   --page-padding: 2rem;
   --component-gap: 1.5rem;
+
+  /* ==========================================================
+     VARIABLES DE LANDING PAGE (TEMA CLARO / POR DEFECTO)
+     ========================================================== */
+  --lp-bg: var(--color-background);
+  --lp-surface: var(--color-card);
+  --lp-text: var(--color-text);
+  --lp-text-secondary: var(--color-text-muted);
+  --lp-border: var(--color-stroke);
+  --lp-accent: #b8935a;
+  --lp-accent-soft: #d9be94;
+  --lp-btn: var(--color-header);
+  --lp-btn-hover: var(--color-primary-hover);
+  --lp-btn-text: var(--color-button-text);
+  --lp-font: var(--font-family-base);
+  --lp-weight-title: var(--font-weight-bold);
+  --lp-weight-subtitle: var(--font-weight-medium);
+  --lp-size-subtitle: var(--font-size-subtitle);
+  --lp-size-desc: var(--font-size-lead);
+  --lp-size-small: var(--font-size-small);
+  --lp-radius: 10px;
+  --lp-radius-grande: calc(var(--lp-radius) * 4);
+  --lp-space: 1rem;
+  --lp-shadow-soft: 0 6px 18px rgba(35, 16, 6, 0.08);
+  --lp-shadow-media: 0 18px 40px -18px rgba(35, 16, 6, 0.35);
+  --lp-section-space: clamp(4rem, 3rem + 4vw, 7rem);
 }
 
 /* ==========================================================
@@ -138,7 +214,7 @@ body.dark-mode,
   --color-card: #8f613f;
   --color-footer: #5d3b22;
   --color-text: #fffaf3;
-  --color-text-muted: #f3dec2;
+  --color-text-muted: #f5ebd6;
   --color-header: #fff6e8;
   --color-primary: #eadbc3;
   --color-primary-hover: #f7ebd7;
@@ -152,6 +228,53 @@ body.dark-mode,
   --color-auth-button: #eadbc3;
   --color-stroke: #c49c74;
   --color-badge-bg: #6b452a;
+
+  /* Fondo y contorno oscuro de section-card en modo oscuro */
+  --section-card-dark-bg: #5c3b24;
+  --section-card-dark-border: #4a2e1b;
+
+  /* Variables del carrito (CAR) - Modo oscuro */
+  --car-beige-btn-bg: #e6d5c1;
+  --car-beige-btn-text: #111111;
+  --car-beige-btn-border: #d4be9f;
+  --car-beige-btn-hover-bg: #d8c2a6;
+  --car-beige-btn-hover-text: #000000;
+  --car-beige-btn-hover-border: #c8ad8b;
+
+  --car-danger-btn-bg: #e6d5c1;
+  --car-danger-btn-text: #991b1b;
+  --car-danger-btn-border: #c8ad8b;
+  --car-danger-btn-hover-bg: #d8c2a6;
+  --car-danger-btn-hover-text: #7f1d1d;
+  --car-danger-btn-hover-border: #b89e7d;
+
+  --car-input-beige-bg: #e6d5c1;
+  --car-input-beige-text: #111111;
+  --car-input-beige-placeholder: #4a3b2c;
+  --car-input-beige-border: #b89e7d;
+
+  --car-order-card-bg: #e6d5c1;
+  --car-order-card-border: #c8ad8b;
+  --car-order-text: #111111;
+  --car-order-badge-bg: #c7a982;
+  --car-order-badge-text: #111111;
+  --car-order-progress-track: #cbb69a;
+  --car-order-progress-fill: #5c3715;
+  --car-order-divider: #bfa686;
+
+  --car-reorder-bg: #d8c2a6;
+  --car-reorder-text: #111111;
+  --car-reorder-border: #b89e7d;
+  --car-reorder-hover-bg: #c7a982;
+  --car-reorder-hover-text: #000000;
+  --car-reorder-hover-border: #a78962;
+
+  /* Variables del footer en modo oscuro (beige más oscuro) */
+  --footer-beige-bg: #c9b08e;
+  --footer-beige-text: #181818;
+  --footer-beige-title: #181818;
+  --footer-beige-icon: #181818;
+  --footer-beige-border: rgba(24, 24, 24, 0.22);
 
   /* Header en modo oscuro: barra principal beige, subnav beige cafesito y letras negras */
   --hdr-main-bg: #f3ead8;
@@ -217,6 +340,20 @@ body.dark-mode,
   --sb-active-icon: #1f1108;
   --sb-active-border: #f7ebd7;
   --sb-active-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+
+  /* Landing en modo oscuro */
+  --lp-bg: var(--color-background);
+  --lp-surface: var(--color-card);
+  --lp-text: #fffaf3;
+  --lp-text-secondary: #f5ebd6;
+  --lp-border: var(--color-stroke);
+  --lp-accent: #e8cfa0;
+  --lp-accent-soft: #f5ebd6;
+  --lp-btn: var(--color-button-primary);
+  --lp-btn-hover: var(--color-primary-hover);
+  --lp-btn-text: var(--color-button-text);
+  --lp-shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.22);
+  --lp-shadow-media: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
 }
 
 /* ==========================================================
@@ -233,6 +370,10 @@ body.dark-mode,
   --color-switch-knob-active: #ffffff;
   --accent-color: #2563eb;
   --accent-hover: #1d4ed8;
+
+  /* Landing en modo daltónico */
+  --lp-accent: var(--color-accent);
+  --lp-accent-soft: var(--color-primary);
 }
 
 /* ==========================================================

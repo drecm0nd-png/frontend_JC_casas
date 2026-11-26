@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useAuth } from "../../Hooks/UseAuth.js";
 import {
   FaArrowDown,
   FaArrowUp,
@@ -9,8 +8,6 @@ import {
   FaPhone,
 } from "react-icons/fa";
 import { FaBowlRice, FaCarrot, FaDrumstickBite, FaPlus } from "react-icons/fa6";
-import LandingHeader from "../../Components/Landing/Header/LandingHeader.jsx";
-import LandingFooter from "../../Components/Landing/Footer/LandingFooter.jsx";
 import LandingButton from "../../Components/Landing/Button/LandingButton.jsx";
 import { scrollToSection } from "../../Utils/ScrollToSection.js";
 import mapa from "../../assets/landing/img/ubicacion.jpg";
@@ -119,29 +116,8 @@ function VideoRestaurante() {
 }
 
 function Home() {
-  const { isAuthenticated } = useAuth();
   const landingRef = useRef(null);
   const [preguntaAbierta, setPreguntaAbierta] = useState(0);
-  const [mostrarVolverArriba, setMostrarVolverArriba] = useState(false);
-
-  useEffect(() => {
-    const apartadoPreguntas = document.getElementById("preguntas-contacto");
-    if (!apartadoPreguntas) return;
-
-    const actualizarVisibilidad = () => {
-      setMostrarVolverArriba(
-        apartadoPreguntas.getBoundingClientRect().top <= window.innerHeight,
-      );
-    };
-
-    actualizarVisibilidad();
-    window.addEventListener("scroll", actualizarVisibilidad, { passive: true });
-    window.addEventListener("resize", actualizarVisibilidad);
-    return () => {
-      window.removeEventListener("scroll", actualizarVisibilidad);
-      window.removeEventListener("resize", actualizarVisibilidad);
-    };
-  }, []);
 
   useLayoutEffect(() => {
     const raiz = landingRef.current;
@@ -162,8 +138,6 @@ function Home() {
     );
     elementos.forEach((elemento) => elemento.classList.add("lp-revelar"));
 
-    // Reproduce el fade-in al bajar y al volver a subir: visible dentro del
-    // viewport y sin la clase al salir, para que la siguiente entrada anime de nuevo.
     const observador = new IntersectionObserver(
       (entradas) => {
         entradas.forEach((entrada) => {
@@ -182,7 +156,6 @@ function Home() {
       <a href="#contenido" className="lp-saltar">
         Saltar al contenido
       </a>
-      {!isAuthenticated && <LandingHeader />}
 
       <main id="contenido">
         <section
@@ -488,23 +461,21 @@ function Home() {
           </div>
         </section>
       </main>
-      <LandingFooter />
-      {mostrarVolverArriba && (
-        <a
-          className="lp-volver-inicio"
-          href="#lp-portada"
-          aria-label="Volver al inicio de la página"
-          title="Volver arriba"
-          onClick={(event) => {
-            event.preventDefault();
-            window.history.pushState(null, "", "#lp-portada");
-            scrollToSection("lp-portada");
-          }}
-        >
-          <FaArrowUp aria-hidden="true" />
-          <span>Volver arriba</span>
-        </a>
-      )}
+
+      <a
+        className="lp-volver-inicio"
+        href="#lp-portada"
+        aria-label="Volver al inicio de la página"
+        title="Volver arriba"
+        onClick={(event) => {
+          event.preventDefault();
+          window.history.pushState(null, "", "#lp-portada");
+          scrollToSection("lp-portada");
+        }}
+      >
+        <FaArrowUp aria-hidden="true" />
+        <span>Volver arriba</span>
+      </a>
     </div>
   );
 }
