@@ -103,6 +103,13 @@ const getStrength = (p) => {
 const STRENGTH_LABELS = ["Muy débil", "Débil", "Aceptable", "Buena", "Fuerte"];
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Nombre: solo letras (con tildes y ñ) y un espacio entre palabras. Sin números ni símbolos.
+const NAME_RE = /^\p{L}+(?: \p{L}+)*$/u;
+
+// Limpia lo que escribe el usuario: borra todo lo que no sea letra o espacio
+const cleanName = (value = "") =>
+  value.replace(/[^\p{L} ]/gu, "").replace(/ {2,}/g, " ").replace(/^ /, "");
 const MAX_IMG_MB = 2;
 
 /* ───────────── Componentes pequeños reutilizables ───────────── */
@@ -217,18 +224,20 @@ function EditProfileModal({ data, onSave, onClose }) {
   const submit = (e) => {
     e.preventDefault();
     const err = {};
-    if (form.nombre.trim().length < 3) err.nombre = "Escribe tu nombre completo.";
+    const nombre = form.nombre.trim();
+    if (nombre.length < 3) err.nombre = "Escribe tu nombre completo.";
+    else if (!NAME_RE.test(nombre)) err.nombre = "El nombre solo puede tener letras (sin números ni caracteres especiales).";
     if (!EMAIL_RE.test(form.correo)) err.correo = "Ingresa un correo válido, por ejemplo nombre@dominio.com.";
     if (form.telefono.replace(/\D/g, "").length < 10) err.telefono = "El teléfono debe tener al menos 10 dígitos.";
     if (!form.restaurante.trim()) err.restaurante = "Indica el nombre del restaurante.";
     setErrors(err);
-    if (Object.keys(err).length === 0) onSave(form);
+    if (Object.keys(err).length === 0) onSave({ ...form, nombre });
   };
 
   return (
     <Modal title="Editar datos personales" onClose={onClose}>
       <form onSubmit={submit} noValidate className="cfg-form">
-        <TextField label="Nombre completo" value={form.nombre} onChange={set("nombre")} error={errors.nombre} autoFocus />
+        <TextField label="Nombre completo" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: cleanName(e.target.value) })} error={errors.nombre} maxLength={60} autoFocus />
         <TextField label="Correo electrónico" type="email" value={form.correo} onChange={set("correo")} error={errors.correo} />
         <TextField label="Teléfono de contacto" type="tel" value={form.telefono} onChange={set("telefono")} error={errors.telefono} />
         <div className="cfg-form-split">
