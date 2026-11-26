@@ -18,52 +18,50 @@
 .shake-animation {
   animation: shakeError 0.4s ease-in-out;
 }
-/* ========== OVERLAY & MODAL ========== */
+
+html:has(.lunch-modal-overlay),
+body:has(.lunch-modal-overlay) {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+/* ========== OVERLAY & MODAL CENTRADO Y SIN SCROLL ========== */
 .lunch-modal-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5.5rem 1rem 1.5rem;
   z-index: 99999;
-  padding: 1rem;
   box-sizing: border-box;
+  overflow: hidden;
   animation: carFadeIn 0.25s ease-out;
 }
+
 .lunch-modal-content {
   background-color: #ffffff;
   border-radius: 20px;
   width: 100%;
   max-width: 880px;
-  padding: 1.8rem 2rem;
+  padding: 1.5rem 1.8rem;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  justify-content: space-between;
+  gap: 0.9rem;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
-  max-height: 92vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  height: auto;
+  max-height: 84vh;
+  margin: 0 auto;
+  overflow: hidden;
   animation: modalScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-/* Mobile / Tablet */
-@media (max-width: 768px) {
-  .lunch-modal-overlay {
-    padding: 0.5rem;
-  }
-  .lunch-modal-content {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    max-height: 97vh;
-    border-radius: 16px;
-    padding: 1.3rem 1.1rem;
-  }
-}
+
 /* ========== HEADER ========== */
 .lunch-modal-header {
   display: flex;
@@ -73,6 +71,7 @@
   padding-bottom: 0.9rem;
   width: 100%;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 .modal-current-step-indicator {
   font-size: 0.78rem;
@@ -108,6 +107,7 @@
   background: #e2e8f0;
   color: #000;
 }
+
 /* ========== STEPPER ========== */
 .stepper-wrapper {
   display: flex;
@@ -117,6 +117,7 @@
   padding: 0 0.3rem;
   width: 100%;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 .step-item {
   width: 32px;
@@ -145,13 +146,7 @@
 .step-line.active {
   background-color: #bd732f;
 }
-@media (max-width: 480px) {
-  .step-item {
-    width: 28px;
-    height: 28px;
-    font-size: 0.78rem;
-  }
-}
+
 /* ========== VALIDATION ========== */
 .validation-error-alert {
   background-color: #fef2f2;
@@ -165,13 +160,15 @@
   align-items: center;
   gap: 0.5rem;
 }
+
 /* ========== STEP CONTENT ========== */
 .step-content {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 0.75rem;
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
   animation: stepTransitionIn 0.3s ease-out forwards;
 }
 .step-label {
@@ -185,27 +182,15 @@
   color: #666666;
   margin: 0;
 }
+
 /* ========== CARDS GRID ========== */
 .modal-cards-grid-kfc {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);   /* 3 columnas en PC */
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.8rem;
   width: 100%;
 }
-/* Tablet */
-@media (max-width: 900px) {
-  .modal-cards-grid-kfc {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-  }
-}
-/* Celular */
-@media (max-width: 520px) {
-  .modal-cards-grid-kfc {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-}
+
 /* ========== INGREDIENT CARDS (CUADRADAS) ========== */
 .modal-ingredient-card-kfc {
   background-color: #ffffff;
@@ -235,15 +220,6 @@
   border-color: #bd732f;
   background-color: #fffaf4;
   box-shadow: 0 6px 20px rgba(189, 115, 47, 0.2);
-}
-/* Ajustes en móvil */
-@media (max-width: 520px) {
-  .modal-ingredient-card-kfc {
-    aspect-ratio: 1 / 1.1;
-    min-height: 170px;
-    max-height: 200px;
-    padding: 0.8rem 0.6rem;
-  }
 }
 .kfc-card-header-actions {
   position: absolute;
@@ -297,13 +273,6 @@
   margin: 1.1rem 0 0.4rem;
   flex-shrink: 0;
 }
-@media (max-width: 520px) {
-  .card-image-placeholder-kfc {
-    width: 58%;
-    margin: 1rem 0 0.3rem;
-    font-size: 0.64rem;
-  }
-}
 .card-title-kfc {
   margin: 0;
   font-size: 0.88rem;
@@ -311,11 +280,6 @@
   color: #2b2b2b;
   line-height: 1.25;
   padding: 0 0.15rem;
-}
-@media (max-width: 520px) {
-  .card-title-kfc {
-    font-size: 0.84rem;
-  }
 }
 .card-price-kfc {
   font-size: 0.8rem;
@@ -339,6 +303,7 @@
   text-align: center;
   box-sizing: border-box;
 }
+
 /* ========== PASO 6 - RESUMEN ========== */
 .recommendation-title-bold {
   font-size: 1.25rem;
@@ -435,17 +400,10 @@
   padding: 0.95rem 1rem;
   box-sizing: border-box;
 }
-
 .lunch-summary-accordion-card.open .lunch-summary-details,
 .lunch-summary-accordion-card.is-open .lunch-summary-details {
   display: grid;
   animation: stepTransitionIn 0.25s ease-out forwards;
-}
-
-@media (max-width: 480px) {
-  .lunch-summary-details {
-    grid-template-columns: 1fr;
-  }
 }
 
 .add-lunch-choice-card {
@@ -466,11 +424,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.65rem;
-}
-@media (max-width: 480px) {
-  .choice-card-buttons {
-    grid-template-columns: 1fr;
-  }
 }
 .btn-choice-same,
 .btn-choice-new {
@@ -521,15 +474,17 @@
   box-sizing: border-box;
   font-family: inherit;
 }
+
 /* ========== BOTONES INFERIORES ========== */
 .step-actions-stacked {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
-  margin-top: 1.1rem;
-  padding-top: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.85rem;
   border-top: 1px solid #ebdcc5;
   width: 100%;
+  flex-shrink: 0;
 }
 .top-row-buttons {
   display: flex;
@@ -589,4 +544,159 @@
 .btn-finish-large:hover {
   background-color: #a46023;
   transform: translateY(-1px);
+}
+
+/* ========== RESPONSIVE: TABLET Y MÓVIL CENTRADO SIN SCROLL ========== */
+@media (max-width: 900px) {
+  .modal-cards-grid-kfc {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lunch-modal-overlay {
+    padding: 4.5rem 0.75rem 1rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .lunch-modal-content {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 85vh !important;
+    margin: 0 auto !important;
+    border-radius: 16px;
+    padding: 1rem 0.95rem;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 0.7rem;
+    overflow: hidden !important;
+  }
+
+  .lunch-modal-header {
+    padding-bottom: 0.55rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .modal-current-step-indicator {
+    font-size: 0.68rem;
+    margin-bottom: 0.1rem;
+  }
+  .modal-main-title {
+    font-size: 1.05rem;
+  }
+  .lunch-modal-close {
+    width: 32px;
+    height: 32px;
+  }
+
+  .stepper-wrapper {
+    margin-bottom: 0.15rem;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .step-item {
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+  .step-line {
+    height: 2px;
+    margin: 0 3px;
+  }
+
+  .step-content {
+    flex: 1 !important;
+    gap: 0.6rem;
+    overflow: hidden !important;
+  }
+  .step-label {
+    font-size: 0.95rem;
+  }
+  .step-desc {
+    font-size: 0.8rem;
+  }
+
+  .step-actions-stacked {
+    margin-top: 0.5rem !important;
+    padding-top: 0.65rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .top-row-buttons {
+    gap: 0.55rem;
+  }
+  .btn-action-large {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+  .btn-action-full {
+    padding: 0.75rem;
+    font-size: 0.88rem;
+    border-radius: 10px;
+  }
+}
+
+/* Celular (< 520px): Centrado vertical, compacto y sin scroll */
+@media (max-width: 520px) {
+  .lunch-modal-overlay {
+    padding: 4rem 0.6rem 1rem !important;
+    align-items: center !important;
+    overflow: hidden !important;
+  }
+
+  .lunch-modal-content {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 86vh !important;
+    margin: 0 auto !important;
+    padding: 0.9rem 0.85rem;
+    gap: 0.6rem;
+    overflow: hidden !important;
+  }
+
+  .modal-cards-grid-kfc {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.55rem;
+  }
+
+  .modal-ingredient-card-kfc {
+    aspect-ratio: auto !important;
+    min-height: 145px !important;
+    max-height: 165px !important;
+    padding: 0.6rem 0.45rem;
+    border-radius: 12px;
+    justify-content: center;
+  }
+
+  .card-image-placeholder-kfc {
+    width: 55%;
+    max-width: 75px;
+    margin: 0.75rem 0 0.35rem;
+    font-size: 0.6rem;
+  }
+
+  .card-title-kfc {
+    font-size: 0.8rem;
+  }
+  .card-price-kfc {
+    font-size: 0.74rem;
+  }
+
+  .lunch-summary-details,
+  .choice-card-buttons {
+    grid-template-columns: 1fr;
+  }
+  .btn-icon-only {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    font-size: 0.9rem;
+  }
 }
