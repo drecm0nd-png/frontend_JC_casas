@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from "react";
+import { useProfile } from "../../Hooks/UseProfile.js";
 import "./Profile.css";
 
 /* ───────────── Iconos (SVG inline, sin dependencias) ───────────── */
@@ -401,16 +402,8 @@ const SECTIONS = [
 export default function Configuracion() {
   const [section, setSection] = usePersistentState("cfg:section", "perfil");
 
-  const [userData, setUserData] = usePersistentState("cfg:userData", {
-    nombre: "Felipe Galeano",
-    correo: "exampleCorreo@gmail.com",
-    telefono: "+57 300 123 4567",
-    rol: "Administrador General",
-    restaurante: "Mi Restaurante",
-    sucursal: "Sede Principal",
-    miembroDesde: "Marzo de 2025",
-    avatar: null,
-  });
+  // Los datos del usuario viven en ProfileProvider (compartidos con el Header y el dropdown)
+  const { userData, setUserData } = useProfile();
 
   const [twoFactor, setTwoFactor] = usePersistentState("cfg:twoFactor", false);
   const [sessions, setSessions] = usePersistentState("cfg:sessions", [
