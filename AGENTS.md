@@ -1,23 +1,21 @@
 # AGENTS.md
 
-## Comandos
-- Scripts: `dev`, `build`, `preview`, `lint` (no hay test ni typecheck).
-- `npm run build` pasa. `npm run lint` falla con 9 errores `no-unused-vars` actuales: esa es la línea base.
-- `eslint.config.js`: flat config sobre `**/*.{js,jsx}`, ignora solo `dist`; incluye react-hooks + react-refresh.
+## Commands
+- Scripts: `dev`, `build`, `preview`, `lint` (no tests or typecheck configured). No `.env` required.
+- `npm run build` succeeds. `npm run lint` (`eslint .`) has a baseline of 10 errors (8 `no-unused-vars` and 2 `react-hooks/set-state-in-effect` in `src/App.jsx:30` and `src/Components/Header/Header.jsx:48`). Do not worsen this count.
+- `eslint.config.js`: flat config covering `**/*.{js,jsx}`, ignoring only `dist`; includes react-hooks (strict new rules) + react-refresh.
 
-## App y arquitectura
-- Cadena: `index.html` → `src/main.jsx` (`BrowserRouter` → `AuthProvider` → `App`) → `src/App.jsx` → `src/Routes/AppRoutes.jsx`.
-- `App.jsx` muestra `Sidebar` + `Header` + `Footer` salvo en `/`; no muestra shell en `/login` ni `/registro`; tras login navega a `/` y el Sidebar aparece pasando el cursor por la esquina.
-- `ProtectedRoute` solo protege `/dashboard`; redirige a `/login`.
-- `/panel` es una sola ruta dirigida por `?tab=inventario|pedidos|permisos|impresion` (`src/Pages/Panel/Panel.jsx`); `Header` usa esa convención en sus links.
-- Landing en `/`: `src/Pages/Home/` + `src/Components/Landing/*` + `src/Styles/LandingGlobal.css`.
+## Architecture & Routing
+- Chain: `index.html` → `src/main.jsx` (`BrowserRouter` → `AuthProvider` → `App`) → `src/App.jsx` → `src/Routes/AppRoutes.jsx`.
+- Global Guard in `App.jsx`: If unauthenticated and route is not in `PUBLIC_UNAUTH_ROUTES` (`/`, `/inicio`, `/configuracion`, `/config`, `/login`, `/registro`), redirects to `/`. Note that routes like `/menu`, `/car`, `/pedidos`, `/perfil` require authentication even if they don't use `ProtectedRoute`.
+- Layout: `App.jsx` renders `Sidebar` + `Header` + `Footer` except on `/`. On `/login` and `/registro`, Header and Footer are hidden, and Sidebar acts as a collapsible drawer. After login, navigates to saved destination (`location.state.from` or `/`).
+- Panel (`/panel`): Single route controlled via `?tab=inventario|pedidos|permisos|impresion` (`src/Pages/Panel/Panel.jsx`, default `inventario`).
 
-## Estado y datos
-- Sin backend: `src/Services/Api.js`, `AuthService.js`, `UserService.js` y `src/Hooks/UseFetch.js` están vacíos; no hay fetch/axios ni env config.
-- Auth en memoria (`src/Context/AuthProvider.jsx`); en `Login` los campos email + contraseña son obligatorios y acepta cualquier credencial no vacía (temporal, sin validación del backend todavía); tras login navega a `destination`.
-- Carro: `src/Hooks/useCarState.js`, con datos hardcodeados (`INITIAL_ITEMS`, `INITIAL_PENDING`, `INITIAL_HISTORY`) y `alert()` en pago/cancelación. No sincroniza con LunchBuilder.
-- Menú: opciones duplicadas en `src/Pages/Menu/Menu.jsx` y `src/Components/LunchBuilder/LunchBuilder.jsx`.
+## State & Data
+- Frontend-only: `src/Services/Api.js`, `AuthService.js`, `UserService.js`, and `src/Hooks/UseFetch.js` are currently empty stubs (0 bytes); no backend/fetch/axios/env config.
+- Auth: In-memory (`src/Context/AuthProvider.jsx`); Login accepts any non-empty email/password.
+- Dark theme: Applied via `localStorage["jcasas:config_state"]` in an `App.jsx` effect (`dark-mode` class + `data-theme` on `<html>`).
 
-## Gotchas de assets
-- `Login` y `SignUp` usan URLs literales `/src/assets/...` (sin import). En producción Vite no las hashea → 404 fuera de desarrollo.
-- `index.html` referencia `/favicon.svg`, que no existe en el repo.
+## Gotchas & Assets
+- `Login` and `SignUp` use literal paths `/src/assets/...` (unimported), which cause 404s in production builds outside dev.
+- `index.html` references `/favicon.svg` (missing) and loads Roboto via Google Fonts (requires runtime network).

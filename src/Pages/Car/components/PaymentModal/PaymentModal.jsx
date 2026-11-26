@@ -1,4 +1,4 @@
-import { FaQrcode, FaMoneyBillWave, FaCreditCard, FaXmark } from "react-icons/fa6";
+import { FaQrcode, FaMoneyBillWave,  FaXmark } from "react-icons/fa6";
 import qrImage from "../../../../assets/icons/codeQR.webp";
 import "./PaymentModal.css";
 
@@ -43,14 +43,7 @@ export default function PaymentModal({
             <span>Efectivo contra entrega</span>
           </button>
 
-          <button
-            type="button"
-            className={`car-payment-option ${metodoSeleccionado === "tarjeta" ? "active" : ""}`}
-            onClick={() => setMetodoSeleccionado("tarjeta")}
-          >
-            <FaCreditCard size={22} color="#1976d2" />
-            <span>Tarjeta Débito / Crédito</span>
-          </button>
+      
         </div>
 
         {metodoSeleccionado === "nequi" && (
@@ -74,11 +67,7 @@ export default function PaymentModal({
           </div>
         )}
 
-        {metodoSeleccionado === "tarjeta" && (
-          <div className="car-payment-info-box">
-            <p>El domiciliario llevará un datáfono inalámbrico a tu domicilio.</p>
-          </div>
-        )}
+      
 
         <div className="car-modal-footer">
           <button type="button" onClick={onConfirmarPago} className="btn-confirm-final-pay">
