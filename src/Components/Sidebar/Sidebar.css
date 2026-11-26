@@ -110,3 +110,105 @@
     padding: 0.9rem;
   }
 }
+
+
+
+
+
+
+
+
+
+.sidebar-locked-box {
+  margin: 0.75rem 0.75rem auto 0.75rem;
+  padding: 0.85rem 0.75rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--sb-text, #4a2e1b);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.7rem;
+}
+
+.sidebar-locked-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  border: none;
+  display: grid;
+  place-items: center;
+  background: var(--color-header, #4a2511);
+  color: var(--color-button-text, #ffffff);
+}
+
+.sidebar-locked-text {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--sb-text, #4a2e1b);
+}
+
+.sidebar-locked-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.05rem;
+  border: none;
+  border-radius: 999px;
+  text-decoration: none;
+  text-decoration-line: none;
+  border-bottom: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  background: var(--color-header, #4a2511);
+  color: #ffffff;
+  box-shadow: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.sidebar-locked-btn::before,
+.sidebar-locked-btn::after,
+.sidebar-locked-btn span::before,
+.sidebar-locked-btn span::after {
+  display: none !important;
+  content: none !important;
+}
+
+.sidebar-locked-btn:hover,
+.sidebar-locked-btn:focus {
+  text-decoration: none;
+  text-decoration-line: none;
+  border-bottom: none;
+  background: var(--hdr-subnav-bg, #6b381b);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .sidebar-locked-box,
+.dark-mode .sidebar-locked-box {
+  background: transparent;
+  color: var(--sb-text, #fff9f2);
+}
+
+[data-theme="dark"] .sidebar-locked-text,
+.dark-mode .sidebar-locked-text {
+  color: var(--sb-text, #fff9f2);
+}
+
+[data-theme="dark"] .sidebar-locked-btn,
+.dark-mode .sidebar-locked-btn {
+  background: #eadbc3;
+  color: #1f1108;
+}
+
+[data-theme="dark"] .sidebar-locked-btn:hover,
+.dark-mode .sidebar-locked-btn:hover,
+[data-theme="dark"] .sidebar-locked-btn:focus,
+.dark-mode .sidebar-locked-btn:focus {
+  background: #f7ebd7;
+  color: #1f1108;
+}

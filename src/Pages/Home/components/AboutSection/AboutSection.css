@@ -1,0 +1,111 @@
+.lp-nosotros {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+.lp-nosotros__visual {
+  position: relative;
+  margin: 0;
+}
+
+.lp-nosotros__imagen {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  border-radius: calc(var(--lp-radius-grande) * 1.5);
+  background: var(--lp-surface);
+}
+
+.lp-nosotros__sello {
+  position: absolute;
+  right: 1rem;
+  bottom: -1.5rem;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: var(--lp-btn);
+  color: var(--lp-btn-text);
+  text-align: center;
+  box-shadow: var(--lp-shadow-media);
+}
+
+.lp-nosotros__sello strong {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.lp-nosotros__sello span {
+  max-width: 6rem;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  color: var(--lp-surface);
+}
+
+.lp-nosotros__texto .lp-seccion__cabecera {
+  margin-bottom: 1.5rem;
+}
+
+.lp-nosotros__texto > p {
+  font-size: 1.05rem;
+  color: var(--lp-text-secondary);
+}
+
+.lp-valores {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.lp-valor {
+  display: flex;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--lp-radius-grande);
+  background: var(--lp-surface);
+}
+
+.lp-valor__icono {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--lp-bg);
+  color: var(--lp-btn);
+}
+
+.lp-valor__titulo {
+  margin: 0 0 0.15rem;
+  font-size: 1rem;
+  font-weight: var(--lp-weight-subtitle);
+  color: var(--lp-text);
+}
+
+.lp-valor p {
+  margin: 0;
+  font-size: var(--lp-size-small);
+  color: var(--lp-text-secondary);
+}
+
+@media (min-width: 900px) {
+  .lp-nosotros {
+    grid-template-columns: 1fr 1fr;
+    gap: 4.5rem;
+  }
+  .lp-nosotros__sello {
+    right: -1.5rem;
+  }
+}
+
+[data-theme="dark"] .lp-nosotros__texto > p,
+.dark-mode .lp-nosotros__texto > p,
+[data-theme="dark"] .lp-valor p,
+.dark-mode .lp-valor p {
+  color: #f5ebd6;
+}

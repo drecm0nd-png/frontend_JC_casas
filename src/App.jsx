@@ -1,18 +1,36 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "./Hooks/UseAuth.js";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import AppRoutes from "./Routes/AppRoutes";
 
+const PUBLIC_UNAUTH_ROUTES = new Set([
+  "/",
+  "/inicio",
+  "/configuracion",
+  "/config",
+  "/login",
+  "/registro",
+]);
+
 export default function App() {
   const { pathname } = useLocation();
-  const isHome = pathname === "/";
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const isHome = pathname === "/" || pathname === "/inicio";
   const [sidebarHovered, setSidebarHovered] = useState(false);
 
   useEffect(() => {
     setSidebarHovered(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!isAuthenticated && !PUBLIC_UNAUTH_ROUTES.has(pathname)) {
+      navigate("/", { replace: true });
+    }
+  }, [isAuthenticated, pathname, navigate]);
 
   useEffect(() => {
     try {
@@ -63,7 +81,10 @@ export default function App() {
           if (isHome) setSidebarHovered(false);
         }}
       >
-        <Sidebar isHome={isHome} isDrawerOpen={isHome ? sidebarHovered : true} />
+        <Sidebar
+          isHome={isHome}
+          isDrawerOpen={isHome ? sidebarHovered : true}
+        />
       </div>
 
       <main className="app-main-content">

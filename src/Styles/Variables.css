@@ -124,6 +124,32 @@
 
   --page-padding: 2rem;
   --component-gap: 1.5rem;
+
+  /* ==========================================================
+     VARIABLES DE LANDING PAGE (TEMA CLARO / POR DEFECTO)
+     ========================================================== */
+  --lp-bg: var(--color-background);
+  --lp-surface: var(--color-card);
+  --lp-text: var(--color-text);
+  --lp-text-secondary: var(--color-text-muted);
+  --lp-border: var(--color-stroke);
+  --lp-accent: #b8935a;
+  --lp-accent-soft: #d9be94;
+  --lp-btn: var(--color-header);
+  --lp-btn-hover: var(--color-primary-hover);
+  --lp-btn-text: var(--color-button-text);
+  --lp-font: var(--font-family-base);
+  --lp-weight-title: var(--font-weight-bold);
+  --lp-weight-subtitle: var(--font-weight-medium);
+  --lp-size-subtitle: var(--font-size-subtitle);
+  --lp-size-desc: var(--font-size-lead);
+  --lp-size-small: var(--font-size-small);
+  --lp-radius: 10px;
+  --lp-radius-grande: calc(var(--lp-radius) * 4);
+  --lp-space: 1rem;
+  --lp-shadow-soft: 0 6px 18px rgba(35, 16, 6, 0.08);
+  --lp-shadow-media: 0 18px 40px -18px rgba(35, 16, 6, 0.35);
+  --lp-section-space: clamp(4rem, 3rem + 4vw, 7rem);
 }
 
 /* ==========================================================
@@ -138,7 +164,7 @@ body.dark-mode,
   --color-card: #8f613f;
   --color-footer: #5d3b22;
   --color-text: #fffaf3;
-  --color-text-muted: #f3dec2;
+  --color-text-muted: #f5ebd6;
   --color-header: #fff6e8;
   --color-primary: #eadbc3;
   --color-primary-hover: #f7ebd7;
@@ -217,6 +243,20 @@ body.dark-mode,
   --sb-active-icon: #1f1108;
   --sb-active-border: #f7ebd7;
   --sb-active-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+
+  /* Landing en modo oscuro */
+  --lp-bg: var(--color-background);
+  --lp-surface: var(--color-card);
+  --lp-text: #fffaf3;
+  --lp-text-secondary: #f5ebd6;
+  --lp-border: var(--color-stroke);
+  --lp-accent: #e8cfa0;
+  --lp-accent-soft: #f5ebd6;
+  --lp-btn: var(--color-button-primary);
+  --lp-btn-hover: var(--color-primary-hover);
+  --lp-btn-text: var(--color-button-text);
+  --lp-shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.22);
+  --lp-shadow-media: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
 }
 
 /* ==========================================================
@@ -233,6 +273,10 @@ body.dark-mode,
   --color-switch-knob-active: #ffffff;
   --accent-color: #2563eb;
   --accent-hover: #1d4ed8;
+
+  /* Landing en modo daltónico */
+  --lp-accent: var(--color-accent);
+  --lp-accent-soft: var(--color-primary);
 }
 
 /* ==========================================================

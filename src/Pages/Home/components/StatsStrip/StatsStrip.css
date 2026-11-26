@@ -1,0 +1,40 @@
+.lp-cifras {
+  background: var(--lp-btn);
+  color: var(--lp-btn-text);
+}
+
+.lp-cifras__lista {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding-block: 2.5rem;
+}
+
+.lp-cifras__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lp-cifras__item strong {
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  font-weight: var(--lp-weight-title);
+  line-height: 1;
+  color: var(--lp-surface);
+}
+
+.lp-cifras__item span {
+  font-size: var(--lp-size-small);
+  color: var(--lp-accent-soft);
+}
+
+@media (min-width: 768px) {
+  .lp-cifras__lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .lp-cifras__item + .lp-cifras__item {
+    padding-left: 1.5rem;
+    border-left: 1px solid
+      color-mix(in srgb, var(--lp-accent-soft) 35%, transparent);
+  }
+}
