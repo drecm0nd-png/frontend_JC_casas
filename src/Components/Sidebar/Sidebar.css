@@ -18,6 +18,28 @@
   transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
+.app-sidebar a,
+.app-sidebar a:hover,
+.app-sidebar a:focus,
+.app-sidebar a:active,
+.app-sidebar a *,
+.app-sidebar a:hover *,
+.app-sidebar a:focus *,
+.app-sidebar a:active * {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-underline-offset: 0 !important;
+}
+
+.app-sidebar a::before,
+.app-sidebar a::after,
+.app-sidebar a *::before,
+.app-sidebar a *::after {
+  display: none !important;
+  content: none !important;
+}
+
 /* Logotipo centrado sin texto */
 .sidebar-brand {
   display: flex;
@@ -26,7 +48,6 @@
   padding-bottom: 1.5rem;
   border-bottom: 2px solid var(--sb-divider);
   margin-bottom: 1.5rem;
-  text-decoration: none;
 }
 
 .sidebar-logo-img {
@@ -57,9 +78,12 @@
   color: var(--sb-text);
   font-weight: 700;
   font-size: 0.98rem;
-  text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1.5px solid transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-link span {
+  border-bottom: 0 !important;
 }
 
 .sidebar-link svg {
@@ -91,101 +115,63 @@
 }
 
 /* ==========================================================================
-   RESPONSIVO PARA MÓVILES (SIDEBAR COMPACTO)
+   ESTADO BLOQUEADO SIN SESIÓN (ESCRITORIO)
    ========================================================================== */
-@media (max-width: 900px) {
-  .app-sidebar {
-    width: 80px;
-    padding: 1.5rem 0.6rem;
-  }
-  .sidebar-logo-img {
-    width: 44px;
-    height: 44px;
-  }
-  .sidebar-link span {
-    display: none;
-  }
-  .sidebar-link {
-    justify-content: center;
-    padding: 0.9rem;
-  }
-}
-
-
-
-
-
-
-
-
-
 .sidebar-locked-box {
-  margin: 0.75rem 0.75rem auto 0.75rem;
-  padding: 0.85rem 0.75rem;
+  margin: 0.25rem 0.25rem auto 0.25rem;
+  padding: 0.75rem 0.5rem;
   border: none;
   border-radius: 0;
   background: transparent;
-  color: var(--sb-text, #4a2e1b);
+  color: var(--sb-text);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.7rem;
+  gap: 0.75rem;
 }
 
 .sidebar-locked-icon {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
   border: none;
   display: grid;
   place-items: center;
   background: var(--color-header, #4a2511);
-  color: var(--color-button-text, #ffffff);
+  color: #ffffff;
 }
 
 .sidebar-locked-text {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   line-height: 1.45;
-  color: var(--sb-text, #4a2e1b);
+  color: var(--sb-text);
 }
 
 .sidebar-locked-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.6rem 1.05rem;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
   border: none;
   border-radius: 999px;
-  text-decoration: none;
-  text-decoration-line: none;
-  border-bottom: none;
-  font-size: 0.84rem;
-  font-weight: 600;
+  font-size: 0.88rem;
+  font-weight: 700;
   background: var(--color-header, #4a2511);
   color: #ffffff;
-  box-shadow: none;
-  transition: background-color 160ms ease, color 160ms ease;
-}
-
-.sidebar-locked-btn::before,
-.sidebar-locked-btn::after,
-.sidebar-locked-btn span::before,
-.sidebar-locked-btn span::after {
-  display: none !important;
-  content: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .sidebar-locked-btn:hover,
 .sidebar-locked-btn:focus {
-  text-decoration: none;
-  text-decoration-line: none;
-  border-bottom: none;
   background: var(--hdr-subnav-bg, #6b381b);
   color: #ffffff;
-  box-shadow: none;
+}
+
+.sidebar-compact-link {
+  display: none;
 }
 
 [data-theme="dark"] .sidebar-locked-box,
@@ -211,4 +197,31 @@
 .dark-mode .sidebar-locked-btn:focus {
   background: #f7ebd7;
   color: #1f1108;
+}
+
+/* ==========================================================================
+   RESPONSIVO PARA MÓVILES (SIDEBAR COMPACTO)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .app-sidebar {
+    width: 80px;
+    padding: 1.5rem 0.6rem;
+  }
+  .sidebar-logo-img {
+    width: 44px;
+    height: 44px;
+  }
+  .sidebar-link span {
+    display: none;
+  }
+  .sidebar-link {
+    justify-content: center;
+    padding: 0.9rem;
+  }
+  .sidebar-locked-box {
+    display: none;
+  }
+  .sidebar-compact-link {
+    display: flex;
+  }
 }
