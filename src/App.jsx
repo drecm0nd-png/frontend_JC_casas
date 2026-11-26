@@ -1,16 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useAuth } from "./Hooks/UseAuth.js";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import AppRoutes from "./Routes/AppRoutes";
 
 export default function App() {
-  const { isAuthenticated } = useAuth();
   const { pathname } = useLocation();
+  const isHome = pathname === "/";
+  const [sidebarHovered, setSidebarHovered] = useState(false);
 
-  // Sincroniza el modo oscuro globalmente (funciona tanto con shell como sin shell)
+  useEffect(() => {
+    setSidebarHovered(false);
+  }, [pathname]);
+
   useEffect(() => {
     try {
       const raw = localStorage.getItem("jcasas:config_state");
@@ -28,12 +31,7 @@ export default function App() {
     }
   }, []);
 
-  // Sin shell: la landing sin sesión y las pantallas de login/registro
-  const sinShell =
-    pathname === "/login" ||
-    pathname === "/registro" ||
-    (pathname === "/" && !isAuthenticated);
-  const landingConSesion = pathname === "/" && isAuthenticated;
+  const sinShell = pathname === "/login" || pathname === "/registro";
 
   if (sinShell) {
     return <AppRoutes />;
@@ -42,11 +40,31 @@ export default function App() {
   return (
     <div
       className={`app-with-sidebar${
-        landingConSesion ? " app-shell-desplegable" : ""
+        isHome ? " app-with-sidebar--home-trigger" : ""
       }`}
     >
-      {landingConSesion && <span className="app-shell-corner" />}
-      <Sidebar />
+      {isHome && (
+        <button
+          type="button"
+          className="home-sidebar-arrow-btn"
+          aria-label="Mostrar menú lateral"
+          onMouseEnter={() => setSidebarHovered(true)}
+          onFocus={() => setSidebarHovered(true)}
+        >
+          &rsaquo;
+        </button>
+      )}
+
+      <div
+        className={`home-sidebar-drawer${
+          isHome ? (sidebarHovered ? " is-open" : " is-collapsed") : ""
+        }`}
+        onMouseLeave={() => {
+          if (isHome) setSidebarHovered(false);
+        }}
+      >
+        <Sidebar isHome={isHome} isDrawerOpen={isHome ? sidebarHovered : true} />
+      </div>
 
       <main className="app-main-content">
         <Header />

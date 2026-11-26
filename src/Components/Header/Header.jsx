@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Hooks/UseAuth.js";
+import { scrollToSection } from "../../Utils/ScrollToSection.js";
 import {
   FaArrowRightToBracket,
   FaRightFromBracket,
@@ -29,7 +30,7 @@ function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeHash, setActiveHash] = useState(location.hash || "");
+  const [activeHash, setActiveHash] = useState(location.hash || "#lp-portada");
 
   const [showBrandMessage, setShowBrandMessage] = useState(false);
 
@@ -44,13 +45,13 @@ function Header() {
   const currentPath = location.pathname;
 
   useEffect(() => {
-    setActiveHash(location.hash || "");
-  }, [location.pathname, location.hash]);
+    setActiveHash(location.hash || (currentPath === "/" || currentPath === "/inicio" ? "#lp-portada" : ""));
+  }, [location.pathname, location.hash, currentPath]);
 
   useEffect(() => {
     const hashTargets = {
-      "/": ["#nosotros", "#restaurante", "#informacion", "#contacto"],
-      "/inicio": ["#nosotros", "#restaurante", "#informacion", "#contacto"],
+      "/": ["#lp-portada", "#nosotros", "#menu", "#cobertura", "#preguntas-contacto"],
+      "/inicio": ["#lp-portada", "#nosotros", "#menu", "#cobertura", "#preguntas-contacto"],
       "/menu": ["#almuerzo", "#bebidas", "#adicionales"]
     };
 
@@ -75,8 +76,8 @@ function Header() {
 
       if (currentSection) {
         setActiveHash(currentSection);
-      } else if (window.scrollY < 120) {
-        setActiveHash("");
+      } else if (window.scrollY < 140 && (currentPath === "/" || currentPath === "/inicio")) {
+        setActiveHash("#lp-portada");
       }
     };
 
@@ -120,12 +121,18 @@ function Header() {
       return currentProfileTab === link.tabId;
     }
     if (link.to) {
-      const [, query] = link.to.split("?");
-      const params = new URLSearchParams(query || "");
-      const targetTab = params.get("tab");
-      return targetTab ? currentPanelTab === targetTab : false;
+      const [pathname, query] = link.to.split("?");
+      if (query) {
+        const params = new URLSearchParams(query);
+        const targetTab = params.get("tab");
+        return targetTab ? currentPanelTab === targetTab : false;
+      }
+      return currentPath === pathname;
     }
     if (link.href) {
+      if (link.href === "#lp-portada" && !activeHash && (currentPath === "/" || currentPath === "/inicio")) {
+        return true;
+      }
       return activeHash === link.href;
     }
     return false;
@@ -138,10 +145,11 @@ function Header() {
         return {
           type: "links",
           items: [
+            { label: "Inicio", href: "#lp-portada" },
             { label: "Nosotros", href: "#nosotros" },
-            { label: "Restaurante", href: "#restaurante" },
-            { label: "Información", href: "#informacion" },
-            { label: "Contacto", href: "#contacto" }
+            { label: "Nuestro menú", href: "#menu" },
+            { label: "Horarios y ubicación", href: "#cobertura" },
+            { label: "Preguntas y contacto", href: "#preguntas-contacto" }
           ]
         };
       case "/menu":
@@ -216,9 +224,21 @@ function Header() {
       navigate(link.to);
     } else if (link.href) {
       setActiveHash(link.href);
-      const element = document.querySelector(link.href);
+      const sectionId = link.href.replace(/^#/, "");
+      if (sectionId === "lp-portada") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const element = document.getElementById(sectionId) || document.querySelector(link.href);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const headerOffset = document.querySelector(".header-wrapper")?.offsetHeight || 90;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: Math.max(0, elementPosition - headerOffset - 12),
+          behavior: "smooth"
+        });
+      } else {
+        scrollToSection(sectionId);
       }
     }
   };
