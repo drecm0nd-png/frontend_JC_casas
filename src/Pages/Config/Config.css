@@ -13,6 +13,20 @@
   --app-filter: none;
 }
 
+[data-theme="dark"],
+:root.dark-mode,
+body.dark-mode,
+.dark-mode {
+  --bg-page: #7b5234;
+  --bg-card: #5c3b24;
+  --bg-subtle: #8f613f;
+  --text-main: #fffaf3;
+  --text-muted: #f5ebd6;
+  --border-color: #c49c74;
+  --accent-color: #eadbc3;
+  --accent-hover: #f7ebd7;
+}
+
 @keyframes configFadeIn {
   from {
     opacity: 0;
@@ -33,6 +47,14 @@
   filter: brightness(var(--app-brightness)) var(--app-filter);
   transition: background-color 0.25s ease, color 0.25s ease, filter 0.2s ease;
   animation: configFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-theme="dark"] .config-page-container,
+:root.dark-mode .config-page-container,
+body.dark-mode .config-page-container,
+.dark-mode .config-page-container {
+  background-color: #7b5234 !important;
+  color: #fffaf3;
 }
 
 .config-page-container.font-small {

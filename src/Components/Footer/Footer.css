@@ -1,18 +1,25 @@
 /* src/components/Footer/Footer.css */
 
 .footer {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  /* OPTIMIZADO: Usa padding global arriba/abajo y variable a los lados */
+  background-color: #f8f1e5;
+  color: #2b2b2b;
   padding: 2.5rem var(--page-padding) 1.25rem;
   font-size: var(--font-size-small);
+}
+
+[data-theme="dark"] .footer,
+:root.dark-mode .footer,
+body.dark-mode .footer,
+.dark-mode .footer {
+  background-color: #c9b08e;
+  color: #181818;
 }
 
 /* ---------- Contenedor de columnas ---------- */
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: var(--component-gap); /* OPTIMIZADO: Usa la separación global */
+  gap: var(--component-gap);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -39,8 +46,19 @@
   font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  color: var(--color-header);
+  color: #4a2511;
   margin-bottom: 0.75rem;
+}
+
+[data-theme="dark"] .title-footer,
+[data-theme="dark"] .contact-title,
+:root.dark-mode .title-footer,
+:root.dark-mode .contact-title,
+body.dark-mode .title-footer,
+body.dark-mode .contact-title,
+.dark-mode .title-footer,
+.dark-mode .contact-title {
+  color: #181818;
 }
 
 /* ---------- Descripción ---------- */
@@ -58,12 +76,19 @@
 }
 
 .footer-social a {
-  color: #000;
+  color: #000000;
+}
+
+[data-theme="dark"] .footer-social a,
+:root.dark-mode .footer-social a,
+body.dark-mode .footer-social a,
+.dark-mode .footer-social a {
+  color: #181818;
 }
 
 .footer-social svg {
   height: 30px;
-  width: 30px; /* Mantiene proporción correcta anulando el reset global */
+  width: 30px;
   transition: opacity 0.2s ease;
 }
 
@@ -90,7 +115,7 @@
 
 .right-footer a:hover,
 .right-footer a:focus-visible {
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: underline;
 }
 
@@ -99,8 +124,15 @@
   max-width: 1200px;
   margin: 2rem auto 0;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-stroke);
+  border-top: 1px solid #e4cfb2;
   font-size: var(--font-size-caption);
   text-align: center;
   font-weight: var(--font-weight-light);
+}
+
+[data-theme="dark"] .footer-copy,
+:root.dark-mode .footer-copy,
+body.dark-mode .footer-copy,
+.dark-mode .footer-copy {
+  border-top-color: rgba(24, 24, 24, 0.22);
 }

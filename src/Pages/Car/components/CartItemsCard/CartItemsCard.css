@@ -17,13 +17,13 @@
 }
 
 .car-items-list::-webkit-scrollbar-thumb {
-  background: #ebdcc5;
+  background: var(--color-card);
   border-radius: 10px;
 }
 
 .car-item-row {
-  background: #fcfbfa;
-  border: 1.5px solid #ebdcc5;
+  background: var(--color-card);
+  border: 1.5px solid var(--color-card);
   border-radius: 14px;
   padding: 1.1rem;
   transition: all 0.25s ease;
@@ -36,7 +36,7 @@
 }
 
 .car-item-row:hover {
-  border-color: #bd732f;
+  border-color: var(--color-primary);
   box-shadow: 0 6px 16px rgba(189, 115, 47, 0.08);
 }
 
@@ -59,8 +59,8 @@
 
 .car-item-qty {
   font-weight: 800;
-  color: #bd732f;
-  background-color: #f8f1e5;
+  color: var(--color-primary);
+  background-color: var(--color-background);
   padding: 0.35rem 0.75rem;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -76,7 +76,7 @@
 }
 
 .car-item-name {
-  color: #2b2b2b;
+  color: var(--color-text);
   font-weight: 700;
   font-size: 0.95rem;
   white-space: nowrap;
@@ -86,13 +86,13 @@
 
 .item-details-tags {
   font-size: 0.78rem;
-  color: #666;
+  color: var(--color-text-muted);
   font-weight: 500;
   line-height: 1.3;
-  background: #f4ede4;
+  background: var(--color-card);
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
-  border: 1px solid #ebdcc5;
+  border: 1px solid var(--color-stroke);
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -109,7 +109,7 @@
 
 .car-item-price {
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
   font-size: 1.05rem;
   white-space: nowrap;
 }
@@ -128,49 +128,49 @@
 }
 
 .btn-action-icon.edit {
-  background-color: #fdf8f2;
-  color: #bd732f;
-  border-color: #ebdcc5;
+  background: var(--car-beige-btn-bg);
+  color: var(--car-beige-btn-text);
+  border-color: var(--car-beige-btn-border);
 }
 
 .btn-action-icon.edit:hover {
-  background-color: #bd732f;
-  color: #fff;
-  border-color: #bd732f;
+  background: var(--car-beige-btn-hover-bg);
+  color: var(--car-beige-btn-hover-text);
+  border-color: var(--car-beige-btn-hover-border);
 }
 
 .btn-action-icon.delete {
-  background-color: #fff5f5;
-  color: #dc2626;
-  border-color: #fecaca;
+  background-color: var(--car-danger-btn-bg);
+  color: var(--car-danger-btn-text);
+  border-color: var(--car-danger-btn-border);
 }
 
 .btn-action-icon.delete:hover {
-  background-color: #dc2626;
-  color: #fff;
-  border-color: #dc2626;
+  background-color: var(--car-danger-btn-hover-bg);
+  color: var(--car-danger-btn-hover-text);
+  border-color: var(--car-danger-btn-hover-border);
 }
 
 .car-edit-controls {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background: #f8fafc;
+  background: var(--color-card);
   padding: 0.25rem;
   border-radius: 10px;
-  border: 1.5px solid #cbd5e1;
+  border: 1.5px solid var(--color-stroke);
   flex-shrink: 0;
 }
 
 .btn-qty-mod {
   padding: 0.3rem 0.6rem;
-  background: #fff;
-  border: 1.5px solid #cbd5e1;
+  background: var(--car-beige-btn-bg);
+  border: 1.5px solid var(--car-beige-btn-border);
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
-  color: #1e293b;
+  color: var(--car-beige-btn-text);
   min-width: 34px;
   min-height: 34px;
   display: flex;
@@ -180,16 +180,16 @@
 }
 
 .btn-qty-mod:hover {
-  background: #bd732f;
-  color: #fff;
-  border-color: #bd732f;
+  background: var(--car-beige-btn-hover-bg);
+  color: var(--car-beige-btn-hover-text);
+  border-color: var(--car-beige-btn-hover-border);
 }
 
 .car-qty-display {
   font-weight: 800;
   padding: 0 0.3rem;
   font-size: 1rem;
-  color: #1e293b;
+  color: var(--color-text);
   text-align: center;
   min-width: 20px;
 }
@@ -208,8 +208,8 @@
 }
 
 .car-confirm-delete-box {
-  background-color: #fffaf0;
-  border: 1.5px solid #f6ad55;
+  background-color: var(--color-card);
+  border: 1.5px solid var(--color-stroke);
   border-radius: 12px;
   padding: 0.8rem;
   display: flex;
@@ -222,7 +222,7 @@
 
 .car-confirm-delete-box span {
   font-weight: 700;
-  color: #744210;
+  color: var(--color-text-muted);
   font-size: 0.85rem;
 }
 
@@ -241,21 +241,28 @@
 }
 
 .btn-yes-delete {
-  background-color: #dc2626;
+  background-color: #dc2727;
   color: #fff;
   border: none;
 }
 
+@media (prefers-color-scheme: dark) {
+  .btn-yes-delete {
+    background-color: #b91c1c;
+    color: #fff;
+  }
+}
+
 .btn-cancel-delete {
-  background-color: #e2e8f0;
-  color: #4a5568;
+  background-color: var(--color-card);
+  color: var(--color-text-muted);
   border: none;
 }
 
 .car-empty-state {
   text-align: center;
   padding: 2.5rem 1rem;
-  color: #718096;
+  color: var(--color-text-muted);
 }
 
 .car-empty-state p {
@@ -264,7 +271,7 @@
 }
 
 .btn-go-menu {
-  background-color: #bd732f;
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   padding: 0.8rem 1.4rem;
@@ -277,13 +284,13 @@
 }
 
 .btn-go-menu:hover {
-  background-color: #a36125;
+  background: #a36125;
   transform: translateY(-2px);
 }
 
 .car-customization-panel {
-  background: #ffffff;
-  border: 1.5px solid #bd732f;
+  background: var(--color-card);
+  border: 1.5px solid var(--color-primary);
   border-radius: 12px;
   padding: 1rem;
   display: flex;
@@ -298,9 +305,9 @@
 .car-custom-title {
   margin: 0;
   font-size: 0.9rem;
-  color: #bd732f;
+  color: var(--color-primary);
   font-weight: 800;
-  border-bottom: 1px dashed #ebdcc5;
+  border-bottom: 1px dashed var(--color-stroke);
   padding-bottom: 0.4rem;
 }
 
@@ -325,7 +332,7 @@
 .car-custom-group label {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #555;
+  color: var(--color-text-muted);
 }
 
 .car-custom-actions {
@@ -333,12 +340,12 @@
   justify-content: flex-end;
   gap: 0.5rem;
   margin-top: 0.2rem;
-  border-top: 1px solid #f2e8dc;
+  border-top: 1px solid var(--color-stroke);
   padding-top: 0.6rem;
 }
 
 .btn-save-custom {
-  background: #bd732f;
+  background: var(--color-primary);
   color: #fff;
   border: none;
   padding: 0.55rem 1.2rem;
@@ -363,8 +370,8 @@
 }
 
 .btn-cancel-custom {
-  background: #e2e8f0;
-  color: #4a5568;
+  background: var(--color-card);
+  color: var(--color-text-muted);
   border: none;
   padding: 0.45rem 0.9rem;
   border-radius: 8px;
@@ -374,7 +381,7 @@
 }
 
 .btn-cancel-custom:hover {
-  background: #cbd5e1;
+  background: var(--color-stroke);
 }
 
 .car-payment-actions {
@@ -388,8 +395,8 @@
 }
 
 .car-financial-summary {
-  background: #fdfaf6;
-  border: 1.5px solid #ebdcc5;
+  background: var(--color-card);
+  border: 1.5px solid var(--color-stroke);
   border-radius: 14px;
   padding: 1.1rem;
   display: flex;
@@ -404,27 +411,27 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--color-text-muted);
 }
 
 .car-summary-row.total {
-  border-top: 1px dashed #ebdcc5;
+  border-top: 1px dashed var(--color-stroke);
   padding-top: 0.6rem;
   margin-top: 0.2rem;
   font-size: 1.15rem;
   font-weight: 800;
-  color: #2b2b2b;
+  color: var(--color-text);
 }
 
 .car-summary-row.total .car-total-price {
-  color: #bd732f;
+  color: var(--color-primary);
   font-size: 1.35rem;
 }
 
 .btn-pay-now {
   width: 100%;
-  background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+  color: var(--color-background);
   border: none;
   padding: 1.15rem;
   border-radius: 14px;
@@ -436,12 +443,12 @@
   align-items: center;
   gap: 0.6rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-pay-now:hover {
-  background: linear-gradient(135deg, #3d3d3d 0%, #2b2b2b 100%);
+  background: linear-gradient(135deg, var(--color-text-muted) 0%, var(--color-text) 100%);
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
@@ -468,7 +475,7 @@
   font-size: 0.85rem;
   cursor: pointer;
   padding: 0.3rem 0;
-  color: #bd732f;
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -481,7 +488,7 @@
   font-size: 0.85rem;
   cursor: pointer;
   padding: 0.3rem 0;
-  color: #e53e3e;
+  color: var(--color-primary);
 }
 
 .car-sub-actions-mobile {
@@ -516,38 +523,38 @@
 }
 
 .btn-action-card-edit {
-  background: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
-  color: #bd732f;
-  border: 1.5px solid #ebdcc5;
+  background: var(--car-beige-btn-bg);
+  color: var(--car-beige-btn-text);
+  border: 1.5px solid var(--car-beige-btn-border);
   box-shadow: 0 4px 12px rgba(189, 115, 47, 0.08);
 }
 
 .btn-action-card-edit:hover {
-  background: #bd732f;
-  color: #ffffff;
-  border-color: #bd732f;
+  background: var(--car-beige-btn-hover-bg);
+  color: var(--car-beige-btn-hover-text);
+  border-color: var(--car-beige-btn-hover-border);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(189, 115, 47, 0.25);
 }
 
 .btn-action-card-cancel {
-  background: #fff5f5;
-  color: #dc2626;
-  border: 1.5px solid #fecaca;
+  background: var(--car-danger-btn-bg);
+  color: var(--car-danger-btn-text);
+  border: 1.5px solid var(--car-danger-btn-border);
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.05);
 }
 
 .btn-action-card-cancel:hover {
-  background: #dc2626;
-  color: #ffffff;
-  border-color: #dc2626;
+  background: var(--car-danger-btn-hover-bg);
+  color: var(--car-danger-btn-hover-text);
+  border-color: var(--car-danger-btn-hover-border);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25);
 }
 
 .car-cancel-mini-card {
-  background: #fff5f5;
-  border: 2px solid #f87171;
+  background: var(--color-card);
+  border: 2px solid var(--color-stroke);
   border-radius: 14px;
   padding: 1.2rem;
   margin-top: 0.5rem;
@@ -562,13 +569,13 @@
 .car-cancel-mini-card p {
   margin: 0;
   font-size: 0.95rem;
-  color: #7f1d1d;
+  color: var(--color-text-muted);
   font-weight: 700;
   line-height: 1.4;
 }
 
 .car-cancel-mini-card small {
-  color: #991b1b;
+  color: var(--color-text-muted);
   font-size: 0.8rem;
 }
 
@@ -579,7 +586,7 @@
 
 .btn-confirm-cancel-order {
   flex: 1;
-  background-color: #dc2626;
+  background-color: #dc2727;
   color: #fff;
   border: none;
   padding: 0.75rem;
@@ -590,13 +597,19 @@
   transition: background 0.2s;
 }
 
+@media (prefers-color-scheme: dark) {
+  .btn-confirm-cancel-order {
+    background-color: #b91c1c;
+  }
+}
+
 .btn-confirm-cancel-order:hover {
   background-color: #b91c1c;
 }
 
 .btn-abort-cancel {
-  background-color: #e2e8f0;
-  color: #4a5568;
+  background-color: var(--color-card);
+  color: var(--color-text-muted);
   border: none;
   padding: 0.75rem 1.1rem;
   border-radius: 9px;
@@ -606,6 +619,8 @@
   transition: background 0.2s;
 }
 
-.btn-abort-cancel:hover {
-  background-color: #cbd5e1;
+@media (prefers-color-scheme: dark) {
+  .btn-abort-cancel:hover {
+    background-color: var(--color-stroke);
+  }
 }

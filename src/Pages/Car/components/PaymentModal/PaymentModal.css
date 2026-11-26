@@ -27,7 +27,7 @@
 }
 
 .car-modal-content {
-  background-color: #ffffff;
+  background-color: var(--color-card);
   border-radius: 20px;
   width: 100%;
   max-width: 500px;
@@ -44,22 +44,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #f1f5f9;
+  border-bottom: 2px solid var(--color-stroke);
   padding-bottom: 1rem;
 }
 
 .car-modal-header h3 {
   margin: 0;
   font-size: 1.35rem;
-  color: #2b2b2b;
+  color: var(--color-text);
   font-weight: 800;
 }
 
 .car-modal-close {
-  background: #f1f5f9;
+  background: var(--color-card);
   border: none;
   cursor: pointer;
-  color: #666;
+  color: var(--color-text-muted);
   width: 36px;
   height: 36px;
   display: flex;
@@ -70,8 +70,8 @@
 }
 
 .car-modal-close:hover {
-  background: #e2e8f0;
-  color: #000;
+  background: var(--color-stroke);
+  color: var(--color-text);
 }
 
 .car-payment-methods {
@@ -85,26 +85,26 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.2rem;
-  background-color: #f8fafc;
-  border: 2px solid #e2e8f0;
+  background-color: var(--color-card);
+  border: 2px solid var(--color-stroke);
   border-radius: 12px;
   font-weight: 700;
   font-size: 1rem;
-  color: #334155;
+  color: var(--color-text);
   cursor: pointer;
   text-align: left;
   transition: all 0.2s;
 }
 
 .car-payment-option.active {
-  border-color: #bd732f;
-  background-color: #fdf8f2;
-  color: #bd732f;
+  border-color: var(--color-primary);
+  background-color: var(--color-card);
+  color: var(--color-primary);
 }
 
 .car-qr-container {
-  background-color: #faf7f2;
-  border: 1.5px solid #ebdcc5;
+  background-color: var(--color-card);
+  border: 1.5px solid var(--color-stroke);
   border-radius: 14px;
   padding: 1.2rem;
   text-align: center;
@@ -114,12 +114,12 @@
 }
 
 .car-qr-box {
-  background-color: #fff;
+  background-color: var(--color-card);
   padding: 1rem;
   border-radius: 12px;
   display: inline-block;
   margin: 0 auto;
-  border: 1.5px solid #ebdcc5;
+  border: 1.5px solid var(--color-stroke);
   max-width: 180px;
 }
 
@@ -131,12 +131,12 @@
 }
 
 .car-payment-info-box {
-  background-color: #f8fafc;
-  border: 1.5px solid #e2e8f0;
+  background-color: var(--color-card);
+  border: 1.5px solid var(--color-stroke);
   border-radius: 12px;
   padding: 1rem;
   font-size: 0.95rem;
-  color: #334155;
+  color: var(--color-text-muted);
   text-align: center;
 }
 
@@ -146,8 +146,8 @@
 
 .btn-confirm-final-pay {
   width: 100%;
-  background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+  color: var(--color-background);
   border: none;
   padding: 1.1rem;
   border-radius: 12px;
@@ -158,6 +158,6 @@
 }
 
 .btn-confirm-final-pay:hover {
-  background: linear-gradient(135deg, #3d3d3d 0%, #2b2b2b 100%);
+  background: linear-gradient(135deg, var(--color-text-muted) 0%, var(--color-text) 100%);
   transform: translateY(-2px);
 }
