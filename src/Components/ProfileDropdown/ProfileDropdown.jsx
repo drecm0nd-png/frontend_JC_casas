@@ -1,18 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaUserPlus, FaRightLeft } from "react-icons/fa6";
+import { useProfile } from "../../Hooks/UseProfile.js";
 import "./ProfileDropdown.css";
 
 export default function ProfileDropdown({ isOpen, onClose }) {
   const navigate = useNavigate();
+  const { userData } = useProfile();
 
   if (!isOpen) return null;
 
-  // Datos genéricos con el rol de Cliente
+  // Datos reales del perfil (los mismos que se editan en /perfil)
   const cuentaActual = {
-    nombre: "Alejandro Martínez",
-    email: "alejandro.martinez@correo-ejemplo.com",
-    rol: "Cliente",
+    nombre: userData.nombre,
+    email: userData.correo,
+    rol: userData.rol,
+    avatar: userData.avatar,
   };
 
   const handleVerPerfil = () => {
@@ -33,8 +36,16 @@ export default function ProfileDropdown({ isOpen, onClose }) {
   return (
     <div className="profile-dropdown-container">
       <div className="profile-dropdown-header">
-        <div className="profile-avatar-placeholder">
-          <FaUser size={20} />
+        <div className="profile-avatar-placeholder" style={{ overflow: "hidden" }}>
+          {cuentaActual.avatar ? (
+            <img
+              src={cuentaActual.avatar}
+              alt=""
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          ) : (
+            <FaUser size={20} />
+          )}
         </div>
         <div className="profile-info-text">
           <h5>{cuentaActual.nombre}</h5>

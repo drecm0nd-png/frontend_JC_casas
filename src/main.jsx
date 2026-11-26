@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.jsx";
 import { AuthProvider } from "./Context/AuthProvider.jsx";
+import { ProfileProvider } from "./Context/ProfileProvider.jsx";
 
 import "./Styles/Variables.css";
 import "./Styles/Global.css";
@@ -13,7 +14,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <ProfileProvider>
+          <App />
+        </ProfileProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
