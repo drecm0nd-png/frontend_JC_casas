@@ -1,0 +1,73 @@
+.hero-dish-card {
+  background: linear-gradient(135deg, #3d352e, #2b241f);
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+.hero-overlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-info {
+  text-align: left;
+}
+
+.hero-badge {
+  background-color: #fde68a;
+  color: #78350f;
+  font-size: var(--font-size-caption, 0.8rem);
+  font-weight: 800;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.hero-info h2 {
+  color: #ffffff;
+  font-size: var(--font-size-subtitle, 2.2rem);
+  font-weight: 800;
+  margin: 0 0 0.4rem 0;
+}
+
+.hero-info p {
+  color: #d1d5db;
+  font-size: var(--font-size-lead, 1.05rem);
+  margin: 0 0 0.6rem 0;
+}
+
+.hero-price {
+  color: #fde68a;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: block;
+}
+
+.btn-primary-action {
+  background-color: var(--color-primary, #bd732f);
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: var(--font-size-body, 1.1rem);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary-action:hover {
+  background-color: var(--color-primary-hover, #a76b32);
+}
+
+@media (max-width: 650px) {
+  .hero-overlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

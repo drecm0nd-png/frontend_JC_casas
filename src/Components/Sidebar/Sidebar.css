@@ -1,0 +1,227 @@
+/* ==========================================================================
+   SIDEBAR LATERAL GRUESO Y RESPONSIVE
+   ========================================================================== */
+.app-sidebar {
+  width: 280px;
+  background-color: var(--sb-bg);
+  border-right: 1.5px solid var(--sb-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.4rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+  box-shadow: var(--sb-shadow);
+  z-index: 100;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.app-sidebar a,
+.app-sidebar a:hover,
+.app-sidebar a:focus,
+.app-sidebar a:active,
+.app-sidebar a *,
+.app-sidebar a:hover *,
+.app-sidebar a:focus *,
+.app-sidebar a:active * {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-underline-offset: 0 !important;
+}
+
+.app-sidebar a::before,
+.app-sidebar a::after,
+.app-sidebar a *::before,
+.app-sidebar a *::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Logotipo centrado sin texto */
+.sidebar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--sb-divider);
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-logo-img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+}
+
+.sidebar-brand:hover .sidebar-logo-img {
+  transform: scale(1.05);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 1.2rem;
+  border-radius: 14px;
+  color: var(--sb-text);
+  font-weight: 700;
+  font-size: 0.98rem;
+  border: 1.5px solid transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-link span {
+  border-bottom: 0 !important;
+}
+
+.sidebar-link svg {
+  color: var(--sb-icon);
+  flex-shrink: 0;
+}
+
+.sidebar-link:hover {
+  background-color: var(--sb-hover-bg);
+  color: var(--sb-hover-text);
+  border-color: var(--sb-hover-border);
+  transform: translateX(4px);
+}
+
+.sidebar-link.active {
+  background: var(--sb-active-bg);
+  color: var(--sb-active-text);
+  box-shadow: var(--sb-active-shadow);
+  border-color: var(--sb-active-border);
+}
+
+.sidebar-link.active svg {
+  color: var(--sb-active-icon);
+}
+
+.sidebar-footer {
+  border-top: 1.5px solid var(--sb-divider);
+  padding-top: 1.2rem;
+}
+
+/* ==========================================================================
+   ESTADO BLOQUEADO SIN SESIÓN (ESCRITORIO)
+   ========================================================================== */
+.sidebar-locked-box {
+  margin: 0.25rem 0.25rem auto 0.25rem;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--sb-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.sidebar-locked-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: none;
+  display: grid;
+  place-items: center;
+  background: var(--color-header, #4a2511);
+  color: #ffffff;
+}
+
+.sidebar-locked-text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--sb-text);
+}
+
+.sidebar-locked-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  background: var(--color-header, #4a2511);
+  color: #ffffff;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-locked-btn:hover,
+.sidebar-locked-btn:focus {
+  background: var(--hdr-subnav-bg, #6b381b);
+  color: #ffffff;
+}
+
+.sidebar-compact-link {
+  display: none;
+}
+
+[data-theme="dark"] .sidebar-locked-box,
+.dark-mode .sidebar-locked-box {
+  background: transparent;
+  color: var(--sb-text, #fff9f2);
+}
+
+[data-theme="dark"] .sidebar-locked-text,
+.dark-mode .sidebar-locked-text {
+  color: var(--sb-text, #fff9f2);
+}
+
+[data-theme="dark"] .sidebar-locked-btn,
+.dark-mode .sidebar-locked-btn {
+  background: #eadbc3;
+  color: #1f1108;
+}
+
+[data-theme="dark"] .sidebar-locked-btn:hover,
+.dark-mode .sidebar-locked-btn:hover,
+[data-theme="dark"] .sidebar-locked-btn:focus,
+.dark-mode .sidebar-locked-btn:focus {
+  background: #f7ebd7;
+  color: #1f1108;
+}
+
+/* ==========================================================================
+   RESPONSIVO PARA MÓVILES (SIDEBAR COMPACTO)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .app-sidebar {
+    width: 80px;
+    padding: 1.5rem 0.6rem;
+  }
+  .sidebar-logo-img {
+    width: 44px;
+    height: 44px;
+  }
+  .sidebar-link span {
+    display: none;
+  }
+  .sidebar-link {
+    justify-content: center;
+    padding: 0.9rem;
+  }
+  .sidebar-locked-box {
+    display: none;
+  }
+  .sidebar-compact-link {
+    display: flex;
+  }
+}

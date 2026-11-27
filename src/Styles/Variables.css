@@ -1,0 +1,446 @@
+/* src/styles/variables.css */
+
+:root {
+  /* ==========================================================
+     COLORES GENERALES (TEMA CLARO / POR DEFECTO)
+     ========================================================== */
+  --color-background: #faf7f2;
+  --color-surface: #ffffff;
+  --color-card: #f8f1e5;
+  --color-footer: #efe4d2;
+  --color-text: #2b2b2b;
+  --color-text-muted: #666666;
+  --color-header: #4a2511;
+  --color-primary: #bd732f;
+  --color-primary-hover: #9e5d22;
+  --color-accent: #d96b43;
+  --color-button-primary: #c97d32;
+  --color-button-text: #ffffff;
+  --color-switch-active: #bd732f;
+  --color-switch-knob-active: #ffffff;
+  --color-admin-switch: #7c3aed;
+  --color-admin-knob: #ffffff;
+  --color-stroke: #e4cfb2;
+  --color-badge-bg: #f8f1e5;
+
+  --color-auth-surface: #ffffff;
+  --color-auth-button: #c97d32;
+  --color-auth-text: #3a1f00;
+
+  --filter-strength: 0.5;
+  --app-brightness: 100%;
+  --app-filter: none;
+
+  /* ==========================================================
+     VARIABLES DEL CARRITO (CAR) - TEMA CLARO (PALETA ORIGINAL)
+     ========================================================== */
+  --section-card-dark-bg: var(--color-surface);
+  --section-card-dark-border: var(--color-stroke);
+
+  --car-beige-btn-bg: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
+  --car-beige-btn-text: #bd732f;
+  --car-beige-btn-border: #ebdcc5;
+  --car-beige-btn-hover-bg: #bd732f;
+  --car-beige-btn-hover-text: #ffffff;
+  --car-beige-btn-hover-border: #bd732f;
+
+  --car-danger-btn-bg: #ffffff;
+  --car-danger-btn-text: #dc2626;
+  --car-danger-btn-border: #fecaca;
+  --car-danger-btn-hover-bg: #dc2626;
+  --car-danger-btn-hover-text: #ffffff;
+  --car-danger-btn-hover-border: #dc2626;
+
+  --car-input-beige-bg: #ffffff;
+  --car-input-beige-text: #2b2b2b;
+  --car-input-beige-placeholder: #8c8275;
+  --car-input-beige-border: #e4cfb2;
+
+  --car-order-card-bg: #ffffff;
+  --car-order-card-border: #ebdcc5;
+  --car-order-text: #000000;
+  --car-order-badge-bg: #fef3c7;
+  --car-order-badge-text: #92400e;
+  --car-order-progress-track: #e4cfb2;
+  --car-order-progress-fill: #bd732f;
+  --car-order-divider: #e4cfb2;
+
+  --car-reorder-bg: linear-gradient(135deg, #f8f1e5 0%, #f3e5d0 100%);
+  --car-reorder-text: #bd732f;
+  --car-reorder-border: #ebdcc5;
+  --car-reorder-hover-bg: #bd732f;
+  --car-reorder-hover-text: #ffffff;
+  --car-reorder-hover-border: #bd732f;
+
+  /* ==========================================================
+     VARIABLES DEL FOOTER (BEIGE EN AMBOS MODOS)
+     ========================================================== */
+  --footer-beige-bg: #f8f1e5;
+  --footer-beige-text: #2b2b2b;
+  --footer-beige-title: #4a2511;
+  --footer-beige-icon: #2b2b2b;
+  --footer-beige-border: #e4cfb2;
+
+  /* ==========================================================
+     VARIABLES DEL HEADER (TEMA CLARO: CAFÉ Y LETRAS BLANCAS)
+     ========================================================== */
+  --hdr-main-bg: #4a2511;
+  --hdr-main-shadow: rgba(35, 16, 6, 0.35);
+  --hdr-subnav-bg: #6b381b;
+  --hdr-subnav-border: rgba(255, 255, 255, 0.16);
+  --hdr-text: #ffffff;
+  --hdr-text-muted: rgba(255, 255, 255, 0.88);
+  --hdr-hover: #f3d5b5;
+  --hdr-active: #ffe8cc;
+  --hdr-danger: #ffb8b8;
+  --hdr-danger-hover: #ffd6d6;
+  --hdr-btn-bg: rgba(255, 255, 255, 0.12);
+  --hdr-btn-border: rgba(255, 255, 255, 0.8);
+  --hdr-btn-hover-bg: #ffffff;
+  --hdr-btn-hover-text: #4a2511;
+  --hdr-icon-hover-bg: rgba(255, 255, 255, 0.14);
+  --hdr-icon-hover-border: rgba(255, 255, 255, 0.3);
+  --hdr-mobile-bg: #4a2511;
+  --hdr-mobile-head-bg: #361a0b;
+  --hdr-mobile-border: rgba(255, 255, 255, 0.16);
+  --hdr-mobile-item-bg: rgba(255, 255, 255, 0.08);
+  --hdr-mobile-item-hover-bg: rgba(255, 255, 255, 0.16);
+  --hdr-mobile-cta-bg: #7c4220;
+  --hdr-mobile-cta-hover: #934e27;
+  --hdr-mobile-cta-text: #ffffff;
+  --hdr-tooltip-bg: linear-gradient(135deg, #7c4220, #592d14);
+  --hdr-tooltip-text: #ffffff;
+  --hdr-badge-border: #4a2511;
+
+  --bg-header-main: #4a2511;
+  --bg-subnav: #6b381b;
+  --bg-mobile-nav: #4a2511;
+  --bg-mobile-header: #361a0b;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.88);
+  --accent-color: #bd732f;
+  --accent-hover: #9e5d22;
+  --auth-btn-bg: rgba(255, 255, 255, 0.12);
+  --auth-btn-text: #ffffff;
+  --border-subtle: rgba(255, 255, 255, 0.16);
+  --border-main: rgba(255, 255, 255, 0.25);
+
+  /* ==========================================================
+     VARIABLES DE LA SIDEBAR (TEMA CLARO: CAFÉ MÁS CERCANO AL HEADER)
+     ========================================================== */
+  --bg-sidebar: #f7ede1;
+  --sidebar-text: #7a481c;
+  --sidebar-text-hover: #4a2511;
+  --sidebar-bg-hover: #f0e1d0;
+  --sidebar-border: #c8a27a;
+  --sidebar-active-bg: #ebdcc5;
+
+  --sb-bg: #ffffff;
+  --sb-border: #c8a27a;
+  --sb-divider: #e3ccb0;
+  --sb-shadow: 4px 0 20px rgba(74, 37, 17, 0.06);
+  --sb-text: #4a2e1b;
+  --sb-icon: #4a2511;
+  --sb-hover-bg: #f8f0e6;
+  --sb-hover-text: #4a2511;
+  --sb-hover-border: #b6895b;
+  --sb-active-bg: linear-gradient(135deg, #5c3018 0%, #4a2511 100%);
+  --sb-active-text: #ffffff;
+  --sb-active-icon: #ffffff;
+  --sb-active-border: #4a2511;
+  --sb-active-shadow: 0 6px 16px rgba(74, 37, 17, 0.24);
+
+  /* ==========================================================
+     TIPOGRAFÍA Y ESPACIADOS GLOBALES
+     ========================================================== */
+  --font-family-base: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --font-size-hero: 2.5rem;
+  --font-size-section-title: 2rem;
+  --font-size-subtitle: 1.5rem;
+  --font-size-card-title: 1.25rem;
+  --font-size-lead: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-caption: 0.75rem;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  --page-padding: 2rem;
+  --component-gap: 1.5rem;
+
+  /* ==========================================================
+     VARIABLES DE LANDING PAGE (TEMA CLARO / POR DEFECTO)
+     ========================================================== */
+  --lp-bg: var(--color-background);
+  --lp-surface: var(--color-card);
+  --lp-text: var(--color-text);
+  --lp-text-secondary: var(--color-text-muted);
+  --lp-border: var(--color-stroke);
+  --lp-accent: #b8935a;
+  --lp-accent-soft: #d9be94;
+  --lp-btn: var(--color-header);
+  --lp-btn-hover: var(--color-primary-hover);
+  --lp-btn-text: var(--color-button-text);
+  --lp-font: var(--font-family-base);
+  --lp-weight-title: var(--font-weight-bold);
+  --lp-weight-subtitle: var(--font-weight-medium);
+  --lp-size-subtitle: var(--font-size-subtitle);
+  --lp-size-desc: var(--font-size-lead);
+  --lp-size-small: var(--font-size-small);
+  --lp-radius: 10px;
+  --lp-radius-grande: calc(var(--lp-radius) * 4);
+  --lp-space: 1rem;
+  --lp-shadow-soft: 0 6px 18px rgba(35, 16, 6, 0.08);
+  --lp-shadow-media: 0 18px 40px -18px rgba(35, 16, 6, 0.35);
+  --lp-section-space: clamp(4rem, 3rem + 4vw, 7rem);
+}
+
+/* ==========================================================
+   MODO OSCURO / NOCTURNO (CAFÉ LECHOSO EN PANTALLA + SIDEBAR OSCURA)
+   ========================================================== */
+[data-theme="dark"],
+:root.dark-mode,
+body.dark-mode,
+.dark-mode {
+  --color-background: #7b5234;
+  --color-surface: #694429;
+  --color-card: #8f613f;
+  --color-footer: #5d3b22;
+  --color-text: #fffaf3;
+  --color-text-muted: #f5ebd6;
+  --color-header: #fff6e8;
+  --color-primary: #eadbc3;
+  --color-primary-hover: #f7ebd7;
+  --color-accent: #e6d5b8;
+  --color-button-primary: #eadbc3;
+  --color-button-text: #1f1108;
+  --color-switch-active: #eadbc3;
+  --color-switch-knob-active: #241207;
+  --color-admin-switch: #eab308;
+  --color-admin-knob: #1f1600;
+  --color-auth-button: #eadbc3;
+  --color-stroke: #c49c74;
+  --color-badge-bg: #6b452a;
+
+  /* Fondo y contorno oscuro de section-card en modo oscuro */
+  --section-card-dark-bg: #5c3b24;
+  --section-card-dark-border: #4a2e1b;
+
+  /* Variables del carrito (CAR) - Modo oscuro */
+  --car-beige-btn-bg: #e6d5c1;
+  --car-beige-btn-text: #111111;
+  --car-beige-btn-border: #d4be9f;
+  --car-beige-btn-hover-bg: #d8c2a6;
+  --car-beige-btn-hover-text: #000000;
+  --car-beige-btn-hover-border: #c8ad8b;
+
+  --car-danger-btn-bg: #e6d5c1;
+  --car-danger-btn-text: #991b1b;
+  --car-danger-btn-border: #c8ad8b;
+  --car-danger-btn-hover-bg: #d8c2a6;
+  --car-danger-btn-hover-text: #7f1d1d;
+  --car-danger-btn-hover-border: #b89e7d;
+
+  --car-input-beige-bg: #e6d5c1;
+  --car-input-beige-text: #111111;
+  --car-input-beige-placeholder: #4a3b2c;
+  --car-input-beige-border: #b89e7d;
+
+  --car-order-card-bg: #e6d5c1;
+  --car-order-card-border: #c8ad8b;
+  --car-order-text: #111111;
+  --car-order-badge-bg: #c7a982;
+  --car-order-badge-text: #111111;
+  --car-order-progress-track: #cbb69a;
+  --car-order-progress-fill: #5c3715;
+  --car-order-divider: #bfa686;
+
+  --car-reorder-bg: #d8c2a6;
+  --car-reorder-text: #111111;
+  --car-reorder-border: #b89e7d;
+  --car-reorder-hover-bg: #c7a982;
+  --car-reorder-hover-text: #000000;
+  --car-reorder-hover-border: #a78962;
+
+  /* Variables del footer en modo oscuro (beige más oscuro) */
+  --footer-beige-bg: #c9b08e;
+  --footer-beige-text: #181818;
+  --footer-beige-title: #181818;
+  --footer-beige-icon: #181818;
+  --footer-beige-border: rgba(24, 24, 24, 0.22);
+
+  /* Header en modo oscuro: barra principal beige, subnav beige cafesito y letras negras */
+  --hdr-main-bg: #f3ead8;
+  --hdr-main-shadow: rgba(28, 20, 12, 0.16);
+  --hdr-subnav-bg: #d9c5a7;
+  --hdr-subnav-border: rgba(24, 24, 24, 0.18);
+  --hdr-text: #181818;
+  --hdr-text-muted: #3a342c;
+  --hdr-hover: #5c3217;
+  --hdr-active: #000000;
+  --hdr-danger: #b91c1c;
+  --hdr-danger-hover: #7f1d1d;
+  --hdr-btn-bg: rgba(24, 24, 24, 0.06);
+  --hdr-btn-border: #181818;
+  --hdr-btn-hover-bg: #181818;
+  --hdr-btn-hover-text: #f3ead8;
+  --hdr-icon-hover-bg: rgba(24, 24, 24, 0.09);
+  --hdr-icon-hover-border: rgba(24, 24, 24, 0.25);
+  --hdr-mobile-bg: #f3ead8;
+  --hdr-mobile-head-bg: #d9c5a7;
+  --hdr-mobile-border: rgba(24, 24, 24, 0.16);
+  --hdr-mobile-item-bg: rgba(24, 24, 24, 0.05);
+  --hdr-mobile-item-hover-bg: rgba(24, 24, 24, 0.12);
+  --hdr-mobile-cta-bg: #181818;
+  --hdr-mobile-cta-hover: #2f2f2f;
+  --hdr-mobile-cta-text: #ffffff;
+  --hdr-tooltip-bg: linear-gradient(135deg, #d9c5a7, #c8b08e);
+  --hdr-tooltip-text: #181818;
+  --hdr-badge-border: #f3ead8;
+
+  --bg-header-main: #f3ead8;
+  --bg-subnav: #d9c5a7;
+  --bg-mobile-nav: #f3ead8;
+  --bg-mobile-header: #d9c5a7;
+  --text-primary: #181818;
+  --text-secondary: #3a342c;
+  --accent-color: #eadbc3;
+  --accent-hover: #f7ebd7;
+  --auth-btn-bg: rgba(24, 24, 24, 0.06);
+  --auth-btn-text: #181818;
+  --border-subtle: rgba(24, 24, 24, 0.16);
+  --border-main: rgba(24, 24, 24, 0.24);
+
+  /* Sidebar en modo oscuro: café más profundo para contrastar con el fondo lechoso */
+  --bg-sidebar: #382213;
+  --sidebar-text: #fff9f2;
+  --sidebar-text-hover: #eadbc3;
+  --sidebar-bg-hover: #5c3b24;
+  --sidebar-border: #9e6c43;
+  --sidebar-active-bg: #6b452a;
+
+  --sb-bg: #382213;
+  --sb-border: #9e6c43;
+  --sb-divider: #5c3b24;
+  --sb-shadow: 4px 0 20px rgba(18, 9, 3, 0.35);
+  --sb-text: #fff9f2;
+  --sb-icon: #eadbc3;
+  --sb-hover-bg: #5c3b24;
+  --sb-hover-text: #eadbc3;
+  --sb-hover-border: #b99976;
+  --sb-active-bg: linear-gradient(135deg, #eadbc3 0%, #d9c5a7 100%);
+  --sb-active-text: #1f1108;
+  --sb-active-icon: #1f1108;
+  --sb-active-border: #f7ebd7;
+  --sb-active-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+
+  /* Landing en modo oscuro */
+  --lp-bg: var(--color-background);
+  --lp-surface: var(--color-card);
+  --lp-text: #fffaf3;
+  --lp-text-secondary: #f5ebd6;
+  --lp-border: var(--color-stroke);
+  --lp-accent: #e8cfa0;
+  --lp-accent-soft: #f5ebd6;
+  --lp-btn: var(--color-button-primary);
+  --lp-btn-hover: var(--color-primary-hover);
+  --lp-btn-text: var(--color-button-text);
+  --lp-shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.22);
+  --lp-shadow-media: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================================================
+   MODO DALTÓNICO (MÁS AZUL EN TODA LA PÁGINA SOLO SI ESTÁ ACTIVO)
+   ========================================================== */
+[data-colorblind="true"],
+.colorblind-mode {
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #3b82f6;
+  --color-button-primary: #2563eb;
+  --color-button-text: #ffffff;
+  --color-switch-active: #2563eb;
+  --color-switch-knob-active: #ffffff;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  /* Landing en modo daltónico */
+  --lp-accent: var(--color-accent);
+  --lp-accent-soft: var(--color-primary);
+}
+
+/* ==========================================================
+   AJUSTE GLOBAL PARA MÓVILES Y TABLETS (< 768px)
+   ========================================================== */
+@media (max-width: 768px) {
+  :root {
+    --font-size-hero: 1.85rem;
+    --font-size-section-title: 1.5rem;
+    --font-size-subtitle: 1.25rem;
+    --font-size-card-title: 1.125rem;
+    --font-size-lead: 1rem;
+    --font-size-body: 0.9375rem;
+    --font-size-small: 0.8125rem;
+    --font-size-caption: 0.6875rem;
+
+    --page-padding: 1rem;
+    --component-gap: 1rem;
+  }
+}
+
+/* ==========================================================
+   ESTILO GLOBAL DE CABECERA (REUTILIZABLE POR CLASE)
+   ========================================================== */
+.global-header {
+  text-align: left;
+  border-bottom: 2px solid var(--color-stroke);
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.global-header .g-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.global-header .g-title {
+  color: var(--color-text);
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+
+.global-header .g-description {
+  color: var(--color-text-muted);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.global-header .g-badge {
+  background: var(--color-badge-bg);
+  border: 1px solid var(--color-stroke);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

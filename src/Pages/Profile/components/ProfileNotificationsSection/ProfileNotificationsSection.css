@@ -1,0 +1,4 @@
+.cfg-notifs-section {
+  display: flex;
+  flex-direction: column;
+}

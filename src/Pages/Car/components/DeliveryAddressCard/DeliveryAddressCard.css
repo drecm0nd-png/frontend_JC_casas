@@ -1,0 +1,310 @@
+.car-card-box.address-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.car-address-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-stroke);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.car-address-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.car-address-icon {
+  background-color: var(--color-card);
+  color: var(--color-primary);
+  padding: 0.75rem;
+  border-radius: 12px;
+  display: flex;
+}
+
+.car-address-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--color-text);
+}
+
+.car-address-header small {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.car-address-preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
+.car-map-preview-box {
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  height: 160px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: 2px dashed var(--color-primary);
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: #1f160d;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box;
+  z-index: 1;
+  box-shadow: inset 0 0 15px rgba(189, 115, 47, 0.12);
+}
+
+.car-map-preview-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--map-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%) contrast(1.08);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.car-map-preview-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(230, 213, 193, 0.58);
+  z-index: 1;
+}
+
+[data-theme="dark"] .car-map-preview-box::after,
+:root.dark-mode .car-map-preview-box::after,
+body.dark-mode .car-map-preview-box::after,
+.dark-mode .car-map-preview-box::after {
+  background-color: rgba(214, 190, 159, 0.52);
+}
+
+.car-map-preview-box:hover {
+  border-color: #a36125;
+  box-shadow: 0 8px 20px rgba(189, 115, 47, 0.25), inset 0 0 15px rgba(189, 115, 47, 0.15);
+}
+
+.car-map-preview-box:hover::before {
+  transform: scale(1.08);
+}
+
+.car-map-preview-box svg,
+.car-map-preview-box span {
+  position: relative;
+  z-index: 2;
+}
+
+.car-map-preview-box svg {
+  color: #1f160d;
+  background-color: rgba(230, 213, 193, 0.88);
+  padding: 0.45rem;
+  border-radius: 10px;
+  box-sizing: content-box;
+}
+
+.car-map-preview-box span {
+  font-size: 0.78rem;
+  color: #1f160d;
+  font-weight: 700;
+  background-color: rgba(230, 213, 193, 0.9);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.car-current-address-badge {
+  background-color: var(--color-card);
+  padding: 1.1rem;
+  border-radius: 14px;
+  border: 1px solid var(--color-stroke);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(189, 115, 47, 0.08);
+}
+
+.car-current-address-badge small {
+  color: var(--color-text-muted);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+}
+
+.car-current-address-badge p {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: 0.98rem;
+}
+
+.car-address-place-sub {
+  font-size: 0.85rem !important;
+  color: var(--color-text-muted) !important;
+  font-weight: 600 !important;
+  margin-top: 0.1rem !important;
+}
+
+.car-delivery-note-box-bottom {
+  background: var(--color-card);
+  border: 1px dashed var(--color-stroke);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+.car-delivery-note-box-bottom label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.car-delivery-note-box-bottom textarea {
+  width: 100%;
+  border: 1px solid var(--car-input-beige-border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  resize: none;
+  outline: none;
+  background: var(--car-input-beige-bg);
+  color: var(--car-input-beige-text);
+  box-sizing: border-box;
+}
+
+.car-delivery-note-box-bottom textarea::placeholder {
+  color: var(--car-input-beige-placeholder);
+  opacity: 1;
+}
+
+.car-delivery-note-box-bottom textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(230, 213, 193, 0.35);
+}
+
+.car-address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: carFadeIn 0.25s ease-out;
+  margin-top: 1rem;
+}
+
+.car-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.car-form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.car-form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--car-input-beige-bg);
+  border: 1.5px solid var(--car-input-beige-border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--car-input-beige-text);
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='var(--color-primary)' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: all 0.25s ease;
+}
+
+.car-form-group select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(189, 115, 47, 0.15);
+}
+
+.car-form-group select option {
+  padding: 12px;
+  font-size: 1rem;
+  background: var(--color-card);
+  color: var(--color-text);
+}
+
+.car-form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--car-input-beige-border);
+  background-color: var(--car-input-beige-bg);
+  color: var(--car-input-beige-text);
+  outline: none;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.car-form-buttons {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.btn-save-address {
+  flex: 1;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-cancel-address {
+  background-color: var(--color-card);
+  color: var(--color-text-muted);
+  border: none;
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+}

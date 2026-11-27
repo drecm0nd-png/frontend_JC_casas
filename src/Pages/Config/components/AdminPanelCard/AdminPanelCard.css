@@ -1,0 +1,235 @@
+.master-admin-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  margin-top: 0.8rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .master-admin-switch,
+:root.dark-mode .master-admin-switch,
+body.dark-mode .master-admin-switch,
+.dark-mode .master-admin-switch {
+  background: var(--color-card, #8f613f);
+  border: 1px solid var(--color-stroke, #c49c74) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.admin-switch input:checked + .custom-slider {
+  background-color: var(--color-switch-active, #eadbc3);
+}
+
+.admin-switch input:checked + .custom-slider::before {
+  background-color: var(--color-switch-knob-active, #241207);
+}
+
+.admin-select:focus {
+  border-color: var(--accent-color);
+}
+
+.admin-btn {
+  background: var(--car-beige-btn-bg, #e6d5c1);
+  color: var(--car-beige-btn-text, #111111);
+  border: 1.5px solid var(--car-beige-btn-border, #d4be9f);
+}
+
+.admin-btn:hover:not(:disabled) {
+  background: var(--car-beige-btn-hover-bg, #d8c2a6);
+  color: var(--car-beige-btn-hover-text, #000000);
+  border-color: var(--car-beige-btn-hover-border, #c8ad8b);
+}
+
+.config-dev-wrapper {
+  position: relative;
+  margin-top: 1rem;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.config-dev-wrapper .config-options-list {
+  transition:
+    filter 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.08s,
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+}
+
+.config-dev-wrapper.locked .config-options-list {
+  filter: blur(3.5px);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.config-dev-wrapper.unlocked .config-options-list {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.config-lock-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: rgba(36, 20, 58, 0.84);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter 0.4s ease,
+    visibility 0s linear 0s;
+}
+
+[data-theme="dark"] .config-lock-overlay,
+:root.dark-mode .config-lock-overlay,
+body.dark-mode .config-lock-overlay,
+.dark-mode .config-lock-overlay {
+  background: rgba(56, 34, 19, 0.78);
+  color: #fffaf3;
+}
+
+.config-lock-overlay .config-lock-icon-wrap {
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.config-lock-overlay.is-dismissed {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.04) translateY(-14px);
+  backdrop-filter: blur(0);
+  pointer-events: none;
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter 0.4s ease,
+    visibility 0s linear 0.45s;
+}
+
+.config-lock-overlay.is-dismissed .config-lock-icon-wrap {
+  transform: scale(0.75) translateY(-6px);
+  opacity: 0;
+}
+
+.config-lock-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(91, 33, 182, 0.28);
+  border: 1.5px solid rgba(167, 139, 250, 0.45);
+  color: #e9d5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .config-lock-icon-wrap,
+:root.dark-mode .config-lock-icon-wrap,
+body.dark-mode .config-lock-icon-wrap,
+.dark-mode .config-lock-icon-wrap {
+  background: rgba(230, 213, 193, 0.18);
+  border: 1.5px solid rgba(230, 213, 193, 0.45);
+  color: #fffaf3;
+}
+
+.config-mb-md {
+  margin-bottom: 0.6rem;
+}
+
+.system-info-box {
+  width: 100%;
+  background: var(--color-card, #8f613f);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+
+.system-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.system-info-row strong {
+  color: var(--text-main);
+}
+
+.status-connected {
+  color: var(--status-ok) !important;
+}
+
+[data-theme="dark"] .config-page-container .master-admin-switch,
+[data-theme="dark"] .config-page-container .config-option-row,
+[data-theme="dark"] .config-page-container .config-option-row > *,
+[data-theme="dark"] .config-page-container .config-option-info,
+[data-theme="dark"] .config-page-container .config-option-title,
+[data-theme="dark"] .config-page-container .config-option-desc,
+[data-theme="dark"] .config-page-container .system-info-box,
+[data-theme="dark"] .config-page-container .system-info-row,
+:root.dark-mode .config-page-container .master-admin-switch,
+:root.dark-mode .config-page-container .config-option-row,
+:root.dark-mode .config-page-container .config-option-row > *,
+:root.dark-mode .config-page-container .config-option-info,
+:root.dark-mode .config-page-container .config-option-title,
+:root.dark-mode .config-page-container .config-option-desc,
+:root.dark-mode .config-page-container .system-info-box,
+:root.dark-mode .config-page-container .system-info-row,
+body.dark-mode .config-page-container .master-admin-switch,
+body.dark-mode .config-page-container .config-option-row,
+body.dark-mode .config-page-container .config-option-row > *,
+body.dark-mode .config-page-container .config-option-info,
+body.dark-mode .config-page-container .config-option-title,
+body.dark-mode .config-page-container .config-option-desc,
+body.dark-mode .config-page-container .system-info-box,
+body.dark-mode .config-page-container .system-info-row,
+.dark-mode .config-page-container .master-admin-switch,
+.dark-mode .config-page-container .config-option-row,
+.dark-mode .config-page-container .config-option-row > *,
+.dark-mode .config-page-container .config-option-info,
+.dark-mode .config-page-container .config-option-title,
+.dark-mode .config-page-container .config-option-desc,
+.dark-mode .config-page-container .system-info-box,
+.dark-mode .config-page-container .system-info-row {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .config-page-container .master-admin-switch,
+[data-theme="dark"] .config-page-container .config-option-row,
+:root.dark-mode .config-page-container .master-admin-switch,
+:root.dark-mode .config-page-container .config-option-row,
+body.dark-mode .config-page-container .master-admin-switch,
+body.dark-mode .config-page-container .config-option-row,
+.dark-mode .config-page-container .master-admin-switch,
+.dark-mode .config-page-container .config-option-row {
+  border: 1px solid var(--color-stroke, #c49c74) !important;
+}
+
+[data-theme="dark"] .config-page-container .config-option-row > div:not(.custom-switch):not(.config-select):not(select),
+:root.dark-mode .config-page-container .config-option-row > div:not(.custom-switch):not(.config-select):not(select),
+body.dark-mode .config-page-container .config-option-row > div:not(.custom-switch):not(.config-select):not(select),
+.dark-mode .config-page-container .config-option-row > div:not(.custom-switch):not(.config-select):not(select) {
+  border: none !important;
+  background: transparent !important;
+}

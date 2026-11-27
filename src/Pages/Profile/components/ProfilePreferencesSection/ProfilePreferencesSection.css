@@ -1,0 +1,5 @@
+
+.cfg-prefs-section {
+  display: flex;
+  flex-direction: column;
+}

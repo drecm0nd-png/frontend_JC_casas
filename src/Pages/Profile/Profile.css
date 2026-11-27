@@ -1,0 +1,332 @@
+.cfg {
+  --ink: var(--text-main, #2b2b2b);
+  --ink-soft: var(--text-main, #4b4540);
+  --muted: var(--text-muted, #726555);
+  --line: var(--border-color, #e6dcc8);
+  --line-soft: var(--border-color, #f0e9da);
+  --paper: var(--bg-subtle, #fdfbf7);
+  --white: var(--bg-card, #ffffff);
+  --sand: var(--bg-subtle, #f3efe6);
+  --sand-deep: var(--border-color, #e5dfd2);
+  --gold: var(--accent-color, #8a6d2f);
+  --ok: var(--status-ok, #3f7d4e);
+  --danger: #dc2626;
+  --radius: 12px;
+
+  width: 100%;
+  padding: 1rem 0;
+  text-align: left;
+  color: var(--ink);
+}
+
+.cfg *,
+.cfg *::before,
+.cfg *::after {
+  box-sizing: border-box;
+}
+
+.cfg button {
+  font-family: inherit;
+}
+
+.cfg :focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.cfg-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.cfg-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem 2rem;
+  min-width: 0;
+  animation: cfg-in 0.22s ease;
+}
+
+@keyframes cfg-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cfg-section-head {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.cfg-section-head h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.cfg-section-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+.cfg-subhead {
+  margin: 1.75rem 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.cfg-chip {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  background: var(--sand);
+  color: var(--gold);
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.cfg-chip-ok {
+  background: #e7f2ea;
+  color: var(--ok);
+  white-space: nowrap;
+}
+
+.cfg-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.cfg-row:last-child {
+  border-bottom: 0;
+}
+
+.cfg-row-title {
+  display: block;
+  font-weight: 600;
+  font-size: 0.96rem;
+}
+
+.cfg-row-desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.cfg-row-control {
+  flex-shrink: 0;
+}
+
+.cfg-switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  padding: 0;
+  background: #cfc8b9;
+  border: 0;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cfg-switch.is-on {
+  background: var(--gold);
+}
+
+.cfg-switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.cfg-switch.is-on .cfg-switch-knob {
+  transform: translateX(20px);
+}
+
+.cfg-select {
+  min-width: 210px;
+  padding: 0.55rem 0.75rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cfg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+  white-space: nowrap;
+}
+
+.cfg-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cfg-btn-dark {
+  background: var(--gold);
+  color: #fff;
+}
+
+.cfg-btn-dark:hover:not(:disabled) {
+  background: var(--accent-hover, #a36125);
+}
+
+.cfg-btn-soft {
+  background: var(--sand);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.cfg-btn-soft:hover:not(:disabled) {
+  background: var(--sand-deep);
+}
+
+.cfg-btn-ghost {
+  background: var(--paper);
+  color: var(--muted);
+  border-color: var(--line);
+}
+
+.cfg-btn-ghost:hover:not(:disabled) {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.cfg-btn-link {
+  background: none;
+  color: var(--gold);
+  padding-inline: 0.4rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cfg-btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.cfg-btn-danger:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.cfg-btn-danger-outline {
+  background: var(--white);
+  color: var(--danger);
+  border-color: #fca5a5;
+}
+
+.cfg-btn-danger-outline:hover {
+  background: #fef2f2;
+}
+
+.cfg-icon-btn {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.cfg-icon-btn:hover {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.cfg-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  animation: cfg-toast 0.25s ease;
+}
+
+.cfg-toast.is-error {
+  background: #b91c1c;
+}
+
+@keyframes cfg-toast {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .cfg-panel {
+    padding: 1.25rem;
+  }
+
+  .cfg-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .cfg-select {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cfg *,
+  .cfg-toast,
+  .cfg-overlay,
+  .cfg-modal {
+    animation: none !important;
+    transition: none !important;
+  }
+}

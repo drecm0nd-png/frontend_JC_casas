@@ -1,0 +1,219 @@
+@keyframes carFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.car-page-container {
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-surface) 100%);
+  min-height: 100vh;
+  box-sizing: border-box;
+  animation: carFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.car-inner-wrapper {
+  max-width: 1650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.car-header-section {
+  text-align: left;
+  border-bottom: 2px solid var(--color-card);
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.car-header-section .car-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.car-header-section .car-title {
+  color: var(--color-text);
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+
+.car-header-section .car-description {
+  color: var(--color-text-muted);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.car-header-badge {
+  background: var(--color-card);
+  border: 1px solid var(--color-card);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.car-main-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1.15fr;
+  gap: 1.8rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1350px) {
+  .car-main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .car-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.car-card-box {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card);
+  border-radius: 20px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(189, 115, 47, 0.06);
+  transition: all 0.3s ease;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+
+.car-card-box:hover {
+  box-shadow: 0 16px 40px rgba(189, 115, 47, 0.1);
+  transform: translateY(-2px);
+}
+
+.car-card-inner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-stroke);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.car-card-inner-header h3 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.btn-add-more,
+.btn-open-address-form {
+  background: var(--car-beige-btn-bg);
+  color: var(--car-beige-btn-text);
+  border: 1.5px solid var(--car-beige-btn-border);
+  padding: 0.65rem 1.1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.btn-add-more:hover,
+.btn-open-address-form:hover {
+  background: var(--car-beige-btn-hover-bg);
+  color: var(--car-beige-btn-hover-text);
+  border-color: var(--car-beige-btn-hover-border);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(189, 115, 47, 0.25);
+}
+
+.car-custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--color-card);
+  border: 1.5px solid var(--color-card);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='var(--color-primary)' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: all 0.25s ease;
+}
+
+.car-custom-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(189, 115, 47, 0.15);
+}
+
+.car-custom-select option {
+  padding: 12px;
+  font-size: 1rem;
+  background: var(--color-card);
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .car-header-section,
+  .pedidos-header-section {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .car-subtitle,
+  .pedidos-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .car-title,
+  .pedidos-title {
+    font-size: 1.6rem;
+    margin: 0.1rem 0 0.2rem 0;
+  }
+
+  .car-description,
+  .pedidos-description {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .car-badge,
+  .pedidos-badge {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}

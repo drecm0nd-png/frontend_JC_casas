@@ -1,0 +1,155 @@
+:root {
+  --bg-page: #faf7f2;
+  --bg-card: #ffffff;
+  --bg-subtle: #fdfaf6;
+  --text-main: #2b2b2b;
+  --text-muted: #666666;
+  --border-color: #ebdcc5;
+  --accent-color: #bd732f;
+  --accent-hover: #a36125;
+  --status-ok: #15803d;
+  --status-warn: #f59e0b;
+  --app-brightness: 100%;
+  --app-filter: none;
+}
+
+[data-theme="dark"],
+:root.dark-mode,
+body.dark-mode,
+.dark-mode {
+  --bg-page: #7b5234;
+  --bg-card: #5c3b24;
+  --bg-subtle: #8f613f;
+  --text-main: #fffaf3;
+  --text-muted: #f5ebd6;
+  --border-color: #c49c74;
+  --accent-color: #eadbc3;
+  --accent-hover: #f7ebd7;
+}
+
+@keyframes configFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.config-page-container {
+  padding: 2.5rem 1.5rem;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  box-sizing: border-box;
+  filter: brightness(var(--app-brightness)) var(--app-filter);
+  transition: background-color 0.25s ease, color 0.25s ease, filter 0.2s ease;
+  animation: configFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-theme="dark"] .config-page-container,
+:root.dark-mode .config-page-container,
+body.dark-mode .config-page-container,
+.dark-mode .config-page-container {
+  background-color: #7b5234 !important;
+  color: #fffaf3;
+}
+
+.config-page-container.font-small {
+  font-size: 0.9rem;
+}
+
+.config-page-container.font-normal {
+  font-size: 1rem;
+}
+
+.config-page-container.font-large {
+  font-size: 1.12rem;
+}
+
+.config-inner-wrapper {
+  max-width: 1450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.config-header-section {
+  text-align: left;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.config-subtitle {
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.config-title {
+  color: var(--text-main);
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.config-description {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.config-header-badge {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.config-main-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .config-main-grid-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.config-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1.5px solid var(--accent-color);
+  padding: 0.85rem 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+  animation: configFadeIn 0.25s ease-out;
+}

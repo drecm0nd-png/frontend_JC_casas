@@ -1,0 +1,201 @@
+@import "../../Styles/Variables.css";
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  right: 0;
+  width: 280px;
+  background-color: var(--color-surface, #fffdf7);
+  color: var(--color-text, #2b2b2b);
+  border: 1.5px solid var(--color-stroke, #c8a27a);
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(35, 16, 6, 0.18);
+  overflow: hidden;
+  z-index: 1250;
+  animation: profileDropdownFade 0.16s ease-out;
+}
+
+@keyframes profileDropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1rem;
+  background-color: var(--color-card, #f5eddd);
+  border-bottom: 1px solid var(--color-stroke, #c8a27a);
+}
+
+.profile-avatar-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #4a2511;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.profile-user-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.profile-user-name {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text, #2b2b2b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-user-email {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--color-text-muted, #6b5b4b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-role-badge {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 0.2rem;
+  padding: 0.12rem 0.48rem;
+  border-radius: 999px;
+  background-color: #eadbc3;
+  color: #4a2511;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.profile-dropdown-actions {
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem;
+  gap: 0.15rem;
+}
+
+.profile-action-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.68rem 0.75rem;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--color-text, #2b2b2b);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.profile-action-item:hover {
+  background-color: var(--color-card, #f5eddd);
+  color: #4a2511;
+}
+
+.profile-dropdown-footer {
+  padding: 0.55rem 0.75rem 0.7rem;
+  border-top: 1px solid var(--color-stroke, #c8a27a);
+  background-color: var(--color-background, #fffdf7);
+  display: flex;
+  justify-content: center;
+}
+
+.profile-full-link {
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #4a2511;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.profile-full-link:hover {
+  background-color: #6b381b;
+}
+
+/* Modo oscuro */
+[data-theme="dark"] .profile-dropdown,
+.dark-mode .profile-dropdown {
+  background-color: var(--color-surface);
+  color: #ffffff;
+  border-color: var(--color-stroke);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .profile-dropdown-header,
+.dark-mode .profile-dropdown-header,
+[data-theme="dark"] .profile-dropdown-footer,
+.dark-mode .profile-dropdown-footer {
+  background-color: var(--color-card);
+  border-color: var(--color-stroke);
+}
+
+[data-theme="dark"] .profile-avatar-circle,
+.dark-mode .profile-avatar-circle {
+  background-color: #eadbc3;
+  color: #1f1108;
+}
+
+[data-theme="dark"] .profile-user-name,
+.dark-mode .profile-user-name,
+[data-theme="dark"] .profile-action-item,
+.dark-mode .profile-action-item {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .profile-user-email,
+.dark-mode .profile-user-email {
+  color: #e6d5be;
+}
+
+[data-theme="dark"] .profile-role-badge,
+.dark-mode .profile-role-badge {
+  background-color: #5c3b24;
+  color: #fffaf3;
+}
+
+[data-theme="dark"] .profile-action-item:hover,
+.dark-mode .profile-action-item:hover {
+  background-color: #5c3b24;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .profile-full-link,
+.dark-mode .profile-full-link {
+  background-color: #eadbc3;
+  color: #1f1108;
+}
+
+[data-theme="dark"] .profile-full-link:hover,
+.dark-mode .profile-full-link:hover {
+  background-color: #f7ebd7;
+  color: #1f1108;
+}

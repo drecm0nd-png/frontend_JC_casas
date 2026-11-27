@@ -1,0 +1,189 @@
+.cfg-hero {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.cfg-banner {
+  height: 190px;
+  position: relative;
+}
+
+.cfg-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cfg-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 55%, rgba(43, 43, 43, 0.28));
+}
+
+.cfg-hero-body {
+  display: grid;
+  grid-template-columns: auto 1fr minmax(220px, 300px);
+  gap: 0 1.5rem;
+  align-items: start;
+  padding: 0 2rem 1.5rem;
+}
+
+.cfg-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #101828, #2a3446);
+  color: #f6efe0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  overflow: visible;
+}
+
+.cfg-avatar > img,
+.cfg-avatar > span:first-child {
+  border-radius: 50%;
+}
+
+.cfg-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cfg-avatar-hero {
+  width: 104px;
+  height: 104px;
+  margin-top: -52px;
+  border: 4px solid var(--paper);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  font-size: 1.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cfg-avatar-badge {
+  position: absolute;
+  right: -2px;
+  bottom: 2px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--white);
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  transition: transform 0.15s;
+}
+
+.cfg-avatar-hero:hover .cfg-avatar-badge {
+  transform: scale(1.1);
+}
+
+.cfg-id {
+  padding-top: 1rem;
+  min-width: 0;
+}
+
+.cfg-id h1 {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.cfg-id p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.cfg-progress {
+  padding-top: 1rem;
+}
+
+.cfg-progress-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.cfg-progress-top strong {
+  color: var(--ink);
+}
+
+.cfg-progress-bar {
+  height: 8px;
+  background: var(--sand-deep);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.cfg-progress-bar span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+.cfg-progress-hint {
+  margin-top: 0.5rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cfg-progress-done {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ok);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .cfg-hero-body {
+    grid-template-columns: auto 1fr;
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .cfg-progress {
+    grid-column: 1 / -1;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cfg-banner {
+    height: 140px;
+  }
+
+  .cfg-avatar-hero {
+    width: 88px;
+    height: 88px;
+    margin-top: -44px;
+    font-size: 1.6rem;
+  }
+
+  .cfg-id h1 {
+    font-size: 1.25rem;
+  }
+}

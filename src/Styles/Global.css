@@ -1,0 +1,361 @@
+/* src/styles/global.css */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  filter: var(--app-filter, none);
+  transition: filter 0.16s ease;
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-button-primary);
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-header);
+}
+
+h1 {
+  font-size: var(--font-size-hero);
+}
+h2 {
+  font-size: var(--font-size-section-title);
+}
+h3 {
+  font-size: var(--font-size-subtitle);
+}
+h4 {
+  font-size: var(--font-size-card-title);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--component-gap);
+}
+
+.flex-stack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--component-gap);
+}
+
+@media (max-width: 768px) {
+  .flex-stack {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.app-with-sidebar {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  box-sizing: border-box;
+  width: 100%;
+  transition: background-color 0.25s ease;
+}
+
+.app-with-sidebar .app-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.app-fullscreen {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  transition: background-color 0.25s ease;
+}
+
+.app-fullscreen .app-main-content {
+  width: 100%;
+  min-height: 100vh;
+}
+
+footer,
+.footer,
+.app-footer {
+  background-color: var(--color-footer) !important;
+  border-top: 1px solid var(--color-stroke) !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Botón Guardar Preferencias: letras oscuras sobre el beige */
+.config-btn-action {
+  background-color: var(--color-button-primary);
+  color: var(--color-button-text, #ffffff);
+  font-weight: 800;
+}
+
+[data-theme="dark"] .config-btn-action,
+.dark-mode .config-btn-action {
+  background-color: #eadbc3;
+  color: #1f1108 !important;
+  border: 1px solid #fff9f2;
+  font-weight: 800;
+}
+
+[data-theme="dark"] .config-btn-action:hover,
+.dark-mode .config-btn-action:hover {
+  background-color: #f7ebd7;
+  color: #120802 !important;
+}
+
+/* Switches generales */
+.custom-switch input:checked + .custom-slider {
+  background-color: var(--color-switch-active, #bd732f) !important;
+}
+
+.custom-switch input:checked + .custom-slider::before,
+.custom-switch input:checked + .custom-slider > * {
+  background-color: var(--color-switch-knob-active, #ffffff) !important;
+}
+
+/* ==========================================================
+   PANEL DE ADMINISTRADOR: MORADO EN CLARO, AMARILLO EN OSCURO
+   ========================================================== */
+[class*="admin"] .custom-switch input:checked + .custom-slider,
+[class*="Admin"] .custom-switch input:checked + .custom-slider,
+[data-section*="admin"] .custom-switch input:checked + .custom-slider {
+  background-color: #7c3aed !important;
+}
+
+[class*="admin"] .custom-switch input:checked + .custom-slider::before,
+[class*="admin"] .custom-switch input:checked + .custom-slider > *,
+[class*="Admin"] .custom-switch input:checked + .custom-slider::before,
+[class*="Admin"] .custom-switch input:checked + .custom-slider > * {
+  background-color: #ffffff !important;
+}
+
+[class*="admin"] svg,
+[class*="Admin"] svg,
+[data-section*="admin"] svg {
+  color: #7c3aed !important;
+}
+
+[class*="admin"] .config-option-row:has(input:checked),
+[class*="Admin"] .config-option-row:has(input:checked),
+[data-section*="admin"] .config-option-row:has(input:checked) {
+  border-color: #7c3aed !important;
+}
+
+/* En Modo Oscuro: switches, logo y contorno pasan a amarillo */
+[data-theme="dark"] [class*="admin"] .custom-switch input:checked + .custom-slider,
+[data-theme="dark"] [class*="Admin"] .custom-switch input:checked + .custom-slider,
+[data-theme="dark"] [data-section*="admin"] .custom-switch input:checked + .custom-slider,
+.dark-mode [class*="admin"] .custom-switch input:checked + .custom-slider,
+.dark-mode [class*="Admin"] .custom-switch input:checked + .custom-slider,
+.dark-mode [data-section*="admin"] .custom-switch input:checked + .custom-slider {
+  background-color: #eab308 !important;
+}
+
+[data-theme="dark"] [class*="admin"] .custom-switch input:checked + .custom-slider::before,
+[data-theme="dark"] [class*="admin"] .custom-switch input:checked + .custom-slider > *,
+[data-theme="dark"] [class*="Admin"] .custom-switch input:checked + .custom-slider::before,
+[data-theme="dark"] [class*="Admin"] .custom-switch input:checked + .custom-slider > *,
+.dark-mode [class*="admin"] .custom-switch input:checked + .custom-slider::before,
+.dark-mode [class*="admin"] .custom-switch input:checked + .custom-slider > *,
+.dark-mode [class*="Admin"] .custom-switch input:checked + .custom-slider::before,
+.dark-mode [class*="Admin"] .custom-switch input:checked + .custom-slider > * {
+  background-color: #1f1600 !important;
+}
+
+[data-theme="dark"] [class*="admin"] svg,
+[data-theme="dark"] [class*="Admin"] svg,
+[data-theme="dark"] [data-section*="admin"] svg,
+.dark-mode [class*="admin"] svg,
+.dark-mode [class*="Admin"] svg,
+.dark-mode [data-section*="admin"] svg {
+  color: #facc15 !important;
+}
+
+/* Contorno superior y cualquier borde/sombra morada en el panel de admin en modo oscuro */
+[data-theme="dark"] [class*="admin"] > div > div:first-child,
+[data-theme="dark"] [class*="Admin"] > div > div:first-child,
+[data-theme="dark"] [data-section*="admin"] > div > div:first-child,
+[data-theme="dark"] [class*="admin"] .config-option-row:first-child,
+[data-theme="dark"] [class*="Admin"] .config-option-row:first-child,
+[data-theme="dark"] [data-section*="admin"] .config-option-row:first-child,
+[data-theme="dark"] [class*="admin"] .config-option-row:has(input:checked),
+[data-theme="dark"] [class*="Admin"] .config-option-row:has(input:checked),
+[data-theme="dark"] [data-section*="admin"] .config-option-row:has(input:checked),
+.dark-mode [class*="admin"] > div > div:first-child,
+.dark-mode [class*="Admin"] > div > div:first-child,
+.dark-mode [class*="Admin"] > div > div:first-child,
+.dark-mode [class*="admin"] .config-option-row:first-child,
+.dark-mode [class*="Admin"] .config-option-row:first-child,
+.dark-mode [data-section*="admin"] .config-option-row:first-child,
+.dark-mode [class*="admin"] .config-option-row:has(input:checked),
+.dark-mode [class*="Admin"] .config-option-row:has(input:checked),
+.dark-mode [data-section*="admin"] .config-option-row:has(input:checked) {
+  border-color: #eab308 !important;
+  box-shadow: 0 0 0 1px rgba(234, 179, 8, 0.35) !important;
+}
+
+/* Mantener el velo grande semitransparente oscuro */
+[data-theme="dark"] [class*="admin"] [style*="position: fixed"],
+[data-theme="dark"] [class*="admin"] [style*="position: absolute"],
+[data-theme="dark"] [class*="Admin"] [style*="position: fixed"],
+[data-theme="dark"] [class*="Admin"] [style*="position: absolute"],
+.dark-mode [class*="admin"] [style*="position: fixed"],
+.dark-mode [class*="admin"] [style*="position: absolute"],
+.dark-mode [class*="Admin"] [style*="position: fixed"],
+.dark-mode [class*="Admin"] [style*="position: absolute"] {
+  background-color: rgba(28, 17, 10, 0.78) !important;
+}
+
+/* Círculo del candado: tono amarillo cálido en modo oscuro */
+[data-theme="dark"] [class*="admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]),
+[data-theme="dark"] [class*="Admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]),
+.dark-mode [class*="admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]),
+.dark-mode [class*="Admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]) {
+  background-color: #ca8a04 !important;
+  border-color: #facc15 !important;
+  color: #1f1600 !important;
+}
+
+[data-theme="dark"] [class*="admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]) svg,
+[data-theme="dark"] [class*="Admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]) svg,
+.dark-mode [class*="admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]) svg,
+.dark-mode [class*="Admin"] div:has(> svg):not([class*="switch"]):not([class*="Switch"]) svg {
+  color: #1f1600 !important;
+}
+
+@media (max-width: 768px) {
+  .global-header {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .global-header .g-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .global-header .g-title {
+    font-size: 1.6rem;
+    margin: 0.1rem 0 0.2rem 0;
+  }
+
+  .global-header .g-description {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .global-header .g-badge {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+}
+
+/* ==========================================
+   Sidebar oculto hasta pasar el cursor por la esquina
+   (Landing autenticada: menú real aparece tras el hover)
+   ========================================== */
+.app-with-sidebar.app-shell-desplegable {
+  position: relative;
+}
+
+.app-with-sidebar.app-shell-desplegable .app-sidebar {
+  display: none;
+}
+
+.app-shell-corner {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 101;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.app-with-sidebar.app-shell-desplegable:hover .app-sidebar {
+  display: flex;
+}

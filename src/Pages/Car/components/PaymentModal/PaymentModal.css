@@ -1,0 +1,593 @@
+@keyframes carFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Bloquea el scroll del fondo mientras el modal de pago está abierto */
+html:has(.car-modal-overlay),
+body:has(.car-modal-overlay) {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+.car-modal-overlay {
+  --modal-field-bg: #ffffff;
+  --modal-field-text: #1c1917;
+  --modal-field-muted: #57534e;
+  --modal-field-border: #d6d3d1;
+  --bill-card-accent: #b45309;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4vh 1.25rem 1.25rem;
+  z-index: 99999;
+  box-sizing: border-box;
+  animation: carFadeIn 0.25s ease-out;
+  overflow: hidden;
+}
+
+/* Ajusta este selector (.dark, [data-theme="dark"], .modo-oscuro, etc.) al de tu app */
+.dark .car-modal-overlay,
+[data-theme="dark"] .car-modal-overlay,
+body.dark-mode .car-modal-overlay {
+  --modal-field-bg: #e7dcc6;
+  --modal-field-text: #1f1a14;
+  --modal-field-muted: #4a4033;
+  --modal-field-border: #cbb99a;
+}
+
+.car-modal-content {
+  background-color: var(--color-card);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+  padding: 1.35rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  height: auto;
+  max-height: 92vh;
+  margin: 0 auto;
+  overflow: hidden;
+  animation: modalScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.car-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--color-stroke);
+  padding-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.car-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.car-modal-close {
+  background: var(--modal-field-bg);
+  color: var(--modal-field-muted);
+  border: 1px solid var(--modal-field-border);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.car-modal-close:hover {
+  background: var(--color-stroke);
+  color: var(--color-text);
+}
+
+.car-payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.car-payment-option {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.78rem 1.05rem;
+  background-color: var(--modal-field-bg);
+  border: 2px solid var(--modal-field-border);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.96rem;
+  color: var(--modal-field-text);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.car-payment-option.active {
+  border-color: var(--bill-card-accent);
+  background-color: var(--modal-field-bg);
+  color: var(--modal-field-text);
+  box-shadow: 0 0 0 1px var(--bill-card-accent);
+}
+
+.car-qr-container {
+  background-color: var(--modal-field-bg);
+  color: var(--modal-field-text);
+  border: 1.5px solid var(--modal-field-border);
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  overflow: hidden;
+}
+
+.car-qr-tip {
+  color: var(--modal-field-muted);
+}
+
+.car-qr-box {
+  background-color: #ffffff;
+  padding: 0.75rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 0 auto;
+  border: 1.5px solid var(--modal-field-border);
+  max-width: 155px;
+}
+
+.car-qr-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.car-payment-info-box {
+  background-color: var(--modal-field-bg);
+  border: 1.5px solid var(--modal-field-border);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  color: var(--modal-field-muted);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.car-cash-address-text {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.car-cash-bill-group {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  text-align: left;
+}
+
+.car-cash-bill-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--modal-field-text);
+}
+
+.car-bill-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.car-bill-card {
+  position: relative;
+  border: 1.5px solid var(--modal-field-border);
+  border-radius: 14px;
+  min-height: 76px;
+  padding: 0.55rem 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(180, 83, 9, 0.08));
+}
+
+.car-bill-card.is-exact {
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.2), rgba(46, 125, 50, 0.08));
+}
+
+.car-bill-card:hover {
+  border-color: var(--bill-card-accent);
+  transform: translateY(-1px);
+}
+
+.car-bill-card.selected {
+  border-color: var(--bill-card-accent);
+  box-shadow: 0 0 0 1.5px var(--bill-card-accent);
+}
+
+.car-bill-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.car-bill-card.selected .car-bill-img {
+  opacity: 0.48;
+}
+
+.car-bill-bg-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bill-card-accent);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.car-bill-card.is-exact .car-bill-bg-icon {
+  color: #2e7d32;
+}
+
+.car-bill-overlay-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.car-bill-amount {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--modal-field-text);
+  line-height: 1.15;
+}
+
+.car-bill-sublabel {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--bill-card-accent);
+  line-height: 1.1;
+}
+
+.car-bill-card.is-exact .car-bill-sublabel {
+  color: #1b5e20;
+}
+
+.car-bill-check {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--bill-card-accent);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botón para elegir un valor de monto diferente */
+.car-custom-amount-btn {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.62rem 0.85rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--modal-field-border);
+  background-color: var(--modal-field-bg);
+  color: var(--modal-field-text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.car-custom-amount-btn:hover {
+  border-color: var(--bill-card-accent);
+}
+
+.car-custom-amount-btn.selected {
+  border-color: var(--bill-card-accent);
+  box-shadow: 0 0 0 1.5px var(--bill-card-accent);
+}
+
+.car-custom-amount-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--modal-field-text);
+}
+
+.car-custom-check {
+  position: static;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.car-custom-amount-field {
+  margin-top: 0.1rem;
+}
+
+.car-custom-amount-input {
+  width: 100%;
+  padding: 0.62rem 0.8rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--bill-card-accent);
+  background-color: var(--modal-field-bg);
+  color: var(--modal-field-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.car-custom-amount-input::placeholder {
+  color: var(--modal-field-muted);
+  font-weight: 500;
+  font-size: 0.82rem;
+}
+
+.car-cash-change-hint {
+  font-size: 0.82rem;
+  color: var(--modal-field-muted);
+}
+
+.car-cash-warning-hint {
+  font-size: 0.82rem;
+  color: #b45309;
+  font-weight: 600;
+}
+
+.car-modal-footer {
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.btn-confirm-final-pay {
+  width: 100%;
+  background: var(--modal-field-bg);
+  color: var(--modal-field-text);
+  border: 1.5px solid var(--modal-field-border);
+  padding: 0.92rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.btn-confirm-final-pay:hover:not(:disabled) {
+  border-color: var(--bill-card-accent);
+  transform: translateY(-2px);
+}
+
+.btn-confirm-final-pay:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ========== RESPONSIVE: TABLET Y MÓVIL (REDUCCIÓN PROGRESIVA) ========== */
+@media (max-width: 768px) {
+  .car-modal-overlay {
+    padding: 3.5vh 0.75rem 0.9rem !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .car-modal-content {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 93vh !important;
+    margin: 0 auto !important;
+    border-radius: 16px;
+    padding: 1rem 0.95rem;
+    gap: 0.65rem;
+    overflow: hidden !important;
+  }
+
+  .car-modal-header {
+    padding-bottom: 0.6rem;
+  }
+
+  .car-modal-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .car-modal-close {
+    width: 32px;
+    height: 32px;
+  }
+
+  .car-payment-methods {
+    gap: 0.45rem;
+  }
+
+  .car-payment-option {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.88rem;
+    gap: 0.7rem;
+  }
+
+  .car-payment-info-box {
+    padding: 0.7rem 0.8rem;
+  }
+
+  .car-cash-bill-group {
+    margin-top: 0.45rem;
+    gap: 0.4rem;
+  }
+
+  .car-bill-cards-grid {
+    gap: 0.45rem;
+  }
+
+  .car-bill-card {
+    min-height: 64px;
+    padding: 0.45rem 0.5rem;
+    border-radius: 12px;
+  }
+
+  .car-bill-amount {
+    font-size: 0.88rem;
+  }
+
+  .car-bill-sublabel {
+    font-size: 0.7rem;
+  }
+
+  .car-custom-amount-btn {
+    padding: 0.52rem 0.75rem;
+    font-size: 0.82rem;
+  }
+
+  .car-custom-amount-input {
+    padding: 0.52rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .car-qr-container {
+    padding: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .car-qr-box {
+    max-width: 130px;
+    padding: 0.55rem;
+  }
+
+  .btn-confirm-final-pay {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .car-modal-overlay {
+    padding: 3vh 0.55rem 0.75rem !important;
+    align-items: flex-start !important;
+    overflow: hidden !important;
+  }
+
+  .car-modal-content {
+    max-height: 94vh !important;
+    padding: 0.85rem 0.75rem;
+    gap: 0.55rem;
+    overflow: hidden !important;
+  }
+
+  .car-qr-box {
+    max-width: 115px;
+    padding: 0.45rem;
+  }
+
+  .car-payment-info-box {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .car-cash-bill-group {
+    margin-top: 0.4rem;
+    gap: 0.35rem;
+  }
+
+  .car-bill-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.38rem;
+  }
+
+  .car-bill-card {
+    min-height: 56px;
+    padding: 0.38rem 0.4rem;
+    border-radius: 10px;
+  }
+
+  .car-bill-check {
+    top: 5px;
+    right: 5px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .car-bill-amount {
+    font-size: 0.84rem;
+  }
+
+  .car-bill-sublabel {
+    font-size: 0.66rem;
+  }
+
+  .car-custom-amount-btn {
+    padding: 0.48rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .car-custom-amount-input {
+    padding: 0.48rem 0.65rem;
+    font-size: 0.82rem;
+  }
+
+  .btn-confirm-final-pay {
+    padding: 0.75rem 0.8rem;
+    font-size: 0.88rem;
+  }
+}

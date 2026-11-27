@@ -1,0 +1,202 @@
+.config-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  margin-top: 0.8rem;
+}
+
+.config-option-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: padding 0.2s ease, gap 0.2s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+[data-theme="dark"] .config-option-row,
+:root.dark-mode .config-option-row,
+body.dark-mode .config-option-row,
+.dark-mode .config-option-row {
+  background: var(--color-card, #8f613f);
+  border-color: var(--color-stroke, #c49c74) !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.config-option-row.compact {
+  padding: 0.58rem 0.85rem;
+  gap: 0.7rem;
+}
+
+.config-option-row.column-layout {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.config-option-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.config-option-title {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.config-option-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.config-mb-sm {
+  margin-bottom: 0.4rem;
+}
+
+.config-mb-xs {
+  margin-bottom: 0.2rem;
+}
+
+.config-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.92rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .config-select,
+:root.dark-mode .config-select,
+body.dark-mode .config-select,
+.dark-mode .config-select {
+  background: var(--car-input-beige-bg, #e6d5c1);
+  color: var(--car-input-beige-text, #111111);
+  border-color: var(--car-input-beige-border, #b89e7d) !important;
+  outline: none !important;
+}
+
+.config-select:focus {
+  border-color: var(--accent-color);
+}
+
+.config-range-input {
+  width: 100%;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+}
+
+[data-theme="dark"] .config-range-input,
+:root.dark-mode .config-range-input,
+body.dark-mode .config-range-input,
+.dark-mode .config-range-input {
+  accent-color: var(--car-input-beige-bg, #e6d5c1);
+}
+
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.custom-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.25s;
+  border-radius: 34px;
+}
+
+.custom-slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #ffffff;
+  transition: 0.25s;
+  border-radius: 50%;
+}
+
+.custom-switch input:checked + .custom-slider {
+  background-color: var(--accent-color);
+}
+
+[data-theme="dark"] .custom-switch input:checked + .custom-slider,
+:root.dark-mode .custom-switch input:checked + .custom-slider,
+body.dark-mode .custom-switch input:checked + .custom-slider,
+.dark-mode .custom-switch input:checked + .custom-slider {
+  background-color: var(--color-switch-active, #eadbc3);
+}
+
+[data-theme="dark"] .custom-switch input:checked + .custom-slider::before,
+:root.dark-mode .custom-switch input:checked + .custom-slider::before,
+body.dark-mode .custom-switch input:checked + .custom-slider::before,
+.dark-mode .custom-switch input:checked + .custom-slider::before {
+  background-color: var(--color-switch-knob-active, #241207);
+}
+
+.custom-switch input:checked + .custom-slider::before {
+  transform: translateX(22px);
+}
+
+.config-btn-action {
+  margin-top: 0.4rem;
+  width: 100%;
+  padding: 0.95rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+[data-theme="dark"] .config-btn-action:not(.admin-btn),
+:root.dark-mode .config-btn-action:not(.admin-btn),
+body.dark-mode .config-btn-action:not(.admin-btn),
+.dark-mode .config-btn-action:not(.admin-btn) {
+  background: var(--car-beige-btn-bg, #e6d5c1);
+  color: var(--car-beige-btn-text, #111111);
+  border: 1.5px solid var(--car-beige-btn-border, #d4be9f);
+}
+
+[data-theme="dark"] .config-btn-action:not(.admin-btn):hover:not(:disabled),
+:root.dark-mode .config-btn-action:not(.admin-btn):hover:not(:disabled),
+body.dark-mode .config-btn-action:not(.admin-btn):hover:not(:disabled),
+.dark-mode .config-btn-action:not(.admin-btn):hover:not(:disabled) {
+  background: var(--car-beige-btn-hover-bg, #d8c2a6);
+  color: var(--car-beige-btn-hover-text, #000000);
+  border-color: var(--car-beige-btn-hover-border, #c8ad8b);
+}
+
+.config-btn-action:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.config-btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
